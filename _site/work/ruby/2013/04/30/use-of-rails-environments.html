@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title> Use of Ruby on Rails environments |  Enrico Teotti, Agent</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+
+    <!-- bxSlider CSS file -->
+    <link href="/stylesheets/jquery.bxslider.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- jQuery library (served from Google) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="/javascripts/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      $('.bxslider').bxSlider();
+    });
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="/">Enrico Teotti</a></h1>
+        <img src="/images/me/deep_sea_diver.jpg" style="border: 1px solid white; border-radius: 30px; -moz-border-radius: 30px; -khtml-border-radius: 30px; -webkit-border-radius: 30px;" alt="Halloween, me in my homemade deep sea diver costume"/>
+        <p class="view"><a href="https://github.com/agenteo">View My GitHub Profile</a></p>
+
+        
+      </header>
+      <section>
+      <h1 id='use_of_ruby_on_rails_environments'>Use of Ruby on Rails environments</h1>
+
+<p>When you generate a Ruby on Rails application it will create three environments:</p>
+
+<ul>
+<li>development</li>
+
+<li>production</li>
+
+<li>test</li>
+</ul>
+
+<p>each has a corresponding configuration file:</p>
+
+<ul>
+<li>config/environments/development.rb</li>
+
+<li>config/environments/production.rb</li>
+
+<li>config/environments/test.rb</li>
+</ul>
+
+<p>The main purpose of those environments is to configure the Ruby on Rails framework. <a href='http://guides.rubyonrails.org/configuring.html#rails-environment-settings'>Rails guide link</a>.</p>
+
+<p>In development mode Rails will reloads all app classes and turn any caching off to allow a faster development cycle. This is how the app runs on a development workstation.</p>
+
+<p>In production mode all caching is turned on, often pointing to a memcached server. This is how the app runs on the live server.</p>
+
+<p>The test mode is used in the tests, we have a special throw away database used only for test, wiped out between test runs.</p>
+
+<p>These are the Rails default environments.</p>
+
+<p>What I&#8217;ve often seen are extra Rails environments such as:</p>
+
+<ul>
+<li>develop &#8211; a development server used only for development tests</li>
+
+<li>staging/pre_production &#8211; a server where stakeholders can test stories on an environment as similar to production as possible</li>
+</ul>
+
+<p>what I saw and what I am still seeing today is those extra environments are a perfect copy of config/environments/production.rb.</p>
+
+<p>So I started wondering what&#8217;s their purpose?</p>
+
+<p>I can tell you what their purpose used to be for me.</p>
+
+<p>In the past I used the map each Rails environment to a server stage, and use them to load configuration and set behaviour.</p>
+
+<p>I used to think having a YAML file to load configuration was a neat solution to setting configuration on different stages. And I am pretty sure I wasn&#8217;t alone, <a href='http://railscasts.com/episodes/85-yaml-configuration-file'>here is an old Railcast about that</a>.</p>
+
+<p>Now I&#8217;d rather put that configuration in an unix ENV variable and have the code load it from there. This <a href='http://railsapps.github.io/rails-environment-variables.html'>link</a> covers this approach.</p>
+
+<p>Each server stage will be provisioned with apropriate ENV variables (ie. S3BUCKET).</p>
+
+<p>Look at <a href='https://github.com/ddollar/foreman'>foreman</a> or <a href='https://github.com/bkeepers/dotenv'>dotenv</a> to use the env variables approach in development mode.</p>
+
+<p>Another thing I used to do what turning on some behaviour on specific stages. This wasn&#8217;t feature flagging but simply a server stage dependent behaviour.</p>
+
+<h2 id='turning_on_behaviour_on_specific_server_stages'>Turning on behaviour on specific server stages</h2>
+
+<p>If the separate Rails environment is only used for feature toggling (ie. display a different header to differentiate the staging site from production site) do we really need a separate Rails environment for that?</p>
+
+<p>Why not having as part of the server provisioning a unix variale (ie. STAGE=&#8217;staging&#8217;) set to the server stage?</p>
+
+<p>In Rails instead of:</p>
+<div>
+  <pre><code class='ruby'>if Rails.env.staging?
+# do stuff
+end</code></pre>
+</div>
+<p>we will use:</p>
+<div>
+  <pre><code class='ruby'>if ENV['STAGE'] == 'staging'
+# do stuff
+end</code></pre>
+</div>
+<p>If you find typing that often a simple helper could be introduced:</p>
+<div>
+  <pre><code class='ruby'>class ServerStage
+   def self.current
+     ENV['STAGE']
+   end
+   
+   def self.staging?
+     current == 'staging'
+   end
+end</code></pre>
+</div><div>
+  <pre><code class='ruby'>if ServerStage.staging?
+# do stuff
+end</code></pre>
+</div>
+<h2 id='conclusion'>Conclusion</h2>
+
+<p>My suggestion is to run both staging and production servers using the Rails production environment unless there are Rails configuration differences between them.</p>
+
+<p>What&#8217;s your opinion? I am curious to see if I missed some useful application of Rails environments or overlooked at downside of ENV variables.</p>
+<div id='disqus_thread' /><script type='text/javascript'>
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript><a class='dsq-brlink' href='http://disqus.com'>comments powered by <span class='logo-disqus'>Disqus</span></a>
+      </section>
+      <footer>
+        <p><small>Hosted on the Plant Mars</p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+  </body>
+</html>
+

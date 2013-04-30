@@ -17,6 +17,18 @@ I try to improve my work by reading books about agile, software development, Rub
 
 You can see a list of [the books I've read](/work/reading).
 
+## My blog posts
+<ul class="posts">
+{% for post in site.posts limit: 5 %}
+  <div class="post_info">
+    <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <span>({{ post.date | date:"%Y-%m-%d" }})</span>
+    </li>
+    </br> <em>{{ post.excerpt }} </em>
+    </div>
+  {% endfor %}
+</ul>
 
 ## My hobbies
 After work I cook italian food, following house recipes, and sometimes making up my own.  I am a decent pizza maker.

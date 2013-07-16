@@ -14,6 +14,8 @@ This is a short story about the creation and maintenance of a large Ruby on Rail
 application, and how after initially sticking to the Rails conventions I
 questioned them and used Rails plugins to structure the code of new components.
 
+Thanks to Ben and Red Ant to let me use the project as a use case.
+
 
 ## The story
 Sometime we work on a small size project.
@@ -25,8 +27,8 @@ It's critical to acknowledge those scenarios, a good part of Rails's popularity 
 
 But I believe Ruby on Rails can handle large projects too and this story is about those times.
 
-I worked on new green field projects containing many concepts at the
-foundation of the system, and you simply couldn't go live without all of them.
+I worked on this new green field project containing many concepts at the
+foundation of the system, and we simply couldn't go live without all of them.
 
 This first part goes through how I realized I had to step away from some of
 Ruby on Rails's conventions in order to introduce a little bit of structure in

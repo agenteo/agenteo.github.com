@@ -25,9 +25,8 @@ You can see a list of [the books I've read](/work/reading).
             <a href="{{ post.url }}">{{ post.title }}</a>
             <span>({{ post.date | date:"%Y-%m-%d" }})</span>
     </li>
-    </br> <em>{{ post.excerpt }} </em>
-    </div>
-  {% endfor %}
+  </div>
+{% endfor %}
 </ul>
 
 ## My hobbies

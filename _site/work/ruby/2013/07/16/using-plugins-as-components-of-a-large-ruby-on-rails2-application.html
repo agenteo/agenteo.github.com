@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title> Tails of decomposing a large Ruby on Rails application part 1 |  Enrico Teotti, Agent</title>
+    <title> Using plugins as components of a large Ruby on Rails 2 application |  Enrico Teotti, Agent</title>
 
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
@@ -37,7 +37,7 @@
         
       </header>
       <section>
-      <h1 id='tails_of_decomposing_a_large_ruby_on_rails_application_part_1'>Tails of decomposing a large Ruby on Rails application part 1</h1>
+      <h1 id='using_plugins_as_components_of_a_large_ruby_on_rails_2_application'>Using plugins as components of a large Ruby on Rails 2 application</h1>
 
 <p>This is a short story about the creation and maintenance of a large Ruby on Rails application, and how after initially sticking to the Rails conventions I questioned them and used Rails plugins to structure the code of new components.</p>
 
@@ -158,14 +158,16 @@ application_controller.rb       contact_us                      loyalty         
 
 <ul>
 <li>since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.<br /><div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ls -l vendor/plugins/ | grep hug
-drwxr-xr-x   7 teottie5e  84396665  238 14 Nov 19:55 huggies_api
-drwxr-xr-x   7 teottie5e  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
-drwxr-xr-x   9 teottie5e  84396665  306 14 Nov 20:08 huggies_blog
-drwxr-xr-x  14 teottie5e  84396665  476 14 Nov 20:08 huggies_mums_tips
-drwxr-xr-x   6 teottie5e  84396665  204 14 Nov 20:11 huggies_voting_tool
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
+drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
+drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
+drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
 </code></pre></div> That convention (one more thing to do for the developer) didn&#8217;t really work well, people sometime forgot the prefix making hard to detect non vendor plugins.</li>
 
 <li>the migrations had still to be placed in the main app migration folder, so that folder kept growing.</li>
+
+<li>we had plugins relying on the main application code, so a change to a plugin would require to change main application code. A better approach would have been to move the code in the main app in plugins. I&#8217;ll describe that approach in a followup article.</li>
 </ul>
 
 <h2 id='conclusion'>Conclusion</h2>
@@ -178,11 +180,9 @@ drwxr-xr-x   6 teottie5e  84396665  204 14 Nov 20:11 huggies_voting_tool
 
 <p>It was certainly better then having everything in /models and /controllers keeping using subfolders or introducing SOA merely for organizational reasons.</p>
 
-<p>I encountered a bit of skepticism on this approach from other developers. I&#8217;ve found many Rails developers are fossilized on the conventions Rails gives and never look at a Rails app from a different angle. In cases of large apps some of those conventions will simply play against you and I think it&#8217;s our duty to look in to alternative paths to follow.</p>
+<p>I encountered a bit of skepticism on this approach from other developers. I&#8217;ve found many Rails developers are fossilized on the conventions Rails gives and never look at a Rails app from a different angle. In cases of large apps some of those conventions will simply play against you and I think we should look in to alternative paths to follow.</p>
 
 <p>Did you find yourself working on a large Ruby on Rails application? Did you structure the code in any particular way?</p>
-
-<p>In the next part I&#8217;ll go trough the last application me and my team built using engines on Rails 3.</p>
 <div id='disqus_thread' /><script type='text/javascript'>
       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
       var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname

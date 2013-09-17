@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tails of decomposing a large Ruby on Rails application part 1
+title: Using plugins as components of a large Ruby on Rails 2 application
 comments: true
 categories:
   - work
@@ -133,15 +133,19 @@ Shortcomings of the approach:
 
 * since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.  {% highlight bash %}
 $ ls -l vendor/plugins/ | grep hug
-drwxr-xr-x   7 teottie5e  84396665  238 14 Nov 19:55 huggies_api
-drwxr-xr-x   7 teottie5e  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
-drwxr-xr-x   9 teottie5e  84396665  306 14 Nov 20:08 huggies_blog
-drwxr-xr-x  14 teottie5e  84396665  476 14 Nov 20:08 huggies_mums_tips
-drwxr-xr-x   6 teottie5e  84396665  204 14 Nov 20:11 huggies_voting_tool
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
+drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
+drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
+drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
 {% endhighlight %} That convention (one more thing to do for the developer) didn't really work well,
 people sometime forgot the prefix making hard to detect non vendor plugins.
 * the migrations had still to be placed in the main app migration folder, so that folder kept
 growing.
+* we had plugins relying on the main application code, so a change to a
+  plugin would require to change main application code. A better approach would
+  have been to move the code in the main app in plugins. I'll describe that
+  approach in a followup article.
 
 
 ## Conclusion
@@ -161,13 +165,10 @@ I encountered a bit of skepticism on this approach from other developers.
 I've found many Rails developers are fossilized on the conventions Rails gives
 and never look at a Rails app from a different angle.
 In cases of large apps some of those conventions will simply play against you
-and I think it's our duty to look in to alternative paths to follow.
+and I think we should look in to alternative paths to follow.
 
 Did you find yourself working on a large Ruby on Rails application? Did you
 structure the code in any particular way?
-
-In the next part I'll go trough the last application me and my team built using
-engines on Rails 3.
 
 {% if page.comments %}
   <div id="disqus_thread"></div>

@@ -37,31 +37,31 @@
         
       </header>
       <section>
-      <h1 id='using_plugins_as_components_of_a_large_ruby_on_rails_2_application'>Using plugins as components of a large Ruby on Rails 2 application</h1>
+      <h1 id="using_plugins_as_components_of_a_large_ruby_on_rails_2_application">Using plugins as components of a large Ruby on Rails 2 application</h1>
 
 <p>This is a short story about the creation and maintenance of a large Ruby on Rails application, and how after initially sticking to the Rails conventions I questioned them and used Rails plugins to structure the code of new components.</p>
 
 <p>Thanks to Ben and Red Ant to let me use the project as a use case.</p>
 
-<h2 id='the_story'>The story</h2>
+<h2 id="the_story">The story</h2>
 
 <p>Sometime we work on a small size project.</p>
 
 <p>Without much upfront design we deliver the product following the Ruby on Rails conventions, maybe using scaffold generators, maybe dropping in a few gems.</p>
 
-<p>It&#8217;s critical to acknowledge those scenarios, a good part of Rails&#8217;s popularity is due to those kind of projects.</p>
+<p>It’s critical to acknowledge those scenarios, a good part of Rails’s popularity is due to those kind of projects.</p>
 
 <p>But I believe Ruby on Rails can handle large projects too and this story is about those times.</p>
 
-<p>I worked on this new green field project containing many concepts at the foundation of the system, and we simply couldn&#8217;t go live without all of them.</p>
+<p>I worked on this new green field project containing many concepts at the foundation of the system, and we simply couldn’t go live without all of them.</p>
 
-<p>This first part goes through how I realized I had to step away from some of Ruby on Rails&#8217;s conventions in order to introduce a little bit of structure in the large application we where working on.</p>
+<p>This first part goes through how I realized I had to step away from some of Ruby on Rails’s conventions in order to introduce a little bit of structure in the large application we where working on.</p>
 
 <p>The year was 2008 and the app was running on Rails 2.</p>
 
 <p>Six years later I believe large Ruby on Rails apps are facing the same pitfalls. I will discuss a more updated technical solution in a follow up article.</p>
 
-<h2 id='the_project_huggiescomau'>The project (Huggies.com.au)</h2>
+<h2 id="the_project_huggiescomau">The project (Huggies.com.au)</h2>
 
 <p>This was a rebuild of a big multinational brand, the legacy site was mostly presenting content to the users, now we had to create a social experience around that content.</p>
 
@@ -101,7 +101,7 @@
 
 <p>And we knew that after (big bang) release the stakeholder was going to ask for more of those vertical components.</p>
 
-<p>Me and the other developer agreed that having all the models inside the /app/models wasn&#8217;t going to be a sane way to work.</p>
+<p>Me and the other developer agreed that having all the models inside the /app/models wasn’t going to be a sane way to work.</p>
 
 <p>We created model subfolders and required that inside environment.rb</p>
 <div class='highlight'><pre><code class='ruby'><span class='no'>Dir</span><span class='o'>.</span><span class='n'>glob</span><span class='p'>(</span><span class='s2'>&quot;</span><span class='si'>#{</span><span class='no'>RAILS_ROOT</span><span class='si'>}</span><span class='s2'>/app/models/*[^.rb]&quot;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>dir</span><span class='o'>|</span> <span class='n'>config</span><span class='o'>.</span><span class='n'>load_paths</span> <span class='o'>&lt;&lt;</span> <span class='n'>dir</span> <span class='p'>}</span>
@@ -119,37 +119,37 @@ application_controller.rb       contact_us                      loyalty         
 <p>Advantages of this approach:</p>
 
 <ul>
-<li>easier to identify a knowledge &#8216;silo&#8217; then having all the files in a single controller or model folder</li>
+<li>easier to identify a knowledge ‘silo’ then having all the files in a single controller or model folder</li>
 </ul>
 
 <p>We successfully went live and kept developing new features, but after a few months the shortcomings started to surface:</p>
 
 <ul>
-<li>sometimes it was hard to define the boundaries of the knowledge &#8216;silo&#8217;</li>
+<li>sometimes it was hard to define the boundaries of the knowledge ‘silo’</li>
 
-<li>the migrations folder didn&#8217;t have boundaries, hence difficult to tell to which silo they belonged</li>
+<li>the migrations folder didn’t have boundaries, hence difficult to tell to which silo they belonged</li>
 
-<li>similarly the routes file didn&#8217;t have boundaries, we used comments blocks to highlight &#8216;silo&#8217; blocks but maintaining it was a painful process</li>
+<li>similarly the routes file didn’t have boundaries, we used comments blocks to highlight ‘silo’ blocks but maintaining it was a painful process</li>
 
 <li>we did not use namespaces which caused some helper methods to be overwritten. I think this was due to my ignorance at the time not to a Rails flaw.</li>
 </ul>
 
-<h2 id='plugins_to_the_help'>Plugins to the help</h2>
+<h2 id="plugins_to_the_help">Plugins to the help</h2>
 
 <p>After reading a book about Rails that talked about plugins I started looking in to using them to enforce structure in our application code instead of the usual drop in functionality.</p>
 
-<p>A plugin (in Rails 3 and above called engines) is an extension to the main rails application, the plugin folder follows Rails&#8217;s usual directories and make its models, controllers, views, helpers available to the main application.</p>
+<p>A plugin (in Rails 3 and above called engines) is an extension to the main rails application, the plugin folder follows Rails’s usual directories and make its models, controllers, views, helpers available to the main application.</p>
 
-<p>That&#8217;s how the vendor plugin are working, but instead of creating a reusable plugin I created a very specific one! So it was not designed to provide a generic functionality that we would use again in other projects but instead it was holding concepts related to a specific strand of work (feature) of this particular project.</p>
+<p>That’s how the vendor plugin are working, but instead of creating a reusable plugin I created a very specific one! So it was not designed to provide a generic functionality that we would use again in other projects but instead it was holding concepts related to a specific strand of work (feature) of this particular project.</p>
 
 <p>Advantages of this approach:</p>
 
 <ul>
-<li>most of the code related to the &#8216;component&#8217; would belong inside its plugin directory</li>
+<li>most of the code related to the ‘component’ would belong inside its plugin directory</li>
 
 <li>only minor changes would happen in the app god models (usually using decoration)</li>
 
-<li>you could now isolate the routes of the new component in the plugin&#8217;s config/routes.rb which would be picked up by the main application.</li>
+<li>you could now isolate the routes of the new component in the plugin’s config/routes.rb which would be picked up by the main application.</li>
 
 <li>we had unit tests inside the plugin.</li>
 </ul>
@@ -157,20 +157,18 @@ application_controller.rb       contact_us                      loyalty         
 <p>Shortcomings of the approach:</p>
 
 <ul>
-<li>since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.<br /><div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ls -l vendor/plugins/ | grep hug
+<li>since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.</li>
+</ul>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ls -l vendor/plugins/ | grep hug
 drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
 drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
 drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
 drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
 drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
-</code></pre></div> That convention (one more thing to do for the developer) didn&#8217;t really work well, people sometime forgot the prefix making hard to detect non vendor plugins.</li>
+</code></pre></div>
+<p>That convention (one more thing to do for the developer) didn’t really work well, people sometime forgot the prefix making hard to detect non vendor plugins. * the migrations had still to be placed in the main app migration folder, so that folder kept growing. * we had plugins relying on the main application code, so a change to a plugin would require to change main application code. A better approach would have been to move the code in the main app in plugins. I’ll describe that approach in a followup article.</p>
 
-<li>the migrations had still to be placed in the main app migration folder, so that folder kept growing.</li>
-
-<li>we had plugins relying on the main application code, so a change to a plugin would require to change main application code. A better approach would have been to move the code in the main app in plugins. I&#8217;ll describe that approach in a followup article.</li>
-</ul>
-
-<h2 id='conclusion'>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>Three new components were created as plugins before I left the company. I felt we were on the right track to keep the app under control.</p>
 
@@ -180,7 +178,7 @@ drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
 
 <p>It was certainly better then having everything in /models and /controllers keeping using subfolders or introducing SOA merely for organizational reasons.</p>
 
-<p>I encountered a bit of skepticism on this approach from other developers. I&#8217;ve found many Rails developers are fossilized on the conventions Rails gives and never look at a Rails app from a different angle. In cases of large apps some of those conventions will simply play against you and I think we should look in to alternative paths to follow.</p>
+<p>I encountered a bit of skepticism on this approach from other developers. I’ve found many Rails developers are fossilized on the conventions Rails gives and never look at a Rails app from a different angle. In cases of large apps some of those conventions will simply play against you and I think we should look in to alternative paths to follow.</p>
 
 <p>Did you find yourself working on a large Ruby on Rails application? Did you structure the code in any particular way?</p>
 <div id='disqus_thread' /><script type='text/javascript'>
@@ -193,7 +191,8 @@ drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
-  </script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript><a class='dsq-brlink' href='http://disqus.com'>comments powered by <span class='logo-disqus'>Disqus</span></a>
+  </script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript>
+<p><a class='dsq-brlink' href='http://disqus.com'>comments powered by <span class='logo-disqus'>Disqus</span></a></p>
       </section>
       <footer>
         <p><small>Hosted on the Plant Mars</p>

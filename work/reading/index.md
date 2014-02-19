@@ -8,10 +8,13 @@ I like reading because it makes me question what I do and see things from a diff
 
 
 ### 2013
-* *still reading* [The Tangled Web: A Guide to Securing Modern Web Applications](http://www.amazon.com/Tangled-Web-Securing-Modern-Applications/dp/1593273886/ref=sr_1_1?s=books&ie=UTF8&qid=1379369058&sr=1-1&keywords=the+tangled+web)
+* [An introduction to programming in GO](http://www.golang-book.com/)
+* [Working with Ruby Threads](http://www.jstorimer.com/products/working-with-ruby-threads)
+* [Working with Unix processes](http://www.jstorimer.com/products/working-with-unix-processes)
+* [The Tangled Web: A Guide to Securing Modern Web Applications](http://www.amazon.com/Tangled-Web-Securing-Modern-Applications/dp/1593273886/ref=sr_1_1?s=books&ie=UTF8&qid=1379369058&sr=1-1&keywords=the+tangled+web)
 * [Peopleware: Productive Projects and Teams (3rd Edition)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CCsQFjAA&url=http%3A%2F%2Fwww.amazon.com%2FPeopleware-Productive-Projects-Teams-3rd%2Fdp%2F0321934113&ei=xH83UqWGNdCsqwHGloG4CQ&usg=AFQjCNGroi37F1YIcsnBZjHz1VuvslO2Pg&sig2=Q7izmOr_Bd3mvYApwBfPCg&bvm=bv.52164340,d.aWM)
 * [Practical Object Ordiented design in Ruby](http://www.amazon.com/dp/0321721330)
-* *still reading* [Domain Driven Design](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
+* [Domain Driven Design](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
 * [Slack: Getting Past Burnout, Busywork, and the Myth of Total Efficiency](http://www.amazon.com/Slack-Getting-Burnout-Busywork-Efficiency/dp/0767907698/ref=sr_1_1?s=books&ie=UTF8&qid=1362557778&sr=1-1&keywords=slack)
 
 ### 2012

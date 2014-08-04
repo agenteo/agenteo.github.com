@@ -104,19 +104,31 @@ models inside the /app/models wasn’t going to be a sane way to work.</p>
 
 <p>We created model subfolders and required that inside environment.rb</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">RAILS_ROOT</span><span class="si">}</span><span class="s2">/app/models/*[^.rb]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="n">config</span><span class="o">.</span><span class="n">load_paths</span> <span class="o">&lt;&lt;</span> <span class="n">dir</span> <span class="p">}</span></code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">Dir</span>.glob(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">RAILS_ROOT</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/app/models/*[^.rb]</span><span style="color:#710">&quot;</span></span>).each{|dir| config.load_paths &lt;&lt; dir }
+</pre></div>
+</div>
+</div>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls -l app/models
-ask_an_expert_models            contact_us                      loyalty_models                  recipe_finder_models            utils
-babynames_models                kids_activities_models          membership_models               sharing
-babynames_utils                 landing_page_header             promos_and_samples_models       story_models</code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>$ ls -l app/models
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>ask_an_expert_models            contact_us                      loyalty_models                  recipe_finder_models            utils
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>babynames_models                kids_activities_models          membership_models               sharing
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>babynames_utils                 landing_page_header             promos_and_samples_models       story_models
+</pre></div>
+</div>
+</div>
 
 <p>Inside the controllers we also had subfolders, roughly mapping the ones defined under models:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls -l app/controllers
-admin                           ask_an_expert                   contact_us_controller.rb        membership                      promos_and_samples
-admin_controller.rb             babynames                       kids_activities                 my_huggies                      recipe_finder
-application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories</code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>$ ls -l app/controllers
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>admin                           ask_an_expert                   contact_us_controller.rb        membership                      promos_and_samples
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>admin_controller.rb             babynames                       kids_activities                 my_huggies                      recipe_finder
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories
+</pre></div>
+</div>
+</div>
 
 <p>Advantages of this approach:</p>
 
@@ -157,22 +169,28 @@ of work (feature) of this particular project.</p>
 <p>Shortcomings of the approach:</p>
 
 <ul>
-  <li>since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.<br />
-&lt;div class="highlight"&gt;&lt;pre&gt;<code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls -l vendor/plugins/ <span class="p">|</span> grep hug
-drwxr-xr-x   <span class="m">7</span> agenteo  <span class="m">84396665</span>  <span class="m">238</span> <span class="m">14</span> Nov 19:55 huggies_api
-drwxr-xr-x   <span class="m">7</span> agenteo  <span class="m">84396665</span>  <span class="m">238</span> <span class="m">14</span> Nov 20:06 huggies_baby_room_gallery
-drwxr-xr-x   <span class="m">9</span> agenteo  <span class="m">84396665</span>  <span class="m">306</span> <span class="m">14</span> Nov 20:08 huggies_blog
-drwxr-xr-x  <span class="m">14</span> agenteo  <span class="m">84396665</span>  <span class="m">476</span> <span class="m">14</span> Nov 20:08 huggies_mums_tips
-drwxr-xr-x   <span class="m">6</span> agenteo  <span class="m">84396665</span>  <span class="m">204</span> <span class="m">14</span> Nov 20:11 huggies_voting_tool</code>&lt;/pre&gt;&lt;/div&gt;
- That convention (one more thing to do for the developer) didn’t really work well,
-people sometime forgot the prefix making hard to detect non vendor plugins.</li>
-  <li>the migrations had still to be placed in the main app migration folder, so that folder kept
-growing.</li>
-  <li>we had plugins relying on the main application code, so a change to a
-plugin would require to change main application code. A better approach would
-have been to move the code in the main app in plugins. I’ll describe that
-approach in a followup article.</li>
+  <li>since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.</li>
 </ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>$ ls -l vendor/plugins/ | grep hug
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
+</pre></div>
+</div>
+</div>
+
+<p>That convention (one more thing to do for the developer) didn’t really work well,
+people sometime forgot the prefix making hard to detect non vendor plugins.
+* the migrations had still to be placed in the main app migration folder, so that folder kept
+growing.
+* we had plugins relying on the main application code, so a change to a
+  plugin would require to change main application code. A better approach would
+  have been to move the code in the main app in plugins. I’ll describe that
+  approach in a followup article.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 <p>Three new components were created as plugins before I left the company.

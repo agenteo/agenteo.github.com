@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title> Feature flagging portions of your Ruby on Rails application with engines |  Enrico Teotti, Agent</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+
+    <!-- bxSlider CSS file -->
+    <link href="/stylesheets/jquery.bxslider.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- jQuery library (served from Google) -->
+    <script src="/javascripts/jquery-2.0.0.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="/javascripts/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      $('.bxslider').bxSlider();
+    });
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="/">Enrico Teotti</a></h1>
+        <img src="/images/me/deep_sea_diver.jpg" style="border: 1px solid white; border-radius: 30px; -moz-border-radius: 30px; -khtml-border-radius: 30px; -webkit-border-radius: 30px;" alt="Halloween, me in my homemade deep sea diver costume"/>
+        <p class="view"><a href="https://github.com/agenteo">View My GitHub Profile</a></p>
+
+        
+      </header>
+      <section>
+      <h1 id="feature-flagging-portions-of-your-ruby-on-rails-application-with-engines">Feature flagging portions of your Ruby on Rails application with engines</h1>
+
+<p>In the past I used Rails engines to create smaller components in complex Rails applications with the objective of a better long term maintainability. What that usually means is I separate out user interface engines from domain logic engines.</p>
+
+<p>For the last two months I’ve been working on a greenfield project with a public and administration interface both living in the same application.</p>
+
+<p>Recently I was asked to break up the public part from the administration part of a web application because of a company policy to lock administration interfaces behind a VPN. Other points that were brought up: to separate the load between the two portions, and to reduce admin deployments disrupting service on the public portion.</p>
+
+<h2 id="first-proposal">First proposal</h2>
+
+<p>An initial proposal was to split it in two applications and have them talking via an API. That service oriented architecture seemed very much premature optimization since nothing else was going to use the API. Also the two portions of the app (public and admin) would have to share a significant amount of domain logic (to access the database infrastructure) and user interface (to allow staff members to preview elements as they will look on public).</p>
+
+<h2 id="second-proposal">Second proposal</h2>
+
+<p>Another solution was to separate the shared domain logic and user interface in to Rails engines, and have the two portions (public and admin) depend on them. The downside of this was dealing with local dependencies while in development mode. We could foresee at this time all our development work would mean altering the domain logic engine and the shared ui engine, meaning releasing a new gem for every admin or public update. We would also have to update our work flow to ensure the Gemfile.lock won’t be pointing to the local gems when checked in version control.</p>
+
+<h2 id="final-proposal">Final proposal</h2>
+
+<p>Instead why not keep the application as one, and switch the admin interface and public interface on or off based on the application <em>running mode</em>?</p>
+
+<p>In order to do this, both <em>admin_ui</em> and <em>public_ui</em> are Rails engines and the main application mounts them based on a unix environment variable.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">Rails</span>.application.routes.draw <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#080;font-weight:bold">case</span> <span style="color:#036;font-weight:bold">AppRunningMode</span>.value
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:admin</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    mount <span style="color:#036;font-weight:bold">AdminUi</span>::<span style="color:#036;font-weight:bold">Engine</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/admin</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:public</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    mount <span style="color:#036;font-weight:bold">PublicUi</span>::<span style="color:#036;font-weight:bold">Engine</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    mount <span style="color:#036;font-weight:bold">AdminUi</span>::<span style="color:#036;font-weight:bold">Engine</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/admin</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    mount <span style="color:#036;font-weight:bold">PublicUi</span>::<span style="color:#036;font-weight:bold">Engine</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The class method <code>AppRunningMode.value</code> is just a proxy to the env variable.</p>
+
+<p>So you can then run the application public portion with:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>RUNNING_MODE=public rails s
+</pre></div>
+</div>
+</div>
+
+<p>and run the admin portion with:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>RUNNING_MODE=admin rails s
+</pre></div>
+</div>
+</div>
+
+<p>One of the advantages of this approach is you can run in development mode without that variable and both portions will be mounted.</p>
+
+<p>The main application Gemfile will still include both engines:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">domain_logic</span><span style="color:#710">'</span></span>, <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">engines/domain_logic</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">shared_ui</span><span style="color:#710">'</span></span>, <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">engines/shared_ui</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">admin_ui</span><span style="color:#710">'</span></span>, <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">engines/admin_ui</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">public_ui</span><span style="color:#710">'</span></span>, <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">engines/public_ui</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>So the engines are all there, and if you have a <code>raise 'boom'</code> in your <code>admin_ui/lib/admin_ui.rb</code> even when the app running mode is set to public <em>will</em> explode. This is to remind that this is a single application. Hopefully your test suite will catch that.</p>
+
+<p>In regards to the rails engines approach both AdminUi and PublicUi depend on a DomainLogic engine and a SharedUi engine. This facilitate a complete split of the two portions in the future without locking you in to any specific architecture today.</p>
+
+<h2 id="summary">Summary</h2>
+<p>I think this approach is pragmatic and delivers what we need now allowing up to adapt if in the future we will need a different architecture. If you ever had to split portions of your applications on different servers I’d like to hear your approach. If you have any question feel free to use the comments.</p>
+
+      </section>
+      <footer>
+        <p><small>Hosted on the Plant Mars</p>
+      </footer>
+    </div>
+    <script src="/javascripts/scale.fix.js"></script>
+
+  </body>
+</html>
+

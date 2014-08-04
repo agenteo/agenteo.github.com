@@ -109,31 +109,47 @@ set to the server stage?</p>
 
 <p>In Rails instead of:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">staging?</span>
-<span class="c1"># do stuff</span>
-<span class="k">end</span></code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">Rails</span>.env.staging?
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#777"># do stuff</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
 
 <p>we will use:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;STAGE&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;staging&#39;</span>
-<span class="c1"># do stuff</span>
-<span class="k">end</span></code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">if</span> <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">STAGE</span><span style="color:#710">'</span></span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">staging</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#777"># do stuff</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
 
 <p>If you find typing that often a simple helper could be introduced:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ServerStage</span>
-   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">current</span>
-     <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;STAGE&#39;</span><span class="o">]</span>
-   <span class="k">end</span>
-   
-   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">staging?</span>
-     <span class="n">current</span> <span class="o">==</span> <span class="s1">&#39;staging&#39;</span>
-   <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ServerStage</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>   <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">current</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>     <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">STAGE</span><span style="color:#710">'</span></span>]
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>   <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>   
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>   <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">staging?</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>     current == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">staging</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>   <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ServerStage</span><span class="o">.</span><span class="n">staging?</span>
-<span class="c1"># do stuff</span>
-<span class="k">end</span></code></pre></div>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">ServerStage</span>.staging?
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#777"># do stuff</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
 
 <h2 id="conclusion">Conclusion</h2>
 <p>My suggestion is to run both staging and production servers using the Rails

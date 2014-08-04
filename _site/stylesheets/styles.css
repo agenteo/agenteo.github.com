@@ -253,3 +253,7 @@ footer {
     color:#444;
   }
 }
+
+.line-numbers {
+  margin-right: 10px
+}

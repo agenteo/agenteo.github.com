@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Use of Ruby on Rails environments
 comments: true
 categories:

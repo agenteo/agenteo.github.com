@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: GIT precommit hooks helping local Ruby GEMs development
 comments: true
 categories:

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Using plugins as components of a large Ruby on Rails 2 application
 comments: true
 categories:

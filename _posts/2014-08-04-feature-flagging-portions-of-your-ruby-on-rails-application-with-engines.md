@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Feature flagging portions of your Ruby on Rails application with engines
 comments: true
 categories:

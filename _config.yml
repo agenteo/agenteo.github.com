@@ -1,0 +1,49 @@
+# Build settings
+markdown: kramdown
+comments:
+  provider: disqus
+  disqus :
+    short_name : enricoteotti
+
+# Site settings
+title: "Enrico Teotti"
+description: > # this means to ignore newlines until "email:"
+   Crafting maintainable software that delivers business value. Beach volley player for passion. Made in Italy, became Australian.
+
+email: enrico@teotti.com
+#blog logo
+logo: "/assets/images/beach.jpg"
+# blog cover
+cover: "/assets/images/background_image.jpg"
+
+name: 'Enrico Teotti'
+author: 'Enrico Teotti'
+author_image: "/assets/images/author.jpg"
+
+paginate:	5
+
+url: "http://www.teotti.com" # the base hostname & protocol for your site
+baseurl: ""
+
+# social icons and sharing options
+social:
+  - icon:	twitter
+    url:	https://twitter.com/agenteo
+    desc: Follow me on twitter
+    share_url: http://twitter.com/share
+    share_title: ?text=
+    share_link: "&amp;url="
+
+  - icon:	linkedin
+    url:	https://www.linkedin.com/in/agenteo/
+    desc: Connect with me Linkedin
+    share_url:
+    share_title:
+    share_link:
+
+  - icon:	github
+    url:	https://github.com/agenteo
+    desc:	Fork me on github
+    share_url:
+    share_title:
+    share_link:

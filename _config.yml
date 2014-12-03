@@ -5,13 +5,10 @@ comments:
   disqus :
     short_name : enricoteotti
 
-gems:
-  - jekyll-redirect-from
-
 # Site settings
-title: "Enrico Teotti"
+title: "今日は, I am Enrico"
 description: > # this means to ignore newlines until "email:"
-   Crafting maintainable software that delivers business value. Beach volley player for passion. Made in Italy, became Australian.
+   I craft maintainable software that delivers business value. Born and educated in Italy, became Australian now working in New York City.
 
 email: enrico@teotti.com
 #blog logo

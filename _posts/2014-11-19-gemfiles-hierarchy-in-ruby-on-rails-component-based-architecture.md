@@ -18,10 +18,10 @@ Let's say you have an `admin_ui` engine and a `public_ui` engine and they both d
 
 You would imagine that adding to the main application:
 
-~~~ruby
+{% highlight ruby %}
 gem 'admin_ui', path: 'components/admin_ui'
 gem 'public_ui', path: 'components/public_ui'
-~~~
+{% endhighlight %}
 
 should be sufficient. But you'd be in for a surprise, when you run bundle:
 

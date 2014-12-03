@@ -5,6 +5,11 @@ comments:
   disqus :
     short_name : enricoteotti
 
+permalink: "/:title"
+
+gems:
+  - jekyll-redirect-from
+
 # Site settings
 title: "今日は, I am Enrico"
 description: > # this means to ignore newlines until "email:"

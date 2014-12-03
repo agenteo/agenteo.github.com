@@ -25,22 +25,22 @@ gem 'public_ui', path: 'components/public_ui'
 
 should be sufficient. But you'd be in for a surprise, when you run bundle:
 
-~~~
+{% highlight bash %}
 $ bundle
 Resolving dependencies...
 Could not find gem 'domain_logic (>= 0) ruby', which is required by gem 'admin_ui (>= 0) ruby', in any of the sources.
-~~~
+{% endhighlight %}
 
 the reason for this error is that `admin_ui` is trying to bring in its dependency `domain_logic` but its unable to find its sources.
 
 The solution I have been using so far is to include the `domain_logic` local path in the main application `Gemfile` like this:
 
-~~~ruby
+{% highlight ruby %}
 gem 'admin_ui', path: 'components/admin_ui'
 gem 'public_ui', path: 'components/public_ui'
 
 gem 'domain_logic', path: 'components/domain_logic'
-~~~
+{% endhighlight %}
 
 When you have a more complex application this approach means you are flattening your dependency tree in the top level application. I think and it's far from intuitive or maintainable.
 
@@ -48,15 +48,15 @@ When you have a more complex application this approach means you are flattening 
 
 Bundler should offer a directive such as:
 
-~~~ruby
+{% highlight ruby %}
 path 'components'
-~~~
+{% endhighlight %}
 
 and I guess Christmas came earlier this year because... it does!
 
 By adding that path bundler will use that path to resolve dependencies:
 
-~~~bash
+{% highlight bash %}
 Using domain_logic 0.0.1 from source at components
 Using admin_ui 0.0.1 from source at components
 Installing coffee-script-source 1.8.0
@@ -66,14 +66,14 @@ Installing coffee-rails 4.0.1
 Installing jbuilder 2.2.5
 Installing jquery-rails 3.1.2
 Using public_ui 0.0.1 from source at components
-~~~
+{% endhighlight %}
 
 Your main application `Gemfile` doesn't need the path on its top level dependencies now looking like this:
 
-~~~ruby
+{% highlight ruby %}
 gem 'admin_ui'
 gem 'public_ui'
-~~~
+{% endhighlight %}
 
 and the `admin_ui/Gemfile` doesn't even need to specify the path for `domain_logic`.
 
@@ -84,9 +84,9 @@ When you test in isolation your components (as you should) bundler won't be able
 
 But we can take advantage of this `path` directive in the component `Gemfile`:
 
-~~~ruby
+{% highlight ruby %}
 path '../'
-~~~
+{% endhighlight %}
 
 to avoid specifing local paths of depencies already specified in the gemspec.
 

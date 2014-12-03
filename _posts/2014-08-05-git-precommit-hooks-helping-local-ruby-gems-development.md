@@ -15,10 +15,10 @@ I was working on a Ruby app that depended on a few private gems, the development
 
 During development the `Gemfile` would look like:
 
-~~~ruby
+{% highlight ruby %}
 gem 'cargo_estimates', path: 'local_engines/cargo_estimates'
 gem 'shipping_calculator', path: 'local_engines/shipping_calculator'
-~~~
+{% endhighlight %}
 
 Running bundle would set the `Gemfile.lock` to those gem local version.
 
@@ -26,10 +26,10 @@ Committing `Gemfile.lock` in version control now could have disastrous consequen
 
 Once the local gems updates are published you must manually change the `Gemfile` to:
 
-~~~ruby
+{% highlight ruby %}
 gem 'cargo_estimates'
 gem 'shipping_calculator'
-~~~
+{% endhighlight %}
 
 and run `bundle` to update the `Gemfile.lock` to use the remote gems.
 
@@ -40,18 +40,18 @@ So I came up with a set of scripts to automate the development bootstrap and fac
 
 In my project folder I had a `dev_bootstrap.sh` calling a set of script located in `PROJECT_DIRECTORY/dev_bootstrap_scripts`:
 
-~~~bash
+{% highlight bash %}
 #!/bin/bash
 ./dev_bootstrap_scripts/precommit_hooks.sh
 ./dev_bootstrap_scripts/local_engines.sh
 ./dev_bootstrap_scripts/set_rvmrc.sh
-~~~
+{% endhighlight %}
 
 ## Conditional Gemfile.lock generation
 
 Bundler is built to have one `Gemfile.lock` so I came up with is a unix environment variable to switch the local or remote gems. The `Gemfile` now looks like:
 
-~~~ruby
+{% highlight ruby %}
 if ENV['LOCAL_ENGINES']
   gem 'cargo_estimates', path: 'local_engines/cargo_estimates'
   gem 'shipping_calculator', path: 'local_engines/shipping_calculator'
@@ -59,26 +59,26 @@ else
   gem 'cargo_estimates'
   gem 'shipping_calculator'
 end
-~~~
+{% endhighlight %}
 
 But you have to run `LOCAL_ENGINES=true bundle`, in the project root I had a script `lebundle.sh` to facilitate that:
 
-~~~bash
+{% highlight bash %}
 #!/bin/bash
 export LOCAL_ENGINES=true
 bundle
-~~~
+{% endhighlight %}
 
 An alternative is to set that env variable via rvmrc in `dev_bootstrap_scripts/set_rvmrc.sh` I had:
 
-~~~bash
+{% highlight bash %}
 echo "rvm use $(cat .ruby-version)" > .rvmrc
 echo "export LOCAL_ENGINES=true" >> .rvmrc
 echo "!!!! MANUAL STEP REQUIRED !!!!"
 echo "==> You need to use the correct rvm environment. Run:"
 echo "source .rvmrc'"
 echo "~~~~"
-~~~
+{% endhighlight %}
 
 I used the `.ruby-version` to generate the `.rvmrc` which will be executed automatically when you enter the project directory and setup the `LOCAL_ENGINES` to true.
 
@@ -91,29 +91,29 @@ One problem using the `.rvmrc` solution is you need to `unset LOCAL_ENGINES` whe
 
 I added a script to facilitate the setup of the local engines by creating a local folder and checking out the repositories from `dev_bootstrap_scripts/local_engines.sh`:
 
-~~~bash
+{% highlight bash %}
 #!/bin/bash
 DIR=local_engines
 mkdir $DIR
 
 git clone git@github.com:worldwide_shipping/cargo_estimates.git $DIR/cargo_estimates
 git clone git@github.com:worldwide_shipping/shipping_calculator.git $DIR/shipping_calculator
-~~~
+{% endhighlight %}
 
 
 ## Precommit hook to prevent commits of tainted Gemfile.lock
 And here's the link up of my git precommit script `dev_bootstrap_scripts/precommit_hooks.sh`:
 
-~~~bash
+{% highlight bash %}
 #!/bin/bash
 ln -s ../../pre_commit.sh .git/hooks/pre-commit
-~~~
+{% endhighlight %}
 
 Currently the `pre_commit.sh` was just calling `no_local_engines_in_gemfile_lock.sh`.
 
 Inside `pre_commit_scripts/no_local_engines_in_gemfile_lock.sh` I use `grep` to locate the string `PATH` in my `Gemfile.lock` indicating a local gem is being used. 
 
-~~~bash
+{% highlight bash %}
 #!/bin/bash
 
 grep "PATH" Gemfile.lock > /dev/null
@@ -127,7 +127,7 @@ if [ $? = 0 ]; then
   echo "***"
   exit 1
 fi
-~~~
+{% endhighlight %}
 
 ## Summary
 

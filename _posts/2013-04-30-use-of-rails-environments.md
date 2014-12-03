@@ -76,23 +76,23 @@ set to the server stage?
 
 In Rails instead of:
 
-~~~ruby
+{% highlight ruby %}
 if Rails.env.staging?
 # do stuff
 end
-~~~
+{% endhighlight %}
 
 we will use:
 
-~~~ruby
+{% highlight ruby %}
 if ENV['STAGE'] == 'staging'
 # do stuff
 end
-~~~
+{% endhighlight %}
 
 If you find typing that often a simple helper could be introduced:
 
-~~~ ruby
+{% highlight ruby %}
 class ServerStage
    def self.current
      ENV['STAGE']
@@ -102,13 +102,13 @@ class ServerStage
      current == 'staging'
    end
 end
-~~~
+{% endhighlight %}
 
-~~~ruby
+{% highlight ruby %}
 if ServerStage.staging?
 # do stuff
 end
-~~~
+{% endhighlight %}
 
 
 

@@ -33,7 +33,7 @@ Instead why not keep the application as one, and switch the admin interface and 
 
 In order to do this, both *admin_ui* and *public_ui* are Rails engines and the main application mounts them based on a unix environment variable.
 
-~~~ruby
+{% highlight ruby %}
 Rails.application.routes.draw do
 case AppRunningMode.value
   when :admin
@@ -44,21 +44,21 @@ case AppRunningMode.value
     mount AdminUi::Engine => "/admin"
     mount PublicUi::Engine => "/"
 end
-~~~
+{% endhighlight %}
 
 The class method `AppRunningMode.value` is just a proxy to the env variable.
 
 So you can then run the application public portion with:
 
-~~~bash
+{% highlight bash %}
 RUNNING_MODE=public rails s
-~~~
+{% endhighlight %}
 
 and run the admin portion with:
 
-~~~bash
+{% highlight bash %}
 RUNNING_MODE=admin rails s
-~~~
+{% endhighlight %}
 
 One of the advantages of this approach is you can run in development mode without that variable and both portions will be mounted.
 
@@ -66,12 +66,12 @@ It will be likely be part of the server provisioning process to setup that ENV v
 
 The main application Gemfile will still include both engines:
 
-~~~ruby
+{% highlight ruby %}
 gem 'domain_logic', path: 'engines/domain_logic'
 gem 'shared_ui', path: 'engines/shared_ui'
 gem 'admin_ui', path: 'engines/admin_ui'
 gem 'public_ui', path: 'engines/public_ui'
-~~~
+{% endhighlight %}
 
 So the engines are all there, and if you have a `raise 'boom'` in your `admin_ui/lib/admin_ui.rb` even when the app running mode is set to public *will* explode. This unrealistic example is a reminder that this is a single application. Hopefully your test suite will catch that raise.
 

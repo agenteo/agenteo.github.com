@@ -77,25 +77,25 @@ models inside the /app/models wasn't going to be a sane way to work.
 
 We created model subfolders and required that inside environment.rb
 
-~~~ruby
+{% highlight ruby %}
 Dir.glob("#{RAILS_ROOT}/app/models/*[^.rb]").each{|dir| config.load_paths << dir }
-~~~
+{% endhighlight %}
 
-~~~bash
+{% highlight bash %}
 $ ls -l app/models
 ask_an_expert_models            contact_us                      loyalty_models                  recipe_finder_models            utils
 babynames_models                kids_activities_models          membership_models               sharing
 babynames_utils                 landing_page_header             promos_and_samples_models       story_models
-~~~
+{% endhighlight %}
 
 Inside the controllers we also had subfolders, roughly mapping the ones defined under models:
 
-~~~bash
+{% highlight bash %}
 $ ls -l app/controllers
 admin                           ask_an_expert                   contact_us_controller.rb        membership                      promos_and_samples
 admin_controller.rb             babynames                       kids_activities                 my_huggies                      recipe_finder
 application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories
-~~~
+{% endhighlight %}
 
 Advantages of this approach:
  
@@ -134,14 +134,14 @@ Shortcomings of the approach:
 
 * since we had plenty of vendor plugins in order to make the internal ones stand out we had to set a convention of appending the project name in front of plugin name ie.
 
-~~~bash
+{% highlight bash %}
 $ ls -l vendor/plugins/ | grep hug
 drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
 drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
 drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
 drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
 drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
-~~~
+{% endhighlight %}
 
 That convention (one more thing to do for the developer) didn't really work well,
 people sometime forgot the prefix making hard to detect non vendor plugins.

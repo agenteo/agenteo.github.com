@@ -5,6 +5,9 @@ comments:
   disqus :
     short_name : enricoteotti
 
+gems:
+  - jekyll-redirect-from
+
 # Site settings
 title: "Enrico Teotti"
 description: > # this means to ignore newlines until "email:"

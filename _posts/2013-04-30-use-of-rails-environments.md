@@ -5,6 +5,7 @@ comments: true
 categories:
   - work
   - ruby
+redirect_from: /test
 ---
 
 

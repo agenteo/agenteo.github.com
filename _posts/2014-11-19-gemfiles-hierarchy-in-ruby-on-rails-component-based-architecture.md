@@ -77,12 +77,20 @@ gem 'public_ui'
 
 and the `admin_ui/Gemfile` doesn't even need to specify the path for `domain_logic`.
 
+EDIT: it's better to avoid a global source that could collide with other gems present on gemservers. Instead use a block to wrap your components:
 
-## Except...
+{% highlight ruby %}
+path 'components' do
+  gem 'admin_ui'
+  gem 'public_ui'
+end
+{% endhighlight %}
 
-When you test in isolation your components (as you should) bundler won't be able to find the local gem.
+## Components Gemfile
 
-But we can take advantage of this `path` directive in the component `Gemfile`:
+When you test in isolation your components bundler won't be able to find the local gem.
+
+We can now take advantage of this `path` directive in the component `Gemfile`:
 
 {% highlight ruby %}
 path '../'

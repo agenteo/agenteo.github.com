@@ -9,8 +9,6 @@ categories:
   - git
 ---
 
-# {{page.title}}
-
 I was working on a Ruby app that depended on a few private gems, the development was not just changing the app but also those gems.
 
 During development the `Gemfile` would look like:

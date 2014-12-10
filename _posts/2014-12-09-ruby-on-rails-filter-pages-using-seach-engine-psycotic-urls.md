@@ -8,8 +8,6 @@ tags:
   - SEO
 ---
 
-# {{page.title}}
-
 We're all familiar with search engine friendly URLs.
 
 **TL;DR you can have crazy slugs with multiple terms all hypenated by draining out every term in your taxonomy from the slug.**
@@ -18,17 +16,16 @@ For example 'Mid range' would be hyphenated to 'mid-range'.
 
 When asked to handle multiple terms I'd usually suggest a comma separator or adding a new segment for example: `mid-range,contemporary` or `mid-range/contemporary`.
 
-Recently I was told that's not good for SEO, I a bit surprised by that but not so much by the comma but from the extra segment. Apparently you'd have to provide pages with relevant content on `mid-range` which is not always applicable.
+Recently I was told that's not good for SEO, I was told we should handle `mid-range-contemporary`, also `mid-range-contemporary-gray-decks` extract our terms and filter accordingly.
 
-I was told we should handle `mid-range-contemporary`, also `mid-range-contemporary-gray-decks` extract our terms and filter accordingly.
-
-All these examples are from a realweb site called zillow.com that my SEO team used as an example. Having seen it was possible I started this spike, on what I determined was not a search engine friendly URL anymore but a search engine psycotic URL.
-
+All these examples are from a real web site called zillow.com (that my SEO team used as an example). Having seen it was possible I started this spike, on what I determined was not to be called search engine friendly (SEF) URL anymore but a search engine psycotic (SEP) URL.
 
 >>> Psychosis
 >>>
 >>> Psychosis is a loss of contact with reality that usually includes: False beliefs about what is taking place or who one is (delusions) ; Seeing or hearing things that aren't there (hallucinations).
-> -- <cite>Google</cite>
+>>> -- <cite>Google</cite>
+
+Here's display of the zillow tag system changing the url:
 
 ![Zillow example](/assets/images/zillow_example.gif)
 
@@ -53,7 +50,6 @@ lookup.ids.each do |id|
 end
 flash[:notice] = "You searched for : #{terms.join(' ')}"
 {% endhighlight %}
-
 
 The PsycoticLookup class is where given the slug, I gather every term from the slug until is empty.
 
@@ -80,13 +76,11 @@ class PsycoticLookup
 end
 {% endhighlight %}
 
-Having ordered terms is critical in order to avoid shorter terms being a partial match.
-
-In fact one constraint of this system is if we have two terms 'fire' and 'fireplace' then the longer will take precedence.
+Having ordered terms is critical to avoid shorter terms being a partial match. Which is a constraint of this system: if we have two terms 'fire' and 'fireplace' then the longer will take precedence and override the shorter.
 
 ## Resource uniqueness
 
-You don't want to have two URLs serving the same resource ie. `mid-range-contemporary-gray-decks` and `gray-mid-range-contemporary-decks`. You could try to prevent this from your UI but users could type or start linking content to it.
+You don't want to have two URLs serving the same resource ie. `mid-range-contemporary-gray-decks` and `gray-mid-range-contemporary-decks`. You can prevent this from your UI but users could type or start linking content to it and the curent solution would serve that content.
 
 Assuming the lookup returns ids ordered according to your SEO value, you could redirect if the original slug doesn't match. A solution is to have a `PsycoticRedirect` that given the result of a lookup, would compare it with the requested slug. 
 
@@ -99,8 +93,45 @@ end
 # render search response...
 {% endhighlight %}
 
+## Benchmarking
+
+I've benchmarked the look up:
+
+```
+Benchmark.bm do |x|
+  x.report { lookup = PsycoticLookup.new('bathrooms'); lookup.ids  }
+end
+```
+
+with about 100 terms:
+
+```
+$ ruby benchmark.rb
+user     system      total        real
+0.000000   0.000000   0.000000 (  0.002699)
+```
+
+with about 1000 terms:
+
+```
+$ ruby benchmark.rb
+user     system      total        real
+0.010000   0.010000   0.020000 (  0.014530)
+```
+
+with now over 10000 terms the lookup is taking too much:
+
+```
+$ ruby benchmark.rb
+user     system      total        real
+0.140000   0.010000   0.150000 (  0.149572)
+```
+
+I commited this sample app on [https://github.com/agenteo/lab-search-engine-friendly-urls](https://github.com/agenteo/lab-search-engine-friendly-urls).
+
 ## Conclusion
-Nothing is impossible. I am curious if you've seen zillow like searches before and if there is already a pattern describing them.
+
+This might apply for our current scenario I am curious if you've seen zillow search engine ~~friendly~~ psycotic like searches anywhere else and is there a better name describing them? :)
 
 {% if page.comments %}
   <div id="disqus_thread"></div>

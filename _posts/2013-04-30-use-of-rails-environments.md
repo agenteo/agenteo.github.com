@@ -8,9 +8,6 @@ categories:
 redirect_from: /test
 ---
 
-
-# {{page.title}}
-
 When you generate a Ruby on Rails application it will create three environments:
 * development
 * production

@@ -7,9 +7,6 @@ categories:
   - ruby
 ---
 
-
-# {{page.title}}
-
 This is a short story about the creation and maintenance of a large Ruby on Rails
 application, and how after initially sticking to the Rails conventions I
 questioned them and used Rails plugins to structure the code of new components.

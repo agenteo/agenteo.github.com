@@ -9,8 +9,6 @@ categories:
   - engines
 ---
 
-# {{page.title}}
-
 In the past I used Rails engines to create smaller components in complex Rails applications with the objective of a better long term maintainability. What that usually means is I separate out user interface engines from domain logic engines.
 
 For the last two months I've been working on a greenfield project with a public and administration interface both living in the same application.

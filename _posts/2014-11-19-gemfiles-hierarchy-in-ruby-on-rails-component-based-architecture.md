@@ -8,8 +8,6 @@ categories:
   - engines
 ---
 
-# {{page.title}}
-
 When working on component based Rails applications you create a dependency hierarchy of local engines.
 
 Let's say you have an `admin_ui` engine and a `public_ui` engine and they both depend on a `domain_logic` engine.

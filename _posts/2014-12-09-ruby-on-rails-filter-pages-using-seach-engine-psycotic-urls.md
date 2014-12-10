@@ -10,7 +10,7 @@ tags:
 
 We're all familiar with search engine friendly URLs ie. a filter on 'Mid range' would be hyphenated to `/mid-range`.
 
-**TL;DR you can have crazy slugs with multiple terms all hypenated by draining out every term in your taxonomy from the slug.**
+**TL;DR you can have a slug with multiple hyphenated terms by iterating and extracting the terms in your taxonomy from the slug. Also you must setup clever redirects to stop multiple URLs serving the same content.**
 
 
 When asked to handle multiple terms I'd usually suggest a comma separator or adding a new segment for example: `/mid-range_contemporary` or `/mid-range/contemporary`.
@@ -126,7 +126,7 @@ user     system      total        real
 0.140000   0.010000   0.150000 (  0.149572)
 {% endhighlight %}
 
-I commited this sample app on [https://github.com/agenteo/lab-search-engine-friendly-urls](https://github.com/agenteo/lab-search-engine-friendly-urls).
+I committed this sample app on [https://github.com/agenteo/lab-search-engine-friendly-urls](https://github.com/agenteo/lab-search-engine-friendly-urls).
 
 ## Conclusion
 

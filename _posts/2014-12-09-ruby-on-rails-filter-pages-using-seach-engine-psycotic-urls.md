@@ -28,7 +28,7 @@ Yep. I felt those requirement for slugs lost contact with reality.
 
 But here's reality knocking at my door: zillow tag system changing their urls exactly per my SEO team request.
 
-![Zillow example](/assets/images/zillow_example.gif)
+![zillow.com/digs](/assets/images/zillow_example.gif)
 
 After seeing it happening before my eyes I had to find a way to do it.
 

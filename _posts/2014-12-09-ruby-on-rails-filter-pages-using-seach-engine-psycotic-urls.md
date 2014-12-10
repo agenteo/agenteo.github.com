@@ -96,35 +96,35 @@ end
 
 Well, I've benchmarked the look up:
 
-```
+{% highlight ruby %}
 Benchmark.bm do |x|
   x.report { lookup = PsycoticLookup.new('bathrooms'); lookup.ids  }
 end
-```
+{% endhighlight %}
 
 with about 100 terms:
 
-```
+{% highlight bash %}
 $ ruby benchmark.rb
 user     system      total        real
 0.000000   0.000000   0.000000 (  0.002699)
-```
+{% endhighlight %}
 
 with about 1000 terms:
 
-```
+{% highlight bash %}
 $ ruby benchmark.rb
 user     system      total        real
 0.010000   0.010000   0.020000 (  0.014530)
-```
+{% endhighlight %}
 
 with now over 10000 terms the lookup is taking too much:
 
-```
+{% highlight bash %}
 $ ruby benchmark.rb
 user     system      total        real
 0.140000   0.010000   0.150000 (  0.149572)
-```
+{% endhighlight %}
 
 I commited this sample app on [https://github.com/agenteo/lab-search-engine-friendly-urls](https://github.com/agenteo/lab-search-engine-friendly-urls).
 

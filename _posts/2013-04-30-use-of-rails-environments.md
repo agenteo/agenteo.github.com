@@ -2,7 +2,6 @@
 layout: post
 title: Use of Ruby on Rails environments
 comments: true
-redirect_from: /work/ruby/2013/04/30/use-of-rails-environments/
 tags:
   - ruby
   - rails

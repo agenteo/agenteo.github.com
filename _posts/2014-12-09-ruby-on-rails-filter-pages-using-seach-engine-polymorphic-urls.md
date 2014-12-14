@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ruby on Rails filter pages using search engine psycotic URLs
+title: Ruby on Rails filter pages using search engine polymorphic URLs
 comments: true
 tags:
   - work
@@ -14,35 +14,47 @@ We're all familiar with search engine friendly URLs ie. a filter on 'Mid range' 
 **TL;DR you can have a slug with multiple hyphenated terms by iterating and extracting the terms in your taxonomy from the slug. You must ensure only one slug is serving your content by automatically redirecting malformed slugs.**
 
 
-When asked to handle multiple terms I'd usually suggest a comma separator or adding a new segment for example: `/mid-range_contemporary` or `/mid-range/contemporary`.
+## The old way
 
-Recently I was told that's not good for SEO, I was told we should handle `/mid-range-contemporary`, also `/mid-range-contemporary-gray-decks` extract our terms and filter accordingly.
+When asked to build a search page off user's UI selection filters I'd first approach it with the classic query string, ie. user clicking filter for 'mid range' and 'contemporary' would result in a result page URL with `search%5B%5D=mid range&search%5B%5D=contemporary`. Not very search engine friendly I've been told.
 
-All these examples are from a real web site called zillow.com (that my SEO team used as an example). Having seen it was possible I started this spike, on what I determined was not to be called search engine friendly (SEF) URL anymore but search engine psycotic (SEP) URL.
+## A friendlier approach
 
->>> Psychosis
+I'd suggest a unique term separator (not occurring in any term) for example: `/mid-range_contemporary` or adding a separate segment for each term filtered on `/contemporary/mid-range/`. In the latter you'd be expected to populate `/contemporary` with relevant content, and you'd have to prevent the use from clicking 'mid range' before 'contemporary'.
+
+## A polymorphic way
+
+Recently I was told that a better search engine approach would be `/mid-range-contemporary`, a single segment will update based on user selection, ie. after clicking 'gray decks' the URL would become `/mid-range-contemporary-gray-decks`. But `/gray-decks-mid-range-contemporary` should return the same result page. Next extract our terms and filter accordingly.
+
+All these examples are from a real web site called zillow.com (that my SEO team used as an example). Having seen it was possible I started this spike, on what I determined was not to be called search engine friendly (SEF) URL anymore but search engine polymorphic (SEP) URL.
+
+
+>>> Polymorphism
 >>>
->>> Psychosis is a loss of contact with reality that usually includes: False beliefs about what is taking place or who one is (delusions) ; Seeing or hearing things that aren't there (hallucinations).
->>> -- <cite>Google</cite>
+>>> in biology occurs when two or more clearly different phenotypes exist in the same population of a species - in other words, the occurrence of more than one form or morph. In order to be classified as such, morphs must occupy the same habitat at the same time and belong to a panmictic population (one with random mating).
+>>>
+>>> -- <cite>Wikipedia</cite>
 
-Yep. I felt those requirement for slugs lost contact with reality.
+My inital gut feeling was this URL requirement was odd and not in touch with reality. I later realized I was wrong, and how having a mutating or polymorphic segment is indeed pretty natural.
 
-But here's reality knocking at my door: zillow tag system changing their urls exactly per my SEO team request.
+And here's a real example knocking at my door: zillow tag system changing their urls exactly per my SEO team request.
 
 ![zillow.com/digs](/assets/images/zillow_example.gif)
 
 After seeing it happening before my eyes I had to find a way to do it.
 
-So I started from the route will just receive the psycotic slug:
+## Ruby on Rails spike on polymorphic URLs
+
+I started from the route will just receive the polymorphic slug:
 
 {% highlight ruby %}
-get '/digs/:psycotic_slug' => 'psycotic#index'
+get '/digs/:polymorphic_slug' => 'polymorphic#index'
 {% endhighlight %}
 
 and hand it over to the controller action that would delegate the lookup:
 
 {% highlight ruby %}
-lookup = PsycoticLookup.new(params[:psycotic_slug])
+lookup = PolymorphicSlugLookup.new(params[:polymorphic_slug])
 terms = []
 dictionary = Dictionary.new
 lookup.ids.each do |id|
@@ -51,10 +63,10 @@ end
 flash[:notice] = "You searched for : #{terms.join(' ')}"
 {% endhighlight %}
 
-The PsycoticLookup class is where given the slug, I gather every term from the slug until is empty.
+The PolymorphicSlugLookup class is where given the slug, I gather every term from the slug until is empty.
 
 {% highlight ruby %}
-class PsycoticLookup
+class PolymorphicSlugLookup
 
   def initialize(slug)
     @slug = slug
@@ -82,11 +94,11 @@ Having ordered terms is critical to avoid shorter terms being a partial match. W
 
 You don't want to have two URLs serving the same resource ie. `/mid-range-contemporary-gray-decks` and `/gray-mid-range-contemporary-decks`. You can prevent this from your UI but users could type or start linking content to it and the curent solution would serve that content.
 
-Assuming the lookup returns ids ordered according to your SEO value, you could redirect if the original slug doesn't match. A solution is to have a `PsycoticRedirect` that given the result of a lookup, would compare it with the requested slug. 
+Assuming the lookup returns ids ordered according to your SEO value, you could redirect if the original slug doesn't match. A solution is to have a `PolymorphicSlugRedirect` that given the result of a lookup, would compare it with the requested slug. 
 
 {% highlight ruby %}
-lookup = PsycoticLookup.new(params[:psycotic_slug])
-redirect = PsycoticRedirect.new(params[:psycotic_slug], lookup.ids)
+lookup = PolymorphicSlugLookup.new(params[:polymorphic_slug])
+redirect = PolymorphicSlugRedirect.new(params[:polymorphic_slug], lookup.ids)
 if redirect.execute?
  redirect_to "/digs/#{redirect.destination}"
 end
@@ -99,7 +111,7 @@ Well, I've benchmarked the look up:
 
 {% highlight ruby %}
 Benchmark.bm do |x|
-  x.report { lookup = PsycoticLookup.new('bathrooms'); lookup.ids  }
+  x.report { lookup = PolymorphicSlugLookup.new('bathrooms'); lookup.ids  }
 end
 {% endhighlight %}
 
@@ -131,7 +143,7 @@ I committed this sample app on [https://github.com/agenteo/lab-search-engine-fri
 
 ## Conclusion
 
-This might apply for our current scenario I am curious if you've seen zillow search engine friendly/psycotic like filters anywhere else and is there a better name for them? :)
+This will help us apply our SEO requirements, I am curious if you've seen zillow search engine friendly/polymorphic like filters anywhere else.
 
 {% if page.comments %}
   <div id="disqus_thread"></div>

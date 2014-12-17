@@ -7,6 +7,7 @@ categories:
   - ruby
   - rails
   - engines
+redirect_from: "/work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/"
 ---
 
 In the past I used Rails engines to create smaller components in complex Rails applications with the objective of a better long term maintainability. What that usually means is I separate out user interface engines from domain logic engines.
@@ -82,20 +83,3 @@ I think this approach is pragmatic and delivers what we need now allowing up to 
 If you had to split portions of your applications on different servers I'd like to hear your approach. If you have any question feel free to use the comments.
 
 UPDATE: a video of a talk I gave about this at NYC.rb is available on [https://www.youtube.com/watch?v=rMOn2H7h3oY](https://www.youtube.com/watch?v=rMOn2H7h3oY)
-
-{% if page.comments %}
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-{% endif %}

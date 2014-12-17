@@ -141,26 +141,9 @@ I haven't tested this with any caching but assuming you find a suitable expirati
 
 I committed this sample app on [https://github.com/agenteo/lab-search-engine-friendly-urls](https://github.com/agenteo/lab-search-engine-friendly-urls).
 
+
 ## Conclusion
 
 My inital gut feeling was this URL requirement was odd and not in touch with reality. I later realized I was wrong, and how having a mutating or polymorphic segment is indeed pretty natural.
 
 This will help us apply our SEO requirements, I am curious if you've seen zillow search engine friendly/polymorphic like filters anywhere else.
-
-{% if page.comments %}
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-{% endif %}
-

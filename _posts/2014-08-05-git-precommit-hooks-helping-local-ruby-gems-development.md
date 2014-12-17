@@ -7,6 +7,7 @@ categories:
   - ruby
   - engines
   - git
+redirect_from: "/work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development/"
 ---
 
 I was working on a Ruby app that depended on a few private gems, the development was not just changing the app but also those gems.
@@ -134,21 +135,3 @@ This worked for me cause I didn't have any local engines when the project was de
 I looked in to [git server side hooks](http://git-scm.com/book/en/Customizing-Git-Git-Hooks#Server-Side-Hooks) but hosted version control (github or bitbucket) allow you to run custom scripts.
 
 So precommit git client side hooks require an initial manual bootstrap step but are a really great tool to facilitate development workflow. If you work with local gems I'd like to hear about your workflow in the comments.
-
-
-{% if page.comments %}
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-{% endif %}

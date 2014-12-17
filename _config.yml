@@ -5,8 +5,7 @@ comments:
   disqus :
     short_name : enricoteotti
 
-# TODO
-# permalink: "/:title"
+permalink: "/:title"
 
 gems:
   - jekyll-redirect-from

@@ -5,7 +5,9 @@ comments: true
 tags:
   - ruby
   - rails
-redirect_from: "/2013/04/30/use-of-rails-environments/"
+redirect_from:
+  - /work/ruby/2013/04/30/use-of-rails-environments/
+  - /work/ruby/2013/04/30/use-of-rails-environments.html/
 ---
 
 When you generate a Ruby on Rails application it will create three environments:

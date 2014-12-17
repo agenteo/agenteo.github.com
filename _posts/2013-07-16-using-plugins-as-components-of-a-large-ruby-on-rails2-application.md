@@ -5,7 +5,9 @@ comments: true
 categories:
   - work
   - ruby
-redirect_from: "/work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application/"
+redirect_from:
+  - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application/
+  - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application.html/
 ---
 
 This is a short story about the creation and maintenance of a large Ruby on Rails

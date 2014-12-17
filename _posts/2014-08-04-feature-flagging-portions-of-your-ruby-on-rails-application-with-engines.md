@@ -7,7 +7,9 @@ categories:
   - ruby
   - rails
   - engines
-redirect_from: "/work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/"
+redirect_from:
+  - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/
+  - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines.html/
 ---
 
 In the past I used Rails engines to create smaller components in complex Rails applications with the objective of a better long term maintainability. What that usually means is I separate out user interface engines from domain logic engines.

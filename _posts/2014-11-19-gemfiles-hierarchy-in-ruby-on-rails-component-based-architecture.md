@@ -6,7 +6,9 @@ categories:
   - work
   - ruby
   - engines
-redirect_from: "/work/ruby/engines/2014/11/19/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/"
+redirect_from:
+  - /work/ruby/engines/2014/11/19/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/
+  - /work/ruby/engines/2014/11/19/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture.html/
 ---
 
 When working on component based Rails applications you create a dependency hierarchy of local engines.

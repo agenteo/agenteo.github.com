@@ -7,7 +7,9 @@ categories:
   - ruby
   - engines
   - git
-redirect_from: "/work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development/"
+redirect_from:
+  - /work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development/
+  - /work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development.html/
 ---
 
 I was working on a Ruby app that depended on a few private gems, the development was not just changing the app but also those gems.

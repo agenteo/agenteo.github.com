@@ -64,9 +64,32 @@ the one we'll use is called [pipeline](http://docs.mongodb.org/manual/reference/
 
 >>> The aggregation pipeline is a framework for performing aggregation tasks, modeled on the concept of data processing pipelines. Using this framework, MongoDB passes the documents of a single collection through a pipeline. The pipeline transforms the documents into aggregated results, and is accessed through the aggregate database command.
 
+First we call the `aggregate` function with `$project`.
+
+{% highlight javascript %}
+> db.entries.aggregate( [ 
+                          { $project: {
+                                        'content': '$content',
+                                        'lego': { $eq: [ 'lego', '$tag' ] }
+                                      }
+                          },
+                          { $sort: { 'lego': -1 } }
+                        ] )
+{% endhighlight %}
+
+What's happening is the project:
+
+>>> Passes along the documents with only the specified fields to the next stage in the pipeline. The specified fields can be existing fields from the input documents or newly computed fields.
+
+those **newly computed fields** is what we use in SQL to manage the sorting and we will mimick that.
+
+Like the documentation said, we have to provide the fields we want to return keep in mind this is not a regular find anymore. Nevertheless we can apply `$sort` and `$match` to filter according to our needs.
+
+
+
 ## Array of fields
 
-The SQL solutions I referenced above are working on a single tag field. My solution target was to work for an array field, so these are the documents in my collection:
+The SQL solutions I referenced above are working on a single tag field. My actual solution target was to work for an array field, so these were the documents in my collection:
 
 {% highlight javascript %}
 db.entries.find()
@@ -78,11 +101,6 @@ db.entries.find()
 {% endhighlight %}
 
 
-First we call the `aggregate` function with `$project`.
-
->>> Passes along the documents with only the specified fields to the next stage in the pipeline. The specified fields can be existing fields from the input documents or newly computed fields.
-
-those **newly computed fields** is what we use in SQL to manage the sorting and we will mimick that.
 
 
 {% highlight javascript %}
@@ -95,9 +113,5 @@ those **newly computed fields** is what we use in SQL to manage the sorting and 
                           { $sort: { 'lego': -1 } }
                         ] )
 {% endhighlight %}
-
-## Ain't nomore find
-
-Like the documentation said, we have to provide the fields we want to return keep in mind this is not a regular find anymore.
 
 ## Performance analysis

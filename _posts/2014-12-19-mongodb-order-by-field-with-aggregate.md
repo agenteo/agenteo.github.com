@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mongo DB simulate order by field with aggregates
+title: Simulate order by field with Mongo DB aggregates
 comments: true
 tags:
   - work
@@ -18,7 +18,7 @@ Given the following data set:
 | false  | dogs |
 {% endhighlight %}
 
-When working in MySQL you can order by the fields you like using:
+When working in MySQL you can order by field values using:
 
 {% highlight sql %}
 SELECT * FROM entries
@@ -39,10 +39,10 @@ SELECT * FROM entries
   END,name;
 {% endhighlight %}
 
-**TL;DR in mongo you can achieve that using `aggregate` like so: `db.entries.aggregate( [ { $project: { 'content': '$content', 'lego': { $eq: [ 'lego', '$tag' ] } } }, { $sort:  { 'lego': -1 } } ] )` .**
+**TL;DR in mongo 2.6.4 you can simulate that using `aggregate` like so: `db.entries.aggregate( [ { $project: { 'content': '$content', 'lego': { $eq: [ 'lego', '$tag' ] } } }, { $sort:  { 'lego': -1 } } ] )` .**
 
 
-The application I am currently working on is running on mongo and needs to assign higher priority to entries with specific tags.
+The application I am currently working on is running on mongo 2.6.4 and needs to assign higher priority to entries with specific tags.
 
 Mongo's [sort](http://docs.mongodb.org/manual/reference/method/cursor.sort/) doesn't allow that by default. I could not find an answer, somebody on Stackoverflow replied with a workaround saying it was [impossible](http://stackoverflow.com/questions/14650122/mongodb-sort-by-in). Challenge accepted.
 
@@ -73,7 +73,7 @@ First we call the `aggregate` function with `$project`.
                         ] )
 {% endhighlight %}
 
-What's happening is the project:
+What is project doing:
 
 >>> Passes along the documents with only the specified fields to the next stage in the pipeline. The specified fields can be existing fields from the input documents or newly computed fields.
 
@@ -168,7 +168,9 @@ We can explain the aggregate with:
 }
 {% endhighlight %}
 
-Awesome it works! Next thing I wondered if this is as performant as a regular `find`. Reading mongo [docs](http://docs.mongodb.org/manual/core/aggregation-pipeline/#pipeline-operators-and-indexes) looked like it could leverage indexes:
+Puzzling results tough, I was looking for nScannedObject. I am looking in to that.
+
+Reading mongo [docs](http://docs.mongodb.org/manual/core/aggregation-pipeline/#pipeline-operators-and-indexes) looked like it could leverage indexes:
 
 >>> The $match and $sort pipeline operators can take advantage of an index when they occur at the beginning of the pipeline.
 
@@ -197,7 +199,7 @@ db.entries.find()
                         ] )
 {% endhighlight %}
 
-You can use lots of functions with the aggregate framework:
+You can use lots of functions in the project but be careful they won't leverage the indexing.
 
 ## Conclusions
 

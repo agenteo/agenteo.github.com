@@ -205,4 +205,6 @@ You can use lots of [functions](http://docs.mongodb.org/manual/reference/operato
 
 We didn't go trough with this feature because we realized the reason behind it was a shortcoming in our taxonomy tagging.
 
-Hopefully people looking for a ORDER BY FIELD solution in mongo will find this useful and will comment with how it works for them.
+If I went ahead I would have wanted to understand `explain` weird results as well as ensuring how [aggregates would play with sharding](http://docs.mongodb.org/manual/core/aggregation-pipeline-sharded-collections/).
+
+I hope people looking for a ORDER BY FIELD implementation in mongo will find this useful.

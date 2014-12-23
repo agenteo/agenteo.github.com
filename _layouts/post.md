@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
+  {% include posts/filament.html %}
   <body itemscope itemtype="http://schema.org/Article">
     {% include header.html %}
     <main class="content" role="main">

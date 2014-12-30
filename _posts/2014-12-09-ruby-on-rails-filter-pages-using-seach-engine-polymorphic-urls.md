@@ -8,7 +8,7 @@ tags:
   - SEO
 redirect_from:
   - /2014/12/09/ruby-on-rails-filter-pages-using-seach-engine-psycotic-urls/
-  - /2014/12/09/ruby-on-rails-filter-pages-using-seach-engine-psycotic-urls.html/"
+  - /2014/12/09/ruby-on-rails-filter-pages-using-seach-engine-psycotic-urls.html/
 ---
 
 We're all familiar with search engine friendly URLs ie. a filter on 'Mid range' would be hyphenated to `/mid-range`.

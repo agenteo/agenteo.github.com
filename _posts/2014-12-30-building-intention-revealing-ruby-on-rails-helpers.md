@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ruby on Rails intention revealing helpers
+title: Building intention revealing Ruby on Rails helpers
 comments: true
 tags:
   - work

@@ -10,6 +10,14 @@ tags:
 
 {{post.title}}
 
+{% highlight javascript %}
+{
+  "ruby": "2.1",
+  "rails": "4.1",
+  "os": "OSX 10.10"
+}
+{% endhighlight %}
+
 When I am working on a Ruby on Rails application views and I see more Ruby code then markup I move that logic in to a helper.
 
 If the helper needs to output markup you should avoid using a blob of text perhaps interpolated with variables with the results of your logic.
@@ -182,3 +190,6 @@ Intention revealing is the way to go, it will lead to maintainable code and you 
 I am curious to see if you've used this approach before and where you're keeping your helper classes.
 
 If you're not sold I'd like to hear what's keeping you from refactoring your helpers.
+
+EDIT:
+thanks to mdaubs for pointing out a problem in rails 4.0 where the asset path won't be appended. I only tested it on 4.1 and 4.2 where it works. I created a repository https://github.com/agenteo/lab-intention_revealing_helpers master has the broken 4.0, two branches for 4.1 and 4.2

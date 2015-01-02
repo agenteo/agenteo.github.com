@@ -192,4 +192,4 @@ I am curious to see if you've used this approach before and where you're keeping
 If you're not sold I'd like to hear what's keeping you from refactoring your helpers.
 
 EDIT:
-thanks to mdaubs for pointing out a problem in rails 4.0 where the asset path won't be appended. I only tested it on 4.1 and 4.2 where it works. I created a repository https://github.com/agenteo/lab-intention_revealing_helpers master has the broken 4.0, two branches for 4.1 and 4.2
+thanks to mdaubs for pointing out a problem in rails 4.0 where `config.action_controller.asset_host` won't prefix the image referenced in `image_tag` when called via `ActionController::Base.helpers`. I only tested this on 4.1 and 4.2 where it works. I created a repository https://github.com/agenteo/lab-intention_revealing_helpers master has the broken 4.0, two branches for 4.1 and 4.2

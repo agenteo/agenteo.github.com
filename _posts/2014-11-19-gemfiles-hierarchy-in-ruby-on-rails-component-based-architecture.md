@@ -105,6 +105,8 @@ I run in to `path` while looking at the bundler source code to add the same feat
 
 UPDATE: looks like it is supported there was an issue open to document this [https://github.com/bundler/bundler/issues/3214](https://github.com/bundler/bundler/issues/3214). I've submitted a patch to the docs.
 
+EDIT: if you are interested there is a conversation about this on [components in rails mailing list](https://groups.google.com/forum/#!topic/components-in-rails/aCGDuYcS2W0).
+
 You can find a test app where I spiked this solution at: [https://github.com/agenteo/lab-gemfile-hierarchy](https://github.com/agenteo/lab-gemfile-hierarchy)
 
 I hope this helps others. Ciao.

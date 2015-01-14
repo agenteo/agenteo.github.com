@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Root level segment filter pages with Ruby on Rails route constraints
+title: URL segments serving filters and more with Ruby on Rails route constraints
 comments: true
 tags:
   - work
@@ -8,11 +8,31 @@ tags:
   - routes
 ---
 
-{{ page.title }}
+Recently I was asked to implement vanity URLs applying filters (ie. `/content/best-2014-articles`) to an app segment already serving other content (ie. an article `/content/ways-to-ruin-your-wedding`).
 
-Recently I was asked to implement a set of vanity URLs (static filters) to an app root level segment. I'd have a key value mapping `slug` with `filter_ids`.
+## The direction
 
-The app already had a detail page served at the root, so I added a new root route with a `constraints` attribute to ensure the filter page would be used for a vanity slug only.
+A route automated test is the way to start ensuring the functionality is solid:
+
+{ highlight ruby }
+assert_routing({ path: '/best-articles-2014', method: :get },
+               { controller: 'articles', action: 'index', filter_ids: [12345,6789] })
+{ endhighlight }
+
+The `filter_ids` will be populated during the routing to avoid changing the `articles#index` behaviour. I wanted to leave that action (already consuming filter_ids as a search parameter) agnostic from this new feature.
+
+We must ensure the fallback works when the slug is not vanity:
+
+{ highlight ruby }
+assert_routing({ path: '/not-a-vanity-slug', method: :get },
+               { controller: 'articles', action: 'show', slug: '/not-a-vanity-slug' })
+{ endhighlight }
+
+I'd stub any I/O in those and rely on a higher lever request spec as a smoke integration test.
+
+## The implementation
+
+I added a new root route leveraging `constraints` attribute to ensure the filter page would only be routed for a vanity slug.
 
 { highlight ruby }
 Rails.application.routes.draw do
@@ -22,9 +42,9 @@ Rails.application.routes.draw do
 end
 { endhighlight }
 
-The constraint return true or false to determine if this route matches our expectations.
+The constraint class has a `matches?` method that return true or false to determine if this route matches our expectations.
 
-But I also wanted to avoid parsing and extracting filter data out of the vanity slug in the controller action.
+On top of that I wanted to parse and extract filter data from the vanity slug in the controller action. Ideally the destination `controller#action` should be agnostic of handle traffic from the .
 
 So I delegated that resposability to the route constraint (`app/models/route_constraints/vanity_slug.rb`):
 
@@ -49,12 +69,8 @@ end
 { endhighlight }
 
 
-Assuming `/filter-best-articles-2014` to be mapped to ids `[1234, 5678]` the above would pass to my controller action a hash with `filter_ids` containing `[1234, 5678]`.
+Assuming `/filter-best-articles-2014` is mapped to ids `[1234, 5678]` in our `FilterDictionary` the code above would pass to the `articles_controller#index` a `param[:filter_ids]` with `filter_ids` containing `[1234, 5678]`. Magic!
 
 ## Conclusion
 
-You're likely to have that `filter_ids` passed to `articles#index` through other filters in your app and this approach doesn't alter that functionality and decouples the route parsing from a controller before action.
-
-The controller action ignores where those `filter_ids` are coming from.
-
-I drove this feature by adding a route automated tests to ensure this functionality was sound.
+Ruby on Rails constraints can help you if you want to handle different controller actions on the same route segment. Parsing a URL and populating params is a really powerful hidden feature.

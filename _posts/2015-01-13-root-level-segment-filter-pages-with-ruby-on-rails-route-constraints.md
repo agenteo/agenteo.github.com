@@ -8,7 +8,9 @@ tags:
   - routes
 ---
 
-Recently I was asked to implement vanity URLs applying filters (ie. `/content/best-2014-articles`) to an app segment already serving other content (ie. an article `/content/ways-to-ruin-your-wedding`).
+Recently I was asked to implement result URL slug applying filters (ie. `/content/best-2014-articles`) to an app segment already serving other content (ie. an article `/content/ways-to-ruin-your-wedding`).
+
+Doing this without a unique prefix or suffix differentiating filter pages from the detail pages means doing a slug lookup on every request. The cost of this operation is dependent on your application logic. A small infrequently updated dataset could be fetched once and memoized in to singleton with key (slug) value (filter information) and just occupy memory in your Ruby process. If you have a more dynamic dataset your focus should be on monitoring and optimizing that query under load.
 
 ## The direction
 

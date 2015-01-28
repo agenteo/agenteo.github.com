@@ -63,6 +63,8 @@ RUNNING_MODE=admin rails s
 
 One of the advantages of this approach is you can run in development mode without that variable and both portions will be mounted.
 
+EDIT: reduce memory footprint creating a bundle group for the running mode to require only what is needed. [Read more here](http://teotti.com/2015-01-27-reduce-memory-footprint-requiring-portions-of-your-component-based-rails-applications).
+
 It will be likely be part of the server provisioning process to setup that ENV variable.
 
 The main application Gemfile will still include both engines:
@@ -73,6 +75,8 @@ gem 'shared_ui', path: 'engines/shared_ui'
 gem 'admin_ui', path: 'engines/admin_ui'
 gem 'public_ui', path: 'engines/public_ui'
 {% endhighlight %}
+
+EDIT: you can group your engines and avoid listing the transitive dependencies. [Read more](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/)
 
 So the engines are all there, and if you have a `raise 'boom'` in your `admin_ui/lib/admin_ui.rb` even when the app running mode is set to public *will* explode. This unrealistic example is a reminder that this is a single application. Hopefully your test suite will catch that raise.
 

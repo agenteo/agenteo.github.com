@@ -156,7 +156,7 @@ I've uploaded a github repo [here](https://github.com/agenteo/lab-bundler-groups
 
 If your Ruby on Rails application holds multiple portions in a single repository requiring only the served portion will help reducing memory usage as well as enforcing your dependency structure.
 
-We're deployed on Heroku and running a 2000 requests per minute for 40 minutes before this change would keep the memory usage between 422 and 520. After we're between 400 and 430. Not bad. I am suspiciousy looking at new relic memory report that dropped from 440MB to 260MB.
+We're deployed on Heroku and running a 2400 requests per minute from an EC2 instance with [Vegeta](https://github.com/tsenart/vegeta) before the change our public portion on 10 2X dynos memory usage on Newrelic would go from a minimum of 422 up to 674MB. After the change and applying the same load test we're starting from 377 up to 588MB. 
 
 The `Gemfile.lock` remains the manifest of what your apps are locked to. If for some reason you need different versions of the same gems in your components I'd love to hear from you, perhaps you should revisit the single repository approach.
 

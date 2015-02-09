@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Create mainainable mongodb queries in Ruby with mongoid criterias
+title: Create mainainable mongodb queries in Ruby with a query object and mongoid criterias
 comments: true
 tags:
   - work
@@ -8,7 +8,7 @@ tags:
   - mongodb
 ---
 
-Building a mongodb query in mongoid is straight forward here's an example from the project documentation:
+Building a mongodb query in mongoid is straight forward here's an example:
 
 {% highlight ruby %}
 Article.
@@ -40,29 +40,30 @@ if filter[:published] = 'published'
 elsif filter[:published] = 'unpublished'
   criteria = Article.unpublished
 else
-  criteria = Article.all
+  criteria = Mongoid::Criteria.new(Article)
 end
 criteria.imported_from_legacy.where(title: /#{keyword}/)
 {% endhighlight %}
 
-That code deciding which filter to apply becomes a transactional script, regardless if it lives in a Ruby on Rails controller private method or in a Mongoid Document or in a separate plain Ruby object.
+That code deciding which filter to apply becomes a [transaction script](http://martinfowler.com/eaaCatalog/transactionScript.html), regardless if it lives in a Ruby on Rails controller private method or in a Mongoid Document or in a separate plain Ruby object.
 
+>>> Organizes business logic by procedures where each procedure handles a single request from the presentation.
 
-This is a simplified example, let's extend that with some features taken from a real application.The keyword would need to match not only the title but also the article tags. Since we only store the tags ids in the database we need to contact the tags API to translate the keyword to id. The keyword search could be on tags only and ignore titles.
+This is a simplified example, let's extend that with some features taken from a real application. The keyword filter would need to match not only the title but also the article tags. Since we only store the tags ids in the database we need to contact the tags API to translate the keyword to id. The keyword search should be on tags only when a specific string is provided (say "tag:'black'") and ignore titles.
 
-Understanding a transactional script limits is key in order to know when to stop using it.
-
-In my experience increasing the number of filters and applying more checks makes its code hard to understand and to extend. Test driving becomes cumbersome, you tend to have one long integration test with a setup populating all the possible combinations. I've seen this approach fostering a knowledge silos where there is only one guy who approximately knows what's going on. 
+Let's look in to some of the transaction script limits. In my experience increasing the number of filters and applying more checks makes its code hard to understand and to extend. Test driving becomes cumbersome, you tend to have one long integration test with a setup populating all the possible combinations. I've seen this approach fostering a knowledge silos approach where there is only one guy who approximately knows what's going on. Nested conditions, or multiple inline conditions, and its lenght growing over 10/15 lines is for me a code smell.
 
 ## Another approach
 
-What I've been doing with dealing with larger queries in the last couple of years is breaking up the criterias in separate objects unit tested in isolation and having a query object orchestrating the filters. This approach would work with ActiveRecord but I am using Mongoid.
+What I've been doing when dealing with larger queries in the last couple of years is breaking up their criterias in separate objects unit tested in isolation and having a query object orchestrating those filters. I think this is an application of the query object pattern explained by Martin Fowler in PEAA:
 
-The query is broken up in to criteria objects, and the query object responsibility is just merging them.
+>>> A Query Object is an application of the Interpreter pattern geared to represent a SQL query. Its primary roles are to allow a client to form queries of various kinds and to turn those object structures into the appropriate SQL string.
 
-When TDD this you'd have a high level integration test testing the first criteria you're adding, then add tests for the first criteria on ContentFilter, then build that criteria's test.
+The query is broken up in to criteria objects, and the query object responsibility is in this case just instantiating each criteria with the right parameters and merging them. Each criteria would return a fallback criteria when not used.
 
-To save space and reader's time I added a few criterias in one go:
+When TDD this you'd have a high level integration test testing the first criteria you're adding, then add a unit test for the first criteria on ContentFilter, then build that criteria's unit test and at this point your high level should be passing.
+
+How to TDD is not the focus of this post so I omitted the integration test and I am adding the full spec code and class code in one go:
 
 {% highlight ruby %}
 describe ContentFilter do
@@ -120,7 +121,7 @@ describe ContentFilter do
 end
 {% endhighlight %}
 
-The test ensure that the correct attribute is passed from the query object (ContentFilter) to each criteria.
+This test ensures the correct attribute is passed from the query object (ContentFilter) to each criteria.
 
 And here's the code for it:
 
@@ -164,9 +165,94 @@ end
 
 The logic of the query is broken in small easy to understand parts.
 
-The keyword filter has to work in two scenarios: a tag specific filter ie. `"tag:'black friday'"` or `"tag:'superbowl'"` (to find any article tagged like that) as well as: "black" to find articles titled and tagged "black". That logic will live inside the `Criteria::KeywordFilter`.
+Let's start from a unit test for the published filter:
 
-Now we start building the keyword criteria:
+{% highlight ruby %}
+describe Criteria::PublishedStateFilter do
+
+  context 'filtering published pieces' do
+    let(:published_state) { 'true' }
+
+    it 'should return a Mongoid::Criteria' do
+      criteria = Criteria::PublishedStateFilter.new(published_state)
+      expect(criteria.value).to be_a_kind_of(Mongoid::Criteria)
+    end
+
+    it "should retrieve published pieces" do
+      expect(Article).to receive(:published)
+      
+      filter = Criteria::PublishedStateFilter.new(published_state)
+      filter.value
+    end
+  end
+
+  context 'filtering unpublished pieces' do
+    let(:published_state) { 'false' }
+
+    it "should retrieve unpublished pieces" do
+      expect(Article).to receive(:unpublished)
+      
+      filter = Criteria::PublishedStateFilter.new(published_state)
+      filter.value
+    end
+  end
+
+  context 'without a published state filter' do
+    let(:published_state) { nil }
+
+    it "should retrieve unpublished pieces" do
+      filter = Criteria::PublishedStateFilter.new(published_state)
+      filter.value
+    end
+  end
+
+end
+{% endhighlight %}
+
+Our unit test is ensuring that based on user input the correct mongoid API are made. This object's value will always be a `Mongoid::Criteria` to allow the `ContentFilter` class to merge it with other criterias.
+
+Here's the code:
+
+{% highlight ruby %}
+module Criteria
+
+  class PublishedStateFilter
+
+    def initialize(state_filter_parameter)
+      @published_state = state_filter_parameter
+    end
+
+    # Generate a filter on published state.
+    # @return [Mongoid::Criteria]
+    def value
+      if filtering_published?
+        Article.published
+      elsif filtering_unpublished?
+        Article.unpublished
+      else
+        Mongoid::Criteria.new(Article)
+      end
+    end
+
+
+    private
+
+      def filtering_published?
+        @published_state == 'true'
+      end
+
+      def filtering_unpublished?
+        @published_state == 'false'
+      end
+
+  end
+
+end
+{% endhighlight %}
+
+The keyword filter has to work in two scenarios: a tag specific filter ie. `"tag:'black friday'"` or `"tag:'superbowl'"` (to find any article tagged with the text between quotes) as well as: "black" to find articles titled and tagged "black". That logic will live inside the `Criteria::KeywordFilter`.
+
+Now we start building the keyword criteria test:
 
 {% highlight ruby %}
 
@@ -177,7 +263,8 @@ describe Criteria::KeywordFilter do
     let(:music) { "ed723f60-afce-11e4-ab7d-12e3f512a338"  }
     let(:ceremony_music) { "ed7241f4-afce-11e4-ab7d-12e3f512a338" }
     before do
-      expect_any_instance_of(TermsApi::Searcher).to receive(:match).with(keyword).and_return([music, ceremony_music])
+      allow_any_instance_of(TermsApi::Searcher).to receive(:match).with(keyword).and_return([music, ceremony_music])
+      allow_any_instance_of(TermsApi::NarrowerTerms).to receive(:compose).and_return([music, ceremony_music])
     end
 
     it 'should generate a criteria' do
@@ -216,7 +303,9 @@ describe Criteria::KeywordFilter do
 end
 {% endhighlight %}
 
-Our unit test is ensuring that based on keyword filters the correct mongoid API are made. I once again pasted the entire spec but while TDD-ing you'd add one example at the time. Based on how critical the feature is you might start from more then one integration feature test.
+Our unit test is ensuring that based on keyword filters the correct mongoid API as well as 3rd party calls for terms are made. Like for `PublishedFilter` this object's value will always be an instance of `Mongoid::Criteria` to allow the `ContentFilter` class to merge it.
+
+I once again pasted the entire spec but while TDD-ing you'd add one example at the time. Based on how critical the feature is you might start from more then one integration feature test.
 
 And here's the code:
 
@@ -237,7 +326,7 @@ module Criteria
       elsif filtering_by_keyword?
         Article.or(matching_headline_or_terms)
       else 
-        Article.all
+        Mongoid::Criteria.new(Article)
       end
     end
 
@@ -286,3 +375,14 @@ module Criteria
   end
 end
 {% endhighlight %}
+
+Another advantage of this approach is we use a higher level language to represent the composition of parts of the query.
+
+
+## Conclusion
+
+I find this approach useful to organize complex query code as your application grows. Failing to see that growth and continuing to extend a transaction script will lead to your domain model complexity be tangled in code making it hard to maintain.
+
+In our app I added a `ContentSorter` that given the `ContentFilter` applies the necessary sorting logic.
+
+Be careful not to use this approach in simple scenarios where using your ORM alone would do a nice job.

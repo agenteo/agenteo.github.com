@@ -45,17 +45,27 @@ end
 criteria.imported_from_legacy.where(title: /#{keyword}/)
 {% endhighlight %}
 
-That code deciding which filter to apply becomes a [transaction script](http://martinfowler.com/eaaCatalog/transactionScript.html), regardless if it lives in a Ruby on Rails controller private method or in a Mongoid Document or in a separate plain Ruby object.
+That code deciding which filter to apply becomes a [transaction script](http://martinfowler.com/eaaCatalog/transactionScript.html), regardless if it lives in a Ruby on Rails controller private method or in a Mongoid Document or in a separate plain Ruby object. A transaction script as defined by Martin Fowler in PEAA:
 
 >>> Organizes business logic by procedures where each procedure handles a single request from the presentation.
 
-This is a simplified example, let's extend that with some features taken from a real application. The keyword filter would need to match not only the title but also the article tags. Since we only store the tags ids in the database we need to contact the tags API to translate the keyword to id. The keyword search should be on tags only when a specific string is provided (say "tag:'black'") and ignore titles.
+What we have is a simplified example, let's extend that with some features taken from a real application.
 
-Let's look in to some of the transaction script limits. In my experience increasing the number of filters and applying more checks makes its code hard to understand and to extend. Test driving becomes cumbersome, you tend to have one long integration test with a setup populating all the possible combinations. I've seen this approach fostering a knowledge silos approach where there is only one guy who approximately knows what's going on. Nested conditions, or multiple inline conditions, and its lenght growing over 10/15 lines is for me a code smell.
+The keyword filter would need to match not only the title but also the article tags. Since we only store the tags ids in the database we need to contact the tags API to translate the keyword to id. The keyword search should be on tags only when a specific string is provided (say "tag:'black'") and ignore titles.
+
+## When to stop using a transaction script
+
+Let's look in to some symptoms of a large transaction script:
+
+* adding new filters or changing existing one becomes hard to estimate
+* test driving is cumbersome, you tend to have one long integration test with a setup populating all the possible combinations
+* the script code becomes a knowledge silos where only one guy approximately knows what's going on
+
+nested conditions or multiple inline conditions, and a line count growing over 10/15 are signs to switch approach.
 
 ## Another approach
 
-What I've been doing when dealing with larger queries in the last couple of years is breaking up their criterias in separate objects unit tested in isolation and having a query object orchestrating those filters. I think this is an application of the query object pattern explained by Martin Fowler in PEAA:
+What I've been doing when dealing with larger queries in the last couple of years is test drive their criterias in separate objects unit tested in isolation and having a query object orchestrating those filters. I think this is an application of the query object pattern explained by Martin Fowler in PEAA:
 
 >>> A Query Object is an application of the Interpreter pattern geared to represent a SQL query. Its primary roles are to allow a client to form queries of various kinds and to turn those object structures into the appropriate SQL string.
 

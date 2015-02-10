@@ -5,6 +5,7 @@
   {% include head.html %}
   {% include posts/filament.html %}
   <body itemscope itemtype="http://schema.org/Article">
+    {% include posts/addthis.html %}
     {% include header.html %}
     <main class="content" role="main">
       <article class="post">

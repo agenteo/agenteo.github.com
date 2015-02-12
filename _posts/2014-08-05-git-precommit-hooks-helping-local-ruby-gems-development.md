@@ -2,10 +2,10 @@
 layout: post
 title: GIT precommit hooks helping local Ruby GEMs development
 comments: true
-categories:
+tags:
   - work
   - ruby
-  - engines
+  - component-based-rails-architecture
   - git
 redirect_from:
   - /work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development/

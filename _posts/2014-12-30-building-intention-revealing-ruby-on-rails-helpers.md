@@ -4,7 +4,7 @@ title: Building intention revealing Ruby on Rails helpers
 comments: true
 tags:
   - work
-  - rails
+  - ruby-on-rails
   - ruby
 ---
 

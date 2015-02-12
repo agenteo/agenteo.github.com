@@ -5,7 +5,8 @@ comments: true
 tags:
   - work
   - ruby
-  - engines
+  - ruby-on-rails
+  - component-based-rails-architecture
 ---
 
 This strategy applies to Ruby on Rails applications built with a component based architecture (#cbra) and serving multiple portions.

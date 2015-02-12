@@ -5,6 +5,7 @@ comments: true
 tags:
   - work
   - ruby
+  - ruby-on-rails
   - routes
 ---
 

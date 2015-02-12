@@ -4,7 +4,7 @@ title: Use of Ruby on Rails environments
 comments: true
 tags:
   - ruby
-  - rails
+  - ruby-on-rails
 redirect_from:
   - /work/ruby/2013/04/30/use-of-rails-environments/
   - /work/ruby/2013/04/30/use-of-rails-environments.html/

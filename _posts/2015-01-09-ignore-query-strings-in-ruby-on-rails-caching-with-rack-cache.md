@@ -5,7 +5,7 @@ comments: true
 tags:
   - work
   - ruby
-  - rack-cache
+  - ruby-on-rails
   - caching
 ---
 

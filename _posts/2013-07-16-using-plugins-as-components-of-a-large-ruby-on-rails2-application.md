@@ -2,9 +2,10 @@
 layout: post
 title: Using plugins as components of a large Ruby on Rails 2 application
 comments: true
-categories:
+tags:
   - work
   - ruby
+  - component-based-rails-architecture
 redirect_from:
   - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application/
   - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application.html/

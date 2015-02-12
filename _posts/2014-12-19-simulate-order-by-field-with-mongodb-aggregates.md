@@ -4,7 +4,7 @@ title: Simulate order by field with Mongo DB aggregates
 comments: true
 tags:
   - work
-  - mongo
+  - mongodb
 ---
 
 {{post.title}}

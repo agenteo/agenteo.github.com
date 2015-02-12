@@ -2,10 +2,10 @@
 layout: post
 title: Gemfile hierarchy in Ruby on Rails component based architecture
 comments: true
-categories:
+tags:
   - work
   - ruby
-  - engines
+  - component-based-rails-architecture
 redirect_from:
   - /work/ruby/engines/2014/11/19/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/
   - /work/ruby/engines/2014/11/19/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture.html/

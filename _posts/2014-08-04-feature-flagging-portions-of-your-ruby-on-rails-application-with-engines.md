@@ -2,11 +2,11 @@
 layout: post
 title: Feature flagging portions of your Ruby on Rails application with engines
 comments: true
-categories:
+tags:
   - work
   - ruby
-  - rails
-  - engines
+  - ruby-on-rails
+  - component-based-rails-architecture
 redirect_from:
   - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/
   - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines.html/

@@ -11,7 +11,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'tags_index.md')
       self.data['tag'] = tag
 
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Category: '
+      tag_title_prefix = site.config['tag_title_prefix'] || 'Tag: '
       self.data['title'] = "#{tag_title_prefix}#{tag}"
     end
   end

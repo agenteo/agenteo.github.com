@@ -10,6 +10,10 @@ permalink: "/:title/"
 gems:
   - jekyll-redirect-from
 
+# Build settings
+source: source
+destination: public
+
 # Site settings
 title: "今日は, I am Enrico"
 description: > # this means to ignore newlines until "email:"

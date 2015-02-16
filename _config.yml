@@ -15,15 +15,15 @@ source: source
 destination: public
 
 # Site settings
-title: "今日は, I am Enrico"
+title: "Hi, I am Enrico"
 description: > # this means to ignore newlines until "email:"
    I craft maintainable software that delivers business value. Born and educated in Italy, became Australian now working in New York City.
 
 email: enrico@teotti.com
 #blog logo
-logo: "/assets/images/beach.jpg"
+logo: "/assets/images/me_tama.jpg"
 # blog cover
-cover: "/assets/images/background_image.jpg"
+cover: "/assets/images/hero_image.jpg"
 
 name: 'Enrico Teotti'
 author: 'Enrico Teotti'
@@ -31,7 +31,7 @@ author_image: "/assets/images/author.jpg"
 
 paginate:	5
 
-url: "http://teotti.com/" # the base hostname & protocol for your site
+url: "http://localhost:4000/" # the base hostname & protocol for your site
 baseurl: ""
 
 # social icons and sharing options

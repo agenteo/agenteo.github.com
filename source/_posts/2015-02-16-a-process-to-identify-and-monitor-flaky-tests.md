@@ -1,21 +1,20 @@
 ---
 layout: post
-title: Track down and deal with rspec flaky test
+title: A process to identify and monitor flaky tests
 comments: true
 tags:
   - work
-  - ruby
   - testing
 ---
 
-Having a suite of automated tests can be a blessing and a curse. A consistently working one can ensure no regression is introduced while developing new features. An inconsistent suite generates mistrust and its unreliability make it worst then having no tests.
+Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust and because of its unreliability passing tests won't be considered that valuable.
 
-I came up with a system to identify, monitor and resolve inconsistently failing automated tests to
-**increase trust in a process that has undeniable upkeeping costs but ultimately helps ensuring the software is stable**.
+I came up with a workflow to identify and monitor inconsistently failing automated tests to
+increase trust in your build.
 
-## do not commit code that breaks the build
+## Do not commit broken code
 
-Might sound naive but you want to facilitate that by making sure your build is:
+Might sound naive but you can facilitate that by making sure your build is:
 
 ### easy to run
 
@@ -36,20 +35,22 @@ exit_code+=$?
 exit $exit_code
 {% endhighlight %}
 
-ensure new developers are onboarded on the testing workflow by pair programming while following (and if necessary updating) a wiki page documenting the process for future reference.
+### documented
+
+ensure new developers are onboarded on the testing workflow by pair programming while following (and if necessary updating) a wiki page documenting the process and possible gotchas for future reference.
 
 ### fast
 
-the suite should not run for more then 10 minutes. A longer time would create pockets of unproductive time inbetween delivering features.
+the suite should not run for more then 10 minutes. A longer time would create pockets of unproductive time inbetween delivering features, developers might entirely give up running tests.
 
-If your build takes longer then focus on parallelizing your tests or pruning excessive integration tests.
+If your build takes longer focus on parallelizing your tests or pruning excessive integration tests.
 
-## the build is green on CI
+## Ensure the build is green on CI
 
-Once the build is green on your workstation ensure it's green in a shared environment accessible by all the team: your continuous integration (CI) server.
+Once the build is green on your workstation ensure it's green in a shared environment accessible by the team: your continuous integration (CI) server.
 . 
 
-If the build fails on CI do not dismiss it as a flaky test yet. **If you run the build and fails again you're likely to have a CI only failing test.**
+If the build fails on CI do not dismiss it as a flaky test yet. **If you run the build again and fails you're likely to have a CI only failing test.**
 
 Surely there are reasons why it worked on your workstation and not on CI. Examining the stack trace and the circumstances might reveal what went wrong.
 
@@ -69,19 +70,19 @@ In my opinion that is a mistake that brings to mind the broken window theory:
 >> Consider a building with a few broken windows. If the windows are not repaired, the tendency is for vandals to break a few more windows. Eventually, they may even break into the building, and if it's unoccupied, perhaps become squatters or light fires inside. [Wikipedia](http://en.wikipedia.org/wiki/Broken_windows_theory)
 
 
-## Ensure you are seeing a flaky test
+## Identify a flaky test
 
 If simply running again a broken build suddenly fixes a previously failing test you got a "flaky test". But do not dismiss it just yet, take a few moments to examine the fail stack trace and the circumstances to get a glimpse of what went wrong.
 
-An example of this might be two CI builds using the same database and creating inconsistent states on each other test suite.
+An example of this might be two CI builds pointing to the same database and creating inconsistent states on each other tests.
 
-The solution might not always be quick or easy, so after you've spent the allocated time help the next team member that will face the flaky test by logging it.
+The solution might not always be quick or easy, so after you've spent the allocated time help the next team member that will likely have to face the flaky test by documenting it.
 
-## Log the flaky test
+## Document the flaky test
 
-Rather then asking your colleagues if anybody knows the CI fail you're seeing search it in your archives. I like to create github issues marked `flaky-test`
+Rather then asking your colleagues if they know the CI error you're seeing search it in your archives. I like to create github issues marked `flaky-test`
 
-If the failing test is in your archives add a comment with the build number it was spotted on
+If the failing test is already in your archives add a comment with the build number it was spotted on
 
 ![Comment the flaky test pointing to the CI failed build URL]({{ site.url }}assets{{ page.url }}add_comment_on_existing_flaky_test.png)
 
@@ -93,7 +94,7 @@ If you can't find one create a new issue, file one failing test per github issue
 I like the title to be: `ERRORING_FILE_NAME_AND_LINE || APPLICATION EXCEPTION` for example: `spec/features/preview/article_mobile_spec.rb:24 || Capybara::Poltergeist::TimeoutError` and mark the issue with the tag `flaky-test`.
 
 
->> We now have the information to focus resolution efforts on frequently occurring issues, perhaps pinpoint some fails to a 3rd party system having issues during at that time
+>> We now have the information to focus resolution efforts on frequently occurring issues, perhaps pinpoint some fails to a 3rd party system having issues at that time
 
 After confirming a flaky test add that information in jenkins with the "edit build information". A title "flaky test" and description the github issue that tracks the flaky test.
 
@@ -104,7 +105,7 @@ If you commit a possible fix, referencing the `flaky-test` issue in the commit m
 
 ![It's good to see attempts to fix flaky tests!]({{ site.url }}assets{{ page.url }}attempt_to_fix.png)
 
-## Running a local virtual machine
+## Develop in a virtual machine
 
 Running your development in a virtual machine matching the CI server (and your deploy server) libraries configuration helps revealing errors during TDD rather then waiting until the CI server runs the build.
 
@@ -112,12 +113,12 @@ Using a vagrant virtual box I've seen user interfaces relying heavily on AJAX ca
 
 >> While starting typing a new article a JS heavy UI contacts the backend to persist it in a new document. If your feature doesn't notify the UI about success or fail of that data persistence, your test will continue assuming that call was successful perhaps hitting the publish button for a document that will not be found and cause a "flaky test" fail. The next time the first AJAX call might finish before the second and the test will pass.
 
-I've seen this error formerly a CI flaky test transforming in a consistent fail when run in a vagrant virtual box. This is an example of a poorly built feature unveiled by an integration test. 
+I've seen this error formerly a CI flaky test transforming in a consistent fail when run in a vagrant virtual box. **This is an example of a poorly built feature unveiled by an integration test.** 
 
 ## Conclusion
 
 In my experience inconsistent automated test fail for a reason and dismissing them is an unsustainable policy.
 
-It's important to maintain trust in the automated test process. Knowing that there is a process in place for identifying and tracking flaky tests will help establish and solidify that trust. 
+It's important to maintain trust in the automated test build. Knowing that there is **a process in place for identifying and tracking flaky tests** will help establish or solidify that trust. 
 
 I hope these steps will help shape your CI build from a black box showing green or red lights in to a more controlled process.

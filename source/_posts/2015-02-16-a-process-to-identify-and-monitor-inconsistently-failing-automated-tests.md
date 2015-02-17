@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A process to identify and monitor flaky tests
+title: A process to identify and monitor inconsistently failing automated tests
 comments: true
 tags:
   - work

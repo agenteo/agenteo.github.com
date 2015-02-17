@@ -3,10 +3,6 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:description" content="{{ page.content | strip_html | truncatewords: 50 }}" />
-  {% include posts/filament.html %}
   <body itemscope itemtype="http://schema.org/Article">
     {% include posts/addthis.html %}
     {% include header.html %}

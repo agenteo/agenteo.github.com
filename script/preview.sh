@@ -1,3 +1,3 @@
 #!/bin/sh
 
-jekyll serve
+jekyll serve --draft

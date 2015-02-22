@@ -21,10 +21,10 @@ each has a corresponding configuration file:
 * config/environments/production.rb
 * config/environments/test.rb
 
-The main purpose of those environments is to configure the Ruby on Rails framework.
+The purpose of those environments is to configure the Ruby on Rails framework.
 [Rails guide link](http://guides.rubyonrails.org/configuring.html#rails-environment-settings).
 
-In development mode Rails will reloads all app classes and turn any caching off
+In development mode Rails reloads all app classes and turns off caching
 to allow a faster development cycle. This is how the app runs on a development
 workstation.
 
@@ -42,8 +42,7 @@ What I've often seen are extra Rails environments such as:
 * staging/pre_production -- a server where stakeholders can test stories on an
   environment as similar to production as possible
 
-what I saw and what I am still seeing today is those extra environments are
-a perfect copy of config/environments/production.rb.
+rhat I usually see is those extra environments are a perfect copy of `config/environments/production.rb`.
 
 So I started wondering what's their purpose?
 

@@ -178,6 +178,35 @@ You could try to achieve the same result by passing around instance variables in
 
 I usually leave the class inside the helper module.
 
+## Alternatives
+
+Intention revealing helpers is not a substitute for presenters or decorators; it complements them.
+
+### Presenters
+
+I don't think The hero_image_tag example I gave above would fit well in a presenter. You would still have to pass a current_row from the view to the hero_image_tag and then still render view partials to avoid keeping markup in the presenter class. It will add to the presenter 4 private methods specific to the hero image tag.
+
+Where do you draw the boundary of a presenter? At what point do you stop adding features to it?
+
+I think the presenters are appropriate when extending a model with simple view related properties ie:
+
+{% highlight ruby %}
+# article.rb
+
+def page_title
+"My example website #{title}"
+end
+{% endhighlight %}
+
+If there is no logic there is no intention and you won't need intention revealing helpers :)
+
+Another example where this technique helped clarifying the intent of the code is a link to a dynamic filter page controlled by query string params.
+
+### Cells
+
+[Cells](https://github.com/apotonick/cells) is a solid and interesting library that I follow. I avoid using libraries unless they bring unique benefits; I think intention revealing helpers achieves the same goal with the advantage of not having to learn an external dependency.
+
+If the widget was even more complex, assuming it would make sense to have a base class and variations inherit from it I consider using cells.
 
 ## Conclusion
 

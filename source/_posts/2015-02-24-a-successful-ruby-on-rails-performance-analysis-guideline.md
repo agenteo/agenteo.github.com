@@ -64,15 +64,9 @@ When you have response times as high as 2/3 seconds on thousands of pages cachin
 
 **When you add a significant feature to your backlog also add a before and after load test chore. It's not practical to have somebody else run load tests for you when you will have to work on the fix.**
 
-After the product owner accepts the feature load test it on qa, you should be able to temporarily match that environment with production. If that isn't feasable the tests on qa won't be representative of production but a before and after load test still highlights any performance degradation.
-
-Another option is (after acceptance) to deploy to production and load test it there. You want to carefully increase traffic to exercise your new feature without bringing your site to a halt. In larger environments this might be the only viable way to have meaningful load test results.
-
-If the delivered feature can be toggled, deploy and activate it only on your load tests URLs to verify its performance before making it available to a wider audience.
-
 ### Load test 101
 
-Create a test plan extracting urls from your database, scraping your website ([Scrapy](http://scrapy.org/)), recording your product owner user navigation ([sproxy](http://www.joedog.org/sproxy-home/)) or using current users navigational habits from your logs.
+To create a test plan with a meaningful list of URLs, extract them from your database, scrape your website ([Scrapy](http://scrapy.org/)), record your product owner user navigation ([sproxy](http://www.joedog.org/sproxy-home/)) or use current users navigational habits from your logs.
 
 With your test plan and an estimated load run a load test tool (my favourite is currently [vegeta](https://github.com/tsenart/vegeta)) from EC2 or a load test service (I've heard good things of [BlazeMeter](http://blazemeter.com/)).
 

@@ -9,8 +9,7 @@ tags:
 
 Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust and because of its unreliability passing tests won't be considered that valuable.
 
-I came up with a workflow to identify and monitor inconsistently failing automated tests to
-increase trust in your build.
+I came up with a workflow to identify and monitor inconsistently failing automated tests to increase trust in your build.
 
 ## Do not commit broken code
 
@@ -48,7 +47,6 @@ If your build takes longer focus on parallelizing your tests or pruning excessiv
 ## Ensure the build is green on CI
 
 Once the build is green on your workstation ensure it's green in a shared environment accessible by the team: your continuous integration (CI) server.
-. 
 
 If the build fails on CI do not dismiss it as a flaky test yet. **If you run the build again and fails you're likely to have a CI only failing test.**
 

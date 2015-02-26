@@ -340,3 +340,16 @@ jasmine server started.
 real    3m35.405s
 user    1m36.912s
 sys     0m9.407s
+
+
+
+
+
+
+all on VM
+
+
+
+real    7m22.225s
+user    2m5.656s
+sys     0m38.494s

@@ -6,7 +6,7 @@ permalink: /reading/
 
 ## My work readings
 
-A chronological list:
+This is a chronological list of the work related books I've read. They are about management, agile methodologies, Ruby, Javascript, Go and other topics that I am interested in.
 
 ### 2015
 * [On Writing Well](http://www.amazon.com/Writing-Well-30th-Anniversary-Nonfiction/dp/0060891548/ref=sr_1_1?ie=UTF8&qid=1425045531&sr=8-1&keywords=on+writing+well)

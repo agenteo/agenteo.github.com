@@ -7,9 +7,9 @@ tags:
   - testing
 ---
 
-Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust and because of its unreliability passing tests won't be considered that valuable.
+Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust in the entire automated test approach.
 
-I came up with a workflow to identify and monitor inconsistently failing automated tests to increase trust in your build.
+I came up with a workflow to help identify and monitor inconsistently failing automated tests to increase trust in your build and your process.
 
 ## Do not commit broken code
 
@@ -120,3 +120,5 @@ In my experience inconsistent automated test fail for a reason and dismissing th
 It's important to maintain trust in the automated test build. Knowing that there is **a process in place for identifying and tracking flaky tests** will help establish or solidify that trust. 
 
 I hope these steps will help shape your CI build from a black box showing green or red lights in to a more controlled process.
+
+You can download the workflow <a href="https://gist.github.com/agenteo/504dc05d9a6294f5c9ef" target="_blank">barebone Github Gist</a>.

@@ -353,3 +353,143 @@ all on VM
 real    7m22.225s
 user    2m5.656s
 sys     0m38.494s
+
+
+
+
+
+visit index page:
+
+```
+
+
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /content HTTP/1.1" 200 61339 5.0396
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/vendor/owl.carousel.css?body=1 HTTP/1.1" 200 4615 0.0732
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/vendor/owl.theme.default.css?body=1 HTTP/1.1" 200 1395 0.0577
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/_carousel.css?body=1 HTTP/1.1" 200 8117 0.0564
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/_variables.css?body=1 HTTP/1.1" 200 - 0.0575
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/_whats-new.css?body=1 HTTP/1.1" 200 225 0.0544
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /public_ui/application.css?body=1 HTTP/1.1" 200 652 0.0694
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /shared_ui/_variables.css?body=1 HTTP/1.1" 200 - 0.0605
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /shared_ui/content_piece.css?body=1 HTTP/1.1" 200 16643 0.0579
+19:13:58 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:58] "GET /shared_ui/list_pieces.css?body=1 HTTP/1.1" 200 6587 0.0578
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /shared_ui/pattern_library_amends.css?body=1 HTTP/1.1" 200 1793 0.0570
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /shared_ui/question_and_answer.css?body=1 HTTP/1.1" 200 1205 0.0596
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /shared_ui/application.css?body=1 HTTP/1.1" 200 650 0.0824
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/vendor/owl.carousel.js?body=1 HTTP/1.1" 200 79153 0.0589
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics.js?body=1 HTTP/1.1" 200 3623 0.0630
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/anchor-external.js?body=1 HTTP/1.1" 200 694 0.0679
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/anchor-internal.js?body=1 HTTP/1.1" 200 656 0.0555
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/breadcrumb.js?body=1 HTTP/1.1" 200 879 0.0614
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/carousel-item.js?body=1 HTTP/1.1" 200 918 0.0543
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/content-filter-list.js?body=1 HTTP/1.1" 200 952 0.0557
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/more-must-read.js?body=1 HTTP/1.1" 200 976 0.0543
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/next-up.js?body=1 HTTP/1.1" 200 944 0.0561
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/pagination.js?body=1 HTTP/1.1" 200 1771 0.0602
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/photo-card.js?body=1 HTTP/1.1" 200 2116 0.0513
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/term-tag.js?body=1 HTTP/1.1" 200 825 0.0534
+19:13:59 web.1  | 10.0.2.2 - - [27/Feb/2015 19:13:59] "GET /public_ui/analytics/clicks/view-more-content-button.js?body=1 HTTP/1.1" 200 867 0.0556
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/analytics/views/carousel-item.js?body=1 HTTP/1.1" 200 1204 0.0513
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/analytics/views/more-must-read.js?body=1 HTTP/1.1" 200 1221 0.0538
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/analytics/views/next-up.js?body=1 HTTP/1.1" 200 1161 0.0523
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/analytics/views/photo-card.js?body=1 HTTP/1.1" 200 1763 0.0668
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/analytics/views/slideshow-slide.js?body=1 HTTP/1.1" 200 1087 0.0505
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/base.js?body=1 HTTP/1.1" 200 2074 0.0611
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/carousel.js?body=1 HTTP/1.1" 200 1971 0.0509
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/xo.ad_renderer.js?body=1 HTTP/1.1" 200 3309 0.0534
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /public_ui/application.js?body=1 HTTP/1.1" 200 4 0.1317
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /jquery_ujs.js?body=1 HTTP/1.1" 200 17510 0.0619
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/vendor/jquery.succinct.js?body=1 HTTP/1.1" 200 982 0.0555
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/lazy-load-images.js?body=1 HTTP/1.1" 200 575 0.0568
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/dynamic_ad.js?body=1 HTTP/1.1" 200 790 0.0568
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/nav_term_renderer.js?body=1 HTTP/1.1" 200 1412 0.0577
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/vendor/jquery.scroll-monitor-1.0.8.js?body=1 HTTP/1.1" 200 10075 0.0637
+19:14:00 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:00] "GET /shared_ui/vendor/scroll-monitor-1.0.8.js?body=1 HTTP/1.1" 200 10075 0.0559
+19:14:01 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:01] "GET /shared_ui/application.js?body=1 HTTP/1.1" 200 587 0.0816
+
+
+
+
+19:14:11 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:11] "GET /content HTTP/1.1" 200 61339 1.5285
+19:14:11 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:11] "GET /public_ui/vendor/owl.carousel.css?body=1 HTTP/1.1" 304 - 0.0594
+19:14:11 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:11] "GET /public_ui/vendor/owl.theme.default.css?body=1 HTTP/1.1" 304 - 0.0484
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/_carousel.css?body=1 HTTP/1.1" 304 - 0.0539
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/_variables.css?body=1 HTTP/1.1" 304 - 0.0453
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/_whats-new.css?body=1 HTTP/1.1" 304 - 0.0525
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/application.css?body=1 HTTP/1.1" 304 - 0.0493
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/_variables.css?body=1 HTTP/1.1" 304 - 0.0492
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/content_piece.css?body=1 HTTP/1.1" 304 - 0.0471
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/list_pieces.css?body=1 HTTP/1.1" 304 - 0.0538
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/pattern_library_amends.css?body=1 HTTP/1.1" 304 - 0.0494
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/question_and_answer.css?body=1 HTTP/1.1" 304 - 0.0506
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /shared_ui/application.css?body=1 HTTP/1.1" 304 - 0.0472
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/vendor/owl.carousel.js?body=1 HTTP/1.1" 304 - 0.0509
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics.js?body=1 HTTP/1.1" 304 - 0.0496
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/anchor-external.js?body=1 HTTP/1.1" 304 - 0.0547
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/anchor-internal.js?body=1 HTTP/1.1" 304 - 0.0491
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/breadcrumb.js?body=1 HTTP/1.1" 304 - 0.0492
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/carousel-item.js?body=1 HTTP/1.1" 304 - 0.0479
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/content-filter-list.js?body=1 HTTP/1.1" 304 - 0.0470
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/more-must-read.js?body=1 HTTP/1.1" 304 - 0.0487
+19:14:12 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:12] "GET /public_ui/analytics/clicks/next-up.js?body=1 HTTP/1.1" 304 - 0.0587
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/clicks/pagination.js?body=1 HTTP/1.1" 304 - 0.0516
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/clicks/photo-card.js?body=1 HTTP/1.1" 304 - 0.0482
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/clicks/term-tag.js?body=1 HTTP/1.1" 304 - 0.0464
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/clicks/view-more-content-button.js?body=1 HTTP/1.1" 304 - 0.0500
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/views/carousel-item.js?body=1 HTTP/1.1" 304 - 0.0479
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/views/more-must-read.js?body=1 HTTP/1.1" 304 - 0.0513
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/views/next-up.js?body=1 HTTP/1.1" 304 - 0.0686
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/views/photo-card.js?body=1 HTTP/1.1" 304 - 0.0512
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/analytics/views/slideshow-slide.js?body=1 HTTP/1.1" 304 - 0.0466
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/base.js?body=1 HTTP/1.1" 304 - 0.0477
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/carousel.js?body=1 HTTP/1.1" 304 - 0.0535
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/xo.ad_renderer.js?body=1 HTTP/1.1" 304 - 0.0489
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /public_ui/application.js?body=1 HTTP/1.1" 304 - 0.0515
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /jquery_ujs.js?body=1 HTTP/1.1" 304 - 0.0458
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /shared_ui/vendor/jquery.succinct.js?body=1 HTTP/1.1" 304 - 0.0472
+[[19:14:13]] web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /shared_ui/lazy-load-images.js?body=1 HTTP/1.1" 304 - 0.0869
+19:14:13 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:13] "GET /shared_ui/dynamic_ad.js?body=1 HTTP/1.1" 304 - 0.0631
+19:14:14 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:14] "GET /shared_ui/nav_term_renderer.js?body=1 HTTP/1.1" 304 - 0.2924
+19:14:14 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:14] "GET /shared_ui/vendor/jquery.scroll-monitor-1.0.8.js?body=1 HTTP/1.1" 304 - 0.0448
+19:14:14 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:14] "GET /shared_ui/vendor/scroll-monitor-1.0.8.js?body=1 HTTP/1.1" 304 - 0.0419
+19:14:14 web.1  | 10.0.2.2 - - [27/Feb/2015 19:14:14] "GET /shared_ui/application.js?body=1 HTTP/1.1" 304 - 0.0560
+
+
+
+eteotti:~ |$ wrk -d120s http://localhost:9191/content
+Running 2m test @ http://localhost:9191/content
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.33s     2.19s   15.59s    94.00%
+    Req/Sec     0.02      0.14     1.00     98.00%
+  82 requests in 2.00m, 4.83MB read
+  Socket errors: connect 0, read 0, write 0, timeout 518
+Requests/sec:      0.68
+Transfer/sec:     41.14KB
+eteotti:~ |$
+
+
+
+
+no NFS, 22.33s
+
+
+eteotti:~ |$ wrk -d120s http://localhost:9191/content
+Running 2m test @ http://localhost:9191/content
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    32.22s     8.89s   37.24s    85.71%
+    Req/Sec     0.00      0.00     0.00    100.00%
+  32 requests in 2.00m, 1.88MB read
+  Socket errors: connect 0, read 0, write 0, timeout 568
+Requests/sec:      0.27
+Transfer/sec:     16.05KB
+o
+
+NFS 7s, 5s
+
+
+
+real    5m53.687s
+user    2m6.300s
+sys     0m19.713s

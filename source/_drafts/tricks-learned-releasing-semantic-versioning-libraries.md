@@ -1,12 +1,42 @@
 
 Create objects wrapping your data structures
 
+{% highlight %}
+def term(id)
+  get("/term/#{id}.json")
+end
 
-A library directly returning API JSON responses to its clients will be unable to provide fallback results when the API is unreachable. If the library has a data structure wrapping the API response, it can istanciate genuine objects with the API response as well as fallbacks when the API isn't responding. Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to let the library manage the API availability.
+def get(path)
+  response = connection.get(path)
+  JSON.parse(response.body)
+end
+{% endhighlight %}
 
-If you have control of the API and it's written in the same language as the library share the data structure objects -- inevitably
+A library just returning API JSON responses can't provide default results when the API is unreachable - with a data structure wrapping the response it can instantiate objects as well as fallbacks when needed.
 
-If the API endpoint updates its response formats your library will break istantiating objects in an outdated data structure. This is good, release a [semantic version](http://semver.org/) major library change to inform your clients a backward incompatible change was introduced.
+{% highlight %}
+def term(id)
+  response = connection.get(path)
+  LibraryNamespace::Term.new( JSON.parse(response.body) )
+end
+{% endhighlight %}
+
+Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to manage API availability in the library.
+
+{% highlight %}
+def term(id)
+  if circuit_breaker.open?
+    LibraryNamespace::FallbackTerm.new
+  else
+    response = circuit_breaker.response
+    LibraryNamespace::Term.new( JSON.parse(response.body) )
+  end
+end
+{% endhighlight %}
+
+The `LibraryNamespace::FallbackTerm` will be populated with the same fields as `LibraryNamespace::Term` - this allows your clients to consume a timed out response in the same way a regular response. The fallback class can have a `fallback` method set to true and when the response is an array it will gracefully fallback to a an empty array.
+
+If the API endpoint updates its response formats your library will break when istantiating objects in an outdated data structure. This is good, release a [semantic version](http://semver.org/) major library change to inform your clients a backward incompatible change was introduced.
 
 The API should have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.
 

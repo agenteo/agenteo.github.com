@@ -8,7 +8,7 @@ tags:
   - automation
 ---
 
-Ruby on Rails has a list of default tasks helping speeding up development. Some examples are:
+Ruby on Rails speeds up development with a series of default generators and tasks. Some examples are:
 
 {% highlight bash %}
 rake db:setup

@@ -10,18 +10,16 @@ Using `mongo` command line client has a portability advantage that no GUI has --
 
 ![]({{ site.url }}assets/article_images/{{ page.url }}no-syntax-highlighting.png)
 
-Open *iTerm -> Preferences* and click on Text tab and **uncheck** the `Draw bold text in bold font` and `Draw bold text in bright colors`:
+To make sure it's working open *iTerm -> Preferences* and click on Text tab and **uncheck** the `Draw bold text in bold font` and `Draw bold text in bright colors`:
 
 ![iTerm settings]({{ site.url }}assets/article_images/{{ page.url }}i-term-settings.png)
 
-and your `mongo` console will now have the highlighter:
+your `mongo` console will now highlight matching parentheses and curly bracket:
 
-![when your hovering parentheses or curly bracket it will highlight its match]({{ site.url }}assets/article_images{{ page.url }}mongo-syntax-highlight.gif)
+![]({{ site.url }}assets/article_images{{ page.url }}mongo-syntax-highlight.gif)
 
-Hovering an extra curly bracket will hint at the upcoming syntax error by highlighting an opening parentheses:
+Hovering an extra **curly bracket** will hint at the upcoming syntax error by highlighting an **opening parentheses**:
 
 ![]({{ site.url }}assets/article_images{{ page.url }}mongo-syntax-highlight-extra-curly-bracket.gif)
 
-This is not a complete syntax highlighter but helps composing long queries.
-
-If you are looking for highlighting on query results try [mongo-hacker](https://github.com/TylerBrock/mongo-hacker) and if want to use a GUI [Robomongo](http://robomongo.org/).
+This is not a full syntax highlighter but helps navigating long queries.

@@ -1,29 +1,26 @@
 
-Create objects wrapping your data structures
+
+If you want to facilitate a server API usage create a library wrapping it.
 
 {% highlight ruby %}
 def term(id)
-  get("/term/#{id}.json")
-end
-
-def get(path)
-  response = connection.get(path)
+  response = connection.get("/term/#{id}.json")
   JSON.parse(response.body)
 end
 {% endhighlight %}
 
-A library just returning API JSON responses can't provide default results when the API is unreachable - with a data structure wrapping the response it can instantiate objects as well as fallbacks when needed.
+Just forwarding the API JSON responses can't provide default results when the API is unreachable - with a data structure wrapping the response it can instantiate objects as well as fallbacks when needed. Here's how it looks:
 
 {% highlight ruby %}
 def term(id)
-  response = connection.get(path)
+  response = connection.get("/term/#{id}.json")
   LibraryNamespace::Term.new( JSON.parse(response.body) )
 end
 {% endhighlight %}
 
-The `Term` class will fetch entries from the response.
+We istanciate a `Term` class with the response data and will return a `Term` object to our clients rather then an arbitrary JSON hash we don't control.
 
-Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to manage API availability in the library.
+Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to manage API availability and return a fallback object when needed.
 
 {% highlight ruby %}
 def term(id)
@@ -36,18 +33,13 @@ def term(id)
 end
 {% endhighlight %}
 
-The `LibraryNamespace::FallbackTerm` will be populated with the same fields as `LibraryNamespace::Term` - this allows your clients to consume a timed out response in the same way a regular response. The fallback class can have a `fallback` method set to true and when the response is an array it will gracefully fallback to a an empty array.
+The `LibraryNamespace::FallbackTerm` is exposing the same fields as a `LibraryNamespace::Term` so your clients consume a timed out response in the same way of a regular response -- when the response is an array fallback to a an empty array.
 
-If the API endpoint updates its response formats your library will break when istantiating objects in an outdated data structure. This is good, release a [semantic version](http://semver.org/) major library change to inform your clients a backward incompatible change was introduced.
+If the API endpoint updates its response formats your library will break istantiating objects from an outdated data structure. This is good, release a [semantic version](http://semver.org/) major library change to inform your clients a backward incompatible change was introduced. If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.
 
-The API should have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.
-
-The library data structure facilitates the deprecation phase by notifying its clients about major changes beforehand.
-
-For example:
+Here's an example using a data structure to deprecate incoming major API changes. Given the following API response:
 
 {% highlight ruby %}
-client.term(term_id)
 {
     "id"=>"d15cf067-c4b1-4820-a837-59444208cac5",
     "name"=>"BBQ",
@@ -91,9 +83,7 @@ client.term(term_id)
   }
 {% endhighlight %}
 
-is using `taxonomy_slug` in its `broader_terms` and you decide to be consistent and rename it to `seo_slug`.
-
-This would be a breaking change to your client that might be currently using `taxonomy_slug`. With a data structure you can:
+using both `taxonomy_slug` and `seo_slug` in its `broader_terms` and `taxonomy_slug` will be renamed to `seo_slug`. This would introduce a breaking change to your client using `taxonomy_slug` - here's how a data structure helps:
 
 {% highlight ruby %}
 # term.rb
@@ -107,6 +97,4 @@ def seo_slug
 end
 {% endhighlight %}
 
-The new field is not in the current version of the API but you can start providing it.
-
-Keep track of deprecations in your changelog for your clients.
+this change would go out in a minor version -- the major release after that will actually remove the `taxonomy_slug` method.

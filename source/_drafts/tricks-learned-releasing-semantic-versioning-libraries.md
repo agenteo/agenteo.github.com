@@ -1,7 +1,7 @@
 
 Create objects wrapping your data structures
 
-{% highlight %}
+{% highlight ruby %}
 def term(id)
   get("/term/#{id}.json")
 end
@@ -14,16 +14,18 @@ end
 
 A library just returning API JSON responses can't provide default results when the API is unreachable - with a data structure wrapping the response it can instantiate objects as well as fallbacks when needed.
 
-{% highlight %}
+{% highlight ruby %}
 def term(id)
   response = connection.get(path)
   LibraryNamespace::Term.new( JSON.parse(response.body) )
 end
 {% endhighlight %}
 
+The `Term` class will fetch entries from the response.
+
 Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to manage API availability in the library.
 
-{% highlight %}
+{% highlight ruby %}
 def term(id)
   if circuit_breaker.open?
     LibraryNamespace::FallbackTerm.new

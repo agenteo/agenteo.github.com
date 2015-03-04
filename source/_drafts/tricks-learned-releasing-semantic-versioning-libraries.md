@@ -97,4 +97,12 @@ def seo_slug
 end
 {% endhighlight %}
 
-this change would go out in a minor version -- the major release after that will actually remove the `taxonomy_slug` method.
+this change would go out in a minor version -- the major release after that will remove the `taxonomy_slug` method.
+
+When you are providing shared libraries you need an architecture that facilitate deprecation and changes. Providing generic data structures like an Array of arrays or Hash might prevent that. Once you expose a method returning:
+
+{% highlight ruby %}
+{ "published": true, "url": "/best-practices" }
+{% endhighlight %}
+
+and want to switch `url` to `path` your clients have to search and replace.

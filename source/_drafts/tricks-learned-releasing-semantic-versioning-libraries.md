@@ -1,8 +1,16 @@
+---
+layout: post
+title: Best practices releasing semantic versioned (Ruby) libraries
+comments: true
+tags:
+  - mongodb
+---
 
 
-If you want to facilitate a server API usage create a library wrapping it.
+To facilitate a server API usage create a library wrapping it:
 
 {% highlight ruby %}
+# library_facade.rb
 def term(id)
   response = connection.get("/term/#{id}.json")
   JSON.parse(response.body)
@@ -12,6 +20,7 @@ end
 Just forwarding the API JSON responses can't provide default results when the API is unreachable - with a data structure wrapping the response it can instantiate objects as well as fallbacks when needed. Here's how it looks:
 
 {% highlight ruby %}
+# library_facade.rb
 def term(id)
   response = connection.get("/term/#{id}.json")
   LibraryNamespace::Term.new( JSON.parse(response.body) )
@@ -20,9 +29,11 @@ end
 
 We istanciate a `Term` class with the response data and will return a `Term` object to our clients rather then an arbitrary JSON hash we don't control.
 
-Use [circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) to manage API availability and return a fallback object when needed.
+[Circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) is a pattern *"to detect failures and encapsulates logic of preventing a failure to reoccur constantly (during maintenance, temporary external system failure or unexpected system difficulties)"*. Have the library use it to manage API availability and return a fallback object when needed.
+
 
 {% highlight ruby %}
+# library_facade.rb
 def term(id)
   if circuit_breaker.open?
     LibraryNamespace::FallbackTerm.new
@@ -33,12 +44,12 @@ def term(id)
 end
 {% endhighlight %}
 
-The `LibraryNamespace::FallbackTerm` is exposing the same fields as a `LibraryNamespace::Term` so your clients consume a timed out response in the same way of a regular response -- when the response is an array fallback to a an empty array.
+This gracefully handles errors providing your clients objects with the same signature for an error and success response. For example imagine an article with a term id using the API library to retirieve more term information - when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`.
 
-If the API endpoint updates its response formats your library will break istantiating objects from an outdated data structure. This is good, release a [semantic version](http://semver.org/) major library change to inform your clients a backward incompatible change was introduced. If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.
 
-Here's an example using a data structure to deprecate incoming major API changes. Given the following API response:
+If an API endpoint updates its response formats the library will break istantiating objects from an outdated data structure. **This is the responsability of a library wrapping an API instead of its clients breaking or concerning about changes in the API responses**. Release a major [semantic version](http://semver.org/) library change to inform your clients a backward incompatible change was introduced.
 
+If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase. Here's an example using a data structure to deprecate incoming major API changes - take the following API response is using both `taxonomy_slug` and `seo_slug` in `broader_terms` - to be consistent `taxonomy_slug` will be renamed to `seo_slug`. 
 {% highlight ruby %}
 {
     "id"=>"d15cf067-c4b1-4820-a837-59444208cac5",
@@ -83,7 +94,7 @@ Here's an example using a data structure to deprecate incoming major API changes
   }
 {% endhighlight %}
 
-using both `taxonomy_slug` and `seo_slug` in its `broader_terms` and `taxonomy_slug` will be renamed to `seo_slug`. This would introduce a breaking change to your client using `taxonomy_slug` - here's how a data structure helps:
+This would introduce a breaking change to your client using `taxonomy_slug` and a data structure can help defining a method like:
 
 {% highlight ruby %}
 # term.rb
@@ -106,3 +117,5 @@ When you are providing shared libraries you need an architecture that facilitate
 {% endhighlight %}
 
 and want to switch `url` to `path` your clients have to search and replace.
+
+When the response contains an array fallback to a an empty array.

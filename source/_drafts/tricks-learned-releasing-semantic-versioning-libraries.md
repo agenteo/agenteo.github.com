@@ -7,16 +7,17 @@ tags:
 ---
 
 
-When releasing a library you are starting a contract with your clients - they can be collegues in other company divisions, paying subscribers of your product, general public - but you owe them the same treatment. Following semantic versioning in library release is a must to ensure clients know what to expect in the next version but architect resilient and maintainable code is another critical point of maintaining libraries.
+When releasing a library you are starting a contract with your clients - they can be collegues in other divisions, paying subscribers of a product, general public - but you owe them the same attention to detail. Following [semantic versioning](http://semver.org) in library release is a must to ensure clients know what to expect in the next version but architecting resilient and maintainable code is another critical point of maintaining libraries.
 
-Carefully releasing changes to the library interface will break your clients
->> Given a version number MAJOR.MINOR.PATCH, increment the:
->> MAJOR version when you make incompatible API changes,
->> MINOR version when you add functionality in a backwards-compatible manner, and
->> PATCH version when you make backwards-compatible bug fixes.
+{% highlight bash %}
+Given a version number MAJOR.MINOR.PATCH, increment the:
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards-compatible manner, and
+PATCH version when you make backwards-compatible bug fixes.
+{% endhighlight %}
 
 
-To facilitate access to a server API create a library wrapping it:
+To facilitate access to a server API we create a library wrapping it - the clients will not have to worry about the server API because it sign on a contract with our library API. Do not get confused by API (Application Programming Interface) being used in two different context: the server and confuses you
 
 {% highlight ruby %}
 # library_facade.rb

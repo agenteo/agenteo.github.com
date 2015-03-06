@@ -63,7 +63,7 @@ RUNNING_MODE=admin rails s
 
 One of the advantages of this approach is you can run in development mode without that variable and both portions will be mounted.
 
-EDIT: reduce memory footprint creating a bundle group for the running mode to require only what is needed. [Read more here](http://teotti.com/2015-01-27-reduce-memory-footprint-requiring-portions-of-your-component-based-rails-applications).
+EDIT: reduce memory footprint creating a bundle group for the running mode to require only what is needed. [Read more here](http://teotti.com/reduce-memory-footprint-requiring-portions-of-your-component-based-rails-applications).
 
 It will be likely be part of the server provisioning process to setup that ENV variable.
 

@@ -33,7 +33,7 @@ def term(id)
 end
 {% endhighlight %}
 
-The library instantiates a `Term` class with the API response and returns it to the client -- the advantage over the arbitrary JSON hash is we now control what the client receives -- we can add or deprecate fields when the API changes and create a fallback object when it's unreachable.
+The library instantiates a `Term` class with the API response and returns it to the client -- the advantage over the arbitrary JSON hash is we now control what the client receives and we can add or deprecate fields when the API changes as well as create a fallback object when it's unreachable.
 
 [Circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) is a pattern to detect failures and encapsulates retry logic. Have the library use it to manage API availability and return a fallback object when needed.
 
@@ -49,9 +49,7 @@ def term(id)
 end
 {% endhighlight %}
 
-This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. For example imagine an article with a term id using the API library to retrieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`.
-
-The fallback fields could be empty or a default set of values you want to display -- the library has control on what the client receives.
+This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. Imagine an article with a term id using the API library to retrieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`. The fallback fields could be empty or a default set of values you want to display -- the library has control on what the client receives.
 
 ## Handling deprecations
 
@@ -139,4 +137,3 @@ Documenting the process and keeping it updated is another critical step -- link 
 As you deliver features make sure they are documented with code examples -- I use [yard](http://yardoc.org/) to document code and publish the generated files to the project github page.
 
 Informing your clients about the release is very important -- define the best channels to reach your audience and send out a release note pointing to the CHANGELOG for the current version.
-

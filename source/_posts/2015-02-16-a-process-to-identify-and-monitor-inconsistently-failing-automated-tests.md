@@ -74,7 +74,7 @@ If simply running again a broken build suddenly fixes a previously failing test 
 
 An example of this might be two CI builds pointing to the same database and creating inconsistent states on each other tests.
 
-The solution might not always be quick or easy, so after you've spent the allocated time help the next team member that will likely have to face the flaky test by documenting it.
+The solution might not always be quick or easy, so after you've spent the allocated time document the flaky test to help the next team member that will likely have to face it.
 
 ## Document the flaky test
 

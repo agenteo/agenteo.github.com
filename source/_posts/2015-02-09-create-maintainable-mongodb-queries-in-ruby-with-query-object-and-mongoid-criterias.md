@@ -8,6 +8,7 @@ tags:
   - mongodb
 ---
 
+![]({{ site.url }}assets/article_images/{{ page.url }}hero.jpg)
 Mongoid is an excellent Ruby ORM for mongodb. Building a mongodb query is pretty simple:
 
 {% highlight ruby %}
@@ -399,4 +400,4 @@ Failing to see that growth and continuing to extend a transaction script will le
 
 You can add sorting capabilities with a `ContentSorter` class that given the `ContentFilter` applies the necessary sorting logic.
 
-As always feel free to leave a comment or ask questions here or twitter @agenteo.
+![]({{ site.url }}assets/article_images/{{ page.url }}conclusion.jpg)

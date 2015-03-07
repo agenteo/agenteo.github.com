@@ -5,6 +5,7 @@ comments: true
 tags:
   - work
   - testing
+  - process
 ---
 
 Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust in the entire automated test approach.

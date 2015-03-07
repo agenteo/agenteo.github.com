@@ -6,6 +6,7 @@ tags:
   - ruby
   - ruby-on-rails
   - performance-analysis
+  - process
 ---
 
 In this post I describe a basic guideline I follow to raise awareness of feature performance degradation in a Ruby on Rails web application; the fundamentals apply to other programming language and frameworks.

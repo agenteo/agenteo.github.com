@@ -16,7 +16,7 @@ Find out more about my [professional background](https://www.linkedin.com/in/age
 
 ## Experience
 
-I have 14 years of experience building software in Europe, Australia and the United States in the following domains: call center applications, government event sites, online shops, brand sites with social components, memory video games, content management systems.
+I have 14 years of experience building commercial software in Europe, Australia and the United States in the following domains: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems. For the last 10 years I've been working with Ruby and Rails.
 
 I keep my skills updated by checking major blog articles and [reading books](/reading) about programming languages, code standards, management, agile methodologies.
 

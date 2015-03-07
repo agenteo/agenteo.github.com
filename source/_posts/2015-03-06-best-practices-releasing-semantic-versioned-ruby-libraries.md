@@ -3,7 +3,8 @@ layout: post
 title: Best practices releasing semantic versioned (Ruby) libraries
 comments: true
 tags:
-  - mongodb
+  - ruby
+  - process
 ---
 
 
@@ -11,7 +12,7 @@ When releasing a library you are defining a contract with your clients -- they c
 
 After building libraries for multiple teams and consuming libraries from others I came up with a list of best practices to handle errors, deprecations and releasing.
 
-Let's say to facilitate access to a server API we create a library wrapping it -- the clients consume the library API and forget about the server API.
+Let's say to facilitate access to a server API we create a library wrapping its endpoints, for example:
 
 {% highlight ruby %}
 # library_facade.rb
@@ -49,7 +50,7 @@ def term(id)
 end
 {% endhighlight %}
 
-This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. Imagine an article with a term id using the API library to retrieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`. The fallback fields could be empty or a default set of values you want to display -- the library has control on what the client receives.
+This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. Imagine an article with a term id using the API library to retrieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`. The fallback fields could be empty or a default set of values to display -- the library has control on what the client receives.
 
 ## Handling deprecations
 
@@ -107,7 +108,7 @@ switching from `url` to `path` can't be deprecated effectively and your clients 
 
 ## Release process
 
-The release process should be as automated as possible to prevent human error -- you don't want to publish a library with the wrong version or missing the tag or without pushing to your centralized version control. **A ruby gem has a default build task, build a release task on top of it to simplify the release work**:
+The release process should be as automated as possible to prevent human error -- you don't want to publish a library with the wrong version or forgetting to create and push the tag to your centralized version control. **A ruby gem has a default build task, create a release task on top of it to simplify the release work**:
 
 {% highlight ruby %}
 namespace :your_company_namespace do
@@ -122,7 +123,7 @@ namespace :your_company_namespace do
 end
 {% endhighlight %}
 
-**Never delete a published library version thinking nobody used it yet**, as soon as you release assume somebody is using it! Be mindful and release a patch version.
+**Never delete a published library version thinking nobody used it yet**, as soon as you release assume somebody is using it! If you need to make changes be mindful and release a new version.
 
 
 Documenting the process and keeping it updated is another critical step -- link the process steps from the project README. Here's a release steps example:

@@ -7,6 +7,7 @@ tags:
   - ruby
   - component-based-rails-architecture
   - git
+  - process
 redirect_from:
   - /work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development/
   - /work/ruby/engines/git/2014/08/05/git-precommit-hooks-helping-local-ruby-gems-development.html/

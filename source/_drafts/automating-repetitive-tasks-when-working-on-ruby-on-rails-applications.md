@@ -6,6 +6,7 @@ tags:
   - ruby
   - ruby-on-rails
   - automation
+published: false
 ---
 
 Ruby on Rails speeds up development with a series of default generators and tasks. Some examples are:

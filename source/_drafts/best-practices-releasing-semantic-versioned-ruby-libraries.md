@@ -11,7 +11,7 @@ When releasing a library you are defining a contract with your clients -- they c
 
 After building libraries for multiple teams and consuming libraries from others I came up with a list of best practices to handle errors, deprecations and releasing.
 
-Let's say to facilitate access to a server API we create a library wrapping it -- the clients will consume the library API and forget about the server API.
+Let's say to facilitate access to a server API we create a library wrapping it -- the clients consume the library API and forget about the server API.
 
 {% highlight ruby %}
 # library_facade.rb
@@ -23,7 +23,7 @@ end
 
 ## Gracefully handling errors
 
-Just forwarding the API JSON responses can't provide default results when the API is unreachable -- using a data structure wrapping the response allows to instantiate objects or fallbacks when needed. Here's how it looks:
+Parsing and returning a raw API response can't provide default results when the API is unreachable -- using a data structure wrapping the response allows to instantiate objects or fallbacks when needed. Here's how it looks:
 
 {% highlight ruby %}
 # library_facade.rb
@@ -33,7 +33,7 @@ def term(id)
 end
 {% endhighlight %}
 
-The library method istanciates a `Term` class given the response data from the API and it returns a `Term` object to the client -- the advantage over the the arbitrary JSON hash is we now control what the client receives. We will be able to easily add or deprecate a field as well as create a fallback object when the API is unreachable.
+The library instantiates a `Term` class with the API response and returns it to the client -- the advantage over the arbitrary JSON hash is we now control what the client receives and we can add or deprecate fields when the API changes as well as create a fallback object when it's unreachable.
 
 [Circuit breaker](http://martinfowler.com/bliki/CircuitBreaker.html) is a pattern to detect failures and encapsulates retry logic. Have the library use it to manage API availability and return a fallback object when needed.
 
@@ -49,21 +49,31 @@ def term(id)
 end
 {% endhighlight %}
 
-This gracefully handles errors by providing your clients with objects with the same signature for an error and a success response. For example imagine an article with a term id using the API library to retirieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`.
-
-The fallback fields could be empty or a default set of values you want to display -- the library has control on what the client receives.
+This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. Imagine an article with a term id using the API library to retrieve more term information -- when the library returns a `FallbackTerm` the article page can hide the term information or just display its fallback fields knowing they are the same as `Term`. The fallback fields could be empty or a default set of values you want to display -- the library has control on what the client receives.
 
 ## Handling deprecations
 
-When an API endpoint updates its response formats the library istantiating objects from an outdated data structure will break. **This is the responsability of a library wrapping an API**, being in the middle and catching errors instead of the clients breaking or concerning about changes in the API responses. Release a major [version](http://semver.org/) to inform your clients a backward incompatible change was introduced.
+When an API updates its response formats the library will break instantiating objects from an outdated data structure. This is good, **this is the role of a library wrapping an API** -- catching errors instead of its clients and concerning about the server API internals. The next step is to release a major [version](http://semver.org/) to inform your clients of the backward incompatible change.
 
-If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase. Here's an example using a data structure to deprecate incoming major API changes -- the following API response use `seo_slug_plural` to be renamed to `seo_slug`. 
+If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.
+
+Here's an example of the library deprecating an incoming major API change renaming `seo_slug_plural` to `seo_slug`:
 
 {% highlight ruby %}
+# version 0.15
 {
     "id"=>"d15cf067-c4b1-4820-a837-59444208cac5",
     "name"=>"BBQ",
     "seo_slug_plural"=>"bbq-foods",
+    "description"=>"(cuisine)\r\nMeat that is smoked, grilled, cooked \"low and slow.\" BBQ styles change regionally and are cause for great debate.",
+    "created_at"=>"2014-06-20T20:31:25.466Z",
+    "updated_at"=>"2014-08-04T20:00:53.191Z"
+}
+# version 1.0
+{
+    "id"=>"d15cf067-c4b1-4820-a837-59444208cac5",
+    "name"=>"BBQ",
+    "seo_slug"=>"bbq-foods",
     "description"=>"(cuisine)\r\nMeat that is smoked, grilled, cooked \"low and slow.\" BBQ styles change regionally and are cause for great debate.",
     "created_at"=>"2014-06-20T20:31:25.466Z",
     "updated_at"=>"2014-08-04T20:00:53.191Z"
@@ -86,7 +96,7 @@ end
 
 this change would go out in a minor version -- the major release after that will remove the `seo_slug_plural` method.
 
-When you are providing shared libraries you need an architecture that facilitate deprecation and changes -- providing generic data structures like an Array or Hash prevents that. Once the library expose a method returning:
+When you release libraries you need an architecture that facilitate deprecation and changes -- returning base classes like an Array or Hash prevents that. Once the library has a method returning:
 
 {% highlight ruby %}
 { "published": true, "url": "/best-practices" }
@@ -127,4 +137,3 @@ Documenting the process and keeping it updated is another critical step -- link 
 As you deliver features make sure they are documented with code examples -- I use [yard](http://yardoc.org/) to document code and publish the generated files to the project github page.
 
 Informing your clients about the release is very important -- define the best channels to reach your audience and send out a release note pointing to the CHANGELOG for the current version.
-

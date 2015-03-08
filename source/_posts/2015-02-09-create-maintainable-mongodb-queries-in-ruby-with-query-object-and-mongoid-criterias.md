@@ -6,9 +6,9 @@ tags:
   - work
   - ruby
   - mongodb
+image: /assets/article_images/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/hero2.jpg
 ---
 
-![]({{ site.url }}assets/article_images/{{ page.url }}hero.jpg)
 Mongoid is an excellent Ruby ORM for mongodb. Building a mongodb query is pretty simple:
 
 {% highlight ruby %}
@@ -399,5 +399,3 @@ I find this approach useful to organize complex query code and to steadily expan
 Failing to see that growth and continuing to extend a transaction script will lead to your domain model complexity be tangled in code making it hard to maintain.
 
 You can add sorting capabilities with a `ContentSorter` class that given the `ContentFilter` applies the necessary sorting logic.
-
-![]({{ site.url }}assets/article_images/{{ page.url }}conclusion.jpg)

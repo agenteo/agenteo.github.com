@@ -7,7 +7,10 @@ tags:
   - ruby-on-rails
   - performance-analysis
   - process
+image: /assets/article_images/a-successful-ruby-on-rails-performance-analysis-guideline/quebec_bridge.jpg
+image_credit: 2009 Quebec Bridge seen from North shore of the Saint Lawrence River picture by Martin St-Amant - Wikipedia - CC-BY-SA-3.0
 ---
+
 
 In this post I describe a basic guideline I follow to raise awareness of feature performance degradation in a Ruby on Rails web application; the fundamentals apply to other programming language and frameworks.
 
@@ -96,5 +99,3 @@ Do not overengineer solutions, address the needs you have today keeping your [pr
 * [The Future of Ruby Performance Tooling](http://goruco.com/speakers/2014/aaron-quint/)
 * [The Art of Capacity Planning](http://www.amazon.com/The-Art-Capacity-Planning-Resources/dp/0596518579)
 * [Web Operations: Keeping the Data on Time](http://www.amazon.com/gp/product/1449377440/ref=pd_lpo_sbs_dp_ss_1/191-1462743-7066957?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=lpo-top-stripe-1&pf_rd_r=0Y837KQJG5SV71AW0ZVS&pf_rd_t=201&pf_rd_p=1944687782&pf_rd_i=0596518579)
-
-![2009 Quebec Bridge seen from North shore of the Saint Lawrence River picture by Martin St-Amant - Wikipedia - CC-BY-SA-3.0](http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/125_-_Qu%C3%A9bec_-_Pont_de_Qu%C3%A9bec_de_nuit_-_Septembre_2009.jpg/640px-125_-_Qu%C3%A9bec_-_Pont_de_Qu%C3%A9bec_de_nuit_-_Septembre_2009.jpg)

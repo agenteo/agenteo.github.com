@@ -10,7 +10,7 @@
       <article class="post">
         {% if page.image %}
         <div class="article-image">
-          <div class="post-image-image" style="background-image: url({% if page.image %}{{ page.image }}{% endif %})">
+          <div class="post-image-image" style="background-image: url({% if page.image %}{{ page.image }} {% endif %})" {% if page.image_credit %} data-credit={{ page.image_credit }} {% endif %}>
             Article Image
           </div>
           <div class="post-meta">
@@ -20,7 +20,7 @@
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.author }}</h4>
               on
               <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time>
-              , tagged on {{foreach tags}}<span class="post-tag-{{slug}}">{{if @first}}{{else}}, {{/if}}<a href="/topics/{{slug}}">{{name}}</a></span>{{/foreach}}
+              , tagged on {% for tag in page.tags %} <span class="post-tag-{{tag}}"><a href="/topics/{{tag}}">{{tag}}</a></span>{% endfor %}
             </div>
             <div style="text-align:center">
               <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>

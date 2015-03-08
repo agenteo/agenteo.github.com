@@ -20,7 +20,7 @@
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.author }}</h4>
               on
               <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time>
-              <!-- , tagged on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}} -->
+              , tagged on {{foreach tags}}<span class="post-tag-{{slug}}">{{if @first}}{{else}}, {{/if}}<a href="/topics/{{slug}}">{{name}}</a></span>{{/foreach}}
             </div>
             <div style="text-align:center">
               <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
@@ -36,7 +36,7 @@
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author }}</h4>
               on
               <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
-              <!-- , tagged on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}} -->
+              , tagged on {% for tag in page.tags %} <span class="post-tag-{{tag}}"><a href="/topics/{{tag}}">{{tag}}</a></span>{% endfor %}
             </div>
           </div>
         </div>
@@ -63,23 +63,23 @@
             {% endfor %}
           </section>
         </footer>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <h5 class="index-headline featured"><span>Written by</span></h5>
-            <section class="author">
-              <div class="author-image" style="background-image: url({{site.author_image}})">Blog Logo</div>
-              <h4>{{ site.author }}</h4>
-              <p class="bio">{{author.bio}}</p>
-              <hr>
-              <p class="published">Published <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time></p>
-              <p><a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i class="fa fa-rss"></i> subscribe to the feed</span></a></p>
-            </section>
+        
+        <div class="page-content">
+          {% if page.previous %}
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="{{ page.previous.url }}" itemprop="url">{{ page.previous.title }}</a></h2>
+                </div>
+              </header>
+            </main>
           </div>
-          {{/post}}
-          <div class="isRight">
-            {% include posts/related.html %}
-          </div>
-        </div>
+          {% endif %}
+          <h3>More reads about {% for tag in page.tags %} <a href="/topics/{{tag}}">{{tag}}</a>, {% endfor %} <a href="/topics">other topics</a></h3>
+      </div>
+
         {% include posts/comments.html %}
       </article>
     </main>

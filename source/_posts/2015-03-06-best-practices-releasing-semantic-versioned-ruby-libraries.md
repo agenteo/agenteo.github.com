@@ -8,7 +8,7 @@ tags:
 ---
 
 
-When releasing a library you are defining a contract with your clients -- they could be collegues in other teams, paying subscribers or the general public but if you break the contract you will loose their trust.
+When releasing a library you are defining a contract with your clients -- they could be colleagues in other teams, paying subscribers or the general public but if you break the contract you will loose their trust.
 
 After building libraries for multiple teams and consuming libraries from others I came up with a list of best practices to handle errors, deprecations and releasing.
 

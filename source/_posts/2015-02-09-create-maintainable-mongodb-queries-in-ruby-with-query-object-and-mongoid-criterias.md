@@ -6,7 +6,7 @@ tags:
   - work
   - ruby
   - mongodb
-image: /assets/article_images/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/hero.jpg
+#image: /assets/article_images/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/hero.jpg
 ---
 
 Mongoid is an excellent Ruby ORM for mongodb. Building a mongodb query is pretty simple:

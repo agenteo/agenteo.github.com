@@ -7,7 +7,7 @@ tags:
   - ruby-on-rails
   - performance-analysis
   - process
-image: /assets/article_images/a-successful-ruby-on-rails-performance-analysis-guideline/quebec_bridge.jpg
+#image: /assets/article_images/a-successful-ruby-on-rails-performance-analysis-guideline/quebec_bridge.jpg
 image_credit: 2009 Quebec Bridge seen from North shore of the Saint Lawrence River picture by Martin St-Amant - Wikipedia - CC-BY-SA-3.0
 ---
 

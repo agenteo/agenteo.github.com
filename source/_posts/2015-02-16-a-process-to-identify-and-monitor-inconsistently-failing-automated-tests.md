@@ -6,6 +6,7 @@ tags:
   - work
   - testing
   - process
+#image: /assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg
 ---
 
 Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust in the entire automated test approach.
@@ -83,12 +84,12 @@ Rather then asking your colleagues if they know the CI error you're seeing searc
 
 If the failing test is already in your archives add a comment with the build number it was spotted on
 
-![Comment the flaky test pointing to the CI failed build URL]({{ site.url }}assets{{ page.url }}add_comment_on_existing_flaky_test.png)
+![Comment the flaky test pointing to the CI failed build URL]({{ site.url }}assets/article_images{{ page.url }}add_comment_on_existing_flaky_test.png)
 
 
 If you can't find one create a new issue, file one failing test per github issue:
 
-![Create a new issue for a new flaky test]({{ site.url }}assets{{ page.url }}create_new_flaky_test.png)
+![Create a new issue for a new flaky test]({{ site.url }}assets/article_images{{ page.url }}create_new_flaky_test.png)
 
 I like the title to be: `ERRORING_FILE_NAME_AND_LINE || APPLICATION EXCEPTION` for example: `spec/features/preview/article_mobile_spec.rb:24 || Capybara::Poltergeist::TimeoutError` and mark the issue with the tag `flaky-test`.
 
@@ -98,11 +99,11 @@ I like the title to be: `ERRORING_FILE_NAME_AND_LINE || APPLICATION EXCEPTION` f
 After confirming a flaky test add that information in jenkins with the "edit build information". A title "flaky test" and description the github issue that tracks the flaky test.
 
 
-![looking at the build history quickly shows the flaky tests]({{ site.url }}assets{{ page.url }}ci_build_history.png)
+![looking at the build history quickly shows the flaky tests]({{ site.url }}assets/article_images{{ page.url }}ci_build_history.png)
 
 If you commit a possible fix, referencing the `flaky-test` issue in the commit message will add an entry to the comments informing your teammates of what attempt or progress has been made:
 
-![It's good to see attempts to fix flaky tests!]({{ site.url }}assets{{ page.url }}attempt_to_fix.png)
+![It's good to see attempts to fix flaky tests!]({{ site.url }}assets/article_images{{ page.url }}attempt_to_fix.png)
 
 ## Develop in a virtual machine
 

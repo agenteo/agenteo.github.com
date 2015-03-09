@@ -5,7 +5,7 @@ comments: true
 tags:
   - ruby
   - process
-image: /assets/article_images/best-practices-releasing-semantic-versioned-ruby-libraries/hero.jpg
+#image: /assets/article_images/best-practices-releasing-semantic-versioned-ruby-libraries/hero.jpg
 ---
 
 

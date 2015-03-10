@@ -1,30 +1,51 @@
 ---
+layout: post
+title: Ruby on Rails partials are slowing you down
+comments: true
+tags:
+  - ruby-on-rails
 ---
 
-## With the partial
+I was recently checking performance of an application and noticed response times averaging around 400/500ms before caching -- I like to use partials to break long markup templates in shorter (between 5 and 50 lines) maintainable chunks -- but I wondered how much overhead does that add to the total response time?
 
-First call:
+Justin Weiss did some benchmarking a couple of years ago but I wanted to run a more in-depth analysis on a real application in development and production mode with mongodb connections as well a test application using a simple in memory data model.
 
-```
+Taking out partials from your application to see if there is any significant change in response time is the only benchmark that will be useful to you. Remember there are lots of variables that might taint a real application benchmark: caching, database queries, garbage collection -- you should ensure they are not affecting your test: turn off cache, be mindful of database caching queries but in the end that's now always possible.
+
+That's why to get a better understanding of how partials perform I will run benchmarks on a test application.
+
+## Real application with partials (development mode)
+
+The first call is always significantly slower because of framework startup and database query costs:
+
+{% highlight bash %}
 15:13:48 web.1  | 10.0.2.2 - - [09/Mar/2015 15:13:48] "GET /content/wedding-photo-advice HTTP/1.1" 200 68274 4.8964
-```
+{% endhighlight %}
 
-Second call:
+The second call becomes faster:
 
-```
+{% highlight bash %}
 15:14:12 web.1  | 10.0.2.2 - - [09/Mar/2015 15:14:12] "GET /content/wedding-photo-advice HTTP/1.1" 200 68274 1.6964
-```
+{% endhighlight %}
 
-When restarting the db:
+After restarting mongodb:
 
-```
+{% highlight bash %}
+vagrant@devbox:/app$ sudo service mongod restart
+{% endhighlight %}
+ 
+the hit will be slower but that's something you'd expect:
+ 
+{% highlight bash %}
 15:14:46 web.1  | 10.0.2.2 - - [09/Mar/2015 15:14:46] "GET /content/wedding-photo-advice HTTP/1.1" 200 68274 2.6280
-```
+{% endhighlight %}
 
 
-## Removing a partial
+### Removing a partial
 
-```
+I then removed the partial *_content_piece_card.html.erb* and copied its markup in the outer markup *index.html.erb*
+
+{% highlight diff %}
 --- a/components/public_ui/app/views/public_ui/content_pieces/index.html.erb
 +++ b/components/public_ui/app/views/public_ui/content_pieces/index.html.erb
 @@ -14,7 +14,11 @@
@@ -50,45 +71,39 @@ index bfbe24c..e69de29 100644
 -<% else %>
 -  <%= render partial: 'public_ui/shared/cards/without_image', locals: { content_piece: content_piece, content_type: content_piece_type(content_piece) } %>
 -<% end %>
-```
+{% endhighlight %}
 
 
-First call
+First call:
 
-```
+{% highlight bash %}
 15:08:21 web.1  | 10.0.2.2 - - [09/Mar/2015 15:08:21] "GET /content/wedding-photo-advice HTTP/1.1" 200 68265 4.6813
-```
+{% endhighlight %}
 
-Second call
+Second call:
 
-```
+{% highlight bash %}
 15:08:47 web.1  | 10.0.2.2 - - [09/Mar/2015 15:08:47] "GET /content/wedding-photo-advice HTTP/1.1" 200 68265 1.6679
-```
+{% endhighlight %}
 
-calls after that are stable.
+calls after that are stable. When restarting the database I get:
 
-When restarting the database
-
-```
-vagrant@weddit-devbox:/app/weddit$ sudo service mongod restart
-```
-
-I get:
-
-```
+{% highlight bash %}
 15:09:29 web.1  | 10.0.2.2 - - [09/Mar/2015 15:09:29] "GET /content/wedding-photo-advice HTTP/1.1" 200 68265 2.2997
-```
+{% endhighlight %}
 
 and after that back to:
 
-```
+{% highlight bash %}
 15:10:33 web.1  | 10.0.2.2 - - [09/Mar/2015 15:10:33] "GET /content/wedding-photo-advice HTTP/1.1" 200 68265 1.7394
-```
+{% endhighlight %}
 
 
-## Removing two partials
 
-```
+### Removing two partials
+
+
+{% highlight diff %}
 diff --git a/components/public_ui/app/views/public_ui/content_pieces/index.html.erb b/components/public_ui/app/views/public_ui/content_pieces/index.html.erb
 index f6cff8e..17e6a49 100644
 --- a/components/public_ui/app/views/public_ui/content_pieces/index.html.erb
@@ -141,52 +156,62 @@ index b2888c9..86511cf 100644
 +  <% end %>
    <a class="article-link js-photo-card-link" href="<%= content_piece_path(content_piece.slug) %>"></a>
  </div>
-```
+{% endhighlight %}
+
 
 First call
 
-```
+{% highlight bash %}
 16:06:04 web.1  | 10.0.2.2 - - [09/Mar/2015 16:06:04] "GET /content/wedding-photo-advice HTTP/1.1" 200 65907 8.0120
-```
+{% endhighlight %}
+
 
 Second call
 
-```
+{% highlight bash %}
 16:06:13 web.1  | 10.0.2.2 - - [09/Mar/2015 16:06:13] "GET /content/wedding-photo-advice HTTP/1.1" 200 65907 1.7242
-```
+{% endhighlight %}
+
 
 Third call
 
-```
+
+{% highlight bash %}
 16:09:51 web.1  | 10.0.2.2 - - [09/Mar/2015 16:09:51] "GET /content/wedding-photo-advice HTTP/1.1" 200 65907 2.2233
-```
+{% endhighlight %}
 
 
 ## A test application
 
-I did not involve database to ensure it did not play a role in this benchmark.
+Removing partials in my application didn't bring any benefit, it actually made it slightly slower but that
+
+You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). I did not involve database or caching to ensure they did not play a role in the benchmark.
 
 First call:
 
-```
+
+{% highlight bash %}
 Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:36:46 -0400
 Processing by ArticlesController#index as */*
   Rendered articles/index.html.erb within layouts/application (1.6ms)
 Completed 200 OK in 607ms (Views: 55.8ms)
-```
+{% endhighlight %}
+
 
 Second call:
 
-```
+{% highlight bash %}
 Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:37:20 -0400
 Processing by ArticlesController#index as */*
   Rendered articles/index.html.erb within layouts/application (0.4ms)
 Completed 200 OK in 73ms (Views: 25.8ms)
-```
+{% endhighlight %}
+
 
 Now rendering a partial:
 
-```
+
+{% highlight diff %}
 diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
 new file mode 100644
 index 0000000..fac0108
@@ -211,11 +236,13 @@ index 24938da..f29b38b 100644
 -  </article>
 +  <%= render(partial: 'article', locals: { article: article } ) %>
  <% end %>
-```
+{% endhighlight %}
+
 
 First call:
 
-```
+
+{% highlight bash %}
 Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:33:34 -0400
 Processing by ArticlesController#index as */*
   Rendered articles/_article.html.erb (0.2ms)
@@ -245,10 +272,12 @@ Processing by ArticlesController#index as */*
   Rendered articles/_article.html.erb (0.0ms)
   Rendered articles/index.html.erb within layouts/application (49.2ms)
 Completed 200 OK in 605ms (Views: 99.3ms)
-```
+{% endhighlight %}
 
 
-```
+Second call:
+
+{% highlight bash %}
 Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:34:21 -0400
 Processing by ArticlesController#index as */*
   Rendered articles/_article.html.erb (0.1ms)
@@ -278,7 +307,7 @@ Processing by ArticlesController#index as */*
   Rendered articles/_article.html.erb (0.0ms)
   Rendered articles/index.html.erb within layouts/application (46.9ms)
 Completed 200 OK in 126ms (Views: 73.2ms)
-```
+{% endhighlight %}
 
 
 ## Running in production mode
@@ -287,34 +316,41 @@ Completed 200 OK in 126ms (Views: 73.2ms)
 
 First call
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:45:41.578125 #50837]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:45:42.126382 #50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.7ms)
 I, [2015-03-09T11:45:42.127181 #50837]  INFO -- : Completed 200 OK in 549ms (Views: 4.4ms)
-```
+{% endhighlight %}
+
 
 Second call
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:46:34.747345 #50837]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:46:34.796360 #50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.3ms)
 I, [2015-03-09T11:46:34.797054 #50837]  INFO -- : Completed 200 OK in 50ms (Views: 1.4ms)
-```
+{% endhighlight %}
+
 
 Subsequent calls
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:47:03.984770 #50837]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:47:04.033530 #50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.3ms)
 I, [2015-03-09T11:47:04.033935 #50837]  INFO -- : Completed 200 OK in 49ms (Views: 0.9ms)
-```
+{% endhighlight %}
+
 
 
 ### With partials
 
 First call
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:47:40.174517 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:47:40 -0400
 I, [2015-03-09T11:47:40.176238 #50991]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:47:40.716048 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.3ms)
@@ -344,11 +380,13 @@ I, [2015-03-09T11:47:40.718505 #50991]  INFO -- :   Rendered articles/_article.h
 I, [2015-03-09T11:47:40.718590 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
 I, [2015-03-09T11:47:40.718652 #50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (5.7ms)
 I, [2015-03-09T11:47:40.719538 #50991]  INFO -- : Completed 200 OK in 543ms (Views: 10.3ms)
-```
+{% endhighlight %}
+
 
 Second call
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:48:15.050356 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:48:15 -0400
 I, [2015-03-09T11:48:15.050936 #50991]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:48:15.095831 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
@@ -378,12 +416,14 @@ I, [2015-03-09T11:48:15.098355 #50991]  INFO -- :   Rendered articles/_article.h
 I, [2015-03-09T11:48:15.098442 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
 I, [2015-03-09T11:48:15.098513 #50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (2.8ms)
 I, [2015-03-09T11:48:15.099667 #50991]  INFO -- : Completed 200 OK in 49ms (Views: 4.0ms)
-```
+{% endhighlight %}
+
 
 Subsequent calls:
 
 
-```
+
+{% highlight bash %}
 I, [2015-03-09T11:48:43.744899 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:48:43 -0400
 I, [2015-03-09T11:48:43.745491 #50991]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:48:43.796669 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
@@ -413,13 +453,15 @@ I, [2015-03-09T11:48:43.798673 #50991]  INFO -- :   Rendered articles/_article.h
 I, [2015-03-09T11:48:43.798764 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
 I, [2015-03-09T11:48:43.798815 #50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (2.3ms)
 I, [2015-03-09T11:48:43.799199 #50991]  INFO -- : Completed 200 OK in 54ms (Views: 3.0ms)
-```
+{% endhighlight %}
+
 
 
 ### With three partials
 
 
-```
+
+{% highlight diff %}
 diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
 index fac0108..e0fb7f3 100644
 --- a/app/views/articles/_article.html.erb
@@ -445,13 +487,14 @@ index 0000000..07c61fa
 +++ b/app/views/articles/article/_title.html.erb
 @@ -0,0 +1 @@
 +<h2><%= title %></h2>
-```
+{% endhighlight %}
+
 
 First call:
 
 
-```
 
+{% highlight bash %}
 I, [2015-03-09T11:55:22.452183 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:55:22 -0400
 I, [2015-03-09T11:55:22.453966 #51383]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:55:23.006269 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.3ms)
@@ -531,11 +574,13 @@ I, [2015-03-09T11:55:23.015688 #51383]  INFO -- :   Rendered articles/article/_b
 I, [2015-03-09T11:55:23.015723 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
 I, [2015-03-09T11:55:23.015773 #51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (16.3ms)
 I, [2015-03-09T11:55:23.016680 #51383]  INFO -- : Completed 200 OK in 563ms (Views: 21.2ms)
-```
+{% endhighlight %}
 
 
 
-```
+
+
+{% highlight bash %}
 I, [2015-03-09T11:56:00.645846 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:56:00 -0400
 I, [2015-03-09T11:56:00.646481 #51383]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:56:00.701164 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
@@ -615,13 +660,15 @@ I, [2015-03-09T11:56:00.708221 #51383]  INFO -- :   Rendered articles/article/_b
 I, [2015-03-09T11:56:00.708266 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
 I, [2015-03-09T11:56:00.708330 #51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (7.4ms)
 I, [2015-03-09T11:56:00.708709 #51383]  INFO -- : Completed 200 OK in 62ms (Views: 8.0ms)
-```
+{% endhighlight %}
+
 
 Subsequent calls:
 
-```
 
 
+
+{% highlight bash %}
 I, [2015-03-09T11:57:19.632931 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:57:19 -0400
 I, [2015-03-09T11:57:19.633552 #51383]  INFO -- : Processing by ArticlesController#index as */*
 I, [2015-03-09T11:57:19.689377 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
@@ -701,5 +748,19 @@ I, [2015-03-09T11:57:19.695240 #51383]  INFO -- :   Rendered articles/article/_b
 I, [2015-03-09T11:57:19.695275 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
 I, [2015-03-09T11:57:19.695323 #51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (6.2ms)
 I, [2015-03-09T11:57:19.695694 #51383]  INFO -- : Completed 200 OK in 62ms (Views: 6.8ms)
-```
+{% endhighlight %}
 
+
+When in the past I saw response time randomly fluctuating like:
+
+{% highlight bash %}
+Rendered articles/_article.html.erb (0.2ms)
+Rendered articles/_article.html.erb (0.3ms)
+Rendered articles/_article.html.erb (0.2ms)
+Rendered articles/_article.html.erb (0.4ms)
+Rendered articles/_article.html.erb (0.175ms)
+Rendered articles/_article.html.erb (0.2ms)
+Rendered articles/_article.html.erb (0.3ms)
+{% endhighlight %}
+
+you have a garbage collection problem, partials rendering is just where that shows up.

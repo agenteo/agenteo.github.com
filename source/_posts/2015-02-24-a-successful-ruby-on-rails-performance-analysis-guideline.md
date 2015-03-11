@@ -12,7 +12,7 @@ image_credit: 2009 Quebec Bridge seen from North shore of the Saint Lawrence Riv
 ---
 
 
-In this post I describe a basic guideline I follow to raise awareness of feature performance degradation in a Ruby on Rails web application; the fundamentals apply to other programming language and frameworks.
+In this post I describe a basic guideline I follow to raise awareness of feature performance degradation in a Ruby on Rails web application; the fundamentals apply to other programming language and frameworks: be aware of the expected traffic, responsible feature delivery and load testing.
 
 ## Be aware of the expected traffic
 

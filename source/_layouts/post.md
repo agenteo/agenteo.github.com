@@ -53,14 +53,9 @@
         </section>
         <footer class="post-footer">
           <section class="share">
-            {% for social in site.social %}
-              {% if social.share_url != null %}
-                <a class="icon-{{ social.icon }}" href="{{ social.share_url }}{{ social.share_title }}{{page.title | cgi_escape}}{{ social.share_link }}{{site.url}}{{page.id}}"
-                  onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-                <i class="fa fa-{{ social.icon }}"></i><span class="hidden">{{ social.icon }}</span>
-                </a>
-              {% endif %}
-            {% endfor %}
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
           </section>
         </footer>
         

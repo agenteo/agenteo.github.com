@@ -80,7 +80,7 @@ end
 {% endhighlight %}
 
 
-## When to stop using a transaction script
+# extend our over simplified "toy" problem with an example adapted from an actual project:  When to stop using a transaction script
 
 It's hard to tell when to stop on that approach. In general here's a guide line of symptoms you should pay attention to:
  

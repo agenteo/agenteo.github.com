@@ -8,11 +8,15 @@ tags:
   - component-based-rails-architecture
 ---
 
-Many products fit in the classical Ruby on Rails application development approach: model, view, controller -- they can be very popular and load intensive. As the product gets more features the code will grow and the convention is to use concerns (decorators), presenters, service objects, namespaces. **Component based architecture is complementary to those good practices -- it leverages Ruby gems to surface application boundaries**.
+Many products fit in the classical Ruby on Rails application development approach: model, view, controller -- they can be very popular and load intensive. As the product gets more features the code will grow and the convention is to use concerns (decorators), presenters, service objects, namespaces. **Component based architecture is complementary to those good practices and uses Ruby gems to define application boundaries**.
 
 I want to stress again the conventional MVC might be sufficient if when complexity increases your code remains maintainable and delivers business value. But if after using those good practices you are at a point where it's hard to tell what the application is doing consider the component based approach.
 
-**The component based architecture gives structure to your product while facilitating developer life** -- you have a single codebase divided in components with significant responsibilities. For example an application with an *administration area* and a *public facing* area sharing some *domain logic* are three components -- a task to *migrate legacy* content might initially live in the admin component and as it grows it can be extracted in to a separate component. Those components are required by your main Rails application `Gemfile` for example:
+**The component based architecture gives structure to your product** surfacing the areas with significant responsibilities and shared dependencies. A component is a Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable` you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
+
+
+
+For example an application with an *administration area* and a *public facing* area sharing some *domain logic* are three components -- a task to *migrate legacy* content might initially live in the admin component and as it grows it can be extracted in to a separate component. Those components are required by your main Rails application `Gemfile` for example:
 
 
 {% highlight ruby %}
@@ -34,9 +38,6 @@ Rails.application.routes.draw do
 end
 {% endhighlight %}
 
-## What is a component
-
-**A component is a Ruby on Rails engine or Ruby gem** and you can generate one using `rails plugin new public_ui --mountable` you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html) or if you would like a step by step guide I'd recommend [Stephan Hagemann book](https://leanpub.com/cbra/)
 
 ## Handling application change
 
@@ -58,3 +59,8 @@ Be sure developers understand the meaning of each component -- if someone adds p
 You should not use a component based architecture without test driving each component in isolation.
 
 Many people bash a Ruby on Rails monolithic approach as not scalable but it really depends on what your product is doing.
+
+
+
+
+or if you would like a step by step guide I'd recommend [Stephan Hagemann book](https://leanpub.com/cbra/).

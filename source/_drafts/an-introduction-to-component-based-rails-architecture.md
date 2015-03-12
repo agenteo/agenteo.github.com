@@ -8,15 +8,16 @@ tags:
   - component-based-rails-architecture
 ---
 
-Many products fit in the classical Ruby on Rails application development approach: model, view, controller -- they can be very popular and load intensive. As the product gets more features the code will grow and the convention is to use concerns (decorators), presenters, service objects, namespaces. **Component based architecture is complementary to those good practices and uses Ruby gems to define application boundaries**.
+Many products fit the classical Ruby on Rails application development approach: model, view, controller -- they can be very popular and load intensive. As the product gets more features the code will grow and the convention is to use concerns (decorators), presenters, service objects, namespaces. **Component based architecture is complementary to those good practices and uses Ruby gems to define application boundaries**.
 
-I want to stress again the conventional MVC might be sufficient if when complexity increases your code remains maintainable and delivers business value. But if after using those good practices you are at a point where it's hard to tell what the application is doing consider the component based approach.
+I want to stress again the conventional MVC might be sufficient if when complexity increases your code remains maintainable and delivers business value but if you are at a point where it's hard to tell what the application is doing consider the component based approach.
 
 **The component based architecture gives structure to your product** surfacing the areas with significant responsibilities and shared dependencies. A component is a Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable` you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 
 
+## A concrete example
 
-For example an application with an *administration area* and a *public facing* area sharing some *domain logic* are three components -- a task to *migrate legacy* content might initially live in the admin component and as it grows it can be extracted in to a separate component. Those components are required by your main Rails application `Gemfile` for example:
+An application with an *administration area* and a *public area* sharing *domain logic* have three components -- a task to *migrate legacy* content might initially live in the admin component and as it grows it can be extracted in to a separate component. Those components are required by your main Rails application `Gemfile` for example:
 
 
 {% highlight ruby %}

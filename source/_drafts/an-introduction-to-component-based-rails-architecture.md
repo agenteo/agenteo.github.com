@@ -51,7 +51,7 @@ Solving code maintainability doesn't solve code scalability and a service orient
 
 ## Downsides
 
-Component based is not a good fit for every project but some people entrenched in the classic Rails approach use arguments valid in small code bases or side projects outside their context. If the majority of your team is against it see if they would accept a trial period otherwise do not proceed against their will. The minimum viable product doesn't mean minimum maintainable product.
+Component based is not a good fit for every project but some people entrenched in the classic Rails approach use arguments valid for small code bases or side projects outside their context. If the majority of your team is against it see if they would accept a trial period otherwise do not proceed against their will. The minimum viable product doesn't mean minimum maintainable product.
 
 Be sure developers understand the meaning of each component -- if someone adds public only code to a domain logic component shared by admin and public it's gonna be harder to extract components when needed. Pair switching or pull requests should help with that and having and add a README file in each component explaining its boundaries.
 

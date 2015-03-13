@@ -12,7 +12,7 @@ Many products fit the classical Ruby on Rails application development approach: 
 
 I want to stress again the conventional MVC might be sufficient if when complexity increases your code remains maintainable and delivers business value but if you are at a point where it's hard to tell what the application is doing consider the component based approach.
 
-**The component based architecture gives structure to your product** surfacing the areas with significant responsibilities and shared dependencies. A component is a Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable` you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
+**The component based architecture gives structure to your product while facilitating developer life** -- you have a single codebase divided in components with significant responsibilities. A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable` you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 
 
 ## A concrete example

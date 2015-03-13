@@ -78,6 +78,7 @@ Analyze response times on your logs or with a monitoring tool ([NewRelic](http:/
 
 **Always have a rollback strategy if the feature doesn't perform well or doesn't bring the expected improvements**.
 
+In certain circumstances you can use what Fowler calls a "secondary build" to trigger a load test plan. If you are interested you can read about this at [Continuous Integration and Performance Testing](http://www.drdobbs.com/tools/continuous-integration-and-performance-t/206105978?pgno=1) and [Performance Testing in Continuous Integration Environments](http://techblog.move.com/?p=130).
 
 ### Scaling up
 
@@ -93,9 +94,8 @@ Capacity planning is not the focus of this article, if you are interested I enjo
 
 Do not overengineer solutions, address the needs you have today keeping your [product vision](http://www.jamesshore.com/Agile-Book/vision.html) in mind. Maintainable code can be refactored and optimized, systems can be migrated.
 
-### Interesting links
+### Relevant links
 
+* [The Art of Capacity Planning](http://www.amazon.com/The-Art-Capacity-Planning-Resources/dp/0596518579)
 * [Performance Testing Crash Course: Dustin Whittle](https://www.youtube.com/watch?v=Zap15XHtny4) 
 * [The Future of Ruby Performance Tooling](http://goruco.com/speakers/2014/aaron-quint/)
-* [The Art of Capacity Planning](http://www.amazon.com/The-Art-Capacity-Planning-Resources/dp/0596518579)
-* [Web Operations: Keeping the Data on Time](http://www.amazon.com/gp/product/1449377440/ref=pd_lpo_sbs_dp_ss_1/191-1462743-7066957?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=lpo-top-stripe-1&pf_rd_r=0Y837KQJG5SV71AW0ZVS&pf_rd_t=201&pf_rd_p=1944687782&pf_rd_i=0596518579)

@@ -16,15 +16,19 @@ I think this situation is explained well in this extract:
 >>
 >> Evans, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software 
 
-Component based architecture divides a monolitic codebase in components with meaningful roles to clarify what the application does but look at details within a component without being overwhelmed by the whole.
-
-**Component based architecture gives structure to your product** dividing a monolitic codebase in components with meaningful roles that clarify what the application does at a larger scale as well as allow to look at details within a component without being overwhelmed by the whole.
+Component based architecture doesn't mean you are going full on domain driven design, it means you move meaningful parts of your application in a formal area of your code (the `/components` directory) and set a dependency structure. This clarifies what the whole application does and allows to work on a single component without being overwhelmed by the whole.
 
 A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable`. You can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 
 ## A concrete example
 
-An application with an *administration area* and a *public area* sharing *domain logic* have three components -- a task to *migrate legacy* content might initially live in the admin component but as it grows it can be extracted in a separate component. Those components are required by your main Rails application `Gemfile` for example:
+An application with an *administration area* and a *public area* sharing *domain logic* have three components -- a task to *migrate legacy* content might initially live in the admin component but as it grows it can be extracted in a separate component.
+
+How do you decide to use components instead of `rails_admin` for the administration area and a regular controller index and show for the public and rake task for the legacy migration? After all isn't that what makes Rails good for "agile web development"? Yes and no, and you need to ask yourself how long is this product going to be worked on for? **If this is a 1 month pilot project with 3 developers do not use component architecture!** Leverage Rails's conventions and its best practices to accomodate growth. If this is a product--or as it's fashionable to call it a *minimum viable product*-- with an aproximate release date between 3 to 6 months from now with 3 to 5 developers you are on the border line and depending on your product complexity you might fit the Rails conventional approach. If you time to market is over 6 months you should consider starting with a component structure unless your product is revolutionary simple.
+
+The whole minimum viable product doesn't mean you have to create a minimally maintainable product, if after a few months it's hard to estimate consistently because the code is a mess you are in for a big surprise when you are successful and suddenly need to reanimate a dead body. Uncle Bob touch base on that in his awesome (Architecture the Lost Years)[http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years]. No matter what your CTO says building big balls of mud is not
+
+Those components are required by your main Rails application `Gemfile` for example:
 
 
 {% highlight ruby %}

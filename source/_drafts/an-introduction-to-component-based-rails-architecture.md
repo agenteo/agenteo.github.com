@@ -8,28 +8,22 @@ tags:
   - component-based-rails-architecture
 ---
 
-Many popular and load intensive products fit in the classical Ruby on Rails application development approach: model, view, controller or MVC. As they get more features the code will grow and the conventions to manage it are concerns/decorators, presenters, service objects, namespaces. This might be sufficient if as complexity increase your code stays maintainable and delivers business value but if you are at a point where it's hard to "keep track of what all the little parts are doing" it's time to consider another approach. **Component based architecture is complementary to Rails conventional good practices and uses Ruby gems to define application boundaries**.
+Many popular and load intensive products fit in the classical Ruby on Rails application development approach: model, view, controller or MVC. As they get more features the code will grow and the conventions to manage it are: concerns/decorators, presenters, service objects, namespaces. This might be sufficient if as complexity increase your code stays maintainable and delivers business value but if you are at a point where it's hard to "keep track of what all the little parts are doing" it's time to consider another approach. **Component based architecture is complementary to Rails conventional good practices and uses Ruby gems to define application boundaries and its internal dependency structure**.
 
 I think this situation is explained well in this extract:
+I think this extract explains the scenario well:
 
 >> When software with complex behavior lacks a good design, it becomes hard to refactor or combine elements. Duplication starts to appear as soon as a developer isn’t confident of predicting the full implications of a computation. Duplication is forced when design elements are monolithic, so that the parts cannot be recombined. Classes and methods can be broken down for better reuse, but it gets hard to keep track of what all the little parts do. When software doesn’t have a clean design, developers dread even looking at the existing mess, much less making a change that could aggravate the tangle or break something through an unforeseen dependency. In any but the smallest systems, this fragility places a ceiling on the richness of behavior it is feasible to build. It stops refactoring and iterative refinement.
 >>
 >> Evans, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software 
 
-Component based architecture doesn't mean you are going full on domain driven design, it means you move meaningful parts of your application in a formal area of your code (the `/components` directory) and set a dependency structure. This clarifies what the whole application does and allows to work on a single component without being overwhelmed by the whole.
+Component based architecture doesn't mean you are going full on domain driven design, it means you move meaningful parts of your application in a formal area of your code (the `/components` directory) and set a dependency structure. This clarifies what the whole application does and allows to work on a single component without being overwhelmed by the rest of the application.
 
 A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable`. You can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 
 ## A concrete example
 
-An application with an *administration area* and a *public area* sharing *domain logic* have three components -- a task to *migrate legacy* content might initially live in the admin component but as it grows it can be extracted in a separate component.
-
-How do you decide to use components instead of `rails_admin` for the administration area and a regular controller index and show for the public and rake task for the legacy migration? After all isn't that what makes Rails good for "agile web development"? Yes and no, and you need to ask yourself how long is this product going to be worked on for? **If this is a 1 month pilot project with 3 developers do not use component architecture!** Leverage Rails's conventions and its best practices to accomodate growth. If this is a product--or as it's fashionable to call it a *minimum viable product*-- with an aproximate release date between 3 to 6 months from now with 3 to 5 developers you are on the border line and depending on your product complexity you might fit the Rails conventional approach. If you time to market is over 6 months you should consider starting with a component structure unless your product is revolutionary simple.
-
-The whole minimum viable product doesn't mean you have to create a minimally maintainable product, if after a few months it's hard to estimate consistently because the code is a mess you are in for a big surprise when you are successful and suddenly need to reanimate a dead body. Uncle Bob touch base on that in his awesome (Architecture the Lost Years)[http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years]. No matter what your CTO says building big balls of mud is not
-
 Those components are required by your main Rails application `Gemfile` for example:
-
 
 {% highlight ruby %}
 # Gemfile
@@ -40,7 +34,7 @@ path 'components' do
 end
 {% endhighlight %}
 
-This will look inside the `components` directory in your Rails application for the `public_ui`, `admin_ui`, `legacy_migration` components -- if they provide routes they can be mounted in your Rails application route file:
+This will look inside the `components` directory in your Rails application for the `public_ui`, `admin_ui`, `legacy_migration`--if they provide routes they can be mounted in your Rails application route file:
 
 {% highlight ruby %}
 # config/routes.rb
@@ -50,7 +44,7 @@ Rails.application.routes.draw do
 end
 {% endhighlight %}
 
-Notice that `domain_logic` is not in the `Gemfile`, it will be automatically resolved as a local dependency. For more details read [Gemfile hierarchy in Ruby on Rails component based architecture](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/).
+Notice `domain_logic` (a dependency of `public_ui` and `admin_ui`) is not in the `Gemfile` because it will be automatically resolved as a local dependency. For more details read [Gemfile hierarchy in Ruby on Rails component based architecture](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/).
 
 ## Handling application change
 

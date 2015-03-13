@@ -8,17 +8,17 @@ tags:
   - component-based-rails-architecture
 ---
 
-Many products fit the classical Ruby on Rails application development approach: model, view, controller -- they can be very popular and load intensive. As the product gets more features the code will grow and the conventions to manage this are to use concerns/decorators, presenters, service objects, namespaces. **Component based architecture is complementary to those good practices and uses Ruby gems to define application boundaries**.
+Many popular and load intensive products fit in the classical Ruby on Rails application development approach: model, view, controller or MVC. As they get more features the code will grow and the conventions to manage this are concerns/decorators, presenters, service objects, namespaces. **Component based architecture is complementary to those good practices and uses Ruby gems to define application boundaries**.
 
-The conventional MVC might be sufficient if as complexity increases your code stay maintainable and delivers business value but if you are at a point where it's hard to tell what the application is doing it's time to consider another approach.
+The conventional MVC might be sufficient if as complexity increase your code stay maintainable and delivers business value but if you are at a point where it's hard to tell what the application is doing it's time to consider another approach.
 
-I think Eric Evans explains this situation well in his book:
+I think this situation is explained well in this extract:
 
 >> When software with complex behavior lacks a good design, it becomes hard to refactor or combine elements. Duplication starts to appear as soon as a developer isn’t confident of predicting the full implications of a computation. Duplication is forced when design elements are monolithic, so that the parts cannot be recombined. Classes and methods can be broken down for better reuse, but it gets hard to keep track of what all the little parts do. When software doesn’t have a clean design, developers dread even looking at the existing mess, much less making a change that could aggravate the tangle or break something through an unforeseen dependency. In any but the smallest systems, this fragility places a ceiling on the richness of behavior it is feasible to build. It stops refactoring and iterative refinement.
 >>
 >> Evans, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software 
 
-**Component based architecture gives structure to your product** dividing a monolitic codebase in components with meaningful roles to clarify what the application does at a larger scale and allow to look at details within a component without being overwhelmed by the whole.
+**Component based architecture gives structure to your product** dividing a monolitic codebase in components with meaningful roles that clarify what the application does at a larger scale as well as allow to look at details within a component without being overwhelmed by the whole.
 
 A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable`. You can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 

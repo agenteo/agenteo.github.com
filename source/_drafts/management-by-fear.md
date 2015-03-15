@@ -26,11 +26,7 @@ The feeling I had was the company technical level was mediocre and Seamus with a
 
 PILLAR: **trust**
 
-When Seamus was not in meeting he liked to micromanage, even some novice found that ineffective because it was purely driven by need to control rather then mentor. It was very ineffective because after setting the course he would not be there to follow-up. With people more experienced that would just bring up more questions and he did not like that, one episode I was assigned a task and after reporting back it was not possible he asked me to look again and I did producing the same result, he then said I was wrong and that he used the feature before and he decided to look in to it. Turns out I was right (it doesn't take much to read a utility documentation to find out the feature was not there) but he came up with a recently introduced debug option to back up that he was right... it was hearthbreaking. When later he reported to the director about that discovery and the change of plans that required he didn't praise me for the find, he took the credit.
-
-instruct and 
-
-You could write a book about trust in your workplace, but I am just gonna say
+When Seamus was not in meetings he liked to micromanage, that was ineffective because it was purely driven by need of control rather then mentor and after setting the course he would leave and not be there for follow-ups. Once I was assigned a task and after reporting back it was not possible he asked me to look again--I did producing the same result--he then said I was wrong and that he used the feature before and I must have missed it so he decided to look in to it. Turns out he was wrong but he came up with a recently introduced debug option that would to back up that he was right. When later he reported to the director about that change of plans he didn't who actually found it he just took the credit. If people don't trust you why should you trust them? Credit should be given to you.
 
 PILLAR 4: **beware of fake distinctions created to hide fear**
 

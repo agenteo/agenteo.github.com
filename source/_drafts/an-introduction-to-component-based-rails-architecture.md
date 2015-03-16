@@ -8,21 +8,25 @@ tags:
   - component-based-rails-architecture
 ---
 
-Many popular and load intensive products fit in the classical Ruby on Rails application development approach: model, view, controller or MVC. As they get more features the code will grow and the conventions to manage it are: concerns/decorators, presenters, service objects, namespaces. This might be sufficient if as complexity increase your code stays maintainable and delivers business value but if you are at a point where it's hard to understand what the application is doing consider another approach. **Component based architecture is complementary to Rails conventional good practices and uses Ruby gems to define application boundaries and its internal dependency structure**.
+Many successful products fit in the classical Ruby on Rails application development approach: model, view, controller or MVC. When they get more features and the code grows the convention is to manage it with concerns/decorators, presenters, service objects, namespaces--this is sufficient if code remains maintainable as complexity increases but if it's hard to understand what the application does consider another approach. **Component based architecture is complementary to Rails conventional practices and uses Ruby gems to define application boundaries and its internal dependency structure**.
 
-I think this situation is explained well in this extract:
+Decorators are good to attach additional responsabilities to an object dynamically, presenters are good to convert a domain object to another representation (often for the browser), service objects are encapsulating domain operations but none of these help define areas of your code. Namespaces do and are a great way to introduce modularity in a Rails application but they don't enforce a dependency structure.
+
+this extract helps clarify the conditions I am talking about:
 
 >> When software with complex behavior lacks a good design, it becomes hard to refactor or combine elements. Duplication starts to appear as soon as a developer isn’t confident of predicting the full implications of a computation. Duplication is forced when design elements are monolithic, so that the parts cannot be recombined. Classes and methods can be broken down for better reuse, but it gets hard to keep track of what all the little parts do. When software doesn’t have a clean design, developers dread even looking at the existing mess, much less making a change that could aggravate the tangle or break something through an unforeseen dependency. In any but the smallest systems, this fragility places a ceiling on the richness of behavior it is feasible to build. It stops refactoring and iterative refinement.
 >>
 >> Evans, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software 
 
-Component based architecture doesn't mean you embrace all the domain driven design practices, it means you move meaningful parts of your application in a formal area of your code (the `/components` directory) and commit to a dependency structure. This clarifies what the whole application does and allows to work on a single component without being overwhelmed by the rest of the application.
-
-A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable`. You can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
+Component based architecture doesn't mean you have to embrace all the domain driven design practices, it means you keep all the parts composing your application in a formal area (the `/components` directory) using a dependency structure to describe what the application does and develop in smaller contexts.
 
 ## A concrete example
 
-An application with an *administration area* and a *public area* sharing *domain logic* have three components--a task to *migrate legacy* content might initially live in the admin component but as it grows it can be extracted in a separate component.
+An application with code for an *administration area* and for a *public area* that share some *domain logic* might benefit from having three components--some *legacy migration* code could initially be part of the admin component and as it grows be extracted in a separate one.
+
+This application don't need to have components from day one but as the complexity grows being aware of relevant areas and their dependencies allows to move their code in to components. I explained the process in this post.
+
+A component is a Ruby on Rails engine or Ruby gem that you can generate using `rails plugin new public_ui --mountable`. You can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
 
 Those components are required by your main Rails application `Gemfile` for example:
 
@@ -48,6 +52,8 @@ end
 Notice `domain_logic` (a dependency of `public_ui` and `admin_ui`) is not in the `Gemfile` because it will be automatically resolved as a local dependency. For more details read [Gemfile hierarchy in Ruby on Rails component based architecture](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/).
 
 ## Handling application change
+
+>> To have a project accelerate as development proceeds—rather than get weighed down by its own legacy—demands a design that is a pleasure to work with, inviting to change. A supple design.
 
 When later the **legacy migration** is completed you can simply `git rm` its component directory and remove its entry from the `Gemfile` without affecting the rest of your product--if you followed a conventional approach you would have to find and delete the code hoping your tests are catching any regression.
 
@@ -79,3 +85,9 @@ Many people bash a Ruby on Rails monolithic approach as not scalable but it real
 
 Let people know you are using or want to try *component based Rails architecture* <a href="https://twitter.com/intent/tweet?button_hashtag=cbra" class="twitter-hashtag-button">Tweet #cbra</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>. There is a central resource with links to presentations, blog posts and books at [http://cbra.info](http://cbra.info). Stephan Hagemann is writing a great book about this topic with detail step by step tutorial [Component-based Rails Applications](https://leanpub.com/cbra/) credit goes to him and Pivotal for the naming and sharing their discovering on this.
+
+
+Most ruby gems have a dependency structure, what component based does is introduce that structure in a Rails application.
+
+
+

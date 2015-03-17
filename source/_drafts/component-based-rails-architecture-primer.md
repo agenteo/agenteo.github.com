@@ -100,3 +100,10 @@ Decorators are good to attach additional responsabilities to an object dynamical
 If you have to interface to another system you could encapsulate that in a class. But if the logic is more complex you might need to accomodate that domain logic in more then one class meaning you need to create a namespace and the problem with namespaces is that they are accessible by any other class.
 
 Some people are entrenched in the Rails way at all costs and diverging is marked as plain wrong without deeper thought. It sound a lot like when I left Italy and thought italian food was the best and there was no alternative but never tasted other authentic cusines. Living abroad I chance to taste foreign authentic cusines and I changed my mind. I might now have Turkish or Japanese or Indian every day but they are awesome.
+
+Load increase doesn't mean increase in code complexity. A very complex application could have a smaller load from a very popular one   that deal with a simple domain model
+
+When your application domain model doesn't differ much from what the data store presents there is no reason to change the conventional Rails approach.
+
+When you are about to start an application with complex business rules components help defining boundaries. When you are working on a  conventional application evolving in to larger one, components help transitioning.
+

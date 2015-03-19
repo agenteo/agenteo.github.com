@@ -48,3 +48,12 @@ Cognitive overload is the primary motivation for component based architecture. C
 
 
 Some people have huge experiences with the classic Rails approach and are suspicious of anything diverging from that, in general in the last 10 years that I worked with Rails developers seem to appreciate an alternative approach.but use arguments valid for small code bases or side projects outside their context. If proficient or expert developers with 2 or 3 years of long projects on their back are against component based do not enforce it, see if they would accept a limited time trial period on a specific area of the code to evaluate its benefits. I am using proficient and experts based on the [Dreyfus model of skill acquisition](http://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition).
+
+
+
+
+Components give me visibility of what the whole application does and I can develop in the context of a component without being overwhelmed by the entire codebase.
+
+
+The components are in a `/components` directory in your application root and are either directly attached to the main application `Gemfile` or connected to another component as a dependency. 
+

@@ -8,13 +8,17 @@ tags:
   - component-based-rails-architecture
 ---
 
-I have worked on many successful products that fit in the classical Ruby on Rails MVC paradigm. Often conventions like: decorators, presenters, service objects can be sufficient to handle some complexity **but as the project grows they don't help to understand what the whole application does**. If I have 20 or 30 controllers and a similar number of models the intention of the application is obfuscated, Ruby namespaces can add modularity but can't enforce a dependency structure and classes end up in a tangle of dependencies hard to follow. **Component based architecture is complementary to good object oriented practices and uses namespaces, test driven development and Ruby gems to gradually define application boundaries and enforce an internal dependency structure**.
+I have worked on many successful products that fit in the classical Ruby on Rails MVC paradigm. Often conventions like: decorators, presenters, service objects can be sufficient to handle some complexity **but when the project grows over a certain size they don't help to understand what the whole application does**. If I have 20 or 30 controllers and a similar number of models the intention of the application is obfuscated, Ruby namespaces can add modularity but can't enforce a dependency structure and classes end up in a tangle of dependencies hard to follow.
+
+**Component based architecture is complementary to good object oriented practices and uses namespaces, test driven development and Ruby gems to gradually define application boundaries and enforce an internal dependency structure**.
 
 ## A practical example
 
 This example is adapted from a real life application but to make it manageable I've omitted major features and only left four components: a staff only *administration area*, a *public area*, a *legacy migration* and some shared *domain logic*. The *legacy migration* was initially part of the admin component and later when its complexity increased it was extracted in a separate one--**I usually don't architect an application with components from day one instead I introduce them gradually as the complexity grows or when the scope changes** as I describe [here](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/).
 
-A component is a Ruby on Rails engine or Ruby gem, its dependencies are set in its `.gemspec` file, a test suite will test it in isolation and ensure the dependency structure is solid. An engine is like a Rails app in miniature, you have models, views, controllers routes, rake tasks--you can find out more about engines on [Rails guides](http://guides.rubyonrails.org/engines.html)
+A component is a Ruby on Rails engine or Ruby gem, its dependencies are set in its `.gemspec` file, a test suite will test it in isolation and ensure the dependency structure is solid. An engine is like a Rails app in miniature, you have models, views, controllers routes, rake tasks--I will show more on this later.
+
+### Intention revealing
 
 The high level components are required by the main Rails application `Gemfile`.
 
@@ -27,9 +31,24 @@ path 'components' do
 end
 {% endhighlight %}
 
-I think it's great to see what the main application is doing without having to dig in layers of controllers and models. The `Gemfile` will look for the high level components `public_ui`, `admin_ui`, `legacy_migration` in the `components` directory of the Rails application and automatically resolve any local component dependency like the `domain_logic`--I explain how this works in [Gemfile hierarchy in Ruby on Rails component based architecture](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/).
+I think it's great to see what the main application is doing without having to dig in layers of controllers and models.
 
-When a high level component provide routes they are mounted in the Rails application route file.
+The `Gemfile` will look for the high level components `public_ui`, `admin_ui`, `legacy_migration` in the `components` directory of the Rails application and automatically resolve any local component dependency like the `domain_logic`. I explain how this works in [Gemfile hierarchy in Ruby on Rails component based architecture](http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/).
+
+The `/components` directory has sub-directories with my components but if I have more then 5 or 6 I like the idea of splitting them in a layered architecture sub-directory structure: user interface, application, domain.
+
+{% highlight bash %}
+$ ls -l components/
+total 0
+drwxr-xr-x  18 agenteo  320754065  612 Mar 19 08:42 admin_ui
+drwxr-xr-x  18 agenteo  320754065  612 Mar 10 08:20 domain_logic
+drwxr-xr-x  18 agenteo  320754065  612 Mar 19 08:42 public_ui
+drwxr-xr-x  20 agenteo  320754065  680 Mar 10 08:20 legacy_import
+{% endhighlight %}
+
+### Routes
+
+When a high level component provides routes I need to mount them in the Rails application route file. 
 
 {% highlight ruby %}
 # config/routes.rb
@@ -38,8 +57,126 @@ Rails.application.routes.draw do
   mount PublicUi::Engine => "/"
 end
 {% endhighlight %}
+ 
+When back in 2008 I worked on a Rails 2 app ongoing and constantly growing for 3 years the route file was long and dreadful to work on so I introduced plugins (a predecessor of engines) to kept it maintainable.
 
-Inside the admin engine we will keep all the controllers, models, helpers and tasks related to that area and they will all be namespaced with `AdminUi` and the same for `PublicUi`. Some of their database models and utility classes are shared and live inside a depedency `DomainLogic`.
+### Inside a component
+
+Inside the admin engine we compartmentalize controllers, models, helpers and tasks with a `AdminUi` namespace. The engine has a similar structure of a rails app.
+
+{% highlight bash %}
+$ ls -l components/admin_ui/
+total 56
+-rw-r--r--   1 agenteo  320754065   606 Feb 27 15:25 Gemfile
+-rw-r--r--   1 agenteo  320754065  5955 Mar 19 08:42 Gemfile.lock
+-rw-r--r--   1 agenteo  320754065    76 Feb 27 15:25 README.md
+-rw-r--r--   1 agenteo  320754065   495 Feb 27 15:25 Rakefile
+-rw-r--r--   1 agenteo  320754065  1666 Feb 27 15:25 admin_ui.gemspec
+drwxr-xr-x   7 agenteo  320754065   238 Feb 27 15:25 app
+drwxr-xr-x   3 agenteo  320754065   102 Feb 27 15:25 bin
+drwxr-xr-x   5 agenteo  320754065   170 Mar 19 08:42 config
+drwxr-xr-x   5 agenteo  320754065   170 Feb 27 15:25 lib
+drwxr-xr-x  13 agenteo  320754065   442 Mar 19 08:55 spec
+-rwxr-xr-x   1 agenteo  320754065   281 Feb 27 15:25 test.sh
+{% endhighlight %}
+
+I use 'engine' or 'component' based on the context, but technically they are the same thing.
+
+This is a simplified problem based on a real application to give you an idea of how a component internals would look:
+
+{% highlight bash %}
+components/admin_ui/app/
+├── assets
+│   ├── images
+│   │   └── admin_ui
+│   ├── javascripts
+│   │   └── admin_ui
+│   └── stylesheets
+│       └── admin_ui
+├── controllers
+│   └── admin_ui
+│       ├── application_controller.rb
+│       ├── content_pieces_controller.rb
+│       ├── content_preview_controller.rb
+│       ├── images_controller.rb
+│       ├── mobile_content_preview_controller.rb
+│       ├── publish_content_items_controller.rb
+│       ├── slideshow_slides_controller.rb
+│       ├── slug_controller.rb
+│       └── taxonomy_controller.rb
+├── helpers
+│   └── admin_ui
+│       ├── application_helper.rb
+│       ├── content_helper.rb
+│       ├── content_items_sortable_links_helper.rb
+│       ├── content_pieces_filterable_links_helper.rb
+│       ├── content_pieces_search_helper.rb
+│       ├── date_formatter_helper.rb
+│       ├── edit_content_piece_helper.rb
+│       ├── filters
+│       ├── link_to_publishing_action_helper.rb
+│       ├── tag_link_helper.rb
+│       └── form_helper.rb
+├── models
+│   ├── admin_ui
+│   │   ├── content_filter.rb
+│   │   ├── content_sorter.rb
+│   │   ├── criteria
+│   │   └── site_search_delegate.rb
+└── views
+    ├── admin_ui
+    │   ├── content_pieces
+    │   └── mobile_content_preview
+    └── layouts
+        └── admin_ui
+{% endhighlight %}
+
+Each class (model, controller, helper) has a specific responsibility for the admin interface. Its models can't access the `legacy_migration` component model unless the `admin_ui` depends on it, so I can work on a component and its dependencies without having to worry about the rest. Breaking this dependency structure would pop up during your automated tests.
+
+Let's look at the admin ui gemspec:
+
+{% highlight ruby %}
+# components/admin_ui/admin_ui.gemspec
+$:.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
+require "admin_ui/version"
+
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "admin_ui"
+  s.version     = AdminUi::VERSION
+  s.authors     = ["We the people"]
+  s.email       = ["we@thepeople.com"]
+  s.summary     = "Helpful summary"
+
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.rdoc"]
+
+  s.add_dependency "rails", "~> 4.1.1"
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'sass'
+  s.add_dependency 'nokogiri'
+  s.add_dependency 'kaminari'
+
+  s.add_dependency "domain_logic"
+
+  s.add_development_dependency 'byebug'
+  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'rspec-rails', '3.1.0'
+  s.add_development_dependency 'rspec-activemodel-mocks'
+  s.add_development_dependency 'vcr'
+  s.add_development_dependency 'webmock'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'poltergeist'
+  s.add_development_dependency 'launchy'
+
+  s.add_development_dependency 'jasmine'
+  s.add_development_dependency 'jasmine-phantom'
+  s.add_development_dependency 'jasmine-rails'
+end
+{% endhighlight %}
+
+The same concepts apply for `PublicUi`. Some of their database models and utility classes are shared and live inside a dependency `DomainLogic`.
 
 ## Handling application change
 

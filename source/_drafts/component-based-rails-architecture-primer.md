@@ -8,15 +8,15 @@ tags:
   - component-based-rails-architecture
 ---
 
-I have worked on many successful products that fit in the classical Ruby on Rails MVC paradigm. Often conventions like: decorators, presenters, service objects can be sufficient to handle some complexity **but when the project grows over a certain size they don't help to understand what the whole application does**. If I have 20 or 30 controllers and a similar number of models the intention of the application is obfuscated, Ruby namespaces can add modularity but can't enforce a dependency structure and classes end up in a tangle of dependencies hard to follow.
+I have worked on many products that fit in the classical Ruby on Rails MVC paradigm and conventions like: decorators, presenters, service objects can be sufficient to handle some complexity **but when the project grows over a certain size they don't help to understand what the whole application does**. If I have over 20 or 30 controllers and a similar number of models the intention of the application is obfuscated, Ruby namespaces can add modularity but can't enforce a dependency structure and classes end up in a tangle of dependencies hard to follow.
 
 **Component based architecture is complementary to good object oriented practices and uses namespaces, test driven development and Ruby gems to gradually define application boundaries and enforce an internal dependency structure**.
 
 ## A practical example
 
-This example is adapted from a real life application but to make it manageable I've omitted major features and only left four components: a staff only *administration area*, a *public area*, a *legacy migration* and some shared *domain logic*. The *legacy migration* was initially part of the admin component and later when its complexity increased it was extracted in a separate one--**I usually don't architect an application with components from day one instead I introduce them gradually as the complexity grows or when the scope changes** as I describe [here](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/).
+This example is adapted from a real life application but to make it manageable I've omitted major features and only left four components: a staff only *administration area*, a *public area*, a *legacy migration* and some shared *domain logic*. The *legacy migration* was initially part of the admin component and later extracted in a separate one when its complexity increased--**I usually don't architect an application with components from day one instead I introduce them gradually as the complexity grows or when the scope changes** as I describe [here](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/).
 
-A component is a Ruby on Rails engine or Ruby gem, its dependencies are set in its `.gemspec` file, a test suite will test it in isolation and ensure the dependency structure is solid. An engine is like a Rails app in miniature, you have models, views, controllers routes, rake tasks--I will show more on this later.
+Component is the name given to a Ruby on Rails engine or Ruby gem when used as building block of the Rails application. A component dependencies are set in its `.gemspec` file, a test suite will test it in isolation and ensure the dependency structure is solid, an engine is like a Rails app in miniature, you have models, views, controllers routes, rake tasks--I will show more on this later.
 
 ### Intention revealing
 
@@ -176,13 +176,9 @@ Gem::Specification.new do |s|
 end
 {% endhighlight %}
 
-The same concepts apply for `PublicUi`. Some of their database models and utility classes are shared and live inside a dependency `DomainLogic`.
-
 ## Handling application change
 
->> To have a project accelerate as development proceeds—rather than get weighed down by its own legacy—demands a design that is a pleasure to work with, inviting to change. A supple design.
-
-When later the **legacy migration** is completed I can simply remove its component directory and its entry from the `Gemfile` without affecting the rest of the product--with a conventional approach I would have to find and delete the code hoping the tests catch any broken dependency.
+When later the **legacy migration** is completed I can simply remove its component directory and its entry from the `Gemfile` without affecting the rest of the application--with a conventional approach I would have to find and delete the code hoping the tests catch any broken dependency.
 
 If I need to add an API I can put it in a high level component (like public_ui and admin_ui) relying on domain logic--if required for performance or security reasons I can **deploy only some high level components** as I explain in [Feature flagging portions of your Ruby on Rails application with engines](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/).
 

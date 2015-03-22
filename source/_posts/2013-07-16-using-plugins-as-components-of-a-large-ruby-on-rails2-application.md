@@ -11,49 +11,20 @@ redirect_from:
   - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application.html/
 ---
 
-This is a short story about the creation and maintenance of a large Ruby on Rails
-application, and how after initially sticking to the Rails conventions I
-questioned them and used Rails plugins to structure the code of new components.
+In 2008 I was working on a large Rails 2 application for 3 years and that's when I realized following the framework conventions wasn't bringing the best results and switched to a plugin structure--the precursor of current engines.
 
 Thanks to Ben and Red Ant to let me use the project as a use case.
 
-
 ## The story
-Sometime we work on a small size project.
 
-Without much upfront design we deliver the product following the Ruby on Rails conventions,
-maybe using scaffold generators, maybe dropping in a few gems.
+Sometime we deliver small size short time projects without much architecture and strictly follow the Ruby on Rails conventions--a good part of the framework popularity is from those type of projects **but I think Rails can handle large projects and keep them maintainable**.
 
-It's critical to acknowledge those scenarios, a good part of Rails's popularity is due to those kind of projects.
+The site was primarly showing static content to users and enabling discussions on a forum--the new version was going to introduce a social aspect to the content. For example the name finder component was browsing a list of names and its new version was going to allow shortlisting, voting names, sharing with family which would also vote, weekly popularity graphs. 
 
-But I believe Ruby on Rails can handle large projects too and this story is about those times.
+The project rebuild went on for about 10 months with a team of two backend developers, two frontend plus designers and a project manager.
 
-I worked on this new green field project containing many concepts at the
-foundation of the system, and we simply couldn't go live without all of them.
+I don't remember why but we decided against gradually deploying areas and instead rebuild all the key areas required to match the legacy:
 
-This first part goes through how I realized I had to step away from some of
-Ruby on Rails's conventions in order to introduce a little bit of structure in
-the large application we where working on.
-
-The year was 2008 and the app was running on Rails 2.
-
-Six years later I believe large Ruby on Rails apps are facing the same pitfalls. I will
-discuss a more updated technical solution in a follow up article.
-
-
-## The project (Huggies.com.au)
-This was a rebuild of a big multinational brand, the legacy site was mostly presenting
-content to the users, now we had to create a social experience around that content.
-
-For example the name finder component in the legacy site was just browsing a list of names.
-In the new build it would allow users to vote names, an improved search, creating
-shortlists to share with family (which would then be allowed to vote), popularity graphs.
-
-The project rebuild was ongoing for about 10 months.
-
-The team was composed of two backend developers, two frontend plus designers and PMs.
-
-We knew we had to implement what existed in the legacy site and deliver new/improved components:
 * name finder
 * promotions
 * kids activities
@@ -61,22 +32,11 @@ We knew we had to implement what existed in the legacy site and deliver new/impr
 * CMS
 * forum
 
-We decided to serve the forum from another app outside the Rails stack.
-And we decided to handle the CMS as a Radiant app (a separate rails app).
-Nginx would sit in front and route the URLs to the appropriate backend.
+We decided to serve the **forum** from another app outside the Rails stack and the **CMS** to be a Radiant app (a separate rails app) but the remaining areas where part of a single Ruby on Rails application (called **core**). Nginx would be proxying the segments to the correct upstream.
 
-But the rest of the components where part of a single Ruby on Rails application.
-* name finder
-* promotions
-* kids activities
+We knew that after the release the stakeholder was going to invest in more vertical components.
 
-And we knew that after (big bang) release the stakeholder was going to ask for
-more of those vertical components.
-
-Me and the other developer agreed that having all the
-models inside the /app/models wasn't going to be a sane way to work.
-
-We created model subfolders and required that inside environment.rb
+Me and the other developer agreed that since **core** was going to serve multiple verticals having all the models in the `/app/models` wasn't going a sane way to work so we created model subfolders and required that inside environment.rb
 
 {% highlight ruby %}
 Dir.glob("#{RAILS_ROOT}/app/models/*[^.rb]").each{|dir| config.load_paths << dir }
@@ -98,32 +58,24 @@ admin_controller.rb             babynames                       kids_activities 
 application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories
 {% endhighlight %}
 
-Advantages of this approach:
- 
-* easier to identify a knowledge 'silo' then having all the files in a single controller or model folder
+This approach allowed us to identify a vertical slice of the application and create a boundary where all the files would live. Nothing was preventing classes in different boundaries to tinker with other boundaries.
 
-We successfully went live and kept developing new features, but after a few months the shortcomings started to surface:
+After we went live we were asked to build new verticals and after a few months a few shortcomings started to surface:
 
-* sometimes it was hard to define the boundaries of the knowledge 'silo'
-* the migrations folder didn't have boundaries, hence difficult to tell to which silo they belonged
-* similarly the routes file didn't have boundaries, we used comments blocks to highlight 'silo' blocks but maintaining it was a painful process
-* we did not use namespaces which caused some helper methods to be overwritten. I think this was due to my ignorance at the time not to a Rails flaw.
-
+* it was hard to define the boundaries of a vertical--often classes where referencing another vertical class which would create a tangled depedency hard to follow
+* the migrations folder didn't have boundaries making it difficult to tell to which silo they belonged
+* the routes file didn't have boundaries, we used comments to highlight the entries related to a vertical but maintaining it was a painful process
+* we did not enforce namespaces which caused some helper methods to be overwritten
 
 ## Plugins to the help
-After reading a book about Rails that talked about plugins I
-started looking in to using them to enforce structure in our application code
-instead of the usual drop in functionality.
 
-A plugin (in Rails 3 and above called engines) is an extension to the
-main rails application, the plugin folder follows Rails's usual directories and
-make its models, controllers, views, helpers available to the main application.
+After reading a book about Rails that talked about plugins I started using one to enforce structure in our application code instead of the usual drop in functionality.
 
-That's how the vendor plugin are working, but instead of creating a reusable
-plugin I created a very specific one!
-So it was not designed to provide a generic functionality that we would use again
-in other projects but instead it was holding concepts related to a specific strand
-of work (feature) of this particular project.
+A plugin (precursors of engines) is an extension to the main rails application, the plugin folder follows Rails's usual directories and make its models, controllers, views, helpers available to the main application.
+
+That's how the vendor plugin are working, but instead of creating a reusable plugin I created a very specific one!
+
+So it was not designed to provide a generic functionality that we would use again in other projects but instead it was holding concepts related to a specific strand of work (feature) of this particular project.
 
 Advantages of this approach:
 * most of the code related to the 'component' would belong inside its plugin directory

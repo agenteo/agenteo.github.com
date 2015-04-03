@@ -131,7 +131,7 @@ components/admin_ui/app/
 
 Each class (model, controller, helper) has a specific responsibility inside the admin interface. Its models can't access the `legacy_migration` component model unless the `admin_ui` depends on it, so I can work on a component and its dependencies without having to worry about the rest. Breaking this dependency structure would pop up during your automated tests.
 
-Inside the admin ui gemspec I have the depdendency on `domain_logic` as well as other libraries and development libraries.
+Inside the admin ui gemspec I have the dependency on `domain_logic` as well as other libraries and development libraries.
 
 {% highlight ruby %}
 # components/admin_ui/admin_ui.gemspec
@@ -179,7 +179,7 @@ When later the **legacy migration** is completed I can simply remove its compone
 
 If I need to add an API I can put it in a high level component (like public_ui and admin_ui) relying on domain logic--if required for performance or security reasons I can **deploy only some high level components** as I explain in [Feature flagging portions of your Ruby on Rails application with engines](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/).
 
-When the project grows even more and I have two teams one dedicated to admin features one to public features it might make sense to extract admin and public components in two Rails applications and publish any shared component to a private gem server. **The component based architecture can be a stepping stone to services if and when my product needs that**--but at the beginning of a long running project with 5 full stack engeneers what advantage does three codebases give me? I know developing a project that changes a remote dependency needs some process adjustment as I explain in [GIT precommit hooks helping local Ruby GEMs development](http://teotti.com/git-precommit-hooks-helping-local-ruby-gems-development/).
+When the project grows even more and I have two teams one dedicated to admin features one to public features it might make sense to extract admin and public components in two Rails applications and publish any shared component to a private gem server. **The component based architecture can be a stepping stone to services if and when my product needs that**--but at the beginning of a long running project with 5 full stack engineers what advantage does three codebases give me? I know developing a project that changes a remote dependency needs some process adjustment as I explain in [GIT precommit hooks helping local Ruby GEMs development](http://teotti.com/git-precommit-hooks-helping-local-ruby-gems-development/).
 
 
 

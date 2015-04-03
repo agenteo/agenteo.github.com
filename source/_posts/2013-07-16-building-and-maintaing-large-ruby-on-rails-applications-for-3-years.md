@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building and managing a large Ruby on Rails application for 3 years
+title: Building and maintaining a large Ruby on Rails application for 3 years
 comments: true
 tags:
   - work
@@ -12,25 +12,21 @@ redirect_from:
   - /using-plugins-as-components-of-a-large-ruby-on-rails2-application/
 ---
 
-In 2008 I was working on a large Rails 2 application for about 3 years and since following framework conventions wasn't bringing the best results I switched to a plugin structure the precursor of current engines.
+Sometime we start building projects avoiding architecture and following framework conventions but diverging from that helped managing a Rails project growing for about 3 years.
 
-Sometime we deliver small size projects without thinking architecture but simply sticking to framework conventions--a good part of Rails popularity is due to those conventions but I will explain how diverging from them was beneficial to this large project.
+Some Rails shortcoming have been fixed since then and I will link to the latest techniques but **recognizing when to diverge from the conventional approach is still challenging and important to prevent an unmaintainable application**. Do it too early and you will over engineer too late and the refactoring will be expensive.
 
-Thanks to Ben and Red Ant to let me use the project as a use case.
+The initial development went on for about 10 months with a team of two backend developers, two frontend plus designers and a project manager. After launch the application was constantly extended and maintained for the 24 months I was on the team.
 
 ## The project
 
-The site we were about to rebuild was showing static content to users and enabling discussions on a forum--the new version was going to introduce a strong social interaction to the content. For example the original baby name finder component was browsing a list of names and their meaning but its new version was also allowing shortlisting, voting names, sharing with family, weekly popularity graphs. We had similar enhancements to several other content areas that I will refer to as verticals some examples are: promotions, kids activities, recipes finder.
+We were about to rebuild a multinational brand site dedicated to pregnancy and newborn content with social interactions delegated to a forum--the new version was adding custom social functionalities within the content--the original baby name finder for example was browsing a list of name meanings but its new version was also allowing members to shortlist, vote names, share with family, generate weekly popularity graphs. 
 
-I don't remember why but we decided against gradually deploying verticals and instead rebuild all the key ones to match the existing site and do a big bang release--we knew that after release the stakeholder was going to invest in even more verticals.
+We decided against a gradual deliver and instead **rebuild all the existing vertical areas** dedicated to specific subjects: baby names, promotions, kids activities, kids recipes each served within a unique segment: `/baby-names`, `/promotions`, `/kids-activities`, `/kids-recipes`--after that the stakeholder intended to invest in even more verticals. 
 
-Somebody decided to use a pre build PHP **forum** to reduce the scope and a Rails **CMS** called Radiant to handle purely static content--the remaining verticals where part of a single Ruby on Rails application that I will call **core**--finally nginx was proxying the segments to the correct upstream.
+## Initial approach
 
-The project rebuild went on for about 10 months with a team of two backend developers, two frontend plus designers and a project manager. From now on I will only talk about development on **core**.
-
-## A sufficient approach
-
-Keeping code for different verticals in the same `/app/models` or `/app/controllers` was going to become unmaintainable very quickly so we agreed to use subdirectories. This is an example of models and controllers with subdirectories roughly mapped to verticals. 
+Before starting development we agreed that keeping code from different verticals in the same controllers and models directory would obfuscate their boundaries and we decided to use subdirectories mapped to verticals ie. `/app/models/babynames_models`, `/app/controllers/babynames`, `/app/views/babynames` containing all code specific to baby names--this allowed us to quickly find vertical related code and reduce merge conflicts while developing in parallel.
 
 {% highlight bash %}
 $ ls -l app/models
@@ -46,17 +42,17 @@ admin_controller.rb             babynames                       kids_activities 
 application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories
 {% endhighlight %}
 
-This approach allowed us to find vertical related code and reduce merge conflicts while developing in parallel--after we went live we started adding new verticals and a few shortcomings started to surface. 
+This approach was sufficient during the initial development phase but after we went live and started adding more verticals the growing number of subdirectories made jumping between models/controllers/views time consuming--ideally I wanted to find and work on all the babynames files within a single directory. The application route file `/config/routes.rb` was a 300 lines mix from all verticals hard to understand and painful to maintain.
 
-## Some downsides
+## A self contained approach
 
-Our sub directory structure was creating a weak boundary meaning classes from one vertical could tinker with others and create tangled dependencies hard to follow--the result was large god objects primarily `user.rb` frequently changed by all verticals either directly or trough decoration causing people to step on each other toes. It was really hard to trace the over 200 migrations to a vertical making it difficult to understand the scope of a database change--similarly the route file `/config/routes.rb` was a 300 lines mix from all verticals painful to maintain and manage. We did not enforce namespaces which caused helper methods collisions
+To address these problems I introduced the room decorator vertical as a plugin (precursors of engines) not to reuse its code but to encapsulate its models, controllers, views, helpers, routes--now only minor changes would affect a few models in the main application through decoration.
 
-## An almost self contained approach
+The main application routes would pick up the plugin routes from `PLUGIN/config/routes.rb` and stop growing.
 
-**I introduced the next vertical as a plugin (precursors of engines) to encapsulate its code and minimize changes to the main application**. A plugin could provide the main rails application with models, controllers, views, helpers, routes and migrations **but instead of creating the classical reusable plugin it was very specific code for the vertical**. Most of the code related to the vertical would live inside its plugin directory and only minor changes would affect the app god models with decoration--the new routes would be automatically picked up from the plugin's `config/routes.rb` and finally we had unit tests inside the plugin.
+We were also able to have unit tests inside the plugin.
 
-To make verticals plugins stand out from the vendor plugins we agreed to append a static string in front of plugin name but when developers did't remember (or care) about the prefix it was really hard to find them.
+To make verticals plugins stand out from the vendor plugins we had a naming convention to append a static string in front of plugin name.
 
 {% highlight bash %}
 $ ls -l vendor/plugins/ | grep hug
@@ -67,10 +63,16 @@ drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
 drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
 {% endhighlight %}
 
-We did knot fix the growing migrations and when a vertical relied on the main application code changes would occur in both areas--**this unspoken dependency between a plugin and the main application did not help set clear boundaries**--how much should the main application take care of? In a large application ideally nothing all its logic will come from a series of small well defined components. I explain how in [A component based Rails architecture primer](http://teotti.com/component-based-rails-architecture-primer/).
+## What didn't go well
 
-## Conclusions
+Like the subdirectory structure the plugins were setting **a weak boundary** meaning classes in one vertical could depend on other verticals or the main application **creating dependencies impossible to track without reading the code**. 
 
-For me using plugins in 2008 was a breakthrough to [components](http://teotti.com/topics/component-based-rails-architecture/) and certainly better then having all models and controllers in a fragile sub directory structure or worst introducing service oriented architecture merely for organizational reasons. This approach helped manage the app growth and entropy--I disagree with people thinking after a few years large applications have to inevitably be rebuilt--**when you use a supple design the application can be maintained and shaped in to a new form**.
+>> If a developer must consider the implementation of a component in order to use it, the value of encapsulation is lost.
+>>
+>> Eric Evans
 
-I encountered a bit of skepticism about this approach from other fossilized on Rails conventions and never looking at the whole app from a different angle. After you see conventions playing against large apps the responsible thing to do is looking for alternatives.
+It was still hard to pinpoint which of the over 200 migrations belonged to a plugin and how its vertical was affecting the database schema.
+
+I started thinking how much code should be in the main application for the plugins to use? **Back then I could only chase good balance but with current Rails I can achieve that by moving all the functionality away from the main application in to small engine components creating a solid dependency structure**. I explain how in [A component based Rails architecture primer](http://teotti.com/component-based-rails-architecture-primer/).
+
+This plugin approach I used in 2008 was far from perfect but it reduced entropy and it was better then having all models and controllers in a fragile directory structure or even worst introducing service oriented architecture for code organization. I disagree with fatalistic views that after a few years large applications must be rebuilt if **you build them using a supple design they can be maintained and shaped in to a new form**.

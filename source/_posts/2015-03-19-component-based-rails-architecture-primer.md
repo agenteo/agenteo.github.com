@@ -179,6 +179,16 @@ I test each component in isolation because testing from the main application won
 
 Having broken dependencies prevents you to [deploy portions of your component based application to separate hosts](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/#final-proposal) or spending time chasing and untangling dependencies later on.
 
+I test in isolation with rspec inside a component requiring the dummy app created when the engine is generated instead of the main application.
+
+Beware to change the rspec generated `spec_helper.rb` that by default requires the main application from top level spec directory and will now fail because of the wrong path.
+
+{% highlight ruby %}
+# spec_helper.rb
+# Changed to point to the engine dummy app.
+require File.expand_path("../dummy/config/environment", __FILE__)
+{% endhighlight %}
+
 I add to each component a `test.sh` bash script with the tests commands to run ie. `bundle exec rspec` sometime `bundle exec jasmine` in a client side focused component--then the main application has the following `build.sh` script that finds and runs all the components `test.sh` and checks all their status reporting back to the user.
 
 {% highlight bash %}

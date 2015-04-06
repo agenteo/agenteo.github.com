@@ -173,6 +173,37 @@ Gem::Specification.new do |s|
 end
 {% endhighlight %}
 
+## Automated testing is critical
+
+I test each component in isolation because testing from the main application won't warn for an invalid dependency. Let's say `admin_ui` and `public_ui` use a `Tracking::Code` class and `admin_ui` has a dependency on the `tracking` component in its gemspec but `public_ui` doesn't--because of the missing dependency I would expect a `public_ui` endpoint to error but it won't because from the main application `tracking` got required trough `admin_ui`.
+
+Having broken dependencies prevents you to [deploy portions of your component based application to separate hosts](http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/#final-proposal) or spending time chasing and untangling dependencies later on.
+
+I add to each component a `test.sh` bash script with the tests commands to run ie. `bundle exec rspec` sometime `bundle exec jasmine` in a client side focused component--then the main application has the following `build.sh` script that finds and runs all the components `test.sh` and checks all their status reporting back to the user.
+
+{% highlight bash %}
+#!/bin/bash
+
+result=0
+
+for test_script in $(find . -name test.sh); do
+  pushd `dirname $test_script` > /dev/null
+  source "$HOME/.rvm/scripts/rvm"
+  rvm use $(cat .ruby-version)@$(cat .ruby-gemset) --create
+  ./test.sh
+  result+=$?
+  popd > /dev/null
+done
+
+if [ $result -eq 0 ]; then
+  echo "🏈  SUCCESS :-)"
+else
+  echo "💔  FAILURE ;-("
+fi
+
+exit $result
+{% endhighlight %}
+
 ## Handling application change
 
 When later the **legacy migration** is completed I can simply remove its component directory and its entry from the `Gemfile` without affecting the rest of the application--with a conventional approach I would have to find and delete the code hoping the tests catch any broken dependency.

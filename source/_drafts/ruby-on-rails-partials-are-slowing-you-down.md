@@ -6,7 +6,7 @@ tags:
   - ruby-on-rails
 ---
 
-I was recently checking performance of an application and wondered if an aggressive use of partials to break long markup templates in shorter maintainable chunks adds overhead to response times.
+I was recently checking performance of an application and wondered if an aggressive use of erb partials to break long markup templates in shorter maintainable chunks adds overhead to response times.
 
 Justin Weiss did some benchmarks but I want to document results on a test application using a simple in memory data model and then share the results on my real application in production mode with mongodb connections.
 
@@ -14,7 +14,7 @@ Justin Weiss did some benchmarks but I want to document results on a test applic
 
 I will run this test on a Rails 4.2 app running in production mode. `curl` will hit the same URL and I report the response time from Rails logs. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). I did not involve database or caching to ensure they did not play a role in the benchmark.
 
-The first call is significantly slower.
+As always the first call is significantly slower **549ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:45:41.578125 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -22,7 +22,7 @@ I, [2015-03-09T11:45:42.126382 #50837]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:45:42.127181 #50837]  INFO -- : Completed 200 OK in 549ms (Views: 4.4ms)
 {% endhighlight %}
 
-Second call is muich faster.
+Second call is much faster **50ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:46:34.747345 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -30,7 +30,7 @@ I, [2015-03-09T11:46:34.796360 #50837]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:46:34.797054 #50837]  INFO -- : Completed 200 OK in 50ms (Views: 1.4ms)
 {% endhighlight %}
 
-Subsequent calls are stable.
+Subsequent calls are stable around **50ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:47:03.984770 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -38,7 +38,7 @@ I, [2015-03-09T11:47:04.033530 #50837]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:47:04.033935 #50837]  INFO -- : Completed 200 OK in 49ms (Views: 0.9ms)
 {% endhighlight %}
 
-Now I introduce partials on the first call.
+Now I introduce partials on the first call and get a similar response time **543ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:47:40.174517 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:47:40 -0400
@@ -72,7 +72,7 @@ I, [2015-03-09T11:47:40.718652 #50991]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:47:40.719538 #50991]  INFO -- : Completed 200 OK in 543ms (Views: 10.3ms)
 {% endhighlight %}
 
-Second call
+Second call **49ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:48:15.050356 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:48:15 -0400
@@ -106,39 +106,7 @@ I, [2015-03-09T11:48:15.098513 #50991]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:48:15.099667 #50991]  INFO -- : Completed 200 OK in 49ms (Views: 4.0ms)
 {% endhighlight %}
 
-Subsequent calls:
-
-{% highlight bash %}
-I, [2015-03-09T11:48:43.744899 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:48:43 -0400
-I, [2015-03-09T11:48:43.745491 #50991]  INFO -- : Processing by ArticlesController#index as */*
-I, [2015-03-09T11:48:43.796669 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.796796 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.796891 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.796984 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797071 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797154 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797243 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797328 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797410 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797493 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797583 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797682 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797761 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797843 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.797935 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798018 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798098 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798182 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798267 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798344 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798425 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798513 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798591 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798673 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798764 #50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)
-I, [2015-03-09T11:48:43.798815 #50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (2.3ms)
-I, [2015-03-09T11:48:43.799199 #50991]  INFO -- : Completed 200 OK in 54ms (Views: 3.0ms)
-{% endhighlight %}
+Subsequent calls stable around **50ms**.
 
 ### With three partials
 
@@ -170,7 +138,7 @@ index 0000000..07c61fa
 +<h2><%= title %></h2>
 {% endhighlight %}
 
-First call:
+First call still around **550ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:55:22.452183 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:55:22 -0400
@@ -254,6 +222,8 @@ I, [2015-03-09T11:55:23.015773 #51383]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:55:23.016680 #51383]  INFO -- : Completed 200 OK in 563ms (Views: 21.2ms)
 {% endhighlight %}
 
+Second call:
+
 {% highlight bash %}
 I, [2015-03-09T11:56:00.645846 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:56:00 -0400
 I, [2015-03-09T11:56:00.646481 #51383]  INFO -- : Processing by ArticlesController#index as */*
@@ -335,7 +305,6 @@ I, [2015-03-09T11:56:00.708266 #51383]  INFO -- :   Rendered articles/_article.h
 I, [2015-03-09T11:56:00.708330 #51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (7.4ms)
 I, [2015-03-09T11:56:00.708709 #51383]  INFO -- : Completed 200 OK in 62ms (Views: 8.0ms)
 {% endhighlight %}
-
 
 Subsequent calls:
 

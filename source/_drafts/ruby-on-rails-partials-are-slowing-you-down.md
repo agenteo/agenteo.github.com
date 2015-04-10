@@ -6,15 +6,25 @@ tags:
   - ruby-on-rails
 ---
 
-I was recently checking performance of an application and wondered if an aggressive use of erb partials to break long markup templates in shorter maintainable chunks adds overhead to response times.
+I was recently checking performance of an application and wondered if an aggressive use of erb partials to break long markup templates in shorter maintainable chunks would slow down response times. In my tests it does but its impact is negligible.
 
-Justin Weiss did some benchmarks but I want to document results on a test application using a simple in memory data model and then share the results on my real application in production mode with mongodb connections.
+I document results on a test application using an in memory data model and will talk about the results on my real application in production mode with mongodb connections.
 
 ## A test application
 
-I will run this test on a Rails 4.2 app running in production mode. `curl` will hit the same URL and I report the response time from Rails logs. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). I did not involve database or caching to ensure they did not play a role in the benchmark.
+I run this test on a Rails 4.2 app in production mode, `curl` hits the same URL.
 
-As always the first call is significantly slower **549ms**
+{% highlight ruby %}
+def index
+  @articles = 25.times.collect do |i|
+    { title: "Article #{i}", body: LiterateRandomizer.paragraph, published_at: Time.now }
+  end
+end
+{% endhighlight %}
+
+I use `curl` to hit the same URL and report the **response time** from Rails logs--I did not involve database or caching to ensure they did not play a role in the benchmark and I restarted the application after each test. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). 
+
+The initial test has a controller with a single view and as always the first call is significantly slower **549ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:45:41.578125 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -38,7 +48,38 @@ I, [2015-03-09T11:47:04.033530 #50837]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:47:04.033935 #50837]  INFO -- : Completed 200 OK in 49ms (Views: 0.9ms)
 {% endhighlight %}
 
-Now I introduce partials on the first call and get a similar response time **543ms**
+### Introduce a partial
+
+I now introduce a single partial.
+
+{% highlight diff %}
+diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
+new file mode 100644
+index 0000000..fac0108
+--- /dev/null
++++ b/app/views/articles/_article.html.erb
+@@ -0,0 +1,4 @@
++<article>
++  <h2><%= article[:title] %></h2>
++  <p><%= article[:body] %></p>
++</article>
+diff --git a/app/views/articles/index.html.erb b/app/views/articles/index.html.erb
+index 24938da..f29b38b 100644
+--- a/app/views/articles/index.html.erb
++++ b/app/views/articles/index.html.erb
+@@ -1,8 +1,5 @@
+ <h1>Articles#index</h1>
+
+ <% @articles.each do |article| %>
+-  <article>
+-    <h2><%= article[:title] %></h2>
+-    <p><%= article[:body] %></p>
+-  </article>
++  <%= render(partial: 'article', locals: { article: article } ) %>
+ <% end %>
+{% endhighlight %}
+
+on the first call I get a similar response time **543ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:47:40.174517 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:47:40 -0400
@@ -72,7 +113,7 @@ I, [2015-03-09T11:47:40.718652 #50991]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:47:40.719538 #50991]  INFO -- : Completed 200 OK in 543ms (Views: 10.3ms)
 {% endhighlight %}
 
-Second call **49ms**
+Also on the second call I get a similar response of **49ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:48:15.050356 #50991]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:48:15 -0400
@@ -109,6 +150,8 @@ I, [2015-03-09T11:48:15.099667 #50991]  INFO -- : Completed 200 OK in 49ms (View
 Subsequent calls stable around **50ms**.
 
 ### With three partials
+
+Now I am breaking up the template in more partials.
 
 {% highlight diff %}
 diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
@@ -222,7 +265,7 @@ I, [2015-03-09T11:55:23.015773 #51383]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:55:23.016680 #51383]  INFO -- : Completed 200 OK in 563ms (Views: 21.2ms)
 {% endhighlight %}
 
-Second call:
+Second call **62ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:56:00.645846 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:56:00 -0400
@@ -306,90 +349,9 @@ I, [2015-03-09T11:56:00.708330 #51383]  INFO -- :   Rendered articles/index.html
 I, [2015-03-09T11:56:00.708709 #51383]  INFO -- : Completed 200 OK in 62ms (Views: 8.0ms)
 {% endhighlight %}
 
-Subsequent calls:
+And the subsequent calls are stable around **62ms**.
 
-{% highlight bash %}
-I, [2015-03-09T11:57:19.632931 #51383]  INFO -- : Started GET "/articles/index" for 127.0.0.1 at 2015-03-09 11:57:19 -0400
-I, [2015-03-09T11:57:19.633552 #51383]  INFO -- : Processing by ArticlesController#index as */*
-I, [2015-03-09T11:57:19.689377 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.689520 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.689583 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.3ms)
-I, [2015-03-09T11:57:19.689709 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.689792 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.689830 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.689948 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690031 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690068 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.690179 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690268 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690305 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.690415 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690501 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690543 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.690651 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690735 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.690790 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.690929 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691044 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691089 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.691227 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691323 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691368 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.691483 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691588 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691633 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.691766 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691864 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.691916 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.692032 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692113 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692148 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.692258 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692338 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692373 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.692487 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692565 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692600 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.692707 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692794 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.692829 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.692936 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693034 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693071 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.693176 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693253 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693288 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.693402 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693486 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693521 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.693631 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693709 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693743 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.693850 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693926 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.693961 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.694062 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694150 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694186 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.694289 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694365 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694400 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.694507 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694583 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694618 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.694724 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694803 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.694838 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.694945 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.695021 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.695056 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.695158 #51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.695240 #51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)
-I, [2015-03-09T11:57:19.695275 #51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)
-I, [2015-03-09T11:57:19.695323 #51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (6.2ms)
-I, [2015-03-09T11:57:19.695694 #51383]  INFO -- : Completed 200 OK in 62ms (Views: 6.8ms)
-{% endhighlight %}
-
+I can see an impact when introducing 
 
 ## Impact on a real application
 

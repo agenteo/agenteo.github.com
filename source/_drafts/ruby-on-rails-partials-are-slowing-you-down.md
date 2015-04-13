@@ -6,25 +6,38 @@ tags:
   - ruby-on-rails
 ---
 
-I was recently checking performance of an application and wondered if an aggressive use of erb partials to break long markup templates in shorter maintainable chunks would slow down response times. In my tests it does but its impact is negligible.
+When a template grows over a certain number of lines I introduce partials to break it up in shorter maintainable units--I will incrementally introduce partials in a test application and share insight on merging partials in a real application and when they slowness is a symptom of other issues.
 
-I document results on a test application using an in memory data model and will talk about the results on my real application in production mode with mongodb connections.
 
 ## A test application
 
-I run this test on a Rails 4.2 app in production mode, `curl` hits the same URL.
+The application is a Rails 4.2 app in production mode using an in memory data model that generates 25 objects. I report the **response time** from production Rails logs--I did not involve database or caching to focus on partials performance and I restarted the application after each test. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). 
 
 {% highlight ruby %}
+# app/controllers/articles_controller.rb
 def index
   @articles = 25.times.collect do |i|
     { title: "Article #{i}", body: LiterateRandomizer.paragraph, published_at: Time.now }
   end
 end
 {% endhighlight %}
+ 
+{% highlight html %}
+<!-- app/views/articles/index.html.erb -->
+<h1>Articles#index</h1>
 
-I use `curl` to hit the same URL and report the **response time** from Rails logs--I did not involve database or caching to ensure they did not play a role in the benchmark and I restarted the application after each test. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). 
+<% @articles.each do |article| %>
+  <article>
+    <h2><%= article[:title] %></h2>
+    <p><%= article[:body] %></p>
+  </article>
+<% end %>
+{% endhighlight %}
 
-The initial test has a controller with a single view and as always the first call is significantly slower **549ms**
+
+The initial test has a controller with a single view that I will incrementally break up in partials--**this is an oversimplified usecase that in real life wouldn't need them**. I will share the results I had on a real application.
+
+As always the first call is significantly slower **549ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:45:41.578125 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -50,7 +63,7 @@ I, [2015-03-09T11:47:04.033935 #50837]  INFO -- : Completed 200 OK in 49ms (View
 
 ### Introduce a partial
 
-I now introduce a single partial.
+I show you the difference between current and previous version you can see each step as a commit on the [github repository](https://github.com/agenteo/lab-partials-slowing-you-down). I now introduce a single partial.
 
 {% highlight diff %}
 diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
@@ -151,7 +164,7 @@ Subsequent calls stable around **50ms**.
 
 ### With three partials
 
-Now I am breaking up the template in more partials.
+Now I am breaking up the template in three partials.
 
 {% highlight diff %}
 diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb
@@ -351,11 +364,17 @@ I, [2015-03-09T11:56:00.708709 #51383]  INFO -- : Completed 200 OK in 62ms (View
 
 And the subsequent calls are stable around **62ms**.
 
-I can see an impact when introducing 
+Calls after the first are around 10ms slower a negligible speed deterioration.
 
 ## Impact on a real application
 
-Taking out partials from the application is the most accurate benchmark you can run--be rigurous and run local tests before assuming the change brings any benefit if there is a significant improvement locally deploy and load test it to get a definitive answer. When testing locally account for application and database caching. I've seen garbage collection (GC) manifesting in partial rendering with response time randomly fluctuating like:
+Before writing this I was working on a production application and merged existing partials in a single template and benchmarks gave again negligible difference in response times. Taking out partials from your application is the most accurate benchmark you can run--be rigorous and run local tests before assuming the change brings any benefit remember:
+
+* run the application in production mode
+* any first call is always significantly slower because of framework startup and database query costs
+* be aware of any caching on your system and on databases or APIs you use
+
+If there is a significant improvement locally deploy and load test the change to get a definitive answer. **I've seen garbage collection (GC) manifesting in partial rendering with response time randomly fluctuating** like:
 
 {% highlight bash %}
 Rendered articles/_article.html.erb (0.2ms)
@@ -367,12 +386,5 @@ Rendered articles/_article.html.erb (0.2ms)
 Rendered articles/_article.html.erb (0.3ms)
 {% endhighlight %}
 
-if each request has a spike moving around you probably have a garbage collection problem and partials rendering is just where it shows up.
+When each request has a response time spike moving around you probably have a garbage collection problem manifesting in your partials.
 
-I grouped 4 templates back in to one in my production application and it didn't bring any benefit, it actually made it slightly (30/40ms) slower but I've seen fluctuation like that before so I'd call it a draw.
-
-When trying this on your app remember:
-
-* any first call is always significantly slower because of framework startup and database query costs
-* if you restart the database query you will have a slower response
-* purge the disk cache: OSX `purge`, Linux `sync && echo 1 > /proc/sys/vm/drop_caches`

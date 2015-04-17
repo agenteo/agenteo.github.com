@@ -6,12 +6,13 @@ tags:
   - ruby-on-rails
 ---
 
-When a template grows over a certain number of lines I introduce partials to break it up in shorter maintainable units--I will incrementally introduce partials in a test application and share insight on merging partials in a real application and when they slowness is a symptom of other issues.
+When a template grows over a certain number of lines I introduce partials to break it up in shorter maintainable units--in this post I will incrementally introduce partials in a test application and share findings merging partials in a real application and when their slowness is a symptom of other issues.
 
+**TL;DR they are slowing you down but the impact is negligible so keep using them.**
 
 ## A test application
 
-The application is a Rails 4.2 app in production mode using an in memory data model that generates 25 objects. I report the **response time** from production Rails logs--I did not involve database or caching to focus on partials performance and I restarted the application after each test. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). 
+The application is a Rails 4.2 app in production mode using an in memory data model that generates 25 objects. I report the **response time** from production Rails logs--I did not involve database or caching to focus on Rails's partials performance and I restarted the application after each test. You can find this application on [my github](https://github.com/agenteo/lab-partials-slowing-you-down). 
 
 {% highlight ruby %}
 # app/controllers/articles_controller.rb
@@ -35,9 +36,9 @@ end
 {% endhighlight %}
 
 
-The initial test has a controller with a single view that I will incrementally break up in partials--**this is an oversimplified usecase that in real life wouldn't need them**. I will share the results I had on a real application.
+The initial test has a controller with a single view that I will incrementally break up in partials--**this is an oversimplified usecase that in real life wouldn't need them**.
 
-As always the first call is significantly slower **549ms**
+Even when in production mode the first call is significantly slower **549ms**
 
 {% highlight bash %}
 I, [2015-03-09T11:45:41.578125 #50837]  INFO -- : Processing by ArticlesController#index as */*
@@ -368,13 +369,13 @@ Calls after the first are around 10ms slower a negligible speed deterioration.
 
 ## Impact on a real application
 
-Before writing this I was working on a production application and merged existing partials in a single template and benchmarks gave again negligible difference in response times. Taking out partials from your application is the most accurate benchmark you can run--be rigorous and run local tests before assuming the change brings any benefit remember:
+Before writing the article I was testing merging partials in an existing production application and benchmarks gave **negligible difference in response times**. Taking out partials from **your** application is the most accurate benchmark you can run but be rigorous and run local tests before assuming the change brings any benefit--if it does load test to get a definitive answer. Also remember:
 
 * run the application in production mode
 * any first call is always significantly slower because of framework startup and database query costs
 * be aware of any caching on your system and on databases or APIs you use
 
-If there is a significant improvement locally deploy and load test the change to get a definitive answer. **I've seen garbage collection (GC) manifesting in partial rendering with response time randomly fluctuating** like:
+**I've seen garbage collection (GC) manifesting in partial rendering with response time randomly fluctuating** like:
 
 {% highlight bash %}
 Rendered articles/_article.html.erb (0.2ms)
@@ -386,5 +387,4 @@ Rendered articles/_article.html.erb (0.2ms)
 Rendered articles/_article.html.erb (0.3ms)
 {% endhighlight %}
 
-When each request has a response time spike moving around you probably have a garbage collection problem manifesting in your partials.
-
+the `0.175ms` was moving between partials and it was caused by the garbage collector.

@@ -10,7 +10,7 @@ tags:
 
 Some time ago I joined a company as a software developer and my development manager--let's call it Seamus--was practising management by fear.
 
-I think it's worth writing about this to remind me the phases of what happened and to define pillars that must be present in a healthy organization. I hope to help people or organizations in a similar situation to make swift decisions.
+I decided to write about this as a reminder to myself and to define pillars that must be present in healthy organizations. I hope to help people or organizations in a similar situation to make swift decisions.
 
 * PILLAR 1 **freedom to ask questions and get a polite answer**
 * PILLAR 2 **speak in front of the team not behind closed doors**
@@ -27,44 +27,57 @@ I think it's worth writing about this to remind me the phases of what happened a
 
 ### freedom to ask questions and get a polite answer
 
-Shortly after I started I was in a meeting with 3 other developers, a director of technology and Seamus. It was meant to be an agile release planning as well as an iteration planning with no product owner--I won't focus on the lack of process--after being briefed with the product vision I started asking questions like "*How much data do we need to migrate?*" and "*Who's the product owner?*" and "*How many requests is this meant to support?*", Seamus gave away his discomfort changing face color from white, to red, to pompei red, to purple and shut me off saying that he was going to be the product owner and the rest of the questions were irrelevant. The shocking part was he was backed up by a director of technology sitting next to him that said something along the lines of "*let's not focus on those details*" and none of the other 3 developers spoke up which made me think there was something wrong with me. I initially thought they didn't ask questions because they knew all the answers but it was a symptom of inexperience, insecurity and fear. Don't let somebody with a title higher then yours silence you up.
+Shortly after I started I was in a meeting with 3 other developers, a director of technology and Seamus. It was meant to be an agile release planning as well as an iteration planning with no product owner--I won't focus on the lack of process--after being briefed with the product vision I started asking questions like "*How much data do we need to migrate?*" and "*Who's the product owner?*" and "*How many requests is this meant to support?*", Seamus gave away his discomfort changing face color from white, to red, to pompei red, to purple and shut me off saying that he was going to be the product owner and the rest of the questions were irrelevant. The shocking part was he was backed up by a director of technology sitting next to him that said something along the lines of "*let's not focus on those details*" and none of the other 3 developers spoke up which made me think there was something wrong with me. I initially thought they didn't ask questions because they knew all the answers but it was a symptom of inexperience, insecurity and fear. 
+
+**Your team should be glad of you asking questions and either answer or get back to you, when they think the question is not relevant they should politely explain why.**
 
 ## PILLAR 2
 
 ### you say things in front of the entire team not behind closed doors
 
-Sometime Seamus would not answer your question in front of the team instead you were politely invited to go in a room alone with him so he could attack you or ask you to be on his side. He said he wanted us to ask questions but his reaction was giving away his discomfort. After being in such a situation with another developer--let's call him Luke--I walked out with him for coffee and started talking about Seamus management style and he said "I know exactly what you mean". I felt relieved I could talk about a subject that I felt nobody else was open to talk about and I wasn't alone anymore, Luke worked with Seamus for three months before I joined and his patience was running out, he didn't tell me at the time but he already contacted human resources.
+Sometime Seamus would not answer your question in front of the team instead you were politely invited to go in a room alone with him so he could attack you or ask you to be on his side. In private he was saying he wanted us to ask questions but his reaction was giving away his discomfort. After being in such a situation with another developer--let's call him Luke--I walked out with him for coffee and started talking about Seamus management style and he said "I know exactly what you mean". I felt relieved I could talk about a subject that I felt nobody else was open to talk about and I wasn't alone anymore, Luke worked with Seamus for three months before I joined and his patience was running out, he didn't tell me at the time but he already contacted human resources.
+
+*Personal conversations require one-on-one private meeting but you need to be able to constructively argue and confront your ideas in front of the entire team*.
 
 ## PILLAR 3
 
 ### do not be afraid of what you don't know
 
-The feeling I had was the company technical level was mediocre and Seamus with an above mediocre technical level was getting away with a mix of buzzwords and rhetoric because nobody knew what he was talking about and nobody would dare to ask in fear of sounding stupid.
+The feeling I had was the company technical level was average and Seamus with an above average technical level was getting away with a mix of buzzwords and rhetoric because nobody knew what he was talking about and nobody would dare to ask in fear of sounding stupid.
+
+*Asking question when you do not know what people are talking about is a great attitude--it ensures everybody is on the same page. Like for PILLAR 1 you should always receive polite answers.*
 
 ## PILLAR 4
 
 ### trust and talent recognition
 
-When Seamus was not in meetings he liked to micromanage, that was ineffective because it was purely driven by need of control rather then mentor and after setting the course he would leave and not be there for follow-ups. Once I was assigned a task and after reporting back it was not possible he asked me to look again--I did thinking I made a mistake but came back with the same result--he then said I was wrong and that he used the feature before and I must have missed it so he decided to look in to it. Turns out the feature was not there but he came up with an impractical option to back up that he was right. When later he reported to the director about that change of plans he didn't say who actually found the problem he just took the credit for himself. If people don't trust you why should you trust them? People less experienced then you should not tell you how to do your job.
+When Seamus was not in meetings he liked to micromanage, that was ineffective because driven by need to control rather then mentor and after setting the course he would leave and be unable to follow-up. Once I was asked to look in to a library feature and I reported back it was not implmented so he asked me to look again--I did thinking I made a mistake but came back with the same result--he then said I was wrong and that he used the feature before and I must have missed it so he decided to look in to it. Turns out the feature was not there but he came up with an impractical option to back up that he was right. When later he reported to the director about that change of plans caused by the missing feature he didn't say who actually found the problem he just took the credit for himself.
+
+*The trust level should start full and based on events it can either stay that way or decrease. When people don't trust you it's really hard to trust them back and you shouldn't work with people you don't trust.*
+
 
 ## PILLAR 4
 
 ### beware of barriers created to hide fear
 
-2 months went on and Seamus was still product owner of a product that had a real stakeholder on the floor above us that we were not allowed to talk to. When asked about our processes and when I was comparing us to other teams Seamus would cut me off saying "*they don't know what they are doing, we are the better team we are the one building the core of this product that will bring money to the company*". We weren't all that special--Seamus was afraid to compare with another team so he created a separation between.
+2 months went on and Seamus was still product owner of a product that had a real stakeholder on the floor above us that we were not allowed to talk to. When asked about our processes and when I was comparing us to other teams Seamus would cut me off saying "*they don't know what they are doing, we are the better team we are the one building the core of this product that will bring money to the company*". We weren't all that special--Seamus was afraid to compare with another team so he created an imaginary separation.
 
 ## PILLAR 5
 
 ### colleagues should supportive not only concerned with their issues
 
-Seamus was assigning us tasks to work on but we didn't have a deployment server--we were told that our QA person a sweet girl that I'll call Mush would have to setup the application on her machine and test it there. She felt upset because she couldn't do her job but had to ask developers to setup the application each time she was doing testing. Seamus then said she should be writing automated tests and then we would make them pass. This lack of process and understanding was unreal so I spoke to another team lead to get his opinion and help--he acknowledged the problem but was not interested in being involved at all--he was fine as long as his little corner was fine.
+Seamus was assigning us tasks to work on but we didn't have a deployment server--we were told that our QA person a sweet girl that I'll call Mush would have to setup the application on her machine and test it there. She felt upset because she couldn't do her job but had to ask developers to setup the application each time she was doing testing. Seamus then said she should be writing automated tests and then we would make them pass. This lack of process and understanding was so amateurish that I spoke to another team lead to get his opinion and help--he acknowledged the problem but was not interested in being involved at all--he was fine as long as his little corner was fine.
+
+**When something so concerning is happening another team should be interested and either help directly or point you to the person to speak with.**
 
 
 ## PILLAR 6
 
 ### people should not cry or feel helpless
 
-Around 2 months after I started we were a team of 6: me, Luke two other junior developers and a designer. Mush resigned and I remember her crying in one of the last closed door meetings with Seamus, later she told me "*I told Seamus he wasted my time here*". Two developers also resigned, if Seamus was the reason for their departure I don't know I was scared to ask and that's when I decided I was going to actively do something about this. A new developer called Gerard joined to work on a part of this "project" that had no specifications at all--he would later tell us he was sitting there doing nothing. The other 2 junior developers have been with the company for about 10 years when speaking with them about Seasmus they agreed he was a bad manager but they said there is nothing you can do about it. This was mind blowing, some people would take anything to pay the bills!
+Around 2 months after I started we were a team of 6: me, Luke two other junior developers and a designer. Mush resigned and I remember her crying in one of the last closed door meetings with Seamus, later she told me "*I told Seamus he wasted my time here*". Two developers also resigned, if Seamus was the reason for their departure I don't know I was scared to ask them and that's when I decided I was going to actively do something about this. A new developer called Gerard joined to work on a part of this "project" that had no specifications--he would later tell us he was sitting there doing nothing. The other 2 junior developers have been with the company for about 10 years when speaking with them about Seasmus they agreed he was a bad manager but they said there is nothing you can do about it. 
+
+**Some people will put up with anything to pay the bills and this is a problem for company culture that genuinely wants to change but can't rely on people to speak up. Having **
 
 ## PILLAR 8
 

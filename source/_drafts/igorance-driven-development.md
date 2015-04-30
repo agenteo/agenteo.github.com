@@ -5,63 +5,83 @@ draft: true
 ---
 
 
-This article is to help non technical executives understand the impact of unmaintainable software on deliverables and have informed conversations with technical executives to remedy ignorance driven development.
+This article is to help product owners and junior developers understand the impact of unmaintainable software on deliverables and learn how to discuss the topic with technical executives.
+
+I describe the symptoms of unmaintainable software and excuses I've heard inexperienced tech people use to minimize it--finally effective strategies to help your corporation **acknowledge this problem** and **change attitude about it**.
+
+## Symptoms of unmaintainable software
 
 Any new system has a grace period in which ignoring design doesn't hurt immediate deliverables but dents its long term maintainability and the cost to fix that will hit when you least expect it.
 
-I will explain symptoms of unmaintainable software common excuses used by ignorant tech people to minimize it and strategies to help your corporation acknowledge its presence and change attitude about it. 
+**For developers working on unmaintainable code is like speaking with someone that has a thick accent and is drinking beer--you are talking the same language but it takes extra effort to communicate effectively and when that person is drunk it might become impossible to understand.**
 
-## symptoms of unmaintainable software
+Only a few symptoms of unmaintainable software reach a product owner: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. When the slow down becomes unsustainable you will first start hearing suggestions to rebuild a portion or the entire system or stop development and focus on refactoring.
 
-For developers working on unmaintainable code is like speaking with an irish with a thick accent--you are talking the same language but it takes extra effort to understand the accent and when drunk the irish might become impossible to understand. The analogy must end here because Irish are lovely people.
 
-Unmaintainable software symptoms visible to an executive are a constant slow down in delivered features and when delivered they are fragile and prone to error. When the slow down gets to an unsustainable point you will first hear suggestions to refactor or rebuild a portion or the entire system.
+## Who can tell if code is unmaintainable?
 
-## who can tell if code is maintainable
+The first way to find out if code is maintainable is to actively work on it and if your tech directors and leads are not doing that their input should be considered as the opinion of an outsider--that can have a positive effect if combines with a knowledge of software design and hands on experience but without that their opinion will be irrelevant and often contradicting your developers.
 
-There are books [1] published about this specific subject by authors that worked over 30 years in the industry. Technical managers should have at least 10 years of hands on experience and be familiar with these concepts if that's not the case you will **never hear about unmaintainable code** from them.
+Recognized technical leaders wrote books [[1]](#books) about code maintainability the technical directors and leads in your organization should have read them and be familiar with the concepts or you will **never hear about unmaintainable code** from them and **they will lead teams to ignorance driven development and unmaintainable code**.
 
-Sometime developers will be knowledgeable so make sure your company has an open door policy to raise issues and that **action items are taken**. Having external consultants mentor your technical executives might be an effective way. Relying on internal knowledge sharing would be the best if the organization is healthy but in a dysfunctional one internal politics and pride will not allow it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.
+## The cat eat my code
 
-## excuses to conceal unmaintainable software
-
-When confronted with those symptoms I hear technical people using a list of excuses to conceal the root cause of unmaintainable software: **badly designed code**.
+When confronted with symptoms of unmaintainable code I've heard technical people using a list of excuses to conceal its root cause: **bad design**.
 
 ### The requirements changed one
 
->> [PUT PROBLEM HERE] ... because the requirements kept changing and the code had to adapt and that caused.
+>> The code is unmaintainable because the requirements kept changing... the code was clear at the beginning!
 
+If you hear this from a tech lead or director you probably want to demote them or quit your job. The sentence lacks the basic understanding of how software development works and you should not have someone like that managing other people.
+
+Requirements will change and software has to adapt.
+
+**Don't be tricked in thinking software engineering is like mechanical or civil engineering where a built product can't physically change** like once you build a pedestrian bridge it can't become a train bridge and if that requirement changes you have to rebuild the bridge. Software is not physical it's like if the pedestrian bridge was built with Lego bricks that can be switched and shaped to become a train bridge and with a **supple design** it is a great experience to do that as business requirements evolve.
+
+### The programming language one
+
+>> The code is unmaintainable but at least it's in Ruby so that's good.
+
+You might think this is a joke but I heard this in serious conversations and it demonstrates great ignorance on software programming.
+
+Badly designed code is going to affect all languages regardless of how friendly they are. Migrating from a .NET mess to create a Ruby mess is not doing anyone any good.
 
 ### The minimal viable product one
 
->> The code is not maintainable because we delivered a minimum viable product, we release it fast and dirty to get feedback and will tackle the technical debt and design later
+>> The code is not maintainable because we delivered a minimum viable product, we release it fast and dirty to get feedback and will tackle the technical debt and design later.
 
-Some technical people lacking knowledge of software design hides behind the concept of minimal viable product to skip the iterative designing part. **MVP should prioritize features to release an effective minimal version of your product not one without design.**
+Some technical people lacking knowledge of software design hide behind the concept of minimal viable product to skip iterative design. **MVP should prioritize features to release a minimal but effective version of your product not a design less one**.
+
+Design done by knowledgeable developers won't add significant overhead but I've heard inexperienced leads talk as if it's something that would make a difference between making the release or not so it can be omitted. In all but trivial projects is critical to include iterative design or when business requirement change the code will be impossible to manage.
 
 ### The deadline one
 
->> The code is not maintainable because we had a hard deadline and had to cut corners to deliver all those features
+>> The code is not maintainable because we had a hard deadline and had to cut corners to deliver all those features.
 
 In time bound projects the scope has to be negotiated through constant communication between the development team and the product owner. The negotiation might mean the scope is decreased or increased based on the velocity of the team--**skipping design doesn't mean you will deliver more features it means you will develop features impractical to maintain**.
 
-Managers without years of hands on experience creating maintainable software or successfully refactoring unmaintainable ones won't recognize the problem and will be unable to help their teams. Having 10 years experience means nothing when it's a one year design less experienced repeated 10 times.
-
 ### The technical debt one
 
->> The code is not maintainable because we had a hard deadline and **accumulated technical debt** to deliver all those features
+>> The code is not maintainable because we had a hard deadline and accumulated technical debt to deliver all those features.
 
 This is similar to the one above but instead of cutting corners you hear *technical debt*. Calling technical debt the result of ignorance driven development by developers that didn't know or care how to code any better is an excuse. Bob Martin speaks to this in his [A mess is not technical debt](https://sites.google.com/site/unclebobconsultingllc/a-mess-is-not-a-technical-debt) make sure your tech people know you know the difference.
 
-Sometimes developers might make an informed decision to take shortcuts in order to fix a urgent bug or make a marketing deadline--the shortcut doesn't mean design is skipped it means lower attention to detail leaving that specific area without an adaptable design or with poorly named code. The result is working on that code will require extra effort and this is ok because it won't affect the maintainability of the whole application.
+Sometimes developers might make an informed decision to take shortcuts in order to fix a urgent bug or make a marketing deadline--the shortcut doesn't mean design is skipped it means lower attention to detail leaving that specific area with a [transaction script](http://martinfowler.com/eaaCatalog/transactionScript.html) instead of a supple design. The result is working on that specific area of the code will require extra effort and this is ok because it's **on a specific area and not on the whole application**.
 
 ### Refactor later
 
->> The code is not maintainable but we can dedicate time to refactor it now
+>> The code is not maintainable but we now that we released we can focus on refactoring.
 
-Refactoring means changing software design leaving features unchanged but any large change to an unmaintainable system will introduce unknown results which is why you want to introduce small iterative changes. Large week long refactorings is a bad idea because it will halt feature delivery and introduce large amount of changes and possible bugs in multiple areas hard to track down.
+Refactoring means changing software design leaving features unchanged but large changes to an unmaintainable system will introduce unknown results which is why you want to introduce small iterative changes. Large week long refactorings is a bad idea because it will halt feature delivery and introduce large amount of changes and possible bugs in multiple areas hard to track down.
 
-Instead your team should do an incremental refactor on small isolated portions as they work on new features--this will be more challenging and time consuming but allow to confidently control the amount of change introduced. There are great books about this topic ADD_BOOKS so if you are in this situation make sure your people have read those.
+>> If somebody talks about a system being broken for a couple of days while they are refactoring, you can be pretty sure they are not refactoring.
+>>
+>> [Martin Fowler](http://martinfowler.com/bliki/RefactoringMalapropism.html)
 
+
+I like to do incremental refactoring on small isolated portions while working on features so the code quality increases while delivering business value--this will be more challenging but you can confidently control the amount of changes introduced. Here's a list of great books about refactoring:
+
+ 
 ## What does unmaintainable code look like
 
 You get unmaintainable code when developers build code that doesn't reveal its intention in the context of the application domain. A trivial example would be:
@@ -72,7 +92,7 @@ def t(x)
 end
 {% endhighlight %}
 
-A value multiplied by 0.25 could mean anything. When a developer look at that code there he has no idea what's going on. That is where unmaintainable code starts following the [broken window theory](http://en.wikipedia.org/wiki/Broken_windows_theory) they will expand design less code unless they have directors and leads mentoring them on better design.
+A value multiplied by 0.25 could mean anything. When a developer look at that code he has no idea what's going on unless working on it everyday but relying on institutional knowledge when writing code is a poor decision--if the person quits or changes division that knowledge is going away and handing over a large codebase is not always feasible. That is where unmaintainable code starts and following the [broken window theory](http://en.wikipedia.org/wiki/Broken_windows_theory) it expands unless someone with authority can suggest and if needed enforce a better design.
 
 {% highlight ruby %}
 SALE_TAX = 0.25
@@ -81,25 +101,27 @@ def sale_tax(price_without_tax)
 end
 {% endhighlight %}
 
-A developer looking at this code now has some context. So why developers write the first version rather then the second? I will answer that later.
+A developer looking at this code now has a better understanding of what's going on. So why developers write the first version rather then the second? I will answer that later.
 
-## I get results how do I know if the code is unmaintainable?
+## I see results how do I know if the code is unmaintainable?
 
-## if I get results why do I care?
+* collect feedback from developers
+* start book clubs about design
+* ensure pairing programming is done and pull request to review code
 
-You might get results today but in a few months things will drastically change and maybe you won't notice until the entire project comes to a stall which is why you as an executive should be informed about it.
+You might get results today but in a few months things will drastically change and usually you won't notice until the entire project comes to a stall which is why you as an executive should be informed about it.
 
 Blindly relying on your CTO for this is like relying on Pizza Hut producing genuine italian pizza--writing this article is like having a slice of a Italian Margherita from Naples so you can start comparing Pizza Hut with something.
 
-You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last for but if you build your business to be successful you should build your software with the same mindset. If you make an informed decision to disregard code quality then you should share that with your development team--be honest with them and some might stick around.
+You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last for but **if you build your business to be successful you should build your software with the same mindset**. If you make an informed decision to disregard code quality then you should share that with your development team--be honest with them and some might stick around.
 
-A **good iterative design** doesn't mean longer development and as the software complexity grows the software will be in a maintainable state.
-# How to deal with it
+~~A **good iterative design** doesn't mean longer development and as the software complexity grows the software will be in a maintainable state.~~
+
+## How to deal with it
 
 When looking at unmaintainable code I think of it to be something I've written when I started building software without anyone mentoring me. I had to learn about it building large applications and having to deal with my errors so now I want people to avoid my mistakes.
 
-
-but everytime I speak with people working at startups I hear the same story of unmaintainable code.
+~~but everytime I speak with people working at startups I hear the same story of unmaintainable code.~~
 
 who can ensure they know what they are doing? Do you then need to have people checking them? That sounds ridiculous and not practical.
 
@@ -137,41 +159,28 @@ Unmaintainable code is harder or impossible to adapt.
 
 ## Where is unmaintainable code coming from?
 
-
 Your director or CTO might call that technical debt but it's not that. That's ignorance driven development and it will cripple progress in your application.
 
-First let's clarify that *Technical debt* is a word missunderstood and abused by some managers--it refers to a knowledgeble developer making an informed decision about lowering the code maintainability in a specific area to complete a feature in shorter time.
+First let's clarify that *Technical debt* is a word missunderstood and abused by some managers--it refers to a knowledgeably developer making an informed decision about lowering the code maintainability in a specific area to complete a feature in shorter time.
 
 So if your director might be telling you it's technical debt but in reality it's igorance.
 
 http://martinfowler.com/bliki/TechnicalDebtQuadrant.html
 http://martinfowler.com/bliki/TechnicalDebt.html
 
-Creating code not well encapsulated that instead of conveying domain logic concepts is a mix of internal state and properties making it very very hard to understand what's going on. This is like an American speaking with an Irish with a very very thick accent--they both are speaking the same language but the American will have an hard time picking up the Irish accent and might ask to repeat or like in my case to send a text message.
-
-
-
-
-Having an incoming deadline
-
-Unmaintainable applications lead to inconsistent estimates.
+Creating code not well encapsulated that instead of conveying domain logic concepts is a mix of internal state and properties making it very very hard to understand what's going on. 
 
 When looking at unmaintainable code I think of it to be something I've written when I started building software without anyone mentoring me. I had to learn about it building large applications and having to deal with my errors so now I want people to avoid my mistakes.
 
-
-what the domain logic
 If the developer doesn't know any better 
 
-Developers will build unmaintainable software unless they have experience building and maintaing year lasting projects--you might think that's ok because you don't know if your product will be successful and last. That's a fair point but don't you build your business to be successful? Then you should build your software with the same mindset.
-
+Developers will build unmaintainable software unless they have experience building and maintaining year lasting projects
 
 because the developers did not fully understand the implications of their changes.
 
 ### Solutions
 
-
-
-Trusting your technical leaders on their initial results can be misleading--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when your team can least afford it. 
+Blindly trusting your technical leaders on their initial results can be misleading--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when your team can least afford it. 
 
 ## BIN
 
@@ -180,3 +189,8 @@ Product deadlines are part of the routine so justifying unmaintainable code beca
 
 
 Retrofitting a design is time consuming and can introduce bugs, you want most of your system to be designed incrementally as you build it. There are a handful of great books [1] explaining this so ensure your technical directors and leads have read them or they would be like a priest preaching gospel without having read it.
+
+
+### Books
+* [Working Effectively with Legacy Code](http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?ie=UTF8&qid=1430344604&sr=8-1&keywords=work+effectively+with+legacy+code)
+* [Refactoring: Improving the Design of Existing Code](http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?ie=UTF8&qid=1430344633&sr=8-1&keywords=refactoring) 

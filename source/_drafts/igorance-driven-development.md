@@ -10,9 +10,9 @@ MAP
 ~> Acknowledgement
 ~> Actions
 
-This article is to help product owners and junior developers understand the impact of unmaintainable software on deliverables and learn how to discuss the topic with technical directors and leads.
+Ignorance Driven Development is software development lead and directed by inexperienced people producing an unmaintainable product that developers will dread to work on.
 
-I describe the symptoms of unmaintainable software and excuses I've heard inexperienced tech people use to minimize it, how to recognized it and finally effective strategies to help your corporation **acknowledge this problem** and **change attitude about it**.
+This article is to help product owners and junior developers understand the impact of technical decisions enforced by inexperienced people--its result unmaintainable software on deliverables and learn how to discuss the topic with technical directors and leads.
 
 ## Symptoms of unmaintainable software
 
@@ -20,12 +20,12 @@ Any new system has a grace period in which ignoring design doesn't hurt immediat
 
 **For developers working on unmaintainable code is like speaking with someone that has a thick accent and is drinking beer--you are talking the same language but it takes extra effort to communicate effectively and when that person is drunk it might become impossible to understand.**
 
-Only a few symptoms of unmaintainable software reach a product owner: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. When the slow down becomes unsustainable you will first start hearing suggestions to rebuild a portion or the entire system.
+Only a few symptoms of unmaintainable software reach a product owner: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. When the slow down can't be justified anymore you will start hearing suggestions to rebuild a portion or the entire system.
 
 
 ## Excuses: the cat eat my code
 
-When confronted with symptoms of unmaintainable code I've heard technical people using a list of excuses to conceal its root cause: **bad design**.
+When questioned about those symptoms and the possibility of an unmaintainable code base I've heard technical executing using a list of excuses to conceal its root cause: **bad design**.
 
 ### The *requirements changed* one
 
@@ -39,7 +39,7 @@ Software engineering is not like other forms of engineering where the product is
 
 ### The *programming language* one
 
->> The code is unmaintainable but at least it's in Ruby so that's good.
+>> The code is unmaintainable but at least now it's in Ruby so that's good.
 
 You might think this is a joke but I heard this in serious conversations and it demonstrates great ignorance on software programming.
 
@@ -94,14 +94,7 @@ In any team of 5 a formal or informal tech lead should mentor and have authority
 
 To learn if code is maintainable you have to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and hands on experience but without that is irrelevant and often contradicting your developers.
 
-You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last for but **if you build your business to be successful you should build your software with the same mindset**. If you make an informed decision to disregard code quality then you should share that with your development team--be honest with them and some might stick around.
-
-First you need to acknowledge you have a problem or this article won't be as effective and the problem is it's hard to determine how big of a prolem you have. Delegating is good but how do you trust someone with a bottle of wine
-
-
-When you see deliverables you might think everything is good but
-
-fail to see it as a developer you might think there is no other way to tackle complexity.
+You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last for but **if you build your business to be successful you should build your software with the same mindset**. If you make an informed decision to disregard code quality then you should share that with your development team.
 
 Unmaintainable software is caused by poor incremental design choices--the only measure you have is as requirements change with time software will deliver that or you.
 

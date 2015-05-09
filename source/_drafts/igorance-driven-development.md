@@ -5,27 +5,35 @@ draft: true
 ---
 
 MAP
-~> Symptoms
-~> Excuses
-~> Acknowledgement
-~> Actions
 
-Ignorance Driven Development is software development lead and directed by inexperienced people producing an unmaintainable product that developers will dread to work on.
+* Symptoms
+* Excuses
+* Acknowledgement
+* Actions
 
-This article is to help product owners and junior developers understand the impact of technical decisions enforced by inexperienced people--its result unmaintainable software on deliverables and learn how to discuss the topic with technical directors and leads.
+Every developer practiced ignorance driven development at some point during their career--good developers accept their ignorance early on and start working on it but others never admit it and use the same approach for decades. This ignorance creates unmaintainable software supported by the misconception that as software complexity grows working on it must feel harder as if we were in a fast food chain and went from cooking 20 to 200 burgers in an hour.
+
+This is wrong for two reasons: software development is knowledge work not labour and because of documented recipes to tackle software complexity by incrementally design code regardless of programming language.
+
+The longer people ignore basics of incremental design the harder it is to admit they were mistaken and when they lead teams or divisions they will set the course for the creation of a product that developers will find impractical to maintain and dreadful to work on. 
+
+This article is to help product owners and executives understand how technical ignorance impact the maintainability of software and degrade deliverables and learn how to discuss the topic with technical directors and leads.
+
 
 ## Symptoms of unmaintainable software
 
-Any new system has a grace period in which ignoring design doesn't hurt immediate deliverables but dents its long term maintainability and the cost to fix that will hit when you least expect it.
+Ignorance Driven Development focuses on delivering short term results by accidentally sacrificing long term maintainability--the people practising it can be novices or veterans but they don't think there is an alternative path to follow.
+
+Any new system has a grace period in which ignoring incremental design doesn't hurt immediate deliverables but dents its long term maintainability and the cost to fix that will hit when you least expect it.
 
 **For developers working on unmaintainable code is like speaking with someone that has a thick accent and is drinking beer--you are talking the same language but it takes extra effort to communicate effectively and when that person is drunk it might become impossible to understand.**
 
-Only a few symptoms of unmaintainable software reach a product owner: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. When the slow down can't be justified anymore you will start hearing suggestions to rebuild a portion or the entire system.
+Only a few symptoms of unmaintainable software reach a **product owner**: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. Only when the slow down can't be justified anymore **executives** will start hearing suggestions to *rebuild a portion or the entire system*.
 
 
 ## Excuses: the cat eat my code
 
-When questioned about those symptoms and the possibility of an unmaintainable code base I've heard technical executing using a list of excuses to conceal its root cause: **bad design**.
+When questioned about those symptoms and the possibility of an unmaintainable code base I've heard technical executives using a list of excuses to conceal its root cause: **poor design**.
 
 ### The *requirements changed* one
 
@@ -51,7 +59,7 @@ Badly designed code is going to affect all languages regardless of how friendly 
 
 Some technical people lacking knowledge of software design hide behind the concept of minimal viable product to skip iterative design. **MVP should prioritize features to release a minimal but effective version of your product not a design less one**.
 
-Design done by knowledgeable developers won't add significant overhead but I've heard inexperienced leads talk as if it's something that would make a difference between making the release or not so it can be omitted. In all but trivial projects is critical to include iterative design or when business requirement change the code will be impossible to manage.
+**Iterative design is not upfront design** and when done by knowledgeable developers it won't add significant overhead but I've heard inexperienced leads talk as if it's something that would make a difference between making the release or not so when under pressure it can be omitted. In all but trivial projects is critical to include **iterative design** or when business requirement change the code will be dreadful to manage. 
 
 ### The *deadline* one
 

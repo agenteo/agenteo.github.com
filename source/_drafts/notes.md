@@ -7,7 +7,6 @@ Having a CTO or a director with no technical background is no difference--before
 
 ~~Ultimately the people working on it so make sure you have a policy to receive feedback perhaps anonymously since your company managers might be using management by fear without you knowing.~~
 
-Make sure you collect developers feedback on the subject and follow up. Internal knowledge sharing would be the best if the organization is healthy but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.
 
 ~~Having external consultants mentor your technical executives might be an effective way but~~ 
 
@@ -44,30 +43,7 @@ Collect feedback from team members make sure their concern is listened and when 
 
 An appointed manager acting as lead but disconnected from the development cycle won't be recognized or trusted and be decremental to the acknowledging process. A director must be an expert in the technology he's directing and in design best practices or the role will be redundant or decremental.
 
-
 I've seen code maintainability slipping in because the company appointed director and lead roles based on political decisions--this might require drastic actions and either those roles become effective or should be made redundant.
-
- 
-## What does unmaintainable code look like
-
-You get unmaintainable code when developers build code that doesn't reveal its intention in the context of the application domain. A trivial example would be:
-
-{% highlight ruby %}
-def t(x)
-  x * 0.25
-end
-{% endhighlight %}
-
-A value multiplied by 0.25 could mean anything. When a developer look at that code he has no idea what's going on unless working on it everyday but relying on institutional knowledge when writing code is a poor decision--if the person quits or changes division that knowledge is going away and handing over a large codebase is not always feasible. That is where unmaintainable code starts and following the [broken window theory](http://en.wikipedia.org/wiki/Broken_windows_theory) it expands unless someone with authority can suggest and if needed enforce a better design.
-
-{% highlight ruby %}
-SALE_TAX = 0.25
-def sale_tax(price_without_tax)
-  price_without_tax * SALE_TAX
-end
-{% endhighlight %}
-
-A developer looking at this code now has a better understanding of what's going on. So why developers write the first version rather then the second? I will answer that later.
 
 ## I see results how do I know if the code is unmaintainable?
 
@@ -113,3 +89,25 @@ unable to
 Product deadlines are part of the routine so justifying unmaintainable code because of a deadline is ridiculous. The team should have a workflow to communicate and adapt the scope based on progress rather then taking on too much and creating conditions for unmaintainable code. I usually follow the process described in The art of agile development if you don't have time for that hire an agile mentor.
 
 Retrofitting a design is time consuming and can introduce bugs, you want most of your system to be designed incrementally as you build it. There are a handful of great books [1] explaining this so ensure your technical directors and leads have read them or they would be like a priest preaching gospel without having read it.
+
+
+
+This is like the final sprint at the end of a marathon--it can get you to the finish line faster but you can't sprint the entire marathon.
+
+
+
+Your director or CTO might call that technical debt but it's not that. That's ignorance driven development and it will cripple progress in your application.
+
+First let's clarify that *Technical debt* is a word missunderstood and abused by some managers--it refers to a knowledgeably developer making an informed decision about lowering the code maintainability in a specific area to complete a feature in shorter time.
+
+So if your director might be telling you it's technical debt but in reality it's igorance.
+
+http://martinfowler.com/bliki/TechnicalDebtQuadrant.html
+http://martinfowler.com/bliki/TechnicalDebt.html
+
+Creating code not well encapsulated that instead of conveying domain logic concepts is a mix of internal state and properties making it very very hard to understand what's going on. 
+
+When looking at unmaintainable code I think of it to be something I've written when I started building software without anyone mentoring me. I had to learn about it building large applications and having to deal with my errors so now I want people to avoid my mistakes.
+
+
+because the developers did not fully understand the implications of thei

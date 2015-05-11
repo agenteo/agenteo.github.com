@@ -94,15 +94,15 @@ To learn if code is maintainable you need to actively work on it so if your tech
 
 You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last but **if you build your business to be successful you should build your software with the same mindset**. 
 
-### Mentoring from experts
+### Expert mentoring
 
 Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. In any team of 5 a formal or informal tech lead should mentor and have authority to evaluate the incremental design while building software with the team--without that authority team members might disregard best practices compromising morale and preventing the creation of a supple design. If you are interviewing people for that role make sure you cover the maintainability side and bring up the excuses I listed to see what response you get.
 
-### In house cross pollinating knowledge
+### Cross-pollinating knowledge
 
 When your company has different divisions and some are not displaying any symptoms cross pollinating developers might help. Internal knowledge sharing works if the organization is healthy but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.  
 
-### External skilling up
+### Skilling up
 
 In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team--I suggest the lead and directors join the team as developers and an external experienced lead temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.
 

@@ -3,6 +3,7 @@ layout: post
 title: Ignorance Driven Development
 tags:
   - executive
+comments: true
 ---
 
 **This article is to increase product owners and non technical executives awareness to recognize technical ignorance permeating a software product so you can take action before development is crippled.**

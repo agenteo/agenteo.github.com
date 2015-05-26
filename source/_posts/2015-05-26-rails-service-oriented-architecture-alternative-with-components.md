@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ruby on Rails service oriented architecture in comparison with component based Rails architecture
+title: Rails service oriented architecture alternative with components
 comments: true
 tags:
   - ruby

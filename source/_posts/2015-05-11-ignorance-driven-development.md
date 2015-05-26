@@ -6,7 +6,7 @@ tags:
 comments: true
 ---
 
-**This article is to increase product owners and non technical executives awareness to recognize technical ignorance permeating a software product so you can take action before development is crippled.**
+**This article is to increase product owners and non technical executives awareness of technical ignorance permeating a division in order to take corrective actions before development is crippled.**
 
 Every developer inevitably practiced ignorance driven development at some point during their career--great developers accept their ignorance early on and start a never ending journey to skill up but others never admit it and use the same approach for decades. This creates unmaintainable software supported by the misconception that working on complex software must feel hard like carrying 200 potatoes is harder then carrying 20.
 

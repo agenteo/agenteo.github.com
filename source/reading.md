@@ -9,6 +9,9 @@ permalink: /reading/
 This is a chronological list of the work related books I've read. They are about management, agile methodologies, Ruby, Javascript, Go and other topics that I am interested in.
 
 ### 2015
+* [Good to Great: Why Some Companies Make the Leap...And Others Don't](http://www.amazon.com/Good-Great-Some-Companies-Others/dp/0066620996/ref=sr_1_1)
+* [Working Effectively with Legacy Code](http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1)
+* [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1)
 * [On Writing Well](http://www.amazon.com/Writing-Well-30th-Anniversary-Nonfiction/dp/0060891548/ref=sr_1_1?ie=UTF8&qid=1425045531&sr=8-1&keywords=on+writing+well)
 
 ### 2014

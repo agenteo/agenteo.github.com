@@ -6,11 +6,14 @@ tags:
   - executive
 ---
 
-Some time ago I joined a company as a software developer and my development manager--let's call it Seamus--was practising management by fear.
+Some time ago I joined a company as a software developer and my manager--let's call it Seamus--was practising management by fear.
 
->> Management by fear is a management style used to achieve undisclosed obedience from individuals and enforcing decisions trough the chain of command. It creates a tense work relationship where any initiative can upset the manager and bring negative repercussions to the underdog blamed as being the only problem--often many others feel uncomfortable but afraid to speak up.
+It was a daunting experience that lasted 3 months and almost made me
 
-I decided to write that experience and extract a series of pillars defining the boundary of a dysfunction workplace. Reading this should make you feel less alone, hopefully gain confidence to change things or to move on to a new job.
+I decided to write that experience and extract a series of pillars to increase awareness of the problem. If you're working in a such a place reading this should hopefully gain confidence to change things or to move on to a new job.
+
+>> Management by fear is a management style used to achieve unopposed obedience and enforce decisions trough the chain of command. It creates a tense work relationship where any initiative can upset the manager and bring negative repercussions to the underdog labeled as a troublemaker--often many others feel uncomfortable but are afraid to speak up.
+
 
 * **PILLAR I** *freedom to ask questions and get a polite answer*
 * **PILLAR II** *speak in front of the team not behind closed doors*
@@ -27,7 +30,7 @@ I decided to write that experience and extract a series of pillars defining the 
 
 ### freedom to ask questions and get a polite answer
 
-Shortly after I started I was in a meeting with 3 other developers, a director of technology and Seamus. It was meant to be an agile release planning as well as an iteration planning with no product owner--I won't focus on the lack of process--after being briefed with the product vision I started asking questions like "*How much data do we need to migrate and how many requests is this meant to support?*" and "*Who's the product owner?*". Seamus gave away his discomfort changing face color from white, to red, to pompei red, to purple and shut me off saying that he was going to be the product owner and the rest of the questions were irrelevant. The shocking part was he was backed up by a director of technology sitting next to him that said something along the lines of "*let's not focus on those details*" and none of the other 3 developers spoke up which made me think there was something wrong with me. I initially thought they didn't ask questions because they knew all the answers but instead it was a symptom of inexperience, insecurity and fear. 
+Shortly after I started I was in a meeting with 3 other developers, a director of technology and Seamus. It was meant to be an agile release planning as well as an iteration planning with no product owner--I won't focus on the lack of process--after being briefed with the product vision I started asking questions like "*How much data do we need to migrate and how many requests is this meant to support?*" and "*Who's the product owner?*". Seamus gave away his discomfort changing face color from white, to red, to pompei red, to purple and shut me off saying that he was going to be the product owner and the rest of the questions were irrelevant. The shocking part was he was backed up by a director of technology sitting next to him that said something along the lines of "*let's not focus on those details*" and none of the other 3 developers spoke up which **made me think there was something wrong with me**. I initially thought they didn't ask questions because they knew all the answers but instead it was a symptom of inexperience, insecurity and fear. 
 
 *Your team should be glad of your questions and give polite answers or get back to you, when they think the question is not relevant they should politely explain why.*
 
@@ -35,15 +38,15 @@ Shortly after I started I was in a meeting with 3 other developers, a director o
 
 ### say things in front of the entire team not behind closed doors
 
-Sometime Seamus would not answer your question in front of the team instead you were politely invited to go in a room alone with him so he could attack you or ask you to be on his side. In private he was saying he wanted us to ask questions but his reaction was giving away his discomfort. After being in such a situation with another developer--let's call him Luke--I walked out with him for coffee but I was unsure how much to bring up. As soon as I started talking about Seamus management style he said "I know exactly what you mean" and started unburdening. I felt relieved I could talk about a subject that everyone else was scared to talk about. I wasn't alone anymore, Luke worked with Seamus for three months before I joined and his patience was running out, he didn't tell me at the time but he already contacted human resources.
+Sometime Seamus would not answer your question in front of the team instead you were politely invited to go in a room alone with him so he could attack you or ask you to support him. After being in such a situation with another developer--let's call him Luke--I walked out with him for coffee but I was **unsure how much to bring up**. As soon as I started talking about Seamus management style he said "*I know exactly what you mean*" and started unburdening. I felt relieved I could talk about a subject that everyone else was scared to talk about. I wasn't alone anymore, Luke worked with Seamus for three months before I joined and his patience was running out, he didn't tell me at the time but he already reported him with human resources.
 
-*Personal conversations require one-on-one private meeting but you need to be able to constructively argue and confront your ideas in front of the entire team*.
+*Personal conversations require private meeting but you need to be able to constructively argue and confront your ideas in front of the entire team*.
 
 ## PILLAR III
 
 ### do not be afraid of what you don't know
 
-The feeling I had was the company technical level was average and Seamus with an above average technical level was getting away with a mix of buzzwords and rhetoric because nobody knew what he was talking about and nobody would dare to ask in fear of sounding stupid.
+The feeling I had was the company technical level was average and Seamus with an above average technical level was getting away with a mix of buzzwords and rhetoric because nobody knew what he was talking about and nobody would dare to ask in fear of sounding ignorant.
 
 *Being upfront about what you don't know is a great attitude and it ensures everybody is on the same page. You should always receive polite answers.*
 
@@ -51,9 +54,9 @@ The feeling I had was the company technical level was average and Seamus with an
 
 ### trust and talent recognition
 
-When Seamus was not in meetings he liked to micromanage, that was ineffective because driven by need to control rather then mentor and after setting the course he would leave and never follow-up. Once I was asked to look in to a library feature and I reported back it was not implemented so he asked me to look again--I did thinking I made a mistake but came back with the same result--he then said I was wrong and that he used the feature before and I must have missed it so he decided to look in to it. Turns out the feature was not there but he came up with an impractical option to back up that he was right. When later he reported to the director about that change of plans caused by the missing feature he didn't say who actually found the problem and took the credit for himself.
+When Seamus was not in meetings he liked to micromanage, that was ineffective because driven by need to control rather then mentor and after dictating the course he would leave and never follow-up. Once I was asked to look in to a library feature and I reported back it was not implemented so he asked me to look again--I did **thinking I made a mistake** but came back with the same result--he then said I was wrong and that he used the feature before and I must have missed it so he decided to look in to it. Turns out the feature was not there but he came up with an impractical option to back up that he was right. When later he reported to the director about that change of plans caused by the missing feature he didn't say who actually found the problem and took the credit for himself.
 
-*Trust should be recriprocal and its initial level should be full and based on events it can either stay that way or decrease. Giving credit to the team is good but an individual taking away credit is very demoralizing and naturally compromise trust.*
+*Trust should be recriprocal and its initial level should be full, based on events it can either stay that way or decrease. Giving credit to the team is good but an individual taking away credit is very demoralizing and naturally compromise trust.*
 
 
 ## PILLAR V
@@ -77,7 +80,7 @@ Seamus was assigning us tasks to work on but we didn't have a deployment server-
 
 ### people should not feel helpless
 
-Around 2 months after I started we were a team of 6: me, Luke two other junior developers and a designer. Mush resigned and I remember her crying in one of the last closed door meetings with Seamus, later she told me "*I told Seamus he wasted my time here*". Two developers also resigned, if Seamus was the reason for their departure I don't know I was scared to ask them and that's when I decided I was going to actively do something about this. A new developer called Gerard joined to work on a part of this "project" that had no specifications--he would later tell us he was sitting there doing nothing. The other 2 junior developers were at the company for about 10 years and when speaking with them about Seasmus they agreed he was a bad manager but they said there is nothing you can do about it. 
+Around 2 months after I started we were a team of 6: me, Luke two other junior developers and a designer. Mush resigned and I remember her crying in one of the last closed door meetings with Seamus, later she told me "*I told Seamus he wasted my time here*". Two developers also resigned, if Seamus was the reason for their departure I don't know **I was scared to ask** them and that's when I decided I was going to actively do something about this. A new developer called Gerard joined to work on a part of this "project" that had no specifications--he would later tell us he was sitting there doing nothing. The other 2 junior developers were at the company for about 10 years and when speaking with them about Seasmus they agreed he was a bad manager but they said there is nothing you can do about it. 
 
 *Some people will put up with anything to pay the bills and this is a problem for company culture that genuinely wants to change but can't rely on people to speak up. Having the wrong people on the bus for too long will attract more of them and force good people off the bus.*
 
@@ -87,15 +90,15 @@ Around 2 months after I started we were a team of 6: me, Luke two other junior d
 
 The discomfort Seamus created in the team made our bond really tight a sense of comradeship. The team was regularly going out for lunch, once before in my career I had this comradeship feeling were we all agreed the lunch break was the best part of that workplace. Seamus schedule didn't allow him to consistently have lunch and when he did he was sitting and being awkwardly silent or stare at you.
 
-*Lunch is a great part of the day to bond with your peers but when it feels it's the only good part it means you are ready to make a move.*
+*Lunch is a great part of the day to bond with your peers but when it shouldn't feel like the only good part.*
 
 ## PILLAR IX
 
-### You only live once
+### Set a deadline for change
 
 I spoke with human resources about Seamus and decided to hold a little bit longer... I wasn't sure for how long, no more then a month or two. I was curious to see where this was going in the same way you reach for a higher cliff when you are rock climbing or when you try a new recipe--you go out of your comfort zone to learn something valuable for the future. In the meantime I was setting my own goals experimenting with technologies, writing maintainable code and mentoring Luke but knowing these applications would never go live wasn't great for morale.
 
-*Document and report the misbehaviour to human resources and in front of the entire team. Start looking for other options before you do that since it's possible you will be put in front a fire squad--set a deadline by when you either see change or leave. If your financial or personal situation doesn't allow you to find other options try to focus on pockets of work you love.*
+*Document and report the misbehaviour to human resources and if you can in front of the entire team. Start looking for other options before you do that since it's possible you will be put in front a fire squad--set a deadline by when you either see change or leave. If your financial or personal situation doesn't allow you to find other options try to focus on pockets of work you love.*
 
 
 ## PILLAR X

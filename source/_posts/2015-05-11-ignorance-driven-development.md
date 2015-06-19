@@ -6,26 +6,26 @@ tags:
 comments: true
 ---
 
-**This article is to increase product owners and non technical executives awareness of technical ignorance permeating a division in order to take corrective actions before development is crippled.**
+**This article gives product owners and non technical executives tools to react to technical management ignorance and prevent product development stall.**
 
-Every developer inevitably practiced ignorance driven development at some point during their career--great developers accept their ignorance early on and start a never ending journey to skill up but others never admit it and use the same approach for decades. This creates unmaintainable software supported by the misconception that working on complex software must feel hard like carrying 200 potatoes is harder then carrying 20.
+Every software developer practiced ignorance driven development at the beginning of their career. Great developers accept their ignorance early on and start a never ending journey to skill up through years **and job titles**. Mediocre developers never admit their ignorance and use the same approach for decades creating unmaintainable software convinced that working on big products must *feel* hard--wrong because of well established patterns to tackle software complexity and [incremental design](http://www.jamesshore.com/Agile-Book/incremental_design.html).
 
-This is wrong for two reasons: software development is knowledge work not labour and because of documented patterns to tackle software complexity with incremental code design.
-
-The longer people ignore basics of incremental design the harder it is to admit they were mistaken and **when they lead teams or divisions they will set the course for the creation of a product that developers will find impractical to maintain and dreadful to work on, I call this ignorance driven development**.
+**When developers that ignored patterns and incremental design for decades are leading teams or divisions they will set the course for the creation of software impractical to maintain and dreadful to work on. I call this ignorance driven development.**
 
 
 ## Symptoms
 
-Ignorance driven development focuses on delivering short term results and accidentally sacrificing long term maintainability--the people practising it can be novices or veterans and they don't know any alternative path to follow.
+Any new system has a grace period in which ignoring incremental design doesn't display any symptom but dents its long term maintainability and the cost to fix that will hit when you least expect it. Martin Fowler explain this in detail in [Design Stamina Hypothesis](http://martinfowler.com/bliki/DesignStaminaHypothesis.html).
 
-Any new system has a grace period in which ignoring incremental design doesn't hurt immediate deliverables but dents its long term maintainability and the cost to fix that will hit when you least expect it. Martin Fowler explain this in detail in [Design Stamina Hypothesis](http://martinfowler.com/bliki/DesignStaminaHypothesis.html).
+Say your core business functionality is the sum of *A + B + C + D* if you need to change *B* based on market feedback and the software code is a tangle of [**ABCD**] it's gonna be hard to estimate how long the process will take because parts of **B** are mixed all over the place--instead if your software has clear boundaries [**A**][**B**][**C**][**D**] estimating a change to **B** is much easier.
 
-Say your core business functionality is the sum of *A + B + C + D* if you need to change *B* based on market feedback and the software is a tangle of [**ABCD**] it's gonna be hard to estimate how long the process will take because parts of **B** might be mixed all over the place--instead if your software has clear boundaries [**A**][**B**][**C**][**D**] estimating a change to **B** is much easier.
+**For developers working on unmaintainable code is like speaking with someone that has a thick accent--you are talking the same language but it takes extra effort to communicate effectively.**
 
-**For developers working on unmaintainable code is like speaking with someone that has a thick accent and is drinking beer--you are talking the same language but it takes extra effort to communicate effectively and when that person is drunk it might become impossible to understand.**
+High turnover of software developers is often a symptom. Motivated developers will put up with ignorance at first and try to introduce better practices but without recognition and backup they will move on leaving only mellow developers on the team.
 
-Only a few symptoms of unmaintainable software reach a **product owner**: *constant slow down in delivered features* and *inconsistent estimations* requiring release dates to be postponed. Only when the slow down can't be justified anymore **executives** will start hearing suggestions to *rebuild a portion or the entire system*.
+Only a few clear symptoms of unmaintainable software reach a **product owner**: *constant slow down in delivered features*, *feature delivery consistently followed by new bugs* and *inconsistent estimations* requiring release dates to be postponed.
+
+Only when the slow down can't be justified anymore **executives** will start hearing suggestions to *rebuild a portion or the entire system*.
 
 
 ## Excuses
@@ -36,7 +36,7 @@ When questioned about those symptoms and the possibility of an unmaintainable co
 
 >> The code is unmaintainable because the requirements kept changing... the code was clean at the beginning!
 
-If you hear this from a tech lead or director you probably want to demote them or quit your job. The sentence lacks the basic understanding of how software development works and someone like that shouldn't direct other people.
+You do not want to hear this from a tech lead or director. The sentence lacks the basic understanding of how software development works and someone like that shouldn't manage others.
 
 **Requirements will change and software design has to adapt.**
 
@@ -46,15 +46,15 @@ Software engineering is not like other forms of engineering where the product is
 
 >> The code is unmaintainable but at least now it's in Ruby so that's good.
 
-You might think this is a joke but I heard this in serious conversations and it demonstrates great ignorance on software programming.
+You might think this is a joke but I heard this in serious conversations and it demonstrates great ignorance about software programming.
 
-Bad designed code is going to affect all languages regardless of how friendly they are so rebuilding an unmanageable legacy .NET application in to a unmaintainable Ruby on Rails application is not doing anyone any good because a mess is a mess. **And if people blame Rails tell them to look at its [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).**
+Bad designed code is going to affect all languages regardless of how popular or friendly they are--rebuilding an unmanageable legacy *.NET* application in to a unmaintainable *Ruby on Rails* application is not doing anyone any good because a mess is a mess. **And if people blame Rails tell them to look at its [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).**
 
 ### The *minimal viable product* one
 
 >> The code is not maintainable because we delivered a minimum viable product, we release it fast and dirty to get feedback and will tackle code design later.
 
-Some technical people ignoring iterative software design use minimal viable product to skip it but **MVP should prioritize features to release a minimal but effective version of your product not a design less one**.
+Some technical people ignoring iterative software design use minimal viable product as an excuse to skip it but **MVP should prioritize features to release a minimal but effective version of your product not a design less one**.
 
 **Iterative design** is done by the whole team as part of the development process and is different from an **upfront design** were a handful of illuminati would discuss architecture for months and hold off development. The best resource on this topic is Evans [Domain Driven Design](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) and [Growing Object Oriented Software guided by tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627).
 
@@ -83,7 +83,7 @@ Sometimes developers might make an informed decision in order to fix a urgent bu
 
 >> The code is not maintainable but now that we released we can focus on refactoring and code quality.
 
-Refactoring means improving software design leaving features unchanged and it should be done in small iterative steps--you need to understand it will slow down deliverables and a good reference here is [Refactoring: Improving the Design of Existing Code](http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/) but working for months ignoring design and then hope to refactor it all later is an amateurish approach.
+Refactoring means improving software design leaving features unchanged and it should be done in small iterative steps--you need to understand it will slow down deliverables and a good reference here is [Refactoring: Improving the Design of Existing Code](http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/) but working for months ignoring design and then hope to refactor it all later is an amateurish approach and is different from [extending an architecture as it earns business value](http://alistair.cockburn.us/Extending+an+Architecture+as+it+Earns+Business+Value) because there is no architecture in the first place.
 
 When the code is unmaintainable I like to do incremental restructuring on small isolated portions related to features I am working on so the code quality increases while delivering business value--this will be more challenging but you can confidently control the amount of changes introduced. A great books about this is [Working Effectively with Legacy Code](http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?ie=UTF8&qid=1430575139&sr=8-1&keywords=working+effectively+with+legacy+code).
 
@@ -91,17 +91,21 @@ When the code is unmaintainable I like to do incremental restructuring on small 
 
 ## Acknowledge and fix
 
-To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and hands on experience but without that is irrelevant and I've seen it contradicting developer opinions. Make sure to let the tech division know the company cares about long term code maintainability and keep collect their feedback about it.
+To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I've seen it contradicting developer opinions lower in organization charts. Make sure to let the tech division know the company cares about long term code maintainability and keep collect their feedback about it.
+
+### Is it necessary?
 
 You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last but **if you build your business to be successful you should build your software with the same mindset**. 
 
+If you don't value code maintainability you will only attract mellow developers midly concerned with your long term ojectives.
+
 ### Expert mentoring
 
-Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. In any team of 5 a formal or informal tech lead should mentor and have authority to evaluate the incremental design while building software with the team--without that authority team members might disregard best practices compromising morale and preventing the creation of a supple design. If you are interviewing people for that role make sure you cover the maintainability side and bring up the excuses I listed to see what response you get.
+Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. In any development team of 5 there should be at least one mentor to evaluate and direct the incremental code design--without that team members might disregard best practices compromising morale and preventing the creation of a supple design.
 
 ### Cross-pollinating knowledge
 
-When your company has different divisions and some are not displaying any symptoms cross pollinating developers might help. Internal knowledge sharing works if the organization is healthy but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.  
+When your company has different divisions and some are not displaying any symptoms of *ignorance driven development* cross pollinating developers might help. Internal knowledge sharing works in a healthy organization but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.  
 
 ### Skilling up
 
@@ -109,6 +113,6 @@ In large organizations sending a tech lead or director to improve skills that sh
 
 ## Conclusion
 
-Blindly trusting technical leaders after an initial results can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it.
+Trusting technical management after an initial result can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it.
 
-Making sure your technical division knows you are aware of the code maintainability impact and support an incremental design that will allow a long term vision for your product--also ensure technical leaders lead by example rather then with politics.
+Making sure your technical division knows you are aware of the code maintainability impact and support an incremental design that will adapt to the long term vision for your product--also ensure technical leaders lead by example rather then with politics.

@@ -111,3 +111,22 @@ When looking at unmaintainable code I think of it to be something I've written w
 
 
 because the developers did not fully understand the implications of thei
+
+
+
+
+---
+
+## Roles
+
+Different roles will practice ignorance driven development and I see an analogy with the [Dreyfus model of skill aquisition](https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition)
+
+* **junior developers** *acceptable* because they lack experience--they can learn after years of mistakes and reading material or by being mentored by an experienced. Often they can tell when their technical mentorship is poor so value their feedback.
+* 
+* **senior developers** *unacceptable* because they have years of hands on experience which often equates to is 10 years are the experienced 
+* **tech leads**
+* **directors**
+
+
+
+ This is a bit like an organism being infected by a virus that will start debilitating after 15 months, it's not something you need to worry about if the organism life expetancy is 5.

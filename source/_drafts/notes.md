@@ -130,3 +130,10 @@ Different roles will practice ignorance driven development and I see an analogy 
 
 
  This is a bit like an organism being infected by a virus that will start debilitating after 15 months, it's not something you need to worry about if the organism life expetancy is 5.
+ 
+
+The advantage of **components based Rails architecture** is that it's evolving your current application.
+
+If you built and maintained a classical Rails application for 2 or 3 years and haven't noticed any maintainability problem I think you don't need to look in to Lotus. Maybe your domain is one of many fitting perfectly in the Rails use cases. Or maybe somebody else needs to look at your code.
+
+If you used [component based Rails](http://teotti.com/rails-service-oriented-architecture-alternative-with-components/) you already hit some of the framework limits and diverged from its conventions and plugins so the question is what does Rails do that Lotus doesn't for you? 

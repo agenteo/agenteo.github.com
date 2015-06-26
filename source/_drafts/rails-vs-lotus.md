@@ -8,25 +8,25 @@ tags:
   - lotus
 ---
 
-*Lotus* is a new but stable [rack compliant](http://rack.github.io/) Ruby web framework embracing modularity at its core to incrementally design a maintainable application.
+*Lotus* is a new but stable [rack compliant](http://rack.github.io/) Ruby web framework embracing modularity and separation of concerns to promote maintainable code.
 
 The *conventional MVC Rails* structure fits simple use cases and when their complexity increases you can use ingenuity in the form of *[component based Rails](http://teotti.com/component-based-rails-architecture-primer/)* to achieve modularity sometime as a stepping stone to [service oriented architecture](http://teotti.com/rails-service-oriented-architecture-alternative-with-components/).
 
-**In this article I will compare Lotus features with *regular* and *components* Rails and point to the excellent Lotus documentation for more details--I will assume you are familiar with how Ruby on Rails works.**
+**This article compares Lotus 0.4 approach to Rails 4 and point to the excellent Lotus documentation for more details--I will assume you are familiar with how Ruby on Rails works.**
 
-### Stating the obvious
+## Preamble
 
 Using Lotus for rapid prototyping would be a mistake--Ruby on Rails is a much better fit for that leveraging its vast pool of plugins.
 
-Many Rails projects I worked on since 2005 had a plugin based prototype foundation unsuitable for long term custom applications and transforming development in to a daunting plugin customization.
+Many Rails projects I saw since 2005 had a plugin based prototype foundation making long term development a daunting plugin customization.
 
-Usually at the foundation of larger Rails plugins there are framework agnostic Ruby gems and rack middlewares like *Warden* at the core of *Devise*--you can use those smaller libraries to accelerate development in Lotus.
+Usually at the foundation of larger Rails plugins there are framework agnostic Ruby gems and rack middlewares--like *Warden* at the core of *Devise*--that can be used to accelerate development in Lotus.
 
-If are working on a production Rails application don't try to migrate it to Lotus. If you're having troubles dealing with complexity in Rails read [my primer on component based](http://teotti.com/component-based-rails-architecture-primer/).
+If are working on a production Rails application don't try to migrate it to Lotus. If you're having troubles dealing with complexity in Rails evaluate [component based](http://teotti.com/component-based-rails-architecture-primer/) first.
 
 ## General approach
 
-Lotus sets a clear boundary between code dealing with the web framework living inside `/apps` and code related to the persistence and domain logic living inside `/lib`.
+Lotus sets a clear boundary between code dealing with the web framework located inside `/apps` and code related to the persistence and domain logic located inside `/lib`.
 
 >> A Lotus application can serve multiple *applications* similarly to what high level components do in **component based Rails architecture**.
 
@@ -68,6 +68,8 @@ the apps have the following directory structure:
 {% endhighlight %}
 
 Another example where this works well is an `admin` application serving staff only functionality.
+
+All the Lotus applications share some domain logic and persistence--more about that later.
 
 ## Application routing
 
@@ -142,7 +144,7 @@ Lotus is ORM agnostic but it provides [lotus models](http://lotusrb.org/guides/m
 
 >> Active Record is a good choice for domain logic that isn't too complex, such as creates, reads, updates, and deletes. Derivations and validations based on a single record work well in this structure.
 
-For that reason Lotus models delegate validation at the controller action level and [Luca Guidi explains why](http://lucaguidi.com/2014/10/23/introducing-lotus-validations.html).
+For that reason Lotus models delegate validation at the controller action level--you can [read the full explanation here](http://lucaguidi.com/2014/10/23/introducing-lotus-validations.html).
 
 You won't find `/models` inside the `/apps` directory--the application generator will build a properly namespaced structure in `/lib` and since Lotus **does not have autoloading** it must be required from `config/environment.rb`:
 
@@ -154,7 +156,9 @@ Keep in mind the generators will add default require statements.
 
 ### Adding more domain logic with gems
 
-With Ruby namespaces alone you have some modularity but you can’t enforce a dependency structure and in complex domains your classes will end up creating a tangle of dependencies hard to follow. In this example I add a `components` directory in the repository root and add the local gem to `Gemfile`:
+With Ruby namespaces alone you have some modularity but you can't enforce a dependency structure and in complex domains your classes will end up creating a tangle of dependencies hard to follow. You can use ruby gems to handle your dependency structure.
+
+In this example I assume my application domain has significant logic related to calculating cargo allowances and shipping routes so inside a `components` directory in the repository root I create two gems: `freight_calculator`, `route_finder`. The first depends on the latter and it will resolve that dependency internally without concerning the rest of the application. I only need to add the local gem `freight_calculator` to the Lotus application `Gemfile`:
 
 {% highlight ruby %}
 path 'components' do
@@ -162,9 +166,9 @@ path 'components' do
 end
 {% endhighlight %}
 
-You will need to `require 'freight_calculator` in `config/environment.rb`.
+And `require 'freight_calculator` in `config/environment.rb`.
 
-If `freight_calculator` depends on a local `route_finder` it will resolve its dependencies internally without concerning the rest of the application.
+**This same approach can be used in Rails and is a trait of *component based Rails architecture*.**
 
 ## Views and templates
 
@@ -172,7 +176,7 @@ In Lotus the separation between a controller action and its view layer is also w
 
 The view will only have access to variables explicitly exposed from the controller action similar to calling render with `locals` from a Rails action.
 
-What Rails calls *views* are called [templates](http://lotusrb.org/guides/views/templates/) in Lotus and support popular Ruby templating like erb, haml, slim and more.
+A `Web::Views::Dashboard::Index` view class will expect a template `dashboard/index.[format].[engine]`. What Rails calls *views* are called [templates](http://lotusrb.org/guides/views/templates/) in Lotus and support popular Ruby templating like erb, haml, slim and more. 
 
 ## View helpers
 
@@ -207,12 +211,12 @@ Lotus counterpart to Rails's custom helpers is based on plain Ruby and well expl
 
 ## Final thoughts
 
-Lotus and regular Rails have different use cases--understanding yours will be key to pick the right tool.
+Lotus isn't an overnight hack--it's been under development for over one year, people are using it in production and you can see passion and attention to detail in its modular design, automated tests, and [documentation](http://lotusrb.org/guides).
 
-Lotus isn't an overnight hack--it's been under development for over one year, it's used in production and you can see passion and attention to detail in its modular design, automated tests, and [documentation](http://lotusrb.org/guides).
+Lotus and regular Rails excel in different areas and you need to understand the one you care about.
 
-If you built and maintained a classical Rails application for 2 or 3 years and haven't noticed any maintainability problem I think you don't need to look in to Lotus. Maybe your domain is one of many fitting perfectly in the Rails use cases. Or maybe somebody else needs to look at your code.
+*Are you expanding a proof of concept Rails app turned in to a money making product*? You're better off ditching large plugins and proceed with component based Rails architecture. *Are you starting a new product that will be under development for the next 10 months?* Evaluate Lotus. *2 months?* Determine the initial amount of complexity and see if Rails conventions fit or not. *A prototype?* Have you read my article at all?
 
-If you used component based Rails you already hit some of the framework limits and diverged from its conventions and plugins so the question is what does Rails do that Lotus doesn't for you? I think on my next project I will do a risk assessment and decide whether to use Lotus or not.
+I hope the article has sparkled interest in what Lotus has to offer. I only scratched the surface and skipped topics like [testing](http://lotusrb.org/guides/actions/testing/), [caching](http://lotusrb.org/guides/actions/http-caching/), [migrations](http://lotusrb.org/guides/migrations/overview/), [sessions](http://lotusrb.org/guides/actions/sessions/) all covered in detail in Lotus excellent guides.
 
-I hope the article has sparkled interest in what Lotus has to offer. I am looking forward to hear Rails developers feedback on Lotus.
+I am looking forward to hear other Ruby and Rails developers feedback on Lotus.

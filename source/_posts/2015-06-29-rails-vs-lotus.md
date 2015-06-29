@@ -255,7 +255,7 @@ Lotus and regular Rails excel in different areas knowing what your application n
 
 If are working on a production Rails application before thinking to migrate it to Lotus evaluate [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).
 
-Before committing to Lotus check for outstanding [github issues](https://github.com/lotus/lotus/issues) some might be blocking you. Keep in mind that as of 27th June 2015 there is no asset management (scheduled to be included in 0.5.0).
+Before committing to Lotus check for outstanding [github issues](https://github.com/lotus/lotus/issues) some might be blocking you as well as missing features your might be used from rails. For example there is no asset management (scheduled to be included in 0.5.0).
 
 I hope the article has sparkled interest in what Lotus has to offer. I only scratched the surface and skipped topics like [testing](http://lotusrb.org/guides/actions/testing/), [caching](http://lotusrb.org/guides/actions/http-caching/), [migrations](http://lotusrb.org/guides/migrations/overview/), [sessions](http://lotusrb.org/guides/actions/sessions/) all covered in detail in Lotus excellent guides.
 

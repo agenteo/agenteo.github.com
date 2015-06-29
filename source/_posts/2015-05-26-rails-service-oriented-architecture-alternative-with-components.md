@@ -22,7 +22,7 @@ First I will describe the workflow using a service oriented architecture and the
 
 The application is split in 5 projects: **publisher**, **persister**, **API**, **UI**, **SharedModels**.
 
-![the workflow]({{ site.url }}assets/article_images{{ page.url }}service-oriented-architecture.png)
+![the workflow]({{ site.url }}/assets/article_images{{ page.url }}service-oriented-architecture.png)
 
 **SharedModels** is a library published on a private gem server and a dependency of the **persister** and **API** projects to access the database.
 
@@ -55,7 +55,7 @@ The **publisher project** and **API project** become the **api** component. Serv
 
 The **UI project** is now a **public_ui** component that access the database directly depending on the **domain_logic** component avoiding unnecessary HTTP calls to the **API**.
 
-![#cbra]({{ site.url }}assets/article_images{{ page.url }}component-based-architecture.png)
+![#cbra]({{ site.url }}/assets/article_images{{ page.url }}component-based-architecture.png)
 
 Here's how the local components directory would look:
 

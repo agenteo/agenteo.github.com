@@ -30,6 +30,6 @@ Updated:        2014-10-20
 
 I tested the IP of that Sydney region instance on an online IP geolocation [http://www.iplocation.net/](http://www.iplocation.net/) and different services returned different countries: US, France, Australia.
 
-![]({{ site.url }}assets/article_images{{ page.url }}ec2_sydney_region.png)
+![]({{ site.url }}/assets/article_images{{ page.url }}ec2_sydney_region.png)
 
 Geo IP location is fragile that can't be trusted to determine locations of servers in the cloud. [This](http://stackoverflow.com/questions/274308/how-does-geographic-lookup-by-ip-work) is a very good explanation on how geo IP works.

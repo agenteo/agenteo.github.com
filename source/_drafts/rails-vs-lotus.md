@@ -8,32 +8,54 @@ tags:
   - lotus
 ---
 
-*Lotus* is a new but stable [rack compliant](http://rack.github.io/) Ruby web framework embracing modularity and separation of concerns to promote maintainable code.
+**This article introduces Lotus 0.4 features and compares them with *regular* and *component based* Rails 4.** I will assume you are familiar with the Ruby on Rails conventions.
 
-The *conventional MVC Rails* structure fits simple use cases and when their complexity increases you can use ingenuity in the form of *[component based Rails](http://teotti.com/component-based-rails-architecture-primer/)* to achieve modularity sometime as a stepping stone to [service oriented architecture](http://teotti.com/rails-service-oriented-architecture-alternative-with-components/).
+---
 
-**This article compares Lotus 0.4 approach to Rails 4 and point to the excellent Lotus documentation for more details--I will assume you are familiar with how Ruby on Rails works.**
+*Lotus* is a modular [rack compliant](http://rack.github.io/) Ruby web framework promoting applications incremental design and separation of concerns beyond classical MVC.
+
+The *conventional MVC Rails* structure fits simpler use cases and when their complexity increases you can use ingenuity in the form of *[component based Rails](http://teotti.com/component-based-rails-architecture-primer/)* to achieve application modularity sometime as a stepping stone to [service oriented architecture](http://teotti.com/rails-service-oriented-architecture-alternative-with-components/).
+
 
 ## Preamble
 
 Using Lotus for rapid prototyping would be a mistake--Ruby on Rails is a much better fit for that leveraging its vast pool of plugins.
 
-Many Rails projects I saw since 2005 had a plugin based prototype foundation making long term development a daunting plugin customization.
+Many Rails projects I saw had a plugin based prototype foundation making long term development a daunting plugin customization.
 
 Usually at the foundation of larger Rails plugins there are framework agnostic Ruby gems and rack middlewares--like *Warden* at the core of *Devise*--that can be used to accelerate development in Lotus.
 
-If are working on a production Rails application don't try to migrate it to Lotus. If you're having troubles dealing with complexity in Rails evaluate [component based](http://teotti.com/component-based-rails-architecture-primer/) first.
+## Multi application approach
 
-## General approach
+Lotus helps understanding what the whole project does by supporting sub applications.
 
-Lotus sets a clear boundary between code dealing with the web framework located inside `/apps` and code related to the persistence and domain logic located inside `/lib`.
+An example could be a *memory game* project where users can play games created by a team of game designers and with an API to publish leaderboards to mobile devices. This project domain can be broken up in to three applications: a `gamezone` application where users play games, a `workshop` application where game designers create games and an `api` application to publish game statistics to mobile devices. The assumption is they all share some domain logic and database connection so breaking them up in to three projects at the start will create more development overhead then benefits.
 
->> A Lotus application can serve multiple *applications* similarly to what high level components do in **component based Rails architecture**.
+### Lotus
 
-The default application is called `web` but can be overridden when first running the generator:
+Lotus can serve such a project with its default *container* architecture. When the time comes for a portion to be deployed and developed in isolation it supports single applications with its *application* architecture.
+
+Having all the applications as one codebase speeds up project development and it's great that Lotus [architecture supports](http://lotusrb.org/guides/architectures/overview/) that at its core.
+
+**Some people might quickly dismiss this as impossible in Ruby on Rails but that's wrong.**
+
+### Rails
+
+It's true that in a *conventional Rails* project this is impossible to achieve--all your code lives inside `/app` and there is no way to set more applications boundaries. In simple cases this is not a problem--you could have a gamezone controller a workshop controller and an api controller but that's rarely the case and even when it is it rarely stay like that. Requirements will change and expand.
+
+So for larger more complex domains--or for applications started small and grew over time--missing the boundaries makes it hard to understand what the whole project does and to migrate one of those portions to its own service.
+
+**To solve this problem a few years ago people started leveraging Ruby gems and Rails engines in what is called *component based Rails architecture*.**
+
+A high level component is the Rails counterpart of a Lotus application. To find out more about this [read a component based primer](http://teotti.com/component-based-rails-architecture-primer/).
+
+
+## Lotus directory structure
+
+Let's generate our `memory_game` project in Lotus--the default application would be called `web` but can be overridden when first running the generator:
 
 {% highlight ruby %}
-lotus new shipping --application=customer_zone
+lotus new memory_game --application=game_zone
 {% endhighlight %}
 
 The directory structure at this point is:
@@ -50,10 +72,10 @@ The directory structure at this point is:
 └── spec
 {% endhighlight %}
 
-Inside `apps` we find the default `web` application--let's add an `api` application responsible for a customer facing api leaving `web` focused on the web experience:
+Let's add a `workshop` application to allow our staff to create games leaving `game_zone` focused on the web gaming experience:
 
 {% highlight ruby %}
-lotus generate app api
+lotus generate app workshop
 {% endhighlight %}
 
 the apps have the following directory structure:
@@ -67,8 +89,6 @@ the apps have the following directory structure:
 └── views
 {% endhighlight %}
 
-Another example where this works well is an `admin` application serving staff only functionality.
-
 All the Lotus applications share some domain logic and persistence--more about that later.
 
 ## Application routing
@@ -79,11 +99,11 @@ The Lotus applications routes are mounted via `config/environment.rb`:
 require 'rubygems'
 require 'bundler/setup'
 require 'lotus/setup'
-require_relative '../lib/shipping'
-require_relative '../apps/api/application'
+require_relative '../lib/memory_game'
+require_relative '../apps/game_zone/application'
 
 Lotus::Container.configure do
-  mount Api::Application, at: '/'
+  mount GameZone::Application, at: '/'
 end
 {% endhighlight %}
 
@@ -91,17 +111,17 @@ end
 
 {% highlight ruby %}
 Lotus::Container.configure do
-  mount Web::Application, at: '/'
-  mount Api::Application, at: '/'
+  mount GameZone::Application, at: '/'
+  mount Workshop::Application, at: '/'
 end
 {% endhighlight %}
 
-In the example above the routes provided by `Api` will not be found. This means the mounted routes must be unique segments and you must leave the *greedier* one at the end, for example:
+In the example above the routes provided by `Workshop` will not be found. This means the mounted routes must be unique segments and you must leave the *greedier* one at the end, for example:
 
 {% highlight ruby %}
 Lotus::Container.configure do
-  mount Api::Application, at: '/api'
-  mount Web::Application, at: '/'
+  mount Workshop::Application, at: '/workshop'
+  mount GameZone::Application, at: '/'
 end
 {% endhighlight %}
 
@@ -109,38 +129,37 @@ The routing syntax is reminishent of Rails and you will find a dose--not an over
 
 {% highlight ruby %}
 # apps/APPLICATION_NAME/config/routes.rb
-get '/', to: "ship_routes#index" # => will route to Api::Controllers::ShipRoutes::Index
+get '/', to: "games#index" # => will route to GameZone::Controllers::Games::Index
 {% endhighlight %}
 
 to avoid the longer:
 
 {% highlight ruby %}
-get '/',   to: Api::Controllers::ShipRoutes::Index
+get '/',   to: GameZone::Controllers::Games::Index
 {% endhighlight %}
 
 ## Controller actions
 
-In Lotus the [controller](https://github.com/lotus/controller) actions are classes as opposed to Ruby on Rails class instance methods. 
+In Lotus the [controller actions](http://lotusrb.org/guides/actions/overview/) are classes as opposed to Ruby on Rails class instance methods. This helps defining their single responsability and prevent bloated code sharing too much logic--in Lotus you can [share controller action logic](http://lotusrb.org/guides/actions/share-code/) with a `prepare` block and callbacks.
 
 {% highlight ruby %}
-module Api::Controllers::ShipRoutes
+module GameZone::Controllers::Games
   include Lotus::Action
+  expose :games
 
   class Index
     def call(params)
-      @ships = ShipRoute.all
+      @games = Game.all
     end
   end
 end
 {% endhighlight %}
 
-This helps defining their single responsability and prevent bloated code sharing too much logic--in Lotus you can [share controller action logic](http://lotusrb.org/guides/actions/share-code/) with a `prepare` block and callbacks.
-
-Controller action instance variables will not be handed to the view template unless [exposed](http://lotusrb.org/guides/actions/exposures/)--the `params` and `errors` variables are exposed by default. More on this after the next section.
+Controller action instance variables will not be handed to the view template unless [exposed](http://lotusrb.org/guides/actions/exposures/)--the `params` and `errors` variables are exposed by default. In the example above `@games` won't be available to the view unless you add `expose :games`.
 
 ## Domain logic and persistence layer
 
-Lotus is ORM agnostic but it provides [lotus models](http://lotusrb.org/guides/models/overview/) a structured persistence framework with [entities](http://lotusrb.org/guides/models/entities/) and [repositories](http://lotusrb.org/guides/models/repositories/) ideal in more complex domains where using [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) would be unsuitable--but Lotus won't get in your way if that's what you need. Just remember the "When to use" paragraph in Patterns of Enterprise Application Architecture:
+Lotus is ORM agnostic but it provides [lotus models](http://lotusrb.org/guides/models/overview/) a structured persistence framework with [entities](http://lotusrb.org/guides/models/entities/) and [repositories](http://lotusrb.org/guides/models/repositories/) ideal in more complex domains where using [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) would be unsuitable--but Lotus won't get in your way if that's what you want. Just remember the "When to use" paragraph in Patterns of Enterprise Application Architecture:
 
 >> Active Record is a good choice for domain logic that isn't too complex, such as creates, reads, updates, and deletes. Derivations and validations based on a single record work well in this structure.
 
@@ -149,7 +168,7 @@ For that reason Lotus models delegate validation at the controller action level-
 You won't find `/models` inside the `/apps` directory--the application generator will build a properly namespaced structure in `/lib` and since Lotus **does not have autoloading** it must be required from `config/environment.rb`:
 
 {% highlight ruby %}
-require_relative '../lib/shipping'
+require_relative '../lib/memory_game'
 {% endhighlight %}
 
 Keep in mind the generators will add default require statements.
@@ -158,15 +177,20 @@ Keep in mind the generators will add default require statements.
 
 With Ruby namespaces alone you have some modularity but you can't enforce a dependency structure and in complex domains your classes will end up creating a tangle of dependencies hard to follow. You can use ruby gems to handle your dependency structure.
 
-In this example I assume my application domain has significant logic related to calculating cargo allowances and shipping routes so inside a `components` directory in the repository root I create two gems: `freight_calculator`, `route_finder`. The first depends on the latter and it will resolve that dependency internally without concerning the rest of the application. I only need to add the local gem `freight_calculator` to the Lotus application `Gemfile`:
+In this example I assume my application domain has **significant logic** related to calculating level progression using a statistical model so inside a `components` directory in the repository root I create two gems: `level_progression`, `bayesian_model`. The first depends on the latter and it will resolve that dependency internally without concerning the rest of the application. I only need to add the local gem `level_progression` to the Lotus application `Gemfile`:
 
 {% highlight ruby %}
 path 'components' do
-  gem 'freight_calculator'
+  gem 'level_progression'
 end
 {% endhighlight %}
 
-And `require 'freight_calculator` in `config/environment.rb`.
+And `require 'level_progression'` in `config/environment.rb`. Now my actions can use:
+
+{% highlight ruby %}
+calculator = LevelProgression::Calculator.new(last_score, current_score, bonus)
+calculator.next_level
+{% endhighlight %}
 
 **This same approach can be used in Rails and is a trait of *component based Rails architecture*.**
 
@@ -174,27 +198,43 @@ And `require 'freight_calculator` in `config/environment.rb`.
 
 In Lotus the separation between a controller action and its view layer is also well defined. The framework provides a [model-view ](http://lotusrb.org/guides/views/overview/) class linked to the controller action class that can act as a presenter in simple domains or instantiate more presenters in complex cases.
 
-The view will only have access to variables explicitly exposed from the controller action similar to calling render with `locals` from a Rails action.
+{% highlight ruby %}
+# apps/web/views/games/index.rb
+module GameZone::Views::Games
+  include GameZone::View
 
-A `Web::Views::Dashboard::Index` view class will expect a template `dashboard/index.[format].[engine]`. What Rails calls *views* are called [templates](http://lotusrb.org/guides/views/templates/) in Lotus and support popular Ruby templating like erb, haml, slim and more. 
+  class Index
+  end
+end
+{% endhighlight %}
+
+The view will only have access to variables explicitly exposed from the controller action. There is no call to render--the framework takes care of passing from controller action to the apropriate view.
+
+A `GameZone::Views::Games::Index` view class will expect a template `templates/games/index.[format].[engine]`. What Rails calls *views* are called [templates](http://lotusrb.org/guides/views/templates/) in Lotus and support popular Ruby templating like erb, haml, slim and more. 
 
 ## View helpers
 
-In Rails you have a plethora of helpers available in your views. Lotus has a vast list of helpers added trough the optional `Lotus::Helpers` module--all are private so you must define an explicit interface in your view. For example `format_number` is a private helper method and can't be used in a template like:
+In Rails you have a plethora of helpers available in your views. Lotus has a vast list of helpers added trough the optional `Lotus::Helpers` module--all are private so you must define an explicit interface in your view.
+
+For example using `format_number` directly in a template like:
 
 {% highlight ruby %}
-<%= format_number book.downloads_count %>
+<%= format_number game_session.current_score %>
 {% endhighlight %}
 
-Instead it must be wrapped in a `download_counts` helper method in the view like this:
+will raise `NoMethodError: undefined method 'format_number'`. Instead it must be wrapped in a `current_score` helper method in the view like this:
 
 {% highlight ruby %}
-# apps/web/views/books/show.rb
-module Web::Views::Books
-  include Web::View
+# apps/game_zone/views/game_sessions/show.rb
+module GameZone::Views::GameSessions
+  include GameZone::View
 
-  def downloads_count
-    format_number book.downloads_count
+  class Show
+    def current_score
+      # I am assuming the GameZone::Controllers::GameSessions::Show
+      # to expose game_session
+      format_number game_session.current_score
+    end
   end
 end
 {% endhighlight %}
@@ -202,20 +242,20 @@ end
 Then called in the template with:
 
 {% highlight ruby %}
-<%= downloads_count %>
+<%= current_score %>
 {% endhighlight %}
-
-The example is taken from the excellent [lotus guide about helpers](http://lotusrb.org/guides/helpers/overview/).
 
 Lotus counterpart to Rails's custom helpers is based on plain Ruby and well explained [in its dedicated guides section](http://lotusrb.org/guides/helpers/custom-helpers/). If you have larger more complex custom helpers you can still adopt the [intention revealing helpers](http://teotti.com/building-intention-revealing-ruby-on-rails-helpers/) strategy.
 
 ## Final thoughts
 
-Lotus isn't an overnight hack--it's been under development for over one year, people are using it in production and you can see passion and attention to detail in its modular design, automated tests, and [documentation](http://lotusrb.org/guides).
+Lotus isn't an overnight hack--it's been under development for over one year, its semantic versioned API is stable, people are using it in production and you can see passion and attention to detail in its modular design, automated tests, and [documentation](http://lotusrb.org/guides).
 
-Lotus and regular Rails excel in different areas and you need to understand the one you care about.
+Lotus and regular Rails excel in different areas knowing what your application needs is critical.
 
-*Are you expanding a proof of concept Rails app turned in to a money making product*? You're better off ditching large plugins and proceed with component based Rails architecture. *Are you starting a new product that will be under development for the next 10 months?* Evaluate Lotus. *2 months?* Determine the initial amount of complexity and see if Rails conventions fit or not. *A prototype?* Have you read my article at all?
+If are working on a production Rails application before thinking to migrate it to Lotus evaluate [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).
+
+Before committing to Lotus check for outstanding [github issues](https://github.com/lotus/lotus/issues) some might be blocking you. Keep in mind that as of 27th June 2015 there is no asset management (scheduled to be included in 0.5.0).
 
 I hope the article has sparkled interest in what Lotus has to offer. I only scratched the surface and skipped topics like [testing](http://lotusrb.org/guides/actions/testing/), [caching](http://lotusrb.org/guides/actions/http-caching/), [migrations](http://lotusrb.org/guides/migrations/overview/), [sessions](http://lotusrb.org/guides/actions/sessions/) all covered in detail in Lotus excellent guides.
 

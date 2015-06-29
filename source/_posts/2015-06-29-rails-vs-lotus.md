@@ -33,7 +33,7 @@ An example could be a *memory game* project where users can play games created b
 
 ### Lotus
 
-Lotus can serve such a project with its default *container* architecture. When the time comes for a portion to be deployed and developed in isolation it supports single applications with its *application* architecture.
+Lotus can serve such a project with its default [*container* architecture](http://lotusrb.org/guides/architectures/container/). When the time comes for a portion to be deployed and developed in isolation it supports single applications with its *application* architecture.
 
 Having all the applications as one codebase speeds up project development and it's great that Lotus [architecture supports](http://lotusrb.org/guides/architectures/overview/) that at its core.
 
@@ -41,14 +41,13 @@ Having all the applications as one codebase speeds up project development and it
 
 ### Rails
 
-It's true that in a *conventional Rails* project this is impossible to achieve--all your code lives inside `/app` and there is no way to set more applications boundaries. In simple cases this is not a problem--you could have a gamezone controller a workshop controller and an api controller but that's rarely the case and even when it is it rarely stay like that. Requirements will change and expand.
+It's true that in a *conventional Rails* project this is impossible to achieve--all your code lives inside `/app` and there is no way to set more applications boundaries. In simple cases this is not a problem--you could have a gamezone controller a workshop controller and an api controller but that's rarely the case and even when it starts like that requirements will change and expand.
 
 So for larger more complex domains--or for applications started small and grew over time--missing the boundaries makes it hard to understand what the whole project does and to migrate one of those portions to its own service.
 
 **To solve this problem a few years ago people started leveraging Ruby gems and Rails engines in what is called *component based Rails architecture*.**
 
-A high level component is the Rails counterpart of a Lotus application. To find out more about this [read a component based primer](http://teotti.com/component-based-rails-architecture-primer/).
-
+A high level component can *simulate* a Lotus application boundary in Rails--to find out more about this [read a component based primer](http://teotti.com/component-based-rails-architecture-primer/).
 
 ## Lotus directory structure
 
@@ -144,10 +143,10 @@ In Lotus the [controller actions](http://lotusrb.org/guides/actions/overview/) a
 
 {% highlight ruby %}
 module GameZone::Controllers::Games
-  include Lotus::Action
-  expose :games
-
   class Index
+    include Lotus::Action
+    expose :games
+
     def call(params)
       @games = Game.all
     end
@@ -155,11 +154,11 @@ module GameZone::Controllers::Games
 end
 {% endhighlight %}
 
-Controller action instance variables will not be handed to the view template unless [exposed](http://lotusrb.org/guides/actions/exposures/)--the `params` and `errors` variables are exposed by default. In the example above `@games` won't be available to the view unless you add `expose :games`.
+Controller action instance variables will not be handed to the view template unless [exposed](http://lotusrb.org/guides/actions/exposures/)--the `params` and `errors` variables are exposed by default. In the example above `@games` wouldn't be available to the view without the `expose :games`.
 
 ## Domain logic and persistence layer
 
-Lotus is ORM agnostic but it provides [lotus models](http://lotusrb.org/guides/models/overview/) a structured persistence framework with [entities](http://lotusrb.org/guides/models/entities/) and [repositories](http://lotusrb.org/guides/models/repositories/) ideal in more complex domains where using [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) would be unsuitable--but Lotus won't get in your way if that's what you want. Just remember the "When to use" paragraph in Patterns of Enterprise Application Architecture:
+Lotus is ORM agnostic but it provides [lotus models](http://lotusrb.org/guides/models/overview/) a structured persistence framework with [entities](http://lotusrb.org/guides/models/entities/) and [repositories](http://lotusrb.org/guides/models/repositories/) ideal in more complex domains where using [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) would be unsuitable--but Lotus won't get in your way if that's what you need. Just remember the "When to use" paragraph in Patterns of Enterprise Application Architecture:
 
 >> Active Record is a good choice for domain logic that isn't too complex, such as creates, reads, updates, and deletes. Derivations and validations based on a single record work well in this structure.
 
@@ -255,7 +254,7 @@ Lotus and regular Rails excel in different areas knowing what your application n
 
 If are working on a production Rails application before thinking to migrate it to Lotus evaluate [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).
 
-Before committing to Lotus check for outstanding [github issues](https://github.com/lotus/lotus/issues) some might be blocking you as well as missing features your might be used from rails. For example there is no asset management (scheduled to be included in 0.5.0).
+Before committing to Lotus check for outstanding [github issues](https://github.com/lotus/lotus/issues) some might be blocking you as well as missing features your might got used to from Rails. For example there is no asset management (scheduled to be included in 0.5.0).
 
 I hope the article has sparkled interest in what Lotus has to offer. I only scratched the surface and skipped topics like [testing](http://lotusrb.org/guides/actions/testing/), [caching](http://lotusrb.org/guides/actions/http-caching/), [migrations](http://lotusrb.org/guides/migrations/overview/), [sessions](http://lotusrb.org/guides/actions/sessions/) all covered in detail in Lotus excellent guides.
 

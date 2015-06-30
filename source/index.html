@@ -12,7 +12,7 @@ layout: default
     {% if site.main_logo %}
       <a class="blog-logo" href="{{site.url}}" style="background-image: url('{{ site.main_logo }}')">{{ site.title }}</a>
     {% endif %}
-    <h1 class="blog-title">{{ site.title }}</h1>
+    <h1 class="blog-title">{{ site.welcome_message }}</h1>
     <h2 class="blog-description">{{ site.description }}</h2>
     <div class="custom-links">
       {% for social in site.social %}
@@ -23,13 +23,12 @@ layout: default
       {% endfor %}
       <a href="/about/">More about me</a>
     </div>
+
+    <h2 class="blog-description">I like to write technical articles about <span class="custom-links"><a href="/topics/ruby">Ruby</a></span>, <span class="custom-links"><a href="/topics/component-based-rails-architecture">Ruby on Rails component based architectures</a></span> and other <span class="custom-links"><a href="/topics">topics</a></span>. Here's a list of my most recent posts:</h2>
 </header>
 
 
 <main class="content" role="main">
-
-<p>I like to post about <a href="/topics/ruby">Ruby</a>, <a href="/topics/component-based-rails-architecture">Ruby on Rails component based architectures</a> and other <a href="/topics">topics</a>. Here's a list of my most recent posts:</p>
-
     <div class="cf frame">
       {% for post in paginator.posts %}
         {% include article.html %}

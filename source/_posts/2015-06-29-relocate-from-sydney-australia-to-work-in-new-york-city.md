@@ -38,7 +38,7 @@ There are higher quality chains like Wholefoods and Trader Joe--you'll pay the t
 
 Sydney is expensive but NYC is more expensive so prepare to compromise on work proximity, apartment size or number of flatmates. Prices are only going up so check [Zillow](http://zillow.com) to get an idea. During contract negotiation I checked the rental prices and asked adjustments to my paycheck to afford the area and category building I wanted.
 
-![View from my appartment]({{ site.url }}/assets/article_images{{ page.url }}view.jpg)
+![View of downtown brooklyn]({{ site.url }}/assets/article_images{{ page.url }}view.jpg)
 
 ## Finding an apartment
 

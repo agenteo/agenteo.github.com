@@ -250,7 +250,7 @@ Lotus counterpart to Rails's custom helpers is based on plain Ruby and well expl
 
 Lotus isn't an overnight hack--it's been under development for over one year, its semantic versioned API is stable, people are using it in production and you can see passion and attention to detail in its modular design, automated tests, and [documentation](http://lotusrb.org/guides).
 
-Lotus and regular Rails excel in different areas knowing what your application needs is critical.
+Now you might wonder *who's the winner?* Lotus and regular Rails excel in different areas knowing what your application needs is critical.
 
 If are working on a production Rails application before thinking to migrate it to Lotus evaluate [component based architecture](http://teotti.com/component-based-rails-architecture-primer/).
 

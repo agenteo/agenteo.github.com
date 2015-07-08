@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I was born and educated in Italy. I lived a significant slice of my adult life in Australia and proudly became a citizen. I am currently working in New York City.
+I was born and educated in Italy. I lived a significant slice of my adult life in Australia and proudly became a citizen. I am currently working in Boulder, Colorado.
 
 ## Objectives
 

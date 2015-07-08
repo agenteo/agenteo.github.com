@@ -6,7 +6,7 @@ tags:
 comments: true
 ---
 
-**This article gives product owners and non technical executives tools to react to technical management ignorance and prevent product development stall.**
+**This article gives product owners and non technical executives examples of how ignorant technical management can bring software product development to a stall.**
 
 Every software developer practiced ignorance driven development at the beginning of their career. Great developers accept their ignorance early on and start a never ending journey to skill up through years **and job titles**. Mediocre developers never admit their ignorance and use the same approach for decades creating unmaintainable software convinced that working on big products must *feel* hard--wrong because of well established patterns to tackle software complexity and [incremental design](http://www.jamesshore.com/Agile-Book/incremental_design.html).
 
@@ -40,7 +40,7 @@ You do not want to hear this from a tech lead or director. The sentence lacks th
 
 **Requirements will change and software design has to adapt.**
 
-Software engineering is not like other forms of engineering where the product is limited by its physical form--once you build a pedestrian bridge it can't become a train bridge it will need to be rebuilt. Software is like a pedestrian bridge built with Lego bricks that can be shuffled or switched to become a train bridge using an evolving **supple design** as business requirements change.
+Software engineering is not like other forms of engineering where the product is limited by its physical form--once you build a pedestrian bridge it can't become a train bridge it will need to be rebuilt. Software is like a pedestrian bridge built with Lego bricks that can be reshuffled to become a train bridge using an evolving **supple design** as business requirements change.
 
 ### The *programming language* one
 
@@ -54,13 +54,13 @@ Bad designed code is going to affect all languages regardless of how popular or 
 
 >> The code is not maintainable because we delivered a minimum viable product, we release it fast and dirty to get feedback and will tackle code design later.
 
-Some technical people ignoring iterative software design use minimal viable product as an excuse to skip it but **MVP should prioritize features to release a minimal but effective version of your product not a design less one**.
+Some technical people ignoring iterative software design use minimal viable product as an excuse to skip it but **MVP should prioritize features to release a minimal and effective version of your product but not a design less one**.
 
 **Iterative design** is done by the whole team as part of the development process and is different from an **upfront design** were a handful of illuminati would discuss architecture for months and hold off development. The best resource on this topic is Evans [Domain Driven Design](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) and [Growing Object Oriented Software guided by tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627).
 
 When knowledgeable developers do iterative design it won't add significant overhead but I've heard inexperienced leads talk as if it's something that would make a difference between making the release or not so when under pressure it's OK to omit.
 
-**In all but trivial projects is critical to include iterative design or when business requirement change the code will be dreadful or impossible to manage.** Technology alone can't make your business successful but a crippling technology will impact it negatively or even make it fail.
+**In all but trivial projects is critical to include iterative design or when business requirements will inevitably change the code will be dreadful or impossible to manage.** Technology alone can't make your business successful but a crippling technology will impact it negatively or even make it fail.
 
 ### The *deadline* one
 
@@ -87,32 +87,35 @@ Refactoring means improving software design leaving features unchanged and it sh
 
 When the code is unmaintainable I like to do incremental restructuring on small isolated portions related to features I am working on so the code quality increases while delivering business value--this will be more challenging but you can confidently control the amount of changes introduced. A great books about this is [Working Effectively with Legacy Code](http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?ie=UTF8&qid=1430575139&sr=8-1&keywords=working+effectively+with+legacy+code).
 
-**When starting refactoring is critical to run a retrospective to understand why the code is in its current design less form and address any lack of development knowledge**.
+**During refactoring run a retrospective to understand why the code is in its current design less form and address any lack of development knowledge**.
 
 ## Acknowledge and fix
 
-To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I've seen it contradicting developer opinions lower in organization charts. Make sure to let the tech division know the company cares about long term code maintainability and keep collect their feedback about it.
+To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I've seen it contradicting developer opinions lower in organization charts. Make sure to let the tech division know the company cares about long term code maintainability and keep collecting feedback from all levels.
 
 ### Is it necessary?
 
 You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last but **if you build your business to be successful you should build your software with the same mindset**. 
 
-If you don't value code maintainability you will only attract mellow developers midly concerned with your long term ojectives.
+If you don't value code maintainability you will only attract mellow developers mildly concerned with your long term objectives.
+
+### Skilling up
+
+In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team--I suggest the lead and directors join the team as developers and an external experienced mentor temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.
 
 ### Expert mentoring
 
-Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. In any development team of 5 there should be at least one mentor to evaluate and direct the incremental code design--without that team members might disregard best practices compromising morale and preventing the creation of a supple design.
+Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. Any development team of 5 should have a natural mentor able to evaluate and direct the incremental code design--without this figure team members might disregard best practices compromising morale and preventing the creation of a supple design.
+
+A mentor reporting to *ignorant management* 
 
 ### Cross-pollinating knowledge
 
 When your company has different divisions and some are not displaying any symptoms of *ignorance driven development* cross pollinating developers might help. Internal knowledge sharing works in a healthy organization but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.  
 
-### Skilling up
-
-In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team--I suggest the lead and directors join the team as developers and an external experienced lead temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.
 
 ## Conclusion
 
-Trusting technical management after an initial result can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it.
+Trusting technical management after an initial result can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it. Technical management will try to hide this 
 
-Making sure your technical division knows you are aware of the code maintainability impact and support an incremental design that will adapt to the long term vision for your product--also ensure technical leaders lead by example rather then with politics.
+Tell your technical division you are aware of low code maintainability side effects and understand the meaning of an incremental design adapting to the long term product vision. Ensure appointed technical leaders have hands on experience and are capable of dealing with development--they should lead by example from the front rather then with politics from a golden chair.

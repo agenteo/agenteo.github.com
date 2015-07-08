@@ -8,9 +8,9 @@ tags:
 
 Some time ago I joined a company as a software developer and my manager--let's call it Seamus--was practising management by fear.
 
-It was a daunting experience that lasted 3 months and almost made me
+It was a daunting but insighful experience that lasted 3 months.
 
-I decided to write that experience and extract a series of pillars to increase awareness of the problem. If you're working in a such a place reading this should hopefully gain confidence to change things or to move on to a new job.
+I decided to publish that experience and extract a series of pillars to increase awareness of the problem. If you're working in a such a place reading this should hopefully gain confidence to change things or to move on to a new job.
 
 >> Management by fear is a management style used to achieve unopposed obedience and enforce decisions trough the chain of command. It creates a tense work relationship where any initiative can upset the manager and bring negative repercussions to the underdog labeled as a troublemaker--often many others feel uncomfortable but are afraid to speak up.
 

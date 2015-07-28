@@ -1,5 +1,5 @@
 ---
-title: A successful deploy strategy using Git tags and a changelog
+title: A successful deploy workflow using Git tags and a changelog
 layout: post
 draft: true
 tags:
@@ -8,7 +8,7 @@ tags:
   - process
 ---
 
-I am describing a strategy that I've used with a team of 5 developers and one product owner deploying once or twice a week. This workflow is broken in:
+I am describing a workflow that I've used with a team of 5 developers and one product owner deploying once or twice a week. This workflow is broken in:
 
 * working on a feature
 * merging approval
@@ -98,7 +98,7 @@ What I like of this approach is developers integrates often on master but we hav
 
 I label the features that require a server update--database update, or a library update or running a one off tak--with `operations`. When deploying to staging those operations are resposability of whoever is delivering the feature but for a production release it's usually a single individual collecting the operations and taking care of them.
 
-This strategy saved my team lots of gray hair from production deploys missing operational tasks.
+This workflow saved my team lots of gray hair from production deploys missing operational tasks.
 
 ### Hotfix
 

@@ -1,7 +1,6 @@
 ---
 title: A successful deploy workflow using Git tags and a changelog
 layout: post
-draft: true
 tags:
   - git
   - workflow

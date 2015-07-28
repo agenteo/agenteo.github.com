@@ -4,7 +4,6 @@ layout: post
 tags:
   - git
   - workflow
-  - process
 ---
 
 I am describing a workflow that I've used with a team of 5 developers and one product owner deploying once or twice a week. This workflow is broken in:

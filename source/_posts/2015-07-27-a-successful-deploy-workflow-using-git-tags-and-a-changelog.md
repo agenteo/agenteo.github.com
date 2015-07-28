@@ -6,7 +6,7 @@ tags:
   - workflow
 ---
 
-I am describing a workflow that I've used with a team of 5 developers and one product owner deploying once or twice a week. This workflow is broken in:
+I am describing a workflow that reduced product acceptance bottlenecks and ensured reliable deployments in a team of 5 developers and one product owner. The article is broken in to:
 
 * working on a feature
 * merging approval
@@ -75,7 +75,7 @@ Once tester have capacity merge your code in `master` and deploy to your staging
 
 The `CHANGELOG.md` in `master` should have a list of all the features from the last release and will help the product owner creating a release mailout to stakeholders--when dark launching features a dashboard indicating which features are on and to what demographic would be necessary.
 
-Make sure you update the `## 0.12.0 TBD` with an aproximate date and time of the release `## 0.12.0 2015-07-13-20:36`.
+Make sure you update the `## 0.12.0 TBD` with an approximate date and time of the release `## 0.12.0 2015-07-13-20:36`.
 
 If the product owner is happy with the features on the staging server he'll confirm the deploy and at this point you create a tag off master:
 
@@ -94,7 +94,7 @@ What I like of this approach is developers integrates often on master but we hav
 
 ### Operations
 
-I label the features that require a server update--database update, or a library update or running a one off tak--with `operations`. When deploying to staging those operations are resposability of whoever is delivering the feature but for a production release it's usually a single individual collecting the operations and taking care of them.
+I label the features that require a server update--database update, or a library update or running a one off task--with `operations`. When deploying to staging those operations are responsibility of whoever is delivering the feature but for a production release it's usually a single individual collecting the operations and taking care of them.
 
 This workflow saved my team lots of gray hair from production deploys missing operational tasks.
 
@@ -106,7 +106,7 @@ If you are dark launching you should be able to turn the feature off and avoid t
 git checkout -b hotfix-v0.32.1 v0.32
 {% endhighlight %}
 
-work on the hotfix and when completed depending on the situation you could temporarely occupy staging or deploy directly to production.
+work on the hotfix and when completed depending on the situation you could temporarily occupy staging or deploy directly to production.
 
 {% highlight bash %}
 git tag -a v0.32.1
@@ -117,4 +117,4 @@ After the hotfix is deployed merge your changes back in master.
 
 ## Conclusion
 
-Checking in with the product owner helped regaining control of the process. Great product owners are victims of their own talent and often given too many responsabilities--as developers we need to facilitate their job and I feel this workflow helped with that.
+Checking in with the product owner helped regaining control of the process. Great product owners are victims of their own talent and often given too many responsibilities--as developers we need to facilitate their job and I feel this workflow helped with that.

@@ -1,7 +1,7 @@
 ---
 title: Relocate from Sydney Australia to work in New York City
 layout: post
-draft: true
+comments: true
 tags:
   - relocation
 ---

@@ -38,6 +38,8 @@ When questioned about those symptoms and the possibility of an unmaintainable co
 
 You do not want to hear this from a tech lead or director. The sentence lacks the basic understanding of how software development works and someone like that shouldn't manage others.
 
+*One thing you can be sure of is that the domain is not going to remain static during the building process. It will change at a rate dictated by its markets and its own invention rate.* [Waltzing With Bears: Managing Risk on Software Projects](http://www.amazon.com/Waltzing-Bears-Managing-Software-Projects/dp/0932633609/ref=sr_1_1)
+
 **Requirements will change and software design has to adapt.**
 
 Software engineering is not like other forms of engineering where the product is limited by its physical form--once you build a pedestrian bridge it can't become a train bridge it will need to be rebuilt. Software is like a pedestrian bridge built with Lego bricks that can be reshuffled to become a train bridge using an evolving **supple design** as business requirements change.

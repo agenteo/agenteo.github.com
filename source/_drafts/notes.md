@@ -137,3 +137,15 @@ The advantage of **components based Rails architecture** is that it's evolving y
 If you built and maintained a classical Rails application for 2 or 3 years and haven't noticed any maintainability problem I think you don't need to look in to Lotus. Maybe your domain is one of many fitting perfectly in the Rails use cases. Or maybe somebody else needs to look at your code.
 
 If you used [component based Rails](http://teotti.com/rails-service-oriented-architecture-alternative-with-components/) you already hit some of the framework limits and diverged from its conventions and plugins so the question is what does Rails do that Lotus doesn't for you? 
+
+---
+
+
+Following conventions valid in small domains is irresponsible when the application domain grows.
+
+
+and its the responsability of a Ruby on Rails developer to know when to diverge.
+
+When I switched from .NET to Rails 10 years ago I used to follow Rails conventions thinking their approach was valid but during the following years as the applications grew I realized how apreciating maintainable code that reveal the intention of the domain I am working on. 
+
+When the product owner or the business talk about those conditions create a **specification** class to mirror the business logic in code.

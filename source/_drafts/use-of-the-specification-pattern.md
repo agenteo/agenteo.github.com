@@ -1,13 +1,14 @@
 ---
-title: Use case of the specification pattern
+title: Use of the specification pattern
 layout: post
 draft: true
 tags:
   - ruby
   - patterns
+  - maintainability
 ---
 
-A software built to deliver business value but coded ignoring [business language](http://martinfowler.com/bliki/UbiquitousLanguage.html) will be unintuitive to change and will foster institutional knowledge that makes new engineers onboarding a daunting experience.
+A software built to deliver business value but coded ignoring [business language](http://martinfowler.com/bliki/UbiquitousLanguage.html) will be unintuitive to change and will foster institutional knowledge that makes onboarding of new engineers a daunting experience.
 
 One effective way to alleviate this is to encapsulate business rules in a *specification* object rather then leaving them as scattered relics that the next engineer will have to glue together and decrypt.
 

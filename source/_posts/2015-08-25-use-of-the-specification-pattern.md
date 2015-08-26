@@ -136,55 +136,56 @@ end
 What is inside the specification class?
 
 {% highlight ruby %}
-class ObsoleteQuoteSpecification
+module Booking
+  class ObsoleteQuoteSpecification
 
-  def satisfied_by?(reservation)
-    @reservation = reservation
-    if changed_vehicle_type?
-      return true
-    else
-      return evaluate_quote_type_logic
+    def satisfied_by?(reservation)
+      @reservation = reservation
+      if changed_vehicle_type?
+        return true
+      else
+        return evaluate_quote_type_logic
+      end
+    end
+    
+    private
+
+    def changed_vehicle_type?
+      # details omitted
+    end
+
+    def evaluate_quote_type_logic
+      if quoted_hourly?
+        return more_expensive_transfer_fare? || travelled_in_invalid_area?
+      elsif quoted_transfer?
+        return increased_stops?
+      end
+    end
+    
+    def quoted_hourly?
+      @reservation.quote_type == :hourly
+    end
+   
+    def more_expensive_transfer_fare?
+      # details omitted
+    end
+    
+    def travelled_in_invalid_area?
+      # Evaluating if the reservation stopped in an invalid
+      # area for its vendor has significant business logic
+      # so I delegate it to a separate specification.
+      specification = InvalidAreaSpecification.new
+      specification.satisfied_by?(@reservation)
+    end
+
+    def quoted_transfer?
+      @reservation.quote_type == :transfer
+    end
+
+    def increased_stops?
+      # details omitted
     end
   end
-  
-  private
-
-  def changed_vehicle_type?
-    # details omitted
-  end
-
-  def evaluate_quote_type_logic
-    if quoted_hourly?
-      return more_expensive_transfer_fare? || travelled_in_invalid_area?
-    elsif quoted_transfer?
-      return increased_stops?
-    end
-  end
-  
-  def quoted_hourly?
-    @reservation.quote_type == :hourly
-  end
- 
-  def more_expensive_transfer_fare?
-    # details omitted
-  end
-  
-  def travelled_in_invalid_area?
-    # Evaluating if the reservation stopped in an invalid
-    # area for its vendor has significant business logic
-    # so I delegate it to a separate specification.
-    specification = InvalidAreaSpecification.new
-    specification.satisfied_by?(@reservation)
-  end
-
-  def quoted_transfer?
-    @reservation.quote_type == :transfer
-  end
-
-  def increased_stops?
-    # details omitted
-  end
-  
 end
 {% endhighlight %}
 
@@ -196,11 +197,14 @@ The candidate object is an entity in my example but the specification might also
 
 More comple specifications composed of multiple conditions can be treated as a [composite](https://en.wikipedia.org/wiki/Composite_pattern).
 
+**Do not group all your specifications in a single directory!** Their role is bound to a specific context--in my example booking--use it to locate the file and to namespace the class.
+
 ### When not to use specification
 
 Avoid specification for a **single condition** that applies to a single spot. Instead create an intention revealing method on the service or policy using it. If that condition starts to get used in multiple places reconsider the creation of a specification.
 
 If the business owner talks repeatedly about a condition you should map it in code.
+
 
 ## Conclusion
 

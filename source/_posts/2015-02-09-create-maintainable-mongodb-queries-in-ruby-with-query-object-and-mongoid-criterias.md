@@ -6,6 +6,7 @@ tags:
   - work
   - ruby
   - mongodb
+  - maintainability
 #image: /assets/article_images/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/hero.jpg
 ---
 

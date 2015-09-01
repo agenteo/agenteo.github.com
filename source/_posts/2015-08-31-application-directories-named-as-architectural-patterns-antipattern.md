@@ -3,6 +3,7 @@ title: Application directories named as architectural patterns antipattern
 layout: post
 draft: true
 tags:
+  - maintainability
   - ruby
   - rails
 ---

@@ -6,6 +6,7 @@ tags:
   - work
   - ruby-on-rails
   - ruby
+  - maintainability
 ---
 
 {{post.title}}

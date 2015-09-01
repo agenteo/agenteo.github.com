@@ -6,6 +6,7 @@ tags:
   - ruby
   - ruby-on-rails
   - component-based-rails-architecture
+  - maintainability
 ---
 
 I have worked on many products that fit in the classical Ruby on Rails MVC paradigm and conventions like: decorators, presenters, service objects can be sufficient to handle some complexity **but when the project is over a certain size they don't help understand what the whole application does**. If you have over 20 or 30 controllers and models can you still understand what the application is doing? Is it hard to keep track of what all the little parts do? If you use Ruby namespaces you have some modularity but you can't enforce a dependency structure and your classes are creating a tangle of dependencies hard to follow.

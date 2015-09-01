@@ -1,3 +1,9 @@
+
+
+In Ruby on Rails the shared code is very often `ActiveRecord` models--make sure as the application grows you strip any domain logic out of them leaving them as **repositories** to move data in and out of the database.
+
+---
+
 sloth wrangler
 
 It's like when in the 1700s aritocrats with minimal military background were elected officers and lead others with no experience on the field--some mistakes could be paid in their subordinate lifes.

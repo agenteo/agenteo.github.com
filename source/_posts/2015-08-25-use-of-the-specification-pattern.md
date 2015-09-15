@@ -1,7 +1,7 @@
 ---
 title: Use of the specification pattern
 layout: post
-draft: true
+comments: true
 tags:
   - ruby
   - patterns

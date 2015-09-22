@@ -22,6 +22,8 @@ Say your core business functionality is the sum of *A + B + C + D* if you need t
 **For developers working on unmaintainable code is like speaking with someone that has a thick accent--you are talking the same language but it takes extra effort to communicate effectively.**
 
 High turnover of software developers is often a symptom. Motivated developers will put up with ignorance at first and try to introduce better practices but without recognition and backup they will move on leaving only mellow developers on the team.
+ 
+A product owner should be engaged in business logic conversations with the **whole** development team--*translating to a developer dialect* is a sign that the codebase diverged from the business terminology creating communication overhead and seeding future missunderstandings.
 
 Only a few clear symptoms of unmaintainable software reach a **product owner**: *constant slow down in delivered features*, *feature delivery consistently followed by new bugs* and *inconsistent estimations* requiring release dates to be postponed.
 
@@ -93,23 +95,35 @@ When the code is unmaintainable I like to do incremental restructuring on small 
 
 ## Acknowledge and fix
 
-To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider--that can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I've seen it contradicting developer opinions lower in organization charts. Make sure to let the tech division know the company cares about long term code maintainability and keep collecting feedback from all levels.
+To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider. That can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I've seen it contradicting and demoralizing talented developers lower in organization charts.
+
+Make sure to let the tech division know the company cares about long term code maintainability and keep collecting feedback from all levels.
 
 ### Is it necessary?
 
-You might think building unmaintainable software is acceptable since you don't know if your product will be successful and how long it will last but **if you build your business to be successful you should build your software with the same mindset**. 
+Regardless of what industry you operate in **you are a software company**.
+
+In [Good to Great](http://www.amazon.com/Good-Great-Some-Companies-Others-ebook/dp/B0058DRUV6/ref=sr_1_1?s=books&ie=UTF8&qid=1442956858&sr=1-1&keywords=good+to+great) Collins says:
+
+>> technology by itself is never a primary root cause of either greatness or decline
+
+I agree that technology alone won't make your company great but I've seen many companies struggling to pivot in a predictable timeframe because of their crippling codebase. Missing opportunities and lagging behind won't make you great.
+
+You might think ignorance driven development is acceptable since you don't know if your product will be successful and how long it will last but **if you build your business to be successful you should build your software with the same mindset**. 
 
 If you don't value code maintainability you will only attract mellow developers mildly concerned with your long term objectives.
 
 ### Skilling up
 
-In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team--I suggest the lead and directors join the team as developers and an external experienced mentor temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.
+In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team.
+
+I suggest the lead and directors join the team as developers and an external experienced mentor temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.
+
+**Hoping that your team members will improve their skills in their personal time is an unsustainable passive strategy. Let your company take an active role and allocate work time for targeted skilling up.**
 
 ### Expert mentoring
 
 Developers can't recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. Any development team of 5 should have a natural mentor able to evaluate and direct the incremental code design--without this figure team members might disregard best practices compromising morale and preventing the creation of a supple design.
-
-A mentor reporting to *ignorant management* 
 
 ### Cross-pollinating knowledge
 
@@ -118,6 +132,6 @@ When your company has different divisions and some are not displaying any sympto
 
 ## Conclusion
 
-Trusting technical management after an initial result can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it. Technical management will try to hide this 
+Trusting technical management after an initial result can be misleading because of a new application grace period--concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it.
 
-Tell your technical division you are aware of low code maintainability side effects and understand the meaning of an incremental design adapting to the long term product vision. Ensure appointed technical leaders have hands on experience and are capable of dealing with development--they should lead by example from the front rather then with politics from a golden chair.
+Tell your technical division you are aware of low code maintainability side effects and understand the meaning of an incremental design adapting to the long term product vision. Ensure appointed technical leaders have **updated** hands on experience and are capable of dealing with development--they should lead by example from the front rather then with politics from a golden chair.

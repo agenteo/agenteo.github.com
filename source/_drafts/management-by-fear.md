@@ -6,15 +6,31 @@ tags:
   - executive
 ---
 
-Some time ago I joined a company as a software developer and my manager--let's call it Seamus--was practising management by fear.
+Some time ago I joined a company tech division and my manager--let's call it Seamus--was practising management by fear.
 
-It was a daunting but insighful experience that lasted 3 months.
+It was a daunting but insighful experience that lasted about 5 months.
 
-I decided to publish that experience and extract a series of pillars to increase awareness of the problem. If you're working in a such a place reading this should hopefully gain confidence to change things or to move on to a new job.
+I decided to publish that experience and extract a series of **pillars to increase awareness of the problem**. This list can confirm if you're working in a dysfunctional workplace, hopefully give you confidence to stand up and change things or to move on to a new job.
+
+## Definition
 
 >> Management by fear is a management style used to achieve unopposed obedience and enforce decisions trough the chain of command. It creates a tense work relationship where any initiative can upset the manager and bring negative repercussions to the underdog labeled as a troublemaker--often many others feel uncomfortable but are afraid to speak up.
 
+## The pillars
 
+>> Invert the pillars?
+
+* **PILLAR I** *no questions asked and impolite answers*
+* **PILLAR II** *confrontational speeches behind closed doors*
+* **PILLAR III** *conceal what you don't know pretending you know*
+* **PILLAR IV** *mistrust and avoid talent recognition*
+* **PILLAR V** *undermine others*
+* **PILLAR VI** *self-centred colleagues and no company support*
+* **PILLAR VII** *make people feel helpless*
+* **PILLAR VIII** *lunch should be the best part of your job*
+* **PILLAR IX** *set a deadline for change and then leave*
+* **PILLAR X** *if change is on the horizon consider waiting for it*
+* 
 * **PILLAR I** *freedom to ask questions and get a polite answer*
 * **PILLAR II** *speak in front of the team not behind closed doors*
 * **PILLAR III** *don't be afraid of what you don't know*

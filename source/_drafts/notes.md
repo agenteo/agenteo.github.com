@@ -155,3 +155,45 @@ and its the responsability of a Ruby on Rails developer to know when to diverge.
 When I switched from .NET to Rails 10 years ago I used to follow Rails conventions thinking their approach was valid but during the following years as the applications grew I realized how apreciating maintainable code that reveal the intention of the domain I am working on. 
 
 When the product owner or the business talk about those conditions create a **specification** class to mirror the business logic in code.
+
+---
+
+
+---
+
+## Why is the application in this state?
+
+A few months after `rails new` the greenfield grace period effects ends and introducing new functionality in the application isn't as fun as it used to be.
+
+I've seen the Rails conventional approach work in small use cases but as the application grows the team shouldn't follow conventions decremental to their continuously changing use case. Scaffolding, authentication plugins can fast forward you in the initial 2-3 months but considering the average application lifespans of 3-5 years that plugin based foundation will prevent the application to change.
+
+Declining code quality and struggling to change large application isn't a problem specific to Rails or Ruby and it's explained really well by Lehman **law of continuing change**:
+
+>> Any software system used in the real-world must change or become less and less useful in that environment.
+
+and Lehman's **law of increasing complexity**:
+
+>> As a program evolves, it becomes more complex, and extra resources are needed to preserve and simplify its structure.
+
+and **the law of Declining Quality**:
+
+>> the quality of a system will appear to be declining unless it is rigorously maintained and adapted to operational environment changes
+
+**Catching a changing application is not easy**
+
+
+If you have the luxury to be at the beginning of your project read []() if you are on a legacy project that wasn't incrementally design read on.
+
+This technique is hard work that should be focused on valuable portions of your application.
+
+If only a few are against diverging from Rails conventions perhaps have them work on another application until the re-engineering effort demonstrate its results or if possible assign them to a section of the application that isn't affected by the re-engineering work.
+More often then not re-engineering is a late act of desperation rather then an incremental task.
+This technique is viable for not salvageable big ball of mud codebases but it should be risk assessed against a rebuilt.
+
+The steps:
+
+* Understand what the application does
+* Move the most valuable workflow entrypoints in to a component
+* Move any logic used only by that component
+* Focus on automated tests
+ 

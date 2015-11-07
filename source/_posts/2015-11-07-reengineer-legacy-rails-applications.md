@@ -4,7 +4,8 @@ title: Reengineer legacy Rails applications
 comments: true
 tags:
   - ruby
-  - rails
+  - ruby-on-rails
+  - component-based-rails-architecture
   - workflow
 ---
 

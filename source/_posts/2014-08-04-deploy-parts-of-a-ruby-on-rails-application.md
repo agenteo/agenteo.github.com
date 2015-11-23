@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Feature flagging portions of your Ruby on Rails application with engines
+title: Deploy parts of a Ruby on Rails application
 comments: true
 tags:
   - work
@@ -8,9 +8,12 @@ tags:
   - ruby-on-rails
   - component-based-rails-architecture
 redirect_from:
+  - /feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/
   - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/
   - /work/ruby/rails/engines/2014/08/04/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines.html/
 ---
+
+**This article explains how to deploy portions of a Ruby on Rails applications to separate servers with the use of Rails Engines.**
 
 In the past I used Rails engines to create smaller components in complex Rails applications with the objective of a better long term maintainability. What that usually means is I separate out user interface engines from domain logic engines.
 

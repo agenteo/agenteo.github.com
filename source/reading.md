@@ -4,11 +4,12 @@ title: Reading
 permalink: /reading/
 ---
 
-## My work readings
-
-This is a chronological list of the work related books I've read. They are about management, agile methodologies, Ruby, Javascript, Go and other topics that I am interested in.
+This is a chronological list of the work related books I've read. They are about communication, management, agile methodologies, Ruby, Javascript, Go and other topics that I am interested in.
 
 ### 2015
+* [Mindset: The New Psychology of Success](http://www.amazon.com/Mindset-Psychology-Success-Carol-Dweck/dp/0345472322/ref=sr_1_1?s=books&ie=UTF8&qid=1451164126&sr=1-1&keywords=mindset)
+* [The Springboard: How Storytelling Ignites Action in Knowledge-Era Organizations](http://www.amazon.com/Springboard-Storytelling-Ignites-Knowledge-Era-Organizations/dp/0750673559/ref=sr_1_1?s=books&ie=UTF8&qid=1451164176&sr=1-1&keywords=the+springboard)
+* [Made to Stick: Why Some Ideas Survive and Others Die](http://www.amazon.com/Made-Stick-Ideas-Survive-Others/dp/1400064287/ref=sr_1_1?ie=UTF8&qid=1451164067&sr=8-1&keywords=how+to+make+idea+stick)
 * [Object-Oriented Reengineering Patterns](http://www.amazon.com/gp/product/B003VWBY0O?psc=1&redirect=true&ref_=oh_aui_d_detailpage_o01_)
 * [Waltzing with Bears: Managing Risk on Software Projects](http://www.amazon.com/gp/product/B00DY3KQKO?psc=1&redirect=true&ref_=oh_aui_d_detailpage_o02_)
 * [Good to Great: Why Some Companies Make the Leap...And Others Don't](http://www.amazon.com/Good-Great-Some-Companies-Others/dp/0066620996/ref=sr_1_1)

@@ -4,27 +4,28 @@ title: Create dependency structures with local Ruby Gems
 comments: true
 tags:
   - ruby
+  - gems
 ---
 
-Good object oriented practices like the use of decorators, presenters, service objects can be sufficient to handle some complexity but when the project is over a certain size they don't help understand what the whole application does. Creating a local gems dependency structure for your application is complementary to good object oriented practices and allows you to incrementally design application boundaries.
+Good object oriented practices can be sufficient to handle some complexity but when the project is over a certain size they don't help understand what the whole application does. **When you have to read several classes in order to visualize application dependencies you increase your cognitive load making your job harder.**
+
+Using a local gems dependency structure is complementary to good object oriented practices and allows you to incrementally design application boundaries resulting in an intention revealing structure that reduces cognitive load and facilitates code navigation.
 
 **There is a misconception that Ruby Gems are only for distributing libraries but they can be used locally as building blocks of a large Ruby application.**
 
-The focus of this article is test driving the technical implementation of local Ruby Gems dependencies structure using a simplified example adapted from a real life application.
+The focus of this article is test driving the technical implementation of local Ruby Gems dependencies structure using a simplified example adapted from a real life application, you can find the code [on GitHub](https://github.com/agenteo/gem_dependency_structure).
 
 >> As a health plan subscriber I want to see information about my plan so I know what drugs are covered
 
-![visual representation]({{ site.url }}/assets/article_images{{ page.url }}dependencies_step_1.png)
+![we know more features are coming but let's focus on the first one]({{ site.url }}/assets/article_images{{ page.url }}dependencies_step_1.png)
 
 ## Ruby application
 
-You're using a Ruby application to trigger the behaviour encapsulated in the gem dependency structure. The application can be a script, rake task or a web framework--it's just a proxy to the domain logic.
+A Ruby application triggers the behaviour encapsulated in the gem dependency structure--it can be a script, rake task or web framework--it's just a proxy to the business logic encapsulated within gems.
 
-In this example I will use a Ruby script that requires and makes calls to my health plan **entry point** gem.
+In this example I will use a Ruby script that requires and makes calls to my health plan **entry point gem**.
 
-To ensure your dependency structure is solid you must add unit tests for each gem as well as integration tests at the script level. Let's start with the latter and use Rspec.
-
-You will need a `Gemfile` to get rspec:
+To ensure your dependency structure is solid you must add *unit tests for each gem* and *integration tests at the script level*. Let's start from the latter, you will need a `Gemfile` to get our testing library *rspec*:
 
 {% highlight ruby %}
 source 'https://rubygems.org'
@@ -34,7 +35,9 @@ group :test do
 end
 {% endhighlight %}
 
-run `bundle` and then run `rspec --init` to setup the automated tests. The full code is in [GitHub commit](https://github.com/agenteo/gem_dependency_structure/commit/9783895ede66b8516d746dd404493ae361be7d22).
+run `bundle` and then run `rspec --init` to setup the automated tests. The full code is in [this GitHub commit](https://github.com/agenteo/gem_dependency_structure/commit/9783895ede66b8516d746dd404493ae361be7d22).
+
+Here's our script triggering some `health_plan` class behaviour:
 
 {% highlight ruby %}
 require 'health_plan'
@@ -44,7 +47,7 @@ aggregated_health_plan = HealthPlan::Aggregator.new(subscriber_id)
 puts aggregated_health_plan.details
 {% endhighlight %}
 
-the automated test:
+its automated test:
 
 {% highlight ruby %}
 describe 'run the script' do
@@ -57,17 +60,17 @@ describe 'run the script' do
 end
 {% endhighlight %}
 
-And the expected error it raises is about the missing `health_plan` gem:
+triggers an expected error about the missing `health_plan` gem:
 
 {% highlight bash %}
 /Users/agenteo/code/lab/gem-dependency-structure/spec/../run.rb:1:in `require': cannot load such file -- health_plan (LoadError)
 {% endhighlight %}
 
-In the same directory let's create a `local_gems` directory to store our local gems--in production pick a name that is meaningful to your team--I often use *components*.
+In the application root directory let's create a `local_gems` directory to store our local gems--in production pick a name that is meaningful to your team--I often use *components*.
 
 ## Building a gem
 
-There are many ways to create a gem, I generally use [bundler](http://bundler.io/):
+There are many ways to create a gem, I use [bundler](http://bundler.io/):
 
 {% highlight bash %}
 $ cd local_gems
@@ -84,13 +87,13 @@ Initializing git repo in /Users/agenteo/code/lab/gem-dependency-structure/local_
 $ rm -Rf health_plan/.git*
 {% endhighlight %}
 
-This will create the necessary files--you will want to remove its git repository files **because the gem will be local instead of published to a separate repository**.
+This will create the necessary files including git files that you should remove **since the gem will be local instead of published to a separate repository**.
 
 Let's have a look at the relevant files:
 
-### Gemfile
+### *Gemfile*
 
-The gem's `Gemfile` is only used by your gem's automated tests and **not by the main Ruby application**. At first this can be **very confusing** and lead you to look for dependencies in the wrong place.
+The gem's `Gemfile` is only used for your gem's automated tests and **never by the main Ruby application**.
 
 The generated `Gemfile` has a line with `gemspec`
 
@@ -102,10 +105,10 @@ source 'https://rubygems.org'
 gemspec
 {% endhighlight %}
 
-this tells bundler to install this gem dependencies from a `.gemspec` file living in the same directory in this case `health_plan.gemspec`.
+that tells bundler to install this gem dependencies from a `.gemspec` file living in the same directory in this case `health_plan.gemspec`.
  
 
-### .gemspec
+### *.gemspec*
 
 This is the specification file part of Rubygems and looks like this:
 
@@ -138,9 +141,9 @@ end
 
 You can find details about the other fields on [rubygems.org](http://guides.rubygems.org/specification-reference/).
 
-### version.rb
+### *version.rb*
 
-I usually never update the version number for local gems but it's good to have it there for the unlikely case were you will publish the gem to a private gem server so multiple applications can use it. More on this later.
+I never update the version number for local gems but it's good to have it there in case you will publish the gem to a private gem server and start versioning so multiple applications can use it.
 
 ## Add gem entry point to Ruby application
 
@@ -152,17 +155,19 @@ path 'local_gems' do
 end
 {% endhighlight %}
 
-Running the test now should be green. Remember the code is just an example that exercises the dependency structure.
+Running the test now should be green. Remember the code is just an example to exercises the dependency structure.
 
 ## Setup local gems dependencies
   
-Let's add a local dependency to our `health_plan` local gem `health_plan.gemspec` with `add_dependency` so this local gem is dependent on another local gem that encapsulates access to drug information:
+Let's add a local dependency from `health_plan` to a `drug_information` local gem that encapsulates access to drug information:
 
 {% highlight ruby %}
+# health_plan.gemspec
+# within Gem::Specification.new do |spec|
 spec.add_dependency "drug_information"
 {% endhighlight %}
 
-If you run `bundle` within the `health_plan` local gem directory you will throw an error complaning `drug_information` can't be found because `add_dependency` doesn't yet know about local gems.
+Running `bundle` within the `health_plan` local gem directory errors on `drug_information` not being found:
 
 {% highlight bash %}
 $ bundle
@@ -171,19 +176,21 @@ Resolving dependencies...
 Could not find gem 'drug_information (>= 0) ruby', which is required by gem 'health_plan (>= 0) ruby', in any of the sources.
 {% endhighlight %}
 
-There is also a second problem: we haven't created that gem. Let's fix that running from the local gems directory `bundle gem drug_information`.
+That's for two reasons: first `add_dependency` doesn't yet know about local gems and second we haven't created that gem. Let's fix the second running from the local gems directory `bundle gem drug_information`.
 
-Back the the real problem: `health_plan` local gem failed to find `drug_information` on rubygems.org **which you must be vigilant about**. What if somebody created and published a `drug_information` gem on rubygems?
+The first problem is `health_plan` local gem failed to find `drug_information` on **rubygems.org which you must be vigilant about**. What if somebody created and published a `drug_information` gem on rubygems?
 
-### Local / remote gems name collisions
+### Gotcha: Local / remote gems name collisions
 
-I've seen this edge case happening and the result is your application uses the remote gem and your Gemfile.lock is **locked to the remote gem and prevent the local gem dependency to be picked up when created**. If you run in to this problem the solution is to delete the Gemfile.lock and bundle again after the local gem is created. A fairly safe convention to prevent this problem is to have a project specific namespace wrapping the gem name ie. `ProjectName::DrugInformation`. Prefixing all your gems ie. `ProjectNameDrugInformation` works too but I find it obfuscates the gem name rather then creating proper boundaries like `ProjectName::DrugInformation` that reveals **the project** has a **drug information** boundary.
+I've seen this edge case happening and the result is your application uses the remote gem and your Gemfile.lock is **locked to the remote gem and prevent the local gem dependency to be picked up when created**. *If you run in to this problem the solution is to delete the Gemfile.lock and bundle again after the local gem is created*.
 
-What if your gem name isn't used on rubygems.org today but somebody publishes a `drug_information` gem tomorrow? Once the Gemfile.lock is locked with the local gem this edge case is not gonna be a problem anymore because even if the `Gemfile.lock` is deleted the local gem has higher priority over the remote one.
+A safe way to prevent this problem is to have a project specific namespace wrapping the gem name ie. `ProjectName::DrugInformation`. Prefixing all your gems ie. `ProjectNameDrugInformation` works too but I find it obfuscates the gem name rather then creating proper boundaries like `ProjectName::DrugInformation` that reveals **the project** has a **drug information** boundary.
 
-### Specify local gem dependencies
+What if your gem name isn't used on rubygems.org today but somebody publishes a `drug_information` gem tomorrow? Once the Gemfile.lock is locked with the local gem this edge case isn't a problem anymore because even if the `Gemfile.lock` is deleted the local gem has higher priority over the remote one.
 
-You can tell your local gem about its local dependencies adding to the `Gemfile`:
+### Add local gems dependencies path
+
+You must tell your local gem about its local dependencies path via the `Gemfile`:
 
 {% highlight ruby %}
 path '../'
@@ -199,7 +206,7 @@ You can find the code in this [GitHub commit](https://github.com/agenteo/gem_dep
 
 ## Use automated tests to ensure the dependencies are solid
 
-Let's change `HealthPlan::Aggregator` code to access some dummy `drug_information` code:
+Let's update `HealthPlan::Aggregator` to access some dummy `drug_information` code:
 
 {% highlight ruby %}
 def details
@@ -208,7 +215,7 @@ def details
 end
 {% endhighlight %}
 
-remember the dependency on `drug_information` was set in the gem specification for the gem building process but **it must be explicitly required** or its code will not be found. **This is the cause of many errors especially if you're used to Ruby on Rails autoloader**.
+The dependency between `health_plan` and `drug_information` was set in the `health_plan` gem specification for its building process but **it must be explicitly required** or the code will not be found. **This is the cause of many errors especially if you're used to Ruby on Rails autoloader**.
 
 The fix is to add a require statement, usually in the gem entrypoint file `lib/gemname.rb` in this case `lib/health_plan.rb`:
 
@@ -223,19 +230,19 @@ end
 {% endhighlight %}
 
 
-Automated tests are an important part of software development but they are the only way to ensure local Ruby gems dependency structures are solid.
+Automated tests are an important part of software development but they are **the only way to ensure local Ruby gems dependency structures are solid**.
 
-### Flaky bugs caused by missing requirement statements
+### Gotcha: Flaky bugs caused by missing requirement statements
 
-This is a problem for a Ruby process loaded and running in memory such as a web server or deamon. Let's say you have a gem A requiring C and using its code, and you have a gem B **not** requiring C but using its code. A and B are two high level gems that your Ruby script can call.
+This is a problem affecting a Ruby process running in memory such as a web server or deamon. Let's say you have a gem A requiring gem C and using its code, and you have a gem B **not** requiring gem C but using its code. A and B are two high level gems that your Ruby application can call.
 
 ![visual representation]({{ site.url }}/assets/article_images{{ page.url }}flaky_bugs.png)
 
-When your application first access B an error will be triggered since B doesn't require C but uses its code.
+When your application first access gem B an error will be triggered since it uses gem C code without requiring it.
 
-But when you first execute A it requires C and leaves it in memory, so when B runs it won't fail! 
+But when your application first executes gem A it requires gem C and leaves it in memory--if the application now access gem B it won't fail because gem C was previously required.
 
-**So you really want to test all your local gems in isolation to catch those errors.**
+**A unit test on gem B would have caught that. And this is why you really must test all your local gems in isolation.**
 
 For example if we run:
 
@@ -260,3 +267,27 @@ end
 {% endhighlight %}
 
 before requiring `drug_information` within `health_plan` the test will fail with an expected: `uninitialized constant DrugInformation::Fetcher`.
+
+## Evolving the design of your application
+
+An application that doesn't evolve is rarely useful and as it evolves it becomes more complex and requires extra resources to preserve and simplify its structure--these are concepts covered by Lehman's **law of continuing change** and **law of increasing complexity**.
+
+![our evolved design]({{ site.url }}/assets/article_images{{ page.url }}dependencies_step_2.png)
+
+The health plan requirement changed:
+
+>> As a subscriber I want to access my health plan page with drug information and claims information
+
+From the technical side evolving your design is really as simple as updating `add_dependency` in your *.gemspec*--what is more challenging is how to associate boundaries to gems.
+
+**The target** is to have an intention revealing dependency structure that reduce the cognitive load. **The risk** is to split in too fine grained components creating a dependency structure that is purely technical and doesn't represent any business rule.
+
+In the first scenario you'd be able to talk about your boundaries/libraries with your business owners. In the second scenario your libraries are so abstract that impede conversation with business owners and shouldn't have been split or perhaps be part of a shared utility library. What prevents the *shared utility gem* from becoming a kitchen sink? Team diligence.
+
+My guideline is to use a [ubiquitous language](http://martinfowler.com/bliki/UbiquitousLanguage.html) and map business operational areas in to objects and namespaces. **When more then two or three concepts are living in a single namespace I ask the business owner if they think it's a different context or if a different team or company is operating that.**
+
+Conway’s law help with this:
+
+>> "organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations"
+
+It's hard work that can't be delegated to someone outside the development team. The boundaries can and will change as the application evolves--that's where the term evolutionary design comes from.

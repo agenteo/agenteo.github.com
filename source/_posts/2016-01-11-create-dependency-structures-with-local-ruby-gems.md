@@ -4,7 +4,7 @@ title: Create dependency structures with local Ruby Gems
 comments: true
 tags:
   - ruby
-  - gems
+  - maintainability
 ---
 
 Good object oriented practices can be sufficient to handle some complexity but when the project is over a certain size they don't help understand what the whole application does. **When you have to read several classes in order to visualize application dependencies you increase your cognitive load making your job harder.**

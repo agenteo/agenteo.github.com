@@ -15,10 +15,10 @@ source: source
 destination: public
 
 # Site settings
-title: "Enrico Teotti - professional software developer, agile mentor, traveller"
+title: "Enrico Teotti - developer and agile mentor with 15 years experience in the IT industry"
 welcome_message: "Hi, I am Enrico Teotti"
 description: > # this means to ignore newlines until "email:"
-   I craft maintainable software that delivers business value since 2001, with Ruby and Rails since 2005. Born and educated in Italy, became Australian now working in Boulder, Colorado.
+  developer and agile mentor with 15 years experience in the IT industry across Europe, Australia and the US.
 
 email: enrico@teotti.com
 #blog logo

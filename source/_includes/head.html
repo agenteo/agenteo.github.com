@@ -13,9 +13,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
   <meta property="og:type" content="article" />
+  {% if page.url == "/index.html" %}
+  <meta property="og:description" content="{{ site.og_description }}" />
+  {% else %}
   <meta property="og:description" content="{{ page.content | strip_html | truncatewords: 50 }}" />
+  {% endif %}
   <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>

@@ -6,31 +6,22 @@ tags:
   - executive
 ---
 
-Some time ago I joined a company tech division and my manager--let's call it Seamus--was practising management by fear.
+Some years ago I joined a company tech division and a manager--let's call it Seamus--was practising management by fear.
 
 It was a daunting but insighful experience that lasted about 5 months.
 
-I decided to publish that experience and extract a series of **pillars to increase awareness of the problem**. This list can confirm if you're working in a dysfunctional workplace, hopefully give you confidence to stand up and change things or to move on to a new job.
+I decided to document that story and extract a series of pillars to help others confirm if they're working in a workplace that uses management by fear--often people think breaking those pillars is ok for some greater good but I stronly disagree--I think breaking those pillars will bring talent away from the organization.
 
 ## Definition
 
->> Management by fear is a management style used to achieve unopposed obedience and enforce decisions trough the chain of command. It creates a tense work relationship where any initiative can upset the manager and bring negative repercussions to the underdog labeled as a troublemaker--often many others feel uncomfortable but are afraid to speak up.
+I think **management by fear** is a product of the fixed mindset--I am defining it as:
+
+>> a management style used to achieve unopposed obedience and enforce decisions trough the chain of command. It's a tense work relationship where any innovation or initiative might upset the manager and bring negative repercussions to the underdog labeled as a troublemaker--often many others feel uncomfortable but are afraid to speak up.
+
+**Management by fear** brings employees to resign or avoid any critical thinking to prevent getting in trouble with that manager--the result is a blindsided organization.
 
 ## The pillars
 
->> Invert the pillars?
-
-* **PILLAR I** *no questions asked and impolite answers*
-* **PILLAR II** *confrontational speeches behind closed doors*
-* **PILLAR III** *conceal what you don't know pretending you know*
-* **PILLAR IV** *mistrust and avoid talent recognition*
-* **PILLAR V** *undermine others*
-* **PILLAR VI** *self-centred colleagues and no company support*
-* **PILLAR VII** *make people feel helpless*
-* **PILLAR VIII** *lunch should be the best part of your job*
-* **PILLAR IX** *set a deadline for change and then leave*
-* **PILLAR X** *if change is on the horizon consider waiting for it*
-* 
 * **PILLAR I** *freedom to ask questions and get a polite answer*
 * **PILLAR II** *speak in front of the team not behind closed doors*
 * **PILLAR III** *don't be afraid of what you don't know*
@@ -39,8 +30,6 @@ I decided to publish that experience and extract a series of **pillars to increa
 * **PILLAR VI** *supporting colleagues*
 * **PILLAR VII** *people should not feel helpless*
 * **PILLAR VIII** *having lunch should not be the best part of your job*
-* **PILLAR IX** *set a deadline for change and then leave*
-* **PILLAR X** *if change is on the horizon consider waiting for it*
 
 ## PILLAR I
 
@@ -108,18 +97,16 @@ The discomfort Seamus created in the team made our bond really tight a sense of 
 
 *Lunch is a great part of the day to bond with your peers but when it shouldn't feel like the only good part.*
 
-## PILLAR IX
+---
+
+## Suggestions
 
 ### Set a deadline for change
 
 I spoke with human resources about Seamus and decided to hold a little bit longer... I wasn't sure for how long, no more then a month or two. I was curious to see where this was going in the same way you reach for a higher cliff when you are rock climbing or when you try a new recipe--you go out of your comfort zone to learn something valuable for the future. In the meantime I was setting my own goals experimenting with technologies, writing maintainable code and mentoring Luke but knowing these applications would never go live wasn't great for morale.
 
 *Document and report the misbehaviour to human resources and if you can in front of the entire team. Start looking for other options before you do that since it's possible you will be put in front a fire squad--set a deadline by when you either see change or leave. If your financial or personal situation doesn't allow you to find other options try to focus on pockets of work you love.*
-
-
-## PILLAR X
-
-### if change is on the horizon consider waiting for it
+### If change is actually coming consider waiting for it
 
 The company was unable to take action, instead they hired a vice president that started overseeing this situations. I was asked if I would feel comfortable speaking once a week to the VP to describe the evolving situation--I did but no action was taken--the VP wanted to collect more feedback. I was asked to approach team members and see if they would feel like talking to the VP about the situation. Not everyone felt comfortable and some wanted the VP to contact them first in fear of repercussions.
 
@@ -127,7 +114,7 @@ The VP collected feedback from team members and put Seamus on a timebound evalua
 
 The VP genuinely reviewed Seasmus behaviour, I was very skeptical about change people behaviour in such a short time. They also reviewed Seasmus work to ensure if he was let go he wouldn't leave a knowledge void but there was nothing worth keeping.
 
-*It's worth seeing closure and it's hinsightful to see an organization response to change. Leaving might be like watching a movie and miss the finale but if you've been under too much stress first take care of yourself.*
+*It's worth seeing closure and it's insightful to see an organization response to change. Leaving might be like watching a movie and miss the finale but if you've been under too much stress first take care of yourself.*
 
 ## Epilogue
 

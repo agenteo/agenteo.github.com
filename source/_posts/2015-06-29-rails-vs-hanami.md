@@ -2,13 +2,14 @@
 layout: post
 title: Rails vs Hanami
 comments: true
-redirect_from:
-  - /rails-vs-lotus
 tags:
   - rails
   - ruby
   - hanami
   - lotus
+redirect_from:
+  - /rails-vs-lotus/
+  - /rails-vs-lotus.html/
 ---
 
 **This article introduces Hanami--formerly known as Lotus--and compares its features with *regular* and *component based* Rails.** I will assume you are familiar with the Ruby on Rails conventions.

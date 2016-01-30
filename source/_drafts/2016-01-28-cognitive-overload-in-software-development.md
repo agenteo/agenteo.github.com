@@ -67,4 +67,6 @@ Imagine how much time would be saved if Diego first saw the mental model that Se
 
 In larger applications you can't have a single person keeping the whole system in long term memory so developers operate within an application silo and manage to avoid extraneous load **until they have to step out of the silo**.
 
-I believe the human brain is hardwired by thousand of years of labour and thinks if the application is big it must feel mentally painful to work on it. Some load is necessary but the extraneous load should and can be reduced at a minimum.
+**Most languages provide a way to group files in modules--developers should use that and keep boundaries updated as the business logic evolves.**
+
+I have a theory that the human brain is hardwired by thousand of years of labour and expects--almost craves--to feel mental fatigue when the application is big. I believe a fixed mindset foster that expectation. I think some load is necessary when developing software but the extraneous load should and can be reduced at a minimum.

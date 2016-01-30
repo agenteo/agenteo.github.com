@@ -8,13 +8,19 @@ I was born and educated in Italy but I lived one third of my adult life in Austr
 
 I traveled to several countries usually for a couple of weeks--this has been a great opportunity to meet locals and learn their culture and history--when I return I summarize each trip in a short movie. 
 
+![]({{ site.url }}/assets/images/about.jpg)
+
 ## Objectives
 
 **I want to help organizations embracing a growth mindset and introduce a sustainable work process to deliver business value.** To achieve that I communicate with the whole organization to gather their needs and priorities, incrementally architect software with product owners, mentor and coordinate the work of teams following agile methodologies. 
 
+![]({{ site.url }}/assets/images/objectives.jpg)
+
 ## Work experience
 
-**I have 15 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers, online tv services and more. I spent the first years working with .NET and for the last 10 I've been using with Ruby and Javascript.
+**I have 15 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers, online tv services and more. I spent the first years working with .NET then for more then 10 years I've been using with Ruby and Javascript--recently started using Spring and Java.
+
+![]({{ site.url }}/assets/images/mentored.jpg)
 
 **I've lead and mentored teams between 4 to 10 developers.**
 

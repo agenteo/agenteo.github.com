@@ -13,7 +13,7 @@ What is cognitive load?
 
 >> In cognitive psychology, cognitive load refers to the total amount of mental effort being used in the working memory.
 
-You're affected by cognitive overload when you receive too much information and are unable to process it. Software development is knowledge work so some load is expected but some can be avoided. I am going to use explain this problem with a story.
+You're affected by cognitive overload when you receive too much information and are unable to process it. Software development is knowledge work so some load is expected but some can be avoided. I am going to explain this problem with a story.
 
 ---
 
@@ -69,4 +69,4 @@ In larger applications you can't have a single person keeping the whole system i
 
 **Most languages provide a way to group files in modules--developers should use that and keep boundaries updated as the business logic evolves.**
 
-I have a theory that the human brain is hardwired by thousand of years of labour and expects--almost craves--to feel mental fatigue when the application is big. I believe a fixed mindset foster that expectation. I think some load is necessary when developing software but the extraneous load should and can be reduced at a minimum.
+I have a theory that the human brain is hardwired by thousand of years of labour and expects--almost craves--mental fatigue when the application is large. I believe a fixed mindset foster that expectation. I think some cognitive load is necessary when developing software but the extraneous load should and can be reduced at a minimum.

@@ -10,6 +10,7 @@ redirect_from:
   - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application/
   - /work/ruby/2013/07/16/using-plugins-as-components-of-a-large-ruby-on-rails2-application.html/
   - /using-plugins-as-components-of-a-large-ruby-on-rails2-application/
+  - /building-and-maintaing-large-ruby-on-rails-applications-for-3-years/
 ---
 
 Sometime we start building projects avoiding architecture and following framework conventions but diverging from that helped managing a Rails project growing for about 3 years.
@@ -38,8 +39,8 @@ babynames_utils                 landing_page_header             promos_and_sampl
 {% highlight bash %}
 $ ls -l app/controllers
 admin                           ask_an_expert                   contact_us_controller.rb        membership                      promos_and_samples
-admin_controller.rb             babynames                       kids_activities                 my_huggies                      recipe_finder
-application_controller.rb       contact_us                      loyalty                         my_huggies_controller.rb        stories
+admin_controller.rb             babynames                       kids_activities                 my_project                      recipe_finder
+application_controller.rb       contact_us                      loyalty                         my_project_controller.rb        stories
 {% endhighlight %}
 
 This approach was sufficient during the initial development phase but after we went live and started adding more verticals the growing number of subdirectories made jumping between models/controllers/views time consuming--ideally I wanted to find and work on all the babynames files within a single directory. The application route file `/config/routes.rb` was a 300 lines mix from all verticals hard to understand and painful to maintain.
@@ -55,12 +56,12 @@ We were also able to have unit tests inside the plugin.
 To make verticals plugins stand out from the vendor plugins we had a naming convention to append a static string in front of plugin name.
 
 {% highlight bash %}
-$ ls -l vendor/plugins/ | grep hug
-drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 huggies_api
-drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 huggies_baby_room_gallery
-drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 huggies_blog
-drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 huggies_mums_tips
-drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 huggies_voting_tool
+$ ls -l vendor/plugins/ | grep project
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 19:55 project_api
+drwxr-xr-x   7 agenteo  84396665  238 14 Nov 20:06 project_baby_room_gallery
+drwxr-xr-x   9 agenteo  84396665  306 14 Nov 20:08 project_blog
+drwxr-xr-x  14 agenteo  84396665  476 14 Nov 20:08 project_mums_tips
+drwxr-xr-x   6 agenteo  84396665  204 14 Nov 20:11 project_voting_tool
 {% endhighlight %}
 
 ## What didn't go well

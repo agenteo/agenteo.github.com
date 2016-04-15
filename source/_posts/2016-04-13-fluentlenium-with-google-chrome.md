@@ -5,7 +5,7 @@ comments: true
 tags:
   - java
   - testing
-image: /assets/article_images/fluentlenium-with-google-chrome/hero2.jpg
+image: /assets/article_images/fluentlenium-with-google-chrome/hero.jpg
 ---
 
 [Fluentlenium](http://www.fluentlenium.org/) is a Java acceptance test tool hinting to code maintainability thanks to native support for [page objects](http://martinfowler.com/bliki/PageObject.html) working out of the box with Firefox and therein lies the rub.

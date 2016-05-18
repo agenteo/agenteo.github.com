@@ -13,11 +13,11 @@ In this short article I describe how to use Sphinx and Thinking Sphinx (v3) in a
 
 **This article is not an intruduction on the open source search engine [Sphinx](http://sphinxsearch.com/) and its Ruby library [ThinkingSphinx](http://freelancing-gods.com/thinking-sphinx/) but rather how to solve a problem I faced multiple times and not very well documented online.**
 
-**I will use a simplified example adapted from a real life application.** A fictional company has a web portal where users can view product representatives details. The company has a mangement console where admins can update the product representatives information. Both need to search the representatives data stored in a relational database table--and loaded in an ActiveRecord object--but with different criterias.
+**I will use a simplified example adapted from a real life application.** A company has a web portal where users can view product representatives details. The company has a mangement console where admins can update the product representatives information. Both need to search the representatives data stored in a relational database table--and loaded in a Contact ActiveRecord object--but with different criterias.
 
 ![]({{ site.url }}/assets/article_images{{ page.url }}diagram.jpg)
 
-To make this example manageable I am defining only one criteria different between admin and user search: **A user can't see a representative that isn't active but an admin can**. You already know real life applications aren't that simple--this single criteria represents a series of differences between admin and user search and this solution applies to those cases.
+To make this example manageable I am defining only one criteria different between admin and user search: **A user can't see a contact that isn't active but an admin can**. You already know real life applications aren't that simple--in real life there are likely a multitude of criterias different between admin and user search and this solution works there.
 
 {% highlight ruby %}
 # /app/indices/contact_index.rb

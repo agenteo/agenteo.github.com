@@ -18,7 +18,7 @@ I traveled to several countries usually for a couple of weeks--this has been a g
 
 ## Work experience
 
-**I have 15 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers, online tv services and more. I spent the first years working with .NET then for more then 10 years I've been using with Ruby and Javascript--recently started using Spring and Java.
+**I have 15 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers, online tv services and more. I spent the first years working on desktop and web apps with .NET then for more then 10 years web apps using Ruby and Javascript--recently mobile development with Swift for iOS and Java Spring on the backend.
 
 ![]({{ site.url }}/assets/images/mentored.jpg)
 

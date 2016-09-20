@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Refactoring Ruby on Rails controller actions
+title: Untangle unmaintainable Ruby on Rails controller actions
 comments: true
 tags:
   - ruby
   - rails
   - rails4
   - architecture
-image: /assets/article_images/refactoring-ruby-on-rails-controller-action/hero.jpg
+image: /assets/article_images/untangle-unmaintainable-rails-controller-actions/hero.jpg
 ---
 
 This article is an example of how to refactor a Ruby on Rails controller action containing a mix of framework specific instructions--ie. redirect, render, flash--and business logic. 
@@ -16,13 +16,15 @@ This article is an example of how to refactor a Ruby on Rails controller action 
 
 This is not a silver bullet that will solve all your problems and suddenly increase your Ruby on Rails application code quality. It is an object oriented approach that can--and should--be used in combination with other patterns.
 
-**Evaluating if your problem domain complexity accounts for this approach is probably the hardest part**. Without experiencing the pain of maintaining a big ball of mud for more then a few months that complexity can be hard to see so instead of a toy example I will use a simplified problem adapted from a real life usecase.
+**Evaluating if your problem domain complexity accounts for this approach is probably the hardest bit** and without experiencing the pain of maintaining a big ball of mud for more then a few months that complexity can be hard to spot. To mitigate that instead of a toy example I will use **a simplified problem adapted from a real life usecase**.
+
+In this example I assume the server to render the view layer.
 
 ## Our feature set
 
 >> A regional representative (rep) access an edit/confirm page to update/confirm his profile
 
-A few scenarios can happen in that feature:
+A few scenarios can happen within that feature:
  
 1. the regional rep submits invalid data and fails to edit/confirm the profile
 2. the regional rep successfuly updates the profile
@@ -51,7 +53,7 @@ def update
     confirm_profile_form = ConfirmProfileForm.new(update_params[:regional_representative])
     if confirm_profile_form.valid?
       if confirm_profile_form.photo_path
-        flash[:photo_update_notice] = "The new photo will be checked and updated by our staff within 48 hours"
+        flash[:photo_update_notice] = "The new photo will be checked and updated by our staff within 72 hours"
       end
 
       profile_updater = ProfileUpdater.new
@@ -67,21 +69,27 @@ def update
 end
 {% endhighlight %}
 
-In the 11 years I worked with Ruby and Rails I rarely saw controllers actions staying in their initial state--**they keep growing as the application evolve you see more actions more private methods and it's always just another little change. Until...**
+Sine 2005 when I started working with Ruby and Rails I rarely saw controllers actions staying in their initial state--**they keep growing as the application evolves you see more actions more private methods and it's always just another little change. Until...**
 
 ![](https://media.giphy.com/media/3R1dpjYOfnzJm/giphy.gif)
 
 ## The code is not that bad
 
-This controller action code is already implementing some good practices to make it more maintainable and intention revealing.
+This example controller action code is already implementing some good practices to make it more maintainable and intention revealing.
+
+### Form object handling data validation
 
 Since the validation rules for a regional representative confirming his profile are specific to that **context** the code uses a `ConfirmProfileForm`--an `ActiveModel` that handles validation of a `regional_representative` *entity* instead of creating a special validation case on the `Contact` ActiveRecord object.
 
+### Service encapsulating persistence layer and notifications
+
 The `ProfileUpdater` is a service object that encapsulate the ActiveRecord object update and dispatch emails/sms notifications to the regional representative as well as attaching an updated photo to the admin email--to make the example more manageable I've skipped the code handling service faliure.
+
+### Explicit view variables
 
 The rendering of the view templates explicitly provide local variables instead of having instance variables that as the application grows are difficult to track and leak between partials.
 
-Most developers are able to see and implement those refactorings and when the leftover logic is minimal it can be kept in the controller action **but in this case there is still logic handling steps 1 to 4 in that controller action and it's not very intention revealing because it's closely coupled with framework behaviour**.
+Most developers are able to see and implement those refactorings and when the leftover logic is minimal it can be kept in the controller action **but in this case logic handling steps 1 to 4 is in that controller action and it's not very intention revealing because it's closely coupled with framework behaviour**.
 
 ## Domain logic mixed with the framework
 
@@ -189,18 +197,18 @@ end
 
 The `ProfileChange` does its job and interacts with the framework via `ProfileUpdateResponse`--when test driving `ProfileChange` in isolation the framework behaviour can easily be abstracted away to focus on the core logic. 
 
-If framework abstraction isn't a concern this same refactor could be done at the controller level except very often a single controller holds logic for multiple actions ending up with a mix of responsabilities and a tangle of private methods and shared state.
+If framework abstraction isn't a concern this same refactor could be done in the controller via private methods except very often a single controller holds logic for multiple actions ending up with a mix of responsabilities and a tangle of private methods and shared state.
 
 ## Conclusions
 
-In this scenario moving code out of the controller action in to this layer of abstraction untangles framework and domain logic making the profile change intent explicit--in simpler cases this abstraction could just get in the way and leaving the whole logic in the controller action is adeguate. This separation concept is based on [Ports & Adapters / Hexagonal Architecuture](http://alistair.cockburn.us/Hexagonal+architecture) by Alistair Cockburn.
+In this scenario moving code out of the controller action in to this layer of abstraction untangles framework and domain logic making the profile change intent explicit--in simpler cases this abstraction could just get in the way and leaving the whole logic in the controller action is adequate. This separation concept is based on [Ports & Adapters / Hexagonal Architecuture](http://alistair.cockburn.us/Hexagonal+architecture) by Alistair Cockburn.
 
 ### Bigger picture
 
-Our fictional organization portal operates in three contexts:
+Our fictional organization portal operates other contexts:
 
 1. a customer can view products and contact a regional representative for support
 2. an administrator can manage products and regional representative
 3. a regional representative can confirm and manage their profile
 
-This example--even after the refactor--is part of one boundary--I've left the `Rep` module to indicate that--but as the application evolves those three operational contexts will have cross boundary dependencies that this approach doesn't highlight but it's very easy to combine this approach in a [component based](http://teotti.com/component-based-rails-architecture-primer/) with Ruby Gems and Rails engines.
+This example--even after the refactor--is part of **one boundary**--I've left the `Rep` module to indicate that--but as the application evolves those three operational contexts will have cross boundary dependencies that this approach doesn't highlight but it's easy to move this approach in a [component based](http://teotti.com/component-based-rails-architecture-primer/) with Ruby Gems and Rails engines.

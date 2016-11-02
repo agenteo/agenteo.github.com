@@ -106,4 +106,4 @@ Before this I was thinking vitalizing OSX was hard and illegal but it turned out
 
 ## Credits
 
-Tim Kersey and I paired on this during research and development time at Pivotal Labs in Santa Monica. You can find the proof of concept project at https://github.com/pivotalbeachla/parallelize-tests
+Tim Kersey and I paired on this during research and development time at Pivotal Labs in Santa Monica. You can find the code of the proof of concept on [GitHub](https://github.com/pivotalbeachla/parallelize-tests).

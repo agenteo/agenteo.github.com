@@ -101,7 +101,7 @@ More information--including failures whole `xcodebuild` outputs--can be found in
 
 ## Conclusion
 
-Before this I was thinking vitalizing OSX was hard and illegal but it turned out to be legal, very simple and a great way to distribute iOS UI tests.
+Before this I was thinking virtualizing OSX was hard and illegal but it turned out to be legal, very simple and a great way to distribute iOS UI tests.
 
 
 ## Credits

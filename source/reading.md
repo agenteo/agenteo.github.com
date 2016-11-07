@@ -7,6 +7,7 @@ permalink: /reading/
 This is a chronological list of the work related books I've read. They are about communication, management, agile methodologies, Go, Swift/iOS, Java, Ruby, Javascript and other topics that I am interested in.
 
 ### 2016
+* [Planning Extreme Programming](https://www.amazon.com/Planning-Extreme-Programming-Kent-Beck/dp/0201710919/ref=sr_1_1?ie=UTF8&qid=1478483885&sr=8-1&keywords=planning+extreme+programming)
 * [Programming iOS 9: Dive Deep into Views, View Controllers, and Frameworks](https://www.amazon.com/gp/product/B017OG2UUA/ref=oh_aui_d_detailpage_o03_?ie=UTF8&psc=1)
 * [iOS 9 Programming Fundamentals with Swift: Swift, Xcode, and Cocoa Basics](https://www.amazon.com/gp/product/B015YOJS68/ref=oh_aui_d_detailpage_o02_?ie=UTF8&psc=1)
 * [iOS Programming: The Big Nerd Ranch Guide](https://www.amazon.com/gp/product/B019HARRT0/ref=oh_aui_d_detailpage_o05_?ie=UTF8&psc=1#nav-subnav)

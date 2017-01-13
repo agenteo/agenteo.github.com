@@ -105,6 +105,10 @@ If you commit a possible fix, referencing the `flaky-test` issue in the commit m
 
 ![It's good to see attempts to fix flaky tests!]({{ site.url }}/assets/article_images{{ page.url }}attempt_to_fix.png)
 
+## Throttle your network connection to external sites
+
+Flaky test can be caused by external resources misbehaving. I worked on an Angular application using a payment gateway iframe that would always be present and work well during development and on production but trigger intermittent test failures. Using [Charles proxy](https://www.charlesproxy.com) I was able to intercept and slow down connections to the payment gateway making the flaky test fail consistently. In this particular case it wasn't worth spending time to fix a problem that we didn't see in production but adding a comment explaining the root cause helps increase the team confidence in the build.
+
 ## Develop in a virtual machine
 
 Running your development in a virtual machine matching the CI server (and your deploy server) libraries configuration helps revealing errors during TDD rather then waiting until the CI server runs the build.

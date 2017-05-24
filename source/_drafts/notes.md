@@ -197,3 +197,19 @@ The steps:
 * Move any logic used only by that component
 * Focus on automated tests
  
+ ---
+
+When embracing a growth mindset we accept that making mistakes is a part of learning. Instead of blaming ourself--or others--we want to share our experiences and understand the lessons learned. We don't think we're naturally smart but rather we believe in working hard.
+
+Facilitating retrospectives with individuals in a growth mindset is easy--you should still challenge your audience rotating activities--but the collaborative environment is a good foundation for a successful retrospective.
+
+When we're in a fixed mindset we think mistakes are unacceptable. We won't say it out loud but we're convinced we make no mistake because we're naturally smart. We must blame someone else mistakes because it means they're not smart.
+
+Facilitating retrospectives with individuals in a fixed mindset is hard and a simple retrospective approach--that might work for teams in a growth mindset--will fail.
+
+An example of a simple retrospective is collecting meaningful events that made you feel mad, sad or glad and discuss them one by one looking for action items. The **first assumption** here is that everyone feels comfortable writing what's in their head in front of a larger group. The **second assumption** is that every event should be treated the same.
+
+
+Running retrospectives at the 
+Continuous timeline is [Linda Rising evolution](http://www.infoq.com/articles/rising-continuous-retrospective) of the timeline exercise found in [Derby&Larsen book](http://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649) I learned from Linda Reising
+

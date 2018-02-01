@@ -4,6 +4,7 @@ layout: post
 comments: true
 tags:
   - workflow
+image: /assets/article_images/time-to-change-your-agile-retrospective-format/hero.png
 ---
 
 In this article--targeted to retrospective facilitators--I describe my experience going from a simple retrospective format to a more structured one following Derby and Larsen's book on Agile Retrospectives.

@@ -213,3 +213,40 @@ An example of a simple retrospective is collecting meaningful events that made y
 Running retrospectives at the 
 Continuous timeline is [Linda Rising evolution](http://www.infoq.com/articles/rising-continuous-retrospective) of the timeline exercise found in [Derby&Larsen book](http://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649) I learned from Linda Reising
 
+
+---
+
+This post I describe my experience with the format published in the popular book [Agile Retrospectives: Making Good Teams Great]() by Derby/Larsen based on the classic Project Retrospectives: A Handbook for Team Reviews by the father of retrospectives Norman Kerth. If you have time go read those books.
+
+James Shore has a [retrospective chapter](http://www.jamesshore.com/Agile-Book/retrospectives.html) in his The art of agile development .
+
+----
+
+
+**If your team questions the meaning of a retrospective** try with an analogy.
+
+>> If you baked a cake for the first time and it came out burned would you take it out of the oven earlier the next time?
+
+>> If you went backpacking in europe with a 40Kg backpack and you couldn't move as quickly as you imagined would you choose a lighter backpack next time?
+
+>> If you PUT-RELATABLE-ANALOGY-HERE and you PUT-RELATABLE-NEGATIVE-EFFECT-HERE would you PUT-RELATABLE-SOLUTION next time?
+
+It's about learning from our mistakes.
+
+: would you use a time machine to tell your past self live your last iteration again given what you've learned. Would you do everything the same way or would you change something? An agile retrospective is an opportunity to break from our daily routine and reflect on what happened, **gather insight** and introduce experiments to adjust what we've found didn't go well.  
+
+When you use the same retrospective format over and over again your audience brains will get used to it and become disengaged.
+
+## does your retrospective feel like a status meeting?
+
+
+Are some individuals not participating in your retrospectives anymore while others are overtaking the stage?
+
+Is your list of "action items" constantly carried over to the next iteration and never completed?
+
+**Perhaps your retrospective style has become stale and to your team it's now just a status meeting.**
+
+In this short post----I'll explain how I've tackled these issues by introducing a new retrospective style. Even if you decide to pick up a new retrospective strategy remember to keep experimenting with new formats.
+
+
+Structured retro is work.

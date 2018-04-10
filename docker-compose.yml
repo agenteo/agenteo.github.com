@@ -8,3 +8,9 @@ services:
       - "4000:4000"
     volumes:
       - .:/app
+  build_pages_for_deploy:
+    build: .
+    user: "1000"
+    command: ./script/build_pages_for_deploy.sh
+    volumes:
+      - .:/app

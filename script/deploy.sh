@@ -5,7 +5,6 @@
 : ${DEPLOY:=_deploy}
 : ${BRANCH:=HEAD}
 
-jekyll build -d $DEPLOY
 cd $DEPLOY
 git add --all
 git commit -m "Published $(date)"

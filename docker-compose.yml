@@ -9,6 +9,7 @@ services:
     volumes:
       - .:/app
   build_pages_for_deploy:
+    scale: 0
     build: .
     user: "1000"
     command: ./script/build_pages_for_deploy.sh

@@ -2,11 +2,8 @@
 #
 # Simple deploy script for this blog.
 
-: ${DEPLOY:=_deploy}
-: ${BRANCH:=HEAD}
-
-cd $DEPLOY
+cd _deploy
 git add --all
 git commit -m "Published $(date)"
-git push -fu origin $BRANCH
+git push -fu origin master
 cd ..

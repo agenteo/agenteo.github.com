@@ -98,7 +98,7 @@ People accustomed to the classic version want to focus the retrospective on thei
 
 Make sure the retrospective objective is **defined by the team**.
 
-### 1️⃣ Setting the stage
+### Setting the stage
 
 Asking those two questions is a good way to *set the stage* and make sure everybody understands the purpose of the retrospective. One of my favourites exercise is to read *Kerth's prime directive*:
 
@@ -112,16 +112,14 @@ The retrospective should be a no naming no blaming activity and the prime direct
 
 ![ESVP]({{ site.url }}/assets/article_images{{ page.url }}esvp.png)
 
-Another good way to set the stage is with the ESVP activity that **anonymously** collect what role people relates with during retrospective.
+A good activity to discover--or track--team interest about the retrospective is ESVP. You will **anonymously** collect how the participants feel about the retrospective.
 
 
 ![the explorer]({{ site.url }}/assets/article_images{{ page.url }}explorer.jpg)
 
-At one end the explorer wanting to leave no stone unturned and enthusiastically learn as much as possible. 
+At one end the explorer wanting to leave no stone unturned and enthusiastically learn as much as possible.  At the opposite end the prisoner that was forced in to the retrospective.
 
-At the opposite end the prisoner that was forced in to the retrospective. If you have a room full of prisoners you should cancel the retrospective. Having occasional prisoners is ok--**make sure you acknoledge their presence and thank them for their patience in participating**.
-
-![the prisoner]({{ site.url }}/assets/article_images{{ page.url }}prisoner.jpg)
+If you have a room full of prisoners you should consider cancel the retrospective. Having occasional prisoners is ok--**make sure you acknoledge their presence and thank them for their patience and participation**.
 
 **Do not ask who's the prisoner** if they feel like speaking up they will.
 
@@ -129,7 +127,7 @@ In one retrospective I facilitated I had some prisoners. I eventually learned--d
 
 >> Make sure you comunicate to the group how long the retrospective will last and commit to end on time.
 
-### 2️⃣ Gather data
+### Gather data
 
 ![]({{ site.url }}/assets/article_images{{ page.url }}timeline.png)
 
@@ -143,7 +141,14 @@ Some of those events can be color coded at the time of the writing or you can de
 
 Other good pieces of data to show at this point are number of delivered stories/points, number of deployments, bug count.
 
-### 3️⃣ Generate insight
+The timeline should collect events--and hard data--for example: "spent 16 hours fixing the dropdown bug" instead of "we don't deliver fast enough" which is a personal consideration. Personal consideration and feeling are important and they will be discussed in the next step: generate insight.
+
+>> Suggestion: If you're keeping the post-its from the weekly continuous timeline for a longer project retrospective I found it useful to timestamp the iteration week to facilitate the creation of the project timeline:
+
+![]({{ site.url }}/assets/article_images{{ page.url }}timestamped-events.png)
+
+
+### Generate insight
 
 Once we have information about what happened on the last iteration the team can start looking for patterns. Ask them to move the events in to groups/topics. As a facilitator make sure the whole team participate.
 
@@ -151,7 +156,14 @@ Once we have information about what happened on the last iteration the team can 
 
 You should now be halfway trough your restrospective and have a handful of overarching topics. Ask the team to vote on each group so the one with highest count will be the focus of the experiment.
 
-### 4️⃣ Experiment
+#### It doesn't always work
+
+If the group is large or the team has a lot of friction it might be hard to decide a topic to discuss within the time allocated for retro. In that case is good to prepare a list of topics to generate insight on. I like to ask those to individual team members before the retro.
+![team radar]({{ site.url }}/assets/article_images{{ page.url }}team-radar.jpg)
+
+During team radar people vote from 0 to 10 how well the team perform on a number of topics. Then the conversation starts and the facilitator add notes as people talk about the reason for their votes. This is a direct way to generate insights on specific areas/topics.
+
+### Experiment
 
 Once one ovearching topic has been identified it's time to formalize a measurable experiment to incorporate in the next iteration. I like to stick it to the timeline so everyone can read it.
 
@@ -175,7 +187,7 @@ example two:
 * Experiment: Standup starts at 9am everyday with a--weekly--facilitator assigned on the calendar. If the measurement shows low presence reschedule standup at 9.30am. Enrico will create the facilitator calendar for the next 2 months.
 * Measurement: How many times standup starts after 9? How many people are missing the 9'oclock standup.
 
-### 5️⃣ Closing
+### Closing
 
 Now is the time to finish the retrospective and there are two activities I like.
 

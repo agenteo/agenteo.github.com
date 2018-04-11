@@ -10,15 +10,14 @@ I created two docker-compose services to:
 
 ## Steps to develop
 
-Start `docker-compose up`, edit the source files check the browser on port 4000.
+* `docker build -t teottidotcom .`
+* `./docker/previewBlog.sh`
 
 ## Steps to publish
 
-* run `docker-compose up build_pages_for_deploy --scale 1`
-* this should create a `_deploy` directory
+* `./docker/buildForDeploy.sh`
 * `cd _deploy`
-* `git init .`
-* `git remote add origin https://github.com/octocat/Spoon-Knife`
+* **ONLY FIRST TIME** `git init . && git remote add origin https://github.com/octocat/Spoon-Knife`
 * `cd ..`
 * now the deploy directory is ready to deploy run: `./script/deploy.sh`
 

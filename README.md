@@ -17,7 +17,7 @@ I created two docker-compose services to:
 
 * `./docker/buildForDeploy.sh`
 * `cd _deploy`
-* **ONLY FIRST TIME** `git init . && git remote add origin https://github.com/octocat/Spoon-Knife`
+* **ONLY FIRST TIME** `git init . && git remote add origin git@github.com:agenteo/agenteo.github.com.git`
 * `cd ..`
 * now the deploy directory is ready to deploy run: `./script/deploy.sh`
 

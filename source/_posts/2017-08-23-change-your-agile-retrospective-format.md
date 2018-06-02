@@ -4,6 +4,8 @@ layout: post
 comments: true
 tags:
   - workflow
+  - retrospectives
+  - agile
 image: /assets/article_images/time-to-change-your-agile-retrospective-format/hero.png
 ---
 
@@ -13,7 +15,7 @@ I've seen the first format working for teams of 2/3 developers new to retrospect
 
 I start by describing what I call a classic retrospective and the biggest risk I encountered with it. Then I describe the structured retrospective I introduced. Finally some tradeoffs of the structured retrospective.
 
-I gave a 15 minutes talk about this subject at Pivotal Labs in Los Angeles, you can watch it [here](https://www.youtube.com/watch?v=-Pw-p6DzvFQ)
+I gave a 15 minutes talk about this subject at Pivotal Labs in Los Angeles, you can watch it [here](https://www.youtube.com/watch?v=-Pw-p6DzvFQ). If you're interested I wrote a blog post about [measuring retrospective success](http://teotti.com/measure-success-of-your-agile-retrospective/).
 
 **This article is about retrospective for co-located teams**.
 

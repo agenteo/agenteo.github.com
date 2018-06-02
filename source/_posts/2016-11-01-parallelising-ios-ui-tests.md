@@ -3,7 +3,8 @@ title: Parallelising iOS UI tests
 layout: post
 comments: true
 tags:
-  - iOS
+  - testing
+  - ioS
 image: /assets/article_images/parallelising-ios-ui-tests/hero.jpg
 ---
 

@@ -12,13 +12,11 @@ I traveled to several countries usually for a couple of weeks--this has been a g
 
 ## Work experience
 
-**I have 17 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers apps, rider apps, online tv services and more.
+**I have 17 years of experience in Europe, Australia and the United States leading teams and building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers apps, rider apps, online tv services and more.
 
 In 2001 I spent the first years working on desktop and web apps with VB5 and then C# .NET then for more then 10 years web apps using Ruby and Javascript--recently mobile development with React Native, Swift for iOS and Java Spring on the backend.
 
-As a principal consultant I've gathered requirements from stakeholders and translated them in to user stories, introduced and coached agile methodologies like TDD and pair programming.
-
-**I've lead and mentored teams between 4 to 10 developers.**
+**As a principal consultant I gather requirements from stakeholders and translate them in to user stories, introduce and coach agile methodologies like TDD and pair programming to teams of 4 to 10 developers.**
 
 ![]({{ site.url }}/assets/images/mentored.jpg)
 

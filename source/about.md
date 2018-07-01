@@ -10,18 +10,26 @@ I traveled to several countries usually for a couple of weeks--this has been a g
 
 ![]({{ site.url }}/assets/images/about.jpg)
 
-## Objectives
-
-**I want to help organizations embracing a growth mindset and introduce a sustainable work process to deliver business value.** To achieve that I communicate with the whole organization to gather their needs and priorities, incrementally architect software with product owners, mentor and coordinate the work of teams following agile methodologies. 
-
-![]({{ site.url }}/assets/images/objectives.jpg)
-
 ## Work experience
 
-**I have 15 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers, online tv services and more. I spent the first years working on desktop and web apps with .NET then for more then 10 years web apps using Ruby and Javascript--recently mobile development with Swift for iOS and Java Spring on the backend.
+**I have 17 years of experience in Europe, Australia and the United States building commercial software** such as: call centers, government event sites, online shops, brand sites with social components, memory video games, content management systems, health providers apps, rider apps, online tv services and more.
 
-![]({{ site.url }}/assets/images/mentored.jpg)
+In 2001 I spent the first years working on desktop and web apps with VB5 and then C# .NET then for more then 10 years web apps using Ruby and Javascript--recently mobile development with React Native, Swift for iOS and Java Spring on the backend.
+
+As a principal consultant I've gathered requirements from stakeholders and translated them in to user stories, introduced and coached agile methodologies like TDD and pair programming.
 
 **I've lead and mentored teams between 4 to 10 developers.**
 
-I keep my skills updated by checking major blog articles and [reading books](/reading) about programming languages, social interactions, management and agile methodologies. I write on my blog about a series of different [topics](/topics). You can find out the full details of my [professional experience on Linkedin](https://www.linkedin.com/in/agenteo).
+![]({{ site.url }}/assets/images/mentored.jpg)
+
+## Current career trajectory
+
+**I want to help organizations embracing a growth mindset and introduce a sustainable work process to deliver business value.** 
+
+To achieve that I communicate with the whole organization to gather their needs and priorities, incrementally architect software with product owners, facilitate [agile retrospectives](/topics/retrospectives/) to generate insight, mentor and coordinate the work of teams following agile methodologies. 
+
+![]({{ site.url }}/assets/images/objectives.jpg)
+
+I keep my skills updated by checking major blog articles and [reading books](/reading) about programming languages, social interactions, management and agile methodologies.
+
+I write on my blog about a series of different [topics](/topics). You can find out the full details of my [professional experience on Linkedin](https://www.linkedin.com/in/agenteo).

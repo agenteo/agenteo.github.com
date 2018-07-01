@@ -6,6 +6,16 @@ permalink: /reading/
 
 This is a chronological list of the work related books I've read. They are about communication, management, agile methodologies, Go, Swift/iOS, Java, Ruby, Javascript and other topics that I am interested in.
 
+### 2018
+* [Ego is the enemy](https://www.amazon.com/Ego-Enemy-Ryan-Holiday/dp/1591847818)
+* [Improving Agile Retrospectives](https://www.amazon.com/Improving-Agile-Retrospectives-Efficient-Addison-Wesley/dp/0134678346/ref=sr_1_3?s=books&ie=UTF8&qid=1530340343&sr=1-3&keywords=retrospectives)
+
+### 2017
+* [Radical Candor: Be a Kick-Ass Boss Without Losing Your Humanity](https://www.amazon.com/Radical-Candor-Kick-Ass-Without-Humanity-ebook/dp/B01KTIEFEE)
+* [Software Estimation: Demystifying the Black Art](https://www.amazon.com/Software-Estimation-Demystifying-Developer-Practices/dp/0735605351)
+* [Migrating Legacy Systems: Gateways, Interfaces & the Incremental Approach](https://www.amazon.com/Migrating-Legacy-Systems-Interfaces-Incremental/dp/1558603301/ref=sr_1_1?s=books&ie=UTF8&qid=1530340271&sr=1-1&keywords=migrating+legacy+systems)
+
+
 ### 2016
 * [Planning Extreme Programming](https://www.amazon.com/Planning-Extreme-Programming-Kent-Beck/dp/0201710919/ref=sr_1_1?ie=UTF8&qid=1478483885&sr=8-1&keywords=planning+extreme+programming)
 * [Programming iOS 9: Dive Deep into Views, View Controllers, and Frameworks](https://www.amazon.com/gp/product/B017OG2UUA/ref=oh_aui_d_detailpage_o03_?ie=UTF8&psc=1)

@@ -3,11 +3,15 @@ title: Analyze Kerth prime directive
 layout: post
 comments: true
 image: /assets/article_images/analyze-kerth-prime-directive/hero.png
+og:
+  description: This post assumes you know what a retrospective is and focuses on Kerth's prime directive to ensure the facilitator can answer common challenges and confidently explain it to the group.
 tags:
-  - retrospective
+  - retrospectives
   - process
   - agile
 ---
+
+This post assumes you know what a retrospective is and focuses on Kerth's prime directive to ensure the facilitator can answer common challenges around the directive and confidently explain it to the group.
 
 Weeks ago I gave a public presentation about retrospectives and [after introducing Kerth's directive](https://www.youtube.com/watch?v=0hatxoP-MU0&t=7m00s) a person in the audience shouted to me "that is a lie!". Btw that link is the same presentation but different audience so no shouting.
 

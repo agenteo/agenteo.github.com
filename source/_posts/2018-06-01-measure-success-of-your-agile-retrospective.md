@@ -7,6 +7,8 @@ tags:
   - agile
   - retrospectives
 image: /assets/article_images/measure-success-of-your-agile-retrospective/hero.png
+og:
+  description: Retrospectives should be a core practice for any team but you must have a way to measure their success and team engagement otherwise they can become just another meeting. In this article I'll explain why they're both critical to retrospective success.
 ---
 
 Retrospectives should be a core practice for any team but **you must have a way to measure their success and team engagement otherwise they can become just another meeting**.

@@ -19,8 +19,7 @@ title: "Enrico Teotti - developer and agile mentor with over 15 years experience
 welcome_message: "Hello, I am Enrico Teotti"
 description: > # this means to ignore newlines until "email:"
   developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
-og:
-  description: "Visit my homepage to find out more about me and my work"
+og_description: "Visit my homepage to find out more about me and my work"
 
 email: enrico@teotti.com
 #blog logo

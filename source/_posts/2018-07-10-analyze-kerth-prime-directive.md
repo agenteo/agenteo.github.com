@@ -3,8 +3,7 @@ title: Analyze Kerth prime directive
 layout: post
 comments: true
 image: /assets/article_images/analyze-kerth-prime-directive/hero.png
-og:
-  description: This post assumes you know what a retrospective is and focuses on Kerth's prime directive to ensure the facilitator can answer common challenges and confidently explain it to the group.
+og_description: This post assumes you know what a retrospective is and focuses on Kerth's prime directive to ensure the facilitator can answer common challenges and confidently explain it to the group.
 tags:
   - retrospectives
   - process

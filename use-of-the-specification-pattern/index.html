@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Use of the specification pattern</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Use of the specification pattern" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="A software built to deliver business value but coded ignoring [business language](http://martinfowler.com/bliki/UbiquitousLanguage.html) will be unintuitive to change and will foster institutional knowledge that makes onboarding of new engineers a daunting experience. One effective way to alleviate this is to encapsulate business rules in a *specification* object rather then leaving them..." />
+  
+  <meta property="og:url" content="http://teotti.com/use-of-the-specification-pattern/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/use-of-the-specification-pattern/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Use of the specification pattern</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-08-25T00:00:00+00:00">25 Aug 2015</time>
+              , tagged on  <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-patterns"><a href="/topics/patterns">patterns</a></span> <span class="post-tag-maintainability"><a href="/topics/maintainability">maintainability</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>A software built to deliver business value but coded ignoring <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">business language</a> will be unintuitive to change and will foster institutional knowledge that makes onboarding of new engineers a daunting experience.</p>
+
+<p>One effective way to alleviate this is to encapsulate business rules in a <em>specification</em> object rather then leaving them as scattered relics that the next engineer will have to glue together and decrypt.</p>
+
+<p>I will use Ruby examples throughout this article but the concepts are applicable to any programming language.</p>
+
+<h2 id="the-example">The example</h2>
+
+<p>Let’s say a company wants to automate its private driver booking business. Its clients are executives that don’t mind paying extra for a reliable service that can adapt based on unplanned events.</p>
+
+<p><strong>This is a simplified example adapted from a real application.</strong></p>
+
+<p>On Monday Alfred–Mr. David H.’s personal assistant–books him a <em>limousine</em> pickup for Wednesday at 11.20am from JFK International Airport with drop off in the Manhattan financial district.</p>
+
+<p>The trip fits in a <strong>flat rate</strong> offered by a limousine service between two known locations so the system quotes the reservation 150$.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;JFK Airport&#39;</span><span class="p">)</span>
+<span class="n">destination</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;197 Broadway, New York, NY&#39;</span><span class="p">)</span>
+<span class="n">reservation_booking</span> <span class="o">=</span> <span class="no">ReservationBooking</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">source</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="ss">destination</span><span class="p">:</span> <span class="n">destination</span><span class="p">)</span>
+<span class="n">reservation_booking</span><span class="o">.</span><span class="n">create</span> <span class="c1"># =&gt; 12345</span>
+<span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span><span class="o">.</span><span class="n">quote</span> <span class="c1"># =&gt; $150</span></code></pre></div>
+
+<p>David flight land at JFK on time and the driver <strong>picks him up</strong> and start heading towards Manhattan.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;JFK Airport&#39;</span><span class="p">)</span>
+<span class="n">reservation</span> <span class="o">=</span> <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">reservation</span><span class="o">.</span><span class="n">pickup</span><span class="p">(</span><span class="n">source</span><span class="p">)</span></code></pre></div>
+
+<p>During the trip David decides to make an unplanned <strong>stop</strong> in Brooklyn to have Ramen for lunch at <a href="http://gansonyc.com/ganso-ramen/">Ganso</a>.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">location</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;25 Bond St, Brooklyn, NY 11201&#39;</span><span class="p">)</span>
+<span class="n">reservation</span><span class="o">.</span><span class="n">add_stop</span><span class="p">(</span><span class="n">location</span><span class="p">)</span></code></pre></div>
+
+<p>The driver parks at Central Parking a nearby garage–that charges 60$ per hours–and wait until David finishes his lunch.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">location</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;276-300 Livingston Street&#39;</span><span class="p">)</span>
+<span class="n">reservation</span><span class="o">.</span><span class="n">add_stop</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+<span class="n">reservation</span><span class="o">.</span><span class="n">add_incidental</span><span class="p">(</span><span class="ss">kind</span><span class="p">:</span> <span class="s1">&#39;parking 1 hour&#39;</span><span class="p">,</span> <span class="ss">cost</span><span class="p">:</span> <span class="mi">60</span><span class="p">)</span></code></pre></div>
+
+<p>When done David calls the driver to pick him up and shortly after that he’s dropped off at his penthouse in Manhattan.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">location</span> <span class="o">=</span> <span class="no">LocationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;195 Brodway, New York, NY 10007&#39;</span><span class="p">)</span>
+<span class="n">reservation</span><span class="o">.</span><span class="n">dropoff</span><span class="p">(</span><span class="n">location</span><span class="p">)</span></code></pre></div>
+
+<p>When David decided to made an unplanned stop his reservation changed from transfer to hourly rate and because of that the quote must be recalculated.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">reservation</span> <span class="o">=</span> <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">reservation</span><span class="o">.</span><span class="n">quoted_type</span> <span class="o">==</span> <span class="ss">:transfer</span> <span class="o">&amp;&amp;</span> <span class="n">reservation</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="ss">:hourly</span>
+  <span class="n">quote</span> <span class="o">=</span> <span class="no">Booking</span><span class="o">::</span><span class="no">QuoteGenerator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+  <span class="n">updated_quote</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">recalculate</span>
+  <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="ss">quote</span><span class="p">:</span> <span class="n">updated_quote</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<h3 id="a-more-realistic-challenge">A more realistic challenge</h3>
+
+<p>Let’s add more requoting conditions to resemble the challenges you’d face in a real application. The quote has to be regenerated:</p>
+
+<ul>
+  <li>before the trip starts and the client calls to change the vehicle type</li>
+  <li><strong>or</strong> after the trip starts and it was quoted for a number of hours and is now matching a more expensive point to point trip</li>
+  <li><strong>or</strong> after the trip starts and the driver had to reach an invalid area not usually served by the vendor requiring surcharges</li>
+</ul>
+
+<p>We can create methods on the reservation entity like:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">reservation</span> <span class="o">=</span> <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">reservation</span><span class="o">.</span><span class="n">quoted_type</span> <span class="o">==</span> <span class="ss">:transfer</span> <span class="o">&amp;&amp;</span> <span class="n">reservation</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="ss">:hourly</span> <span class="p">)</span> <span class="o">||</span>
+   <span class="p">(</span> <span class="n">reservation</span><span class="o">.</span><span class="n">quoted_vehicle_type</span> <span class="o">!=</span> <span class="n">reservation</span><span class="o">.</span><span class="n">vechicle_type</span> <span class="p">)</span> <span class="o">||</span>
+   <span class="p">(</span> <span class="n">reservation</span><span class="o">.</span><span class="n">quoted_type</span> <span class="o">==</span> <span class="ss">:hourly</span> <span class="o">&amp;&amp;</span> <span class="n">reservation</span><span class="o">.</span><span class="n">matching_more_expensive_point_to_point?</span><span class="p">)</span> <span class="o">||</span>
+   <span class="p">(</span> <span class="o">!</span><span class="n">reservation</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">valid_zipcodes</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">reservation</span><span class="o">.</span><span class="n">stops</span><span class="o">.</span><span class="n">zipcodes</span><span class="p">)</span> <span class="p">)</span>
+  <span class="n">quote</span> <span class="o">=</span> <span class="no">Booking</span><span class="o">::</span><span class="no">QuoteGenerator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+  <span class="n">updated_quote</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">recalculate</span>
+  <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">reservation</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="ss">quote</span><span class="p">:</span> <span class="n">updated_quote</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>but if you didn’t know the code was evaluating the conditions I described above would you have been able to tell? Not very intention revealing. </p>
+
+<h2 id="the-usual-antipatterns">The usual antipatterns</h2>
+
+<h3 id="plain-old-god-object-pogo">Plain Old God Object (POGO)</h3>
+
+<p>A step in the right direction would be to move those conditions on methods on the <em>reservation</em> entity: <code>changed_from_transfer_to_hourly?</code>, <code>changed_vehicle_type?</code>, <code>travelled_to_invalid_area?</code> but that’s not its responsibility. Follow this approach and you will end up with a <strong>POGO</strong> a Plain Old God Object with hundreds of lines and too many responsibilities.</p>
+
+<p>This is an antipattern I often find in Ruby on Rails and ActiveRecord objects but it affects every programming language.</p>
+
+<h3 id="polluting-other-objects-responsibilities">Polluting other objects responsibilities</h3>
+
+<p>Moving these conditions within the <code>Booking::QuoteGenerator</code> is a bad idea–it would be simpler to let that class just generate a new quote and delegate the evaluation of the trigger conditions elsewhere.</p>
+
+<p>Perhaps the whole reservation update can be handled/hidden in a service object?</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">reservation</span> <span class="o">=</span> <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">reservation_update_service</span> <span class="o">=</span> <span class="no">ReservationUpdateService</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+<span class="n">reservation_update_service</span><span class="o">.</span><span class="n">execute</span></code></pre></div>
+
+<p>But we just moved the messy conditions inside <code>ReservationUpdateService</code> a service class that now has too many concerns on when to trigger the update rather then just orchestrating it.</p>
+
+<h2 id="refactor-business-logic-with-the-specification-pattern">Refactor business logic with the specification pattern</h2>
+
+<p>I think our evaluation of an obsolete reservation quote should be delegated to another object. A <code>Booking::ObsoleteQuoteSpecification</code> that can take care of these conditions and tell when to trigger the quote recalculation:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">reservation</span> <span class="o">=</span> <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">specification</span> <span class="o">=</span> <span class="no">Booking</span><span class="o">::</span><span class="no">ObsoleteQuoteSpecification</span><span class="o">.</span><span class="n">new</span>
+<span class="k">if</span> <span class="n">specification</span><span class="o">.</span><span class="n">satified_by?</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+  <span class="n">quote</span> <span class="o">=</span> <span class="no">QuoteGenerator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+  <span class="n">updated_quote</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">recalculate</span>
+  <span class="no">ReservationRepository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">reservation</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="ss">quote</span><span class="p">:</span> <span class="n">updated_quote</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>What is inside the specification class?</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Booking</span>
+  <span class="k">class</span> <span class="nc">ObsoleteQuoteSpecification</span>
+
+    <span class="k">def</span> <span class="nf">satisfied_by?</span><span class="p">(</span><span class="n">reservation</span><span class="p">)</span>
+      <span class="vi">@reservation</span> <span class="o">=</span> <span class="n">reservation</span>
+      <span class="k">if</span> <span class="n">changed_vehicle_type?</span>
+        <span class="k">return</span> <span class="kp">true</span>
+      <span class="k">else</span>
+        <span class="k">return</span> <span class="n">evaluate_quote_type_logic</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    
+    <span class="kp">private</span>
+
+    <span class="k">def</span> <span class="nf">changed_vehicle_type?</span>
+      <span class="c1"># details omitted</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_quote_type_logic</span>
+      <span class="k">if</span> <span class="n">quoted_hourly?</span>
+        <span class="k">return</span> <span class="n">more_expensive_transfer_fare?</span> <span class="o">||</span> <span class="n">travelled_in_invalid_area?</span>
+      <span class="k">elsif</span> <span class="n">quoted_transfer?</span>
+        <span class="k">return</span> <span class="n">increased_stops?</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    
+    <span class="k">def</span> <span class="nf">quoted_hourly?</span>
+      <span class="vi">@reservation</span><span class="o">.</span><span class="n">quote_type</span> <span class="o">==</span> <span class="ss">:hourly</span>
+    <span class="k">end</span>
+   
+    <span class="k">def</span> <span class="nf">more_expensive_transfer_fare?</span>
+      <span class="c1"># details omitted</span>
+    <span class="k">end</span>
+    
+    <span class="k">def</span> <span class="nf">travelled_in_invalid_area?</span>
+      <span class="c1"># Evaluating if the reservation stopped in an invalid</span>
+      <span class="c1"># area for its vendor has significant business logic</span>
+      <span class="c1"># so I delegate it to a separate specification.</span>
+      <span class="n">specification</span> <span class="o">=</span> <span class="no">InvalidAreaSpecification</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">specification</span><span class="o">.</span><span class="n">satisfied_by?</span><span class="p">(</span><span class="vi">@reservation</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">quoted_transfer?</span>
+      <span class="vi">@reservation</span><span class="o">.</span><span class="n">quote_type</span> <span class="o">==</span> <span class="ss">:transfer</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">increased_stops?</span>
+      <span class="c1"># details omitted</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The specification details on when to run a quote recalculation is now encapsulated leaving the wrapping code easier to test and without obscuring other object’s responsibilities.</p>
+
+<p><strong>This is separating <em>how to match a candidate</em> from <em>the candidate object</em> that it is matched against.</strong></p>
+
+<p>The candidate object is an entity in my example but the specification might also rely on a <strong>Repository</strong> to run dedicated queries. In some instance this could mean performance degradation that needs to be evaluated on a case by case. This is the workflow <a href="http://teotti.com/a-successful-ruby-on-rails-performance-analysis-guideline/">I follow for Ruby on Rails applications</a>.</p>
+
+<p>More comple specifications composed of multiple conditions can be treated as a <a href="https://en.wikipedia.org/wiki/Composite_pattern">composite</a>.</p>
+
+<p><strong>Do not group all your specifications in a single directory!</strong> Their role is bound to a specific context–in my example booking–use it to locate the file and to namespace the class.</p>
+
+<h3 id="when-not-to-use-specification">When not to use specification</h3>
+
+<p>Avoid specification for a <strong>single condition</strong> that applies to a single spot. Instead create an intention revealing method on the service or policy using it. If that condition starts to get used in multiple places reconsider the creation of a specification.</p>
+
+<p>If the business owner talks repeatedly about a condition you should map it in code.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>All but the simplest applications will have many conditions like the ones in my example–failing to surface them will do a disservice to your code longevity.</p>
+
+<p>You can read more examples using the specification pattern on the <a href="http://martinfowler.com/apsupp/spec.pdf">paper</a> written by Evans and Fowler. Lots of great examples in <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Domain Driven Design</a> too.</p>
+
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/a-successful-deploy-workflow-using-git-tags-and-a-changelog/" itemprop="url">A successful deploy workflow using Git tags and a changelog</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby">ruby</a>,  <a href="/topics/patterns">patterns</a>,  <a href="/topics/maintainability">maintainability</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

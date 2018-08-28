@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Application directories named as architectural patterns antipattern</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Application directories named as architectural patterns antipattern" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="**Regardless of the programming language grouping class files in directories using an architectural pattern name is unintuitive.** I saw this happening in different programming languages and frameworks but I will use Ruby on Rails as an example. I am not referring to framework specific directories--for example Rails conventional **MVC** directories:..." />
+  
+  <meta property="og:url" content="http://teotti.com/application-directories-named-as-architectural-patterns-antipattern/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/application-directories-named-as-architectural-patterns-antipattern/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Application directories named as architectural patterns antipattern</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-08-31T00:00:00+00:00">31 Aug 2015</time>
+              , tagged on  <span class="post-tag-maintainability"><a href="/topics/maintainability">maintainability</a></span> <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-rails"><a href="/topics/rails">rails</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p><strong>Regardless of the programming language grouping class files in directories using an architectural pattern name is unintuitive.</strong></p>
+
+<p>I saw this happening in different programming languages and frameworks but I will use Ruby on Rails as an example.</p>
+
+<p>I am not referring to framework specific directories–for example Rails conventional <strong>MVC</strong> directories: <em>models, views, controllers, helpers</em> come with the framework and developers should know what they are for.</p>
+
+<p>The problem starts with a list like this:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l app/
+├── controllers
+├── helpers
+├── models
+├── presenters
+├── services
+├── serializers
+├── strategies
+├── utils
+└── views</code></pre></div>
+
+<p>When I see <strong>presenters, services, serializers, strategies, utils</strong> directories I can guess someone likes patterns but I gather nothing about their boundary of operation or the application domain.</p>
+
+<p><strong>This antipattern encourages code separation based on the class pattern taxonomy rather then its responsability</strong>–like if a foreman would group workers by their country of origin instead of their skills–pretty stupid.</p>
+
+<p>All the existing Rails applications I inherited used this antipattern–I am going to describe its problems and suggest an intention revealing alternative.</p>
+
+<h2 id="an-example">An example</h2>
+
+<p>If you haven’t seen this in action here’s an example. This antipattern separate class files like:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">services/reservation_quote_recalculation_service.rb <span class="c"># ReservationQuoteRecalculationService</span>
+strategies/quote_strategy.rb <span class="c"># QuoteStrategy</span>
+specifications/obsolete_quote_specification.rb <span class="c"># ObsoleteQuoteSpecification</span></code></pre></div>
+
+<p>But when updating a reservation <code>ReservationQuoteRecalculationService</code> uses <code>QuoteStrategy</code> that uses <code>ObsoleteQuoteSpecification</code>. So the classes work together within the same boundary but the directory misnaming obfuscate that.</p>
+
+<p>In a real application you will have a higher number of collaborating classes and you will have to bounce between patterns directories and–understandably–lose your mind in the process.</p>
+
+<h2 id="group-by-business-contexts">Group by business contexts</h2>
+
+<p>I use the conventional Rails <code>models</code> directory not just for <em>ActiveRecord</em> models but all the classes related to the <strong>application domain model</strong> regardless of their design pattern.</p>
+
+<p>Inside I add directories matching a Ruby <strong>namespace representing the boundaries</strong>–sometime bounded contexts–where those objects act.</p>
+
+<p>The example above can look like this:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">book/reservation_quote_recalculation_service.rb <span class="c"># Book::ReservationQuoteRecalculationService</span>
+book/quote_strategy.rb <span class="c"># Book::QuoteStrategy</span>
+book/obsolete_quote_specification.rb <span class="c"># Book::ObsoleteQuoteSpecification</span></code></pre></div>
+
+<p>This is a simplified example–in a real application another namespace for the quote recalculation boundary might be necessary.</p>
+
+<h3 id="example-1-the-memory-game-service">Example 1: the memory game service</h3>
+
+<p>An example could be an application for memory videogames with game designers creating games, players playing them. Two very different contexts: <strong>workshop</strong> and <strong>gamezone</strong>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l app/
+├── controllers
+├── helpers
+└── models
+│   ├── workshop
+│   └── gamezone
+└── views</code></pre></div>
+
+<p>Whatever code concerns <code>workshop</code> will be living in that directory regardless of its pattern–inside of it all classes should be in the <code>Workshop</code>  namespace. The same applies for <code>gamezone</code>.</p>
+
+<h3 id="example-2-the-private-jet-company">Example 2: the private jet company</h3>
+
+<p>Another example is a private jet company that can book trips, update ongoing trip and billing. Again three very distinct contexts: <strong>book</strong>, <strong>trip</strong>, <strong>bill</strong>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l app/
+├── controllers
+├── helpers
+└── models
+│   ├── book
+│   ├── trip
+│   └── bill
+└── views</code></pre></div>
+
+<h3 id="example-3-editorial-content-management">Example 3: editorial content management</h3>
+
+<p>A content management that imports content from a legacy system allowing an editorial team to update some of the content and having users viewing that. Three contexts: <strong>legacy_import</strong>, <strong>editorial</strong>, <strong>public</strong>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l app/
+├── controllers
+├── helpers
+└── models
+│   ├── legacy_import
+│   ├── editorial
+│   └── public
+└── views</code></pre></div>
+
+<h2 id="naming">Naming</h2>
+
+<p>Gathering those context from your product owner is much harder then using architectural pattern names but will improve code maintainability.</p>
+
+<p>The contexts will change as the business evolves so it’s natural–<strong>and critical</strong>–for the code to be consistent with them. It’s unlikely to get the naming right at the first try. A great read on this subject is <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Domain-Driven Design</a>.</p>
+
+<h4 id="what-happens-to-shared-code">What happens to shared code?</h4>
+
+<p>As the application grows there <strong>will be shared code</strong> between contexts. Leaving shared items in a <code>models/shared</code> directory can be sufficient initially but stop when that becomes the application kitchen sink.</p>
+
+<p>At this point an appropriate solution is introducing a dependency structure–in Ruby on Rails that is <a href="http://teotti.com/component-based-rails-architecture-primer/">component based Rails architecture</a>, compiled languages will have a safer dependency management but rigorous automated testing yields good results in interpreted languages.</p>
+
+<hr />
+
+<h5 id="reactions-from-london-ruby-user-group">Reactions from London Ruby User Group</h5>
+
+<p><strong>From Nicolas:</strong></p>
+
+<p><em>I’ve worked on projects split by domain and those split by pattern. When I come back a year later, the ones that remain the best organised are those split by pattern.</em></p>
+
+<p><em>The reason is that there are always edge cases, objects that don’t really fit a specific domain. Where do I put a password_recovery_service for example. Do I nest it under user or create a password domain? One year later I have to try and remember my decision. I also have to trust that other developers have stuck to the domain model I invented on the spur of the moment.</em></p>
+
+<p><em>Patterns on the other hand remain constant.</em></p>
+
+<p><strong>My reply:</strong></p>
+
+<blockquote>
+  <blockquote>
+    <p>Hi Nicolas,</p>
+
+    <p>Thanks for your contribution, I believe many developers feel like you and there was a time I did too. </p>
+
+    <p>I believe the pattern approach is ok in very small projects. Like Mark pointed out knowing when to diverge is critical, personally I never work on projects that stay small which is why I use the context approach from the start.</p>
+
+    <p>First I am gonna address your concern about classes that do not fit in any context.</p>
+
+    <p>I’d ask where is that password_tecovery_service used? I doubt from the billing portion of your app. One solution I used in the past was creating a shared component and have whichever portion (gem/engine) need it depend on it. If that’s truly just one file that escape your contexts I do think it’s ok for it to stay in the main application.</p>
+
+    <p>You say one year later you’d forget where the class lives.</p>
+
+    <p>The boundary should map your business model, finding those boundaries require time and communication with a product owner familiar with the domain. This is a much harder job then dumping all your files in models and services but it yields a much better result in the medium to long term and I struggle to believe a services directory with 60 files using an unknown number of other class/files from other directories is easier to understand then a single directory/module encapsulating that functionality. </p>
+
+    <p>In regards to developers ignoring your model.</p>
+
+    <p>That is a big problem. Developer diligence is a must or it’s pointless to have a domain model. In my experience if the concept is explained right devs are onboard, especially after they worked on a big ball of mud. If they aren’t maybe they should tackle smaller challenges.</p>
+
+    <p>In the end the conventional Rails way doesn’t force us to think about those contexts but they are there and ignoring them with “that’s not the Rails way” is a bit silly and results in a big ball of mud project that will need to be rescued months after it starts.</p>
+
+    <p>I’d like others to benefit from this conversations so feel free to ask questions here or via the blog comments.</p>
+  </blockquote>
+</blockquote>
+
+<hr />
+
+<p><strong>From Mark:</strong></p>
+
+<p><em>This is an approach that has worked well for me on a couple of projects.</em></p>
+
+<p><em>I think I gave up on fighting rails about where to put the views and the controllers, and had a mix of approaches. I.e. only moving towards this approach for the obvious cases.</em></p>
+
+<p><em>Where there is a clear grouping of a large enough bunch of related items e.g. DictionaryEntry, DictionaryEntryPresenter, DictionaryEntryCreation, etc. then it makes it easier to navigate and fits in well with the concept of connaissance.</em></p>
+
+<p><em>It does lend well to namespacing, which then leads nicely into separating into engines. And in one case, for an unused area of functionality it was a surprising case of</em></p>
+
+<p><em>rm -rf dictionary_entry specs/dictionary_entry</em></p>
+
+<p><em>Run the specs and everything still works. Feature removed! (Then just quietly remove the views and controllers/routes afterwards).</em></p>
+
+<p><em>Didn’t have time to look into getting that aspect smoothly done. But I would probably better spend that time looking at trailblazer, which seems to have a lot of great concepts in it.</em></p>
+
+<p><em>Along these lines, I quite enjoy the concept of keeping the spec close to the implementation as golang does. I’ve only gone as far as domain concept based folders in the spec folder as mentioned. I’d be interested to hear if anyone has had success with a directory listing that looks like this:</em></p>
+
+<p><em>dictionary_entry.rb</em></p>
+
+<p><em>dictionary_entry_spec.rb</em></p>
+
+<p><em>The only fiddly issue apart from the views/controllers folders was with AR and namespacing based on the domain concept. Which would traditionally be the ActiveRecord model name.</em></p>
+
+<p><em>E.g. rather than pollute a DictionaryEntry AR model with tons of classes, I ended up namespacing all my AR models as Db::DictionaryEntry etc.</em></p>
+
+<p><em>Which when you have lots of objects in an app serves a dual purpose of hinting which one is the thing that writes to the db. Probably a double-edged sword, hungarian notation anybody?</em></p>
+
+<p><em>But equally, on a small app, with a few presenters, a few controllers and non-obvious groupings then it is overkill. It doesn’t really cost much more to gradually introduce this kind of structure as appropriate.</em></p>
+
+<p><strong>My reply:</strong></p>
+
+<blockquote>
+  <blockquote>
+    <p>As application complexity grow moving away from AR conventions (ie. validation and relationships) is a must. I like your db namespace approach, sometime I think of AR as a repository so you could use that keyword.</p>
+
+    <p><strong>“gradually introduce this kind of structure as appropriate.”</strong></p>
+
+    <p>Agreed that on a small app this approach can be unnecessary, but I’ve rarely seen an app staying small so knowing when to introduce is very important. I hope my article gave that insight.</p>
+  </blockquote>
+</blockquote>
+
+<hr />
+
+<p><strong>By John:</strong></p>
+
+<p><em>Hi Enrico,</em></p>
+
+<p><em>Thanks for sharing this. It’s an approach that I agree with in general - I’d much rather classes were grouped by domain than by pattern. I have got a couple of questions though:</em></p>
+
+<p><em>1) Why is it ok to end up with a directories for Controllers, Views and Helpers?</em></p>
+
+<p><em>2) Sometimes you are creating classes that fulfil specific roles within the framework; e.g, Presenters. How do identify their function when they aren’t grouped in a directory?</em></p>
+
+<p><em>(Or maybe my assumtion at the start of the second question is wrong, in which case I’d like to hear why.)</em></p>
+
+<p><em>Thanks,</em>
+<em>John</em></p>
+
+<p><strong>My reply:</strong></p>
+
+<p><strong>1) Why is it ok to end up with a directories for Controllers, Views and Helpers?</strong></p>
+
+<blockquote>
+  <blockquote>
+    <p>I say it’s ok only because the framework sets that as a convention. If you use those conventional directories in different contexts namespacing and gems are necessary. </p>
+  </blockquote>
+</blockquote>
+
+<p><strong>2) Sometimes you are creating classes that fulfil specific roles within the framework; e.g, Presenters. How do identify their function when they aren’t grouped in a directory?</strong></p>
+
+<blockquote>
+  <blockquote>
+    <p>Sometime the classname has that suffix ie. ValidReservationPresenter. </p>
+  </blockquote>
+</blockquote>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/use-of-the-specification-pattern/" itemprop="url">Use of the specification pattern</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/maintainability">maintainability</a>,  <a href="/topics/ruby">ruby</a>,  <a href="/topics/rails">rails</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

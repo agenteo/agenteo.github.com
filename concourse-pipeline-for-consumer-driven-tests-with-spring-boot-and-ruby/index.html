@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Concourse pipeline for consumer driven tests with Spring boot and Ruby</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Concourse pipeline for consumer driven tests with Spring boot and Ruby" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="This article demonstrates how a [Concourse](http://concourse.ci) CI pipeline can run consumer driven tests between two cross language apps: a Java Spring Boot web app and a Ruby Sinatra API. The examples use the [PACT framework](https://docs.pact.io) and its [jvm](https://github.com/DiUS/pact-jvm) and [Ruby](https://github.com/realestate-com-au/pact) implementations. This article assumes basic understanding of pact and how..." />
+  
+  <meta property="og:url" content="http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/hero.png )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Concourse pipeline for consumer driven tests with Spring boot and Ruby</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2017-05-24 00:00">24 May 2017</time>
+              , tagged on  <span class="post-tag-testing"><a href="/topics/testing">testing</a></span> <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-java"><a href="/topics/java">java</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>This article demonstrates how a <a href="http://concourse.ci">Concourse</a> CI pipeline can run consumer driven tests between two cross language apps: a Java Spring Boot web app and a Ruby Sinatra API. The examples use the <a href="https://docs.pact.io">PACT framework</a> and its <a href="https://github.com/DiUS/pact-jvm">jvm</a> and <a href="https://github.com/realestate-com-au/pact">Ruby</a> implementations. This article assumes basic understanding of pact and how it works so if you want to learn more about it visit <a href="http://pact.io">http://pact.io</a>.</p>
+
+<p>PACT has a broker to share contracts across applications but if your applications ecosystem is already in a pipeline contracts tests can be part of that.</p>
+
+<p><strong>All of the code is on github</strong>: the <a href="https://github.com/agenteo/pact_concourse_pipeline">pipeline</a>, the <a href="https://github.com/agenteo/spring-boot-pact-consumer">consumer</a>, the <a href="https://github.com/agenteo/ruby-sinatra-pact-provider">provider</a> and the <a href="https://github.com/agenteo/pact-repository">pact repository</a>. To run the example on your machine you’ll need to fork the repos and update the <code>pipeline.yml</code> with the new URLs. You’ll also have to specify your Github key when setting the pipeline ie. <code>fly --target travel-inc set-pipeline --config pipeline.yml --pipeline travel-offers --var "pact-repository-key=$(cat your_id_rsa)"</code>.</p>
+
+<p>For the sake of brevity I kept the tech stacks simple: the consumer code is a Spring Boot app using static templates, I used hardcoded provider responses for the Ruby API.</p>
+
+<p>In this example I will start from a green pipeline and then commit a <a href="https://github.com/agenteo/spring-boot-pact-consumer/commit/41f4f51d2aa2344a02813f1af99f4e3fe140bb9c">consumer change</a> that will break the <a href="https://github.com/agenteo/ruby-sinatra-pact-provider/commit/e1bebbe59387473cc001d6c8228f8c0b96bae0c1">provider state</a>. After <a href="https://github.com/agenteo/ruby-sinatra-pact-provider/commit/33f657593c8d54c50794dfbf231b82b185b68c0e">fixing the provider</a> the pipeline will go back to green.</p>
+
+<h2 id="background-about-the-example">Background about the example</h2>
+
+<p>This is a simplified example adapted from a real live application.</p>
+
+<p>The web application <strong>Travel Offers</strong> displays fabulous travel offers fetched from the tedious legacy <strong>SEAL API</strong>.</p>
+
+<p>The travel offers is a green field app so everybody on the team is excited about using new technologies and want to make sure the API integration is solid.</p>
+
+<p>Instead the SEAL API is the classic app that nobody wants to work on, 5 years old, lots of <a href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html">inadvertent tech debt</a> and a long backlog of bugfixes and features.</p>
+
+<p>When the SEAL API team is asked to add a new endpoint or field by a consumer their approach has been to add all possible fields and then publish a document so the consumer can’t possibly ask for anything else.</p>
+
+<p><strong>Consumer driven test is a refreshing and pragmatic strategy to API design that helps comunication but it will fail miserably if there is no support on the SEAL API team.</strong></p>
+
+<blockquote>
+  <blockquote>
+    <p>Make sure the SEAL API team is willing to test and honor their contract</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="pipeline-to-the-help">Pipeline to the help</h2>
+
+<p><a href="http://concourse.ci/">Concourse</a> is a CI pipeline that helps visualizing the consumer/provider dependency and automating the contract publishing and verification. </p>
+
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/pipeline.png" alt="" /></p>
+
+<h2 id="consumer-driven-change">Consumer driven change</h2>
+
+<p>The pipeline has a <strong>travel-offers-webapp-consumer-tests</strong> job that tests the travel offers consumer app interaction with the API provider SEAL API.</p>
+
+<p>I pushed a <a href="https://github.com/agenteo/spring-boot-pact-consumer/commit/41f4f51d2aa2344a02813f1af99f4e3fe140bb9c">consumer change</a> to add a <code>members_price</code> on the provider. The pipeline picks up that change and runs the consumer tests.</p>
+
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/consumer-pass.gif" alt="" /></p>
+
+<p>That consumer test passes and it generates a JSON PACT (<strong>consumer-driven-api-contracts</strong>) that the pipeline will upload to a <a href="https://github.com/agenteo/pact-repository/commit/e6ac9c6e3636747ab3270d18f7a683a323d6541b">contract git repository</a>. <em>There is only one PACT file in this simplified example</em>.</p>
+
+<p>The Concourse pipeline will monitor the contract repository. When the new one is published it will run the API provider job (<strong>seal-api-provider-tests</strong>) and that will fail.</p>
+
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.gif" alt="" /></p>
+
+<h2 id="provider-update-to-fix-the-pipeline">Provider update to fix the pipeline</h2>
+
+<p>The provider tests are broken.</p>
+
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.png" alt="see pact complaining about missing members_price" /></p>
+
+<p><strong>On your workstation you will need to fetch the latest contract repositories to get the failing test.</strong></p>
+
+<p>I <a href="https://github.com/agenteo/ruby-sinatra-pact-provider/commit/33f657593c8d54c50794dfbf231b82b185b68c0e">update the provider</a> to satisfy the new contract. The pipeline will pickup the provider change and run its tests again returning to a green state.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If you want to run consumer driven tests in a highly visible Continuous Integration server Concourse can do that.</p>
+
+<p>Rather then making the entire test suite fail having a consumer driven dedicated pipeline or jobs can increase the understanding of which parts of your ecosystem are broken and allow an incremental approach to TDD and CI.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/parallelising-ios-ui-tests/" itemprop="url">Parallelising iOS UI tests</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/testing">testing</a>,  <a href="/topics/ruby">ruby</a>,  <a href="/topics/java">java</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

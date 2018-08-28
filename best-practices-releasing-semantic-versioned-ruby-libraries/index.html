@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Best practices releasing semantic versioned (Ruby) libraries</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Best practices releasing semantic versioned (Ruby) libraries" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="When releasing a library you are defining a contract with your clients -- they could be colleagues in other teams, paying subscribers or the general public but if you break the contract you will loose their trust. After building libraries for multiple teams and consuming libraries from others I came..." />
+  
+  <meta property="og:url" content="http://teotti.com/best-practices-releasing-semantic-versioned-ruby-libraries/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/best-practices-releasing-semantic-versioned-ruby-libraries/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Best practices releasing semantic versioned (Ruby) libraries</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-03-06T00:00:00+00:00">06 Mar 2015</time>
+              , tagged on  <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-process"><a href="/topics/process">process</a></span> <span class="post-tag-workflow"><a href="/topics/workflow">workflow</a></span> <span class="post-tag-maintainability"><a href="/topics/maintainability">maintainability</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>When releasing a library you are defining a contract with your clients – they could be colleagues in other teams, paying subscribers or the general public but if you break the contract you will loose their trust.</p>
+
+<p>After building libraries for multiple teams and consuming libraries from others I came up with a list of best practices to handle errors, deprecations and releasing.</p>
+
+<p>Let’s say to facilitate access to a server API we create a library wrapping its endpoints, for example:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># library_facade.rb</span>
+<span class="k">def</span> <span class="nf">term</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/term/</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+  <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<h2 id="gracefully-handling-errors">Gracefully handling errors</h2>
+
+<p>Parsing and returning a raw API response can’t provide default results when the API is unreachable – using a data structure wrapping the response allows to instantiate objects or fallbacks when needed. Here’s how it looks:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># library_facade.rb</span>
+<span class="k">def</span> <span class="nf">term</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/term/</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+  <span class="no">LibraryNamespace</span><span class="o">::</span><span class="no">Term</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span> <span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The library instantiates a <code>Term</code> class with the API response and returns it to the client – the advantage over the arbitrary JSON hash is we now control what the client receives and we can add or deprecate fields when the API changes as well as create a fallback object when it’s unreachable.</p>
+
+<p><a href="http://martinfowler.com/bliki/CircuitBreaker.html">Circuit breaker</a> is a pattern to detect failures and encapsulates retry logic. Have the library use it to manage API availability and return a fallback object when needed.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># library_facade.rb</span>
+<span class="k">def</span> <span class="nf">term</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">circuit_breaker</span><span class="p">(</span><span class="s2">&quot;/term/</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">response</span>
+  <span class="k">if</span> <span class="n">response</span>
+    <span class="k">return</span> <span class="no">LibraryNamespace</span><span class="o">::</span><span class="no">Term</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span> <span class="p">)</span>
+  <span class="k">end</span>
+  <span class="no">LibraryNamespace</span><span class="o">::</span><span class="no">FallbackTerm</span><span class="o">.</span><span class="n">new</span>
+<span class="k">end</span></code></pre></div>
+
+<p>This gracefully handles errors by providing your clients with objects with the same interface for an error and a success response. Imagine an article with a term id using the API library to retrieve more term information – when the library returns a <code>FallbackTerm</code> the article page can hide the term information or just display its fallback fields knowing they are the same as <code>Term</code>. The fallback fields could be empty or a default set of values to display – the library has control on what the client receives.</p>
+
+<h2 id="handling-deprecations">Handling deprecations</h2>
+
+<p>When an API updates its response formats the library will break instantiating objects from an outdated data structure. This is good, <strong>this is the role of a library wrapping an API</strong> – catching errors instead of its clients and concerning about the server API internals. The next step is to release a major <a href="http://semver.org/">version</a> to inform your clients of the backward incompatible change.</p>
+
+<p>If you control the API have a versioned endpoint or a request header to prevent introducing breaking changes without a deprecation phase.</p>
+
+<p>Here’s an example of the library deprecating an incoming major API change renaming <code>seo_slug_plural</code> to <code>seo_slug</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># version 0.15</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;d15cf067-c4b1-4820-a837-59444208cac5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;BBQ&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seo_slug_plural&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;bbq-foods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;(cuisine)</span><span class="se">\r\n</span><span class="s2">Meat that is smoked, grilled, cooked </span><span class="se">\&quot;</span><span class="s2">low and slow.</span><span class="se">\&quot;</span><span class="s2"> BBQ styles change regionally and are cause for great debate.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created_at&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;2014-06-20T20:31:25.466Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;updated_at&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;2014-08-04T20:00:53.191Z&quot;</span>
+<span class="p">}</span>
+<span class="c1"># version 1.0</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;d15cf067-c4b1-4820-a837-59444208cac5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;BBQ&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seo_slug&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;bbq-foods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;(cuisine)</span><span class="se">\r\n</span><span class="s2">Meat that is smoked, grilled, cooked </span><span class="se">\&quot;</span><span class="s2">low and slow.</span><span class="se">\&quot;</span><span class="s2"> BBQ styles change regionally and are cause for great debate.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created_at&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;2014-06-20T20:31:25.466Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;updated_at&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;2014-08-04T20:00:53.191Z&quot;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>This would introduce a breaking change to your client using <code>seo_slug_plural</code> and a data structure can help defining a method like:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># term.rb</span>
+<span class="k">def</span> <span class="nf">seo_slug_plural</span>
+  <span class="nb">puts</span> <span class="s1">&#39;DEPRECATION WARNING: using seo_slug_plural has been deprecated switch to seo_slug&#39;</span>
+  <span class="n">seo_slug</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">seo_slug</span>
+  <span class="n">response</span><span class="o">[</span><span class="s1">&#39;seo_slug&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="n">response</span><span class="o">[</span><span class="s1">&#39;seo_slug_plural&#39;</span><span class="o">]</span>
+<span class="k">end</span></code></pre></div>
+
+<p>this change would go out in a minor version – the major release after that will remove the <code>seo_slug_plural</code> method.</p>
+
+<p>When you release libraries you need an architecture that facilitate deprecation and changes – returning base classes like an Array or Hash prevents that. Once the library has a method returning:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">{</span> <span class="s2">&quot;published&quot;</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/best-practices&quot;</span> <span class="p">}</span></code></pre></div>
+
+<p>switching from <code>url</code> to <code>path</code> can’t be deprecated effectively and your clients will have to search and replace the change in their code.</p>
+
+<h2 id="release-process">Release process</h2>
+
+<p>The release process should be as automated as possible to prevent human error – you don’t want to publish a library with the wrong version or forgetting to create and push the tag to your centralized version control. <strong>A ruby gem has a default build task, create a release task on top of it to simplify the release work</strong>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">namespace</span> <span class="ss">:your_company_namespace</span> <span class="k">do</span>
+  <span class="n">namespace</span> <span class="ss">:your_library</span> <span class="k">do</span>
+    <span class="n">desc</span> <span class="s2">&quot;Adds tag, builds the gem and pushes it to gem server&quot;</span>
+    <span class="n">task</span> <span class="ss">:release</span> <span class="o">=&gt;</span> <span class="ss">:build</span> <span class="k">do</span>
+      <span class="nb">system</span> <span class="s2">&quot;git tag -a v</span><span class="si">#{</span><span class="no">YourCompany</span><span class="o">::</span><span class="no">YourLibrary</span><span class="o">::</span><span class="no">VERSION</span><span class="si">}</span><span class="s2"> -m &#39;Tagging </span><span class="si">#{</span><span class="no">YourCompany</span><span class="o">::</span><span class="no">YourLibrary</span><span class="o">::</span><span class="no">VERSION</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+      <span class="nb">system</span> <span class="s2">&quot;git push --tags&quot;</span>
+      <span class="nb">system</span> <span class="s2">&quot;fury push pkg/your-gem-</span><span class="si">#{</span><span class="no">YourCompany</span><span class="o">::</span><span class="no">YourLibrary</span><span class="o">::</span><span class="no">VERSION</span><span class="si">}</span><span class="s2">.gem --as COMPANY&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p><strong>Never delete a published library version thinking nobody used it yet</strong>, as soon as you release assume somebody is using it! If you need to make changes be mindful and release a new version.</p>
+
+<p>Documenting the process and keeping it updated is another critical step – link the process steps from the project README. Here’s a release steps example:</p>
+
+<ul>
+  <li>make sure the VERSION in <code>lib/your_company/your_library/version.rb</code> has been correctly updated</li>
+  <li>ensure the <code>CHANGELOG.md</code> reflect all the changes in this release</li>
+  <li>ensure the automated test are passing <code>./test.sh</code></li>
+  <li>commit your changes to master</li>
+  <li>push master to origin <code>git push origin master</code></li>
+  <li>run <code>rake your_company:your_library:release</code></li>
+</ul>
+
+<p>As you deliver features make sure they are documented with code examples – I use <a href="http://yardoc.org/">yard</a> to document code and publish the generated files to the project github page.</p>
+
+<p>Informing your clients about the release is very important – define the best channels to reach your audience and send out a release note pointing to the CHANGELOG for the current version.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/mongo-command-line-brackets-highlighter/" itemprop="url">Mongo command line client brackets highlighter</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby">ruby</a>,  <a href="/topics/process">process</a>,  <a href="/topics/workflow">workflow</a>,  <a href="/topics/maintainability">maintainability</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

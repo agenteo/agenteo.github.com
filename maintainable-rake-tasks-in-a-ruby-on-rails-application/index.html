@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Maintainable Rake tasks in a Ruby on Rails application</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Maintainable Rake tasks in a Ruby on Rails application" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="A greenfield Rails application has a few conventional rake tasks but it rarely stays like that--as it grows the development team adds **custom tasks** that end up mixed with the default ones and the ones added by gems and engines. **When you print your application list of Rake tasks with..." />
+  
+  <meta property="og:url" content="http://teotti.com/maintainable-rake-tasks-in-a-ruby-on-rails-application/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/maintainable-rake-tasks-in-a-ruby-on-rails-application/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/hero.jpg )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Maintainable Rake tasks in a Ruby on Rails application</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2016-03-04 00:00">04 Mar 2016</time>
+              , tagged on  <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-rails"><a href="/topics/rails">rails</a></span> <span class="post-tag-maintainability"><a href="/topics/maintainability">maintainability</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>A greenfield Rails application has a few conventional rake tasks but it rarely stays like that–as it grows the development team adds <strong>custom tasks</strong> that end up mixed with the default ones and the ones added by gems and engines.</p>
+
+<p><strong>When you print your application list of Rake tasks with <code>rake -T</code> can you distinguish between custom and default tasks?</strong></p>
+
+<p>Can you tell the custom tasks in this list?</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake about                                                       <span class="c"># List versions of all Rails frameworks and the environment</span>
+rake assets:clean<span class="o">[</span>keep<span class="o">]</span>                                          <span class="c"># Remove old compiled assets</span>
+rake assets:clobber                                              <span class="c"># Remove compiled assets</span>
+rake assets:environment                                          <span class="c"># Load asset compile environment</span>
+rake assets:precompile                                           <span class="c"># Compile all the assets named in config.assets.precompile</span>
+rake cache_digests:dependencies                                  <span class="c"># Lookup first-level dependencies for TEMPLATE (like messages/sho...</span>
+rake cache_digests:nested_dependencies                           <span class="c"># Lookup nested dependencies for TEMPLATE (like messages/show or ...</span>
+rake clean                                                       <span class="c"># Remove any temporary products</span>
+rake clobber                                                     <span class="c"># Remove any generated file</span>
+rake content_deduplicator:run                                    <span class="c"># Delete duplicated content</span>
+rake db:drop                                                     <span class="c"># Drops all the collections for the database for the current Rail...</span>
+rake db:mongoid:create_indexes                                   <span class="c"># Create the indexes defined on your mongoid models</span>
+rake db:mongoid:drop                                             <span class="c"># Drops the default session</span>
+rake db:mongoid:purge                                            <span class="c"># Drop all collections except the system collections</span>
+rake db:mongoid:remove_indexes                                   <span class="c"># Remove the indexes defined on your mongoid models without quest...</span>
+rake db:mongoid:remove_undefined_indexes                         <span class="c"># Remove indexes that exist in the database but aren&#39;t specified ...</span>
+rake db:purge                                                    <span class="c"># Drop all collections except the system collections</span>
+rake db:reset                                                    <span class="c"># Delete data and loads the seeds</span>
+rake db:seed                                                     <span class="c"># Load the seed data from db/seeds.rb</span>
+rake db:setup                                                    <span class="c"># Create the database, and initialize with the seed data</span>
+rake deploy<span class="o">[</span>portion,stage,branch<span class="o">]</span>                                <span class="c"># Deploy the specified portion of the app to the provided stage</span>
+rake doc:app                                                     <span class="c"># Generate docs for the app -- also available doc:rails, doc:guid...</span>
+rake honeybadger:deploy                                          <span class="c"># Notify Honeybadger of a new deploy</span>
+rake honeybadger:heroku:add_deploy_notification                  <span class="c"># Install Heroku deploy notifications addon</span>
+rake honeybadger:test                                            <span class="c"># Verify your gem installation by sending a test exception to the...</span>
+rake jslint                                                      <span class="c"># Run JSLint check on selected Javascript files</span>
+rake jslint:copy_config                                          <span class="c"># Create a copy of the default JSLint config file in your config ...</span>
+rake log:clear                                                   <span class="c"># Truncates all *.log files in log/ to zero bytes (specify which ...</span>
+rake legacy_images_migration   <span class="c"># Legacy Images Migration</span>
+rake legacy_import_run                                          <span class="c"># Transfer articles from SQS</span>
+rake legacy_url_migration        <span class="c"># Legacy url migration</span>
+rake middleware                                                  <span class="c"># Prints out your Rack middleware stack</span>
+rake notes                                                       <span class="c"># Enumerate all annotations (use notes:optimize, :fixme, :todo fo...</span>
+rake notes:custom                                                <span class="c"># Enumerate a custom annotation, specify with ANNOTATION=CUSTOM</span>
+rake rails:template                                              <span class="c"># Applies the template supplied by LOCATION=(/path/to/template) o...</span>
+rake rails:update                                                <span class="c"># Update configs and some other initially generated files (or use...</span>
+rake routes                                                      <span class="c"># Print out all defined routes in match order, with names</span>
+rake reindex                                                     <span class="c"># Reindexes published content for site search</span>
+rake secret                                                      <span class="c"># Generate a cryptographically secure secret key (this is typical...</span>
+rake simplecov                                                   <span class="c"># Run tests</span>
+rake slideshow_into_article<span class="o">[</span>source_id_strings<span class="o">]</span>                   <span class="c"># Converts slideshow into article, takes comma separated list of ...</span>
+rake spec                                                        <span class="c"># Run all specs in spec directory (excluding plugin specs)</span>
+rake spec:lib                                                    <span class="c"># Run the code examples in spec/lib</span>
+rake spec:requests                                               <span class="c"># Run the code examples in spec/requests</span>
+rake spec:tasks                                                  <span class="c"># Run the code examples in spec/tasks</span>
+rake stats                                                       <span class="c"># Report code statistics (KLOCs, etc) from the application</span>
+rake taxonomy_tags                                               <span class="c"># Creates a CSV collection of the taxonomy terms used</span>
+rake <span class="nb">test</span>                                                        <span class="c"># Runs test:units, test:functionals, test:generators, test:integr...</span>
+rake <span class="nb">test</span>:all                                                    <span class="c"># Run tests quickly by merging all types and not resetting db</span>
+rake <span class="nb">test</span>:all:db                                                 <span class="c"># Run tests quickly, but also reset db</span>
+rake <span class="nb">time</span>:zones:all                                              <span class="c"># Displays all time zones, also available: time:zones:us, time:zo...</span>
+rake tmp:clear                                                   <span class="c"># Clear session, cache, and socket files from tmp/ (narrow w/ tmp...</span>
+rake tmp:create                                                  <span class="c"># Creates tmp directories for sessions, cache, sockets, and pids</span>
+rake transfer<span class="o">[</span><span class="nb">source</span>,destination<span class="o">]</span>                                <span class="c"># Transfer source database to destination</span>
+rake transfer_images                                             <span class="c"># Transfers images from production Image API to local server</span></code></pre></div>
+
+<p>This is taken from an application less then 2 years old.</p>
+
+<p>You can imagine the list growing. I’ve seen it so long that I wanted to cry.</p>
+
+<p>Can you tell the custom tasks in the following list?</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake about                                                       <span class="c"># List versions of all Rails frameworks and the environment</span>
+rake app:db:transfer<span class="o">[</span><span class="nb">source</span>,destination<span class="o">]</span>                         <span class="c"># Transfer source database to destination</span>
+rake app:db:transfer_images                                      <span class="c"># Transfers images from production Image API to local server</span>
+rake app:deploy<span class="o">[</span>portion,stage,branch<span class="o">]</span>                            <span class="c"># Deploy the specified portion of the app to the provided stage</span>
+rake app:domain_logic:slideshow_into_article<span class="o">[</span>source_id_strings<span class="o">]</span>  <span class="c"># Converts slideshow into article, takes comma separated list of ...</span>
+rake app:site_search:reindex                                     <span class="c"># Reindexes published content for site search</span>
+rake app:taxonomy_tags                                           <span class="c"># Creates a CSV collection of the taxonomy terms used</span>
+rake assets:clean<span class="o">[</span>keep<span class="o">]</span>                                          <span class="c"># Remove old compiled assets</span>
+rake assets:clobber                                              <span class="c"># Remove compiled assets</span>
+rake assets:environment                                          <span class="c"># Load asset compile environment</span>
+rake assets:precompile                                           <span class="c"># Compile all the assets named in config.assets.precompile</span>
+rake cache_digests:dependencies                                  <span class="c"># Lookup first-level dependencies for TEMPLATE (like messages/sho...</span>
+rake cache_digests:nested_dependencies                           <span class="c"># Lookup nested dependencies for TEMPLATE (like messages/show or ...</span>
+rake clean                                                       <span class="c"># Remove any temporary products</span>
+rake clobber                                                     <span class="c"># Remove any generated file</span>
+rake db:drop                                                     <span class="c"># Drops all the collections for the database for the current Rail...</span>
+rake db:mongoid:create_indexes                                   <span class="c"># Create the indexes defined on your mongoid models</span>
+rake db:mongoid:drop                                             <span class="c"># Drops the default session</span>
+rake db:mongoid:purge                                            <span class="c"># Drop all collections except the system collections</span>
+rake db:mongoid:remove_indexes                                   <span class="c"># Remove the indexes defined on your mongoid models without quest...</span>
+rake db:mongoid:remove_undefined_indexes                         <span class="c"># Remove indexes that exist in the database but aren&#39;t specified ...</span>
+rake db:purge                                                    <span class="c"># Drop all collections except the system collections</span>
+rake db:reset                                                    <span class="c"># Delete data and loads the seeds</span>
+rake db:seed                                                     <span class="c"># Load the seed data from db/seeds.rb</span>
+rake db:setup                                                    <span class="c"># Create the database, and initialize with the seed data</span>
+rake doc:app                                                     <span class="c"># Generate docs for the app -- also available doc:rails, doc:guid...</span>
+rake honeybadger:deploy                                          <span class="c"># Notify Honeybadger of a new deploy</span>
+rake honeybadger:heroku:add_deploy_notification                  <span class="c"># Install Heroku deploy notifications addon</span>
+rake honeybadger:test                                            <span class="c"># Verify your gem installation by sending a test exception to the...</span>
+rake jslint                                                      <span class="c"># Run JSLint check on selected Javascript files</span>
+rake jslint:copy_config                                          <span class="c"># Create a copy of the default JSLint config file in your config ...</span>
+rake log:clear                                                   <span class="c"># Truncates all *.log files in log/ to zero bytes (specify which ...</span>
+rake legacy_migration:content_deduplicator:run                   <span class="c"># Delete duplicated content</span>
+rake legacy_migration:find_and_replace:legacy_url_migration      <span class="c"># Legacy url migration</span>
+rake legacy_migration:find_and_replace:images_migration <span class="c"># Legacy Images Migration</span>
+rake legacy_migration:run                                        <span class="c"># Transfer articles from SQS</span>
+rake middleware                                                  <span class="c"># Prints out your Rack middleware stack</span>
+rake notes                                                       <span class="c"># Enumerate all annotations (use notes:optimize, :fixme, :todo fo...</span>
+rake notes:custom                                                <span class="c"># Enumerate a custom annotation, specify with ANNOTATION=CUSTOM</span>
+rake rails:template                                              <span class="c"># Applies the template supplied by LOCATION=(/path/to/template) o...</span>
+rake rails:update                                                <span class="c"># Update configs and some other initially generated files (or use...</span>
+rake routes                                                      <span class="c"># Print out all defined routes in match order, with names</span>
+rake secret                                                      <span class="c"># Generate a cryptographically secure secret key (this is typical...</span>
+rake simplecov                                                   <span class="c"># Run tests</span>
+rake spec                                                        <span class="c"># Run all specs in spec directory (excluding plugin specs)</span>
+rake spec:lib                                                    <span class="c"># Run the code examples in spec/lib</span>
+rake spec:requests                                               <span class="c"># Run the code examples in spec/requests</span>
+rake spec:tasks                                                  <span class="c"># Run the code examples in spec/tasks</span>
+rake stats                                                       <span class="c"># Report code statistics (KLOCs, etc) from the application</span>
+rake <span class="nb">test</span>                                                        <span class="c"># Runs test:units, test:functionals, test:generators, test:integr...</span>
+rake <span class="nb">test</span>:all                                                    <span class="c"># Run tests quickly by merging all types and not resetting db</span>
+rake <span class="nb">test</span>:all:db                                                 <span class="c"># Run tests quickly, but also reset db</span>
+rake <span class="nb">time</span>:zones:all                                              <span class="c"># Displays all time zones, also available: time:zones:us, time:zo...</span>
+rake tmp:clear                                                   <span class="c"># Clear session, cache, and socket files from tmp/ (narrow w/ tmp...</span>
+rake tmp:create                                                  <span class="c"># Creates tmp directories for sessions, cache, sockets, and pids</span></code></pre></div>
+
+<p>I imagine you spotted the <strong>app</strong> and <strong>legacy_migration</strong> groups.</p>
+
+<p>Keeping tasks grouped in an intention reveling directory structure help reduce cognitive load and you can now filter the list with <code>rake -T app</code>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake app:db:transfer<span class="o">[</span><span class="nb">source</span>,destination<span class="o">]</span>                         <span class="c"># Transfer source database to destination</span>
+rake app:db:transfer_images                                      <span class="c"># Transfers images from production Image API to local server</span>
+rake app:deploy<span class="o">[</span>portion,stage,branch<span class="o">]</span>                            <span class="c"># Deploy the specified portion of the app to the provided stage</span>
+rake app:domain_logic:slideshow_into_article<span class="o">[</span>source_id_strings<span class="o">]</span>  <span class="c"># Converts slideshow into article, takes comma separated list of ...</span>
+rake app:site_search:reindex                                     <span class="c"># Reindexes published content for site search</span>
+rake app:taxonomy_tags                                           <span class="c"># Creates a CSV collection of the taxonomy terms used</span></code></pre></div>
+
+<h2 id="how-do-you-achieve-this">How do you achieve this?</h2>
+
+<p>First create an <code>app</code> directory within the <code>lib/tasks</code> and move your custom tasks within it for example <code>transfer_images.rake</code>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">lib/
+├── tasks
+│   ├── app
+│   │   └── transfer_images.rake</code></pre></div>
+
+<p>Then wrap the rake task in a rake namespace:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">namespace</span> <span class="ss">:app</span> <span class="k">do</span>
+  <span class="n">namespace</span> <span class="ss">:db</span> <span class="k">do</span>
+    <span class="c1"># your task here</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>This task was inside a <code>db</code> namespace because it was updating the local database records while transfering images from production to the workstation.</p>
+
+<p>Your application custom rake tasks will be different but I’d recommend to create a second level rake namespace if you have more then one task operating in that context.</p>
+
+<p>But what if you only have one custom task? Should you just put it in the <code>Rakefile</code>? I don’t think so. It all starts from one custom task. Start this practice from the very beginning doesn’t cost much and leads the way to a more maintainable path for the following developers.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/cognitive-overload-in-software-development/" itemprop="url">Cognitive overload in software development</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby">ruby</a>,  <a href="/topics/rails">rails</a>,  <a href="/topics/maintainability">maintainability</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

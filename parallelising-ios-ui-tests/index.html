@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Parallelising iOS UI tests</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Parallelising iOS UI tests" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines--the objective is to speed up a time consuming iOS UI test suite. You can find the script, its dependencies and a test project on [github](https://github.com/pivotalbeachla/parallelize-tests). **I really hope to..." />
+  
+  <meta property="og:url" content="http://teotti.com/parallelising-ios-ui-tests/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/parallelising-ios-ui-tests/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/parallelising-ios-ui-tests/hero.jpg )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Parallelising iOS UI tests</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2016-11-01 00:00">01 Nov 2016</time>
+              , tagged on  <span class="post-tag-testing"><a href="/topics/testing">testing</a></span> <span class="post-tag-ioS"><a href="/topics/ioS">ioS</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines–the objective is to speed up a time consuming iOS UI test suite. You can find the script, its dependencies and a test project on <a href="https://github.com/pivotalbeachla/parallelize-tests">github</a>. <strong>I really hope to save someone’s hours of time I spent on UI testing parallelization dead ends.</strong></p>
+
+<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step1.jpg" alt="" /></p>
+
+<h3 id="tldr">tldr;</h3>
+
+<p>Xcode8 has a <code>xcodebuild</code> option called <code>--only-test</code> to run single test files–our <a href="https://github.com/pivotalbeachla/parallelize-tests/blob/master/run.rb">proof of concept Ruby script</a> collects the Xcode project test file list and runs them via ssh on multiple virtual machines–legally–running OSX. This script doesn’t allow to distribute test functions across virtual machines even if that is a valid option to <code>--only-test</code>.</p>
+
+<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step3.jpg" alt="" /></p>
+
+<p>Our <a href="https://github.com/pivotalbeachla/parallelize-tests">test project</a> has around 15 tests–some with sleeps–and it takes around 20 minutes running on a single iMac (16GB ram, 3.5 GHz Intel Core i5 quad core). This script runs them in 7/8 minutes (with 3 virtual machines running on the same iMac). During our tests we confirmed that a shorter 2/3 minutes test suite did not benefit from this virtualization.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>As a project grows sets of diverse features over months and years its UI tests will increase and so will the suite execution time.</p>
+
+<p>Apple doesn’t make it easy to parallelise a test run–its xcodebuild has an option to parallelize a build but not the automated tests and its <a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/">xcode server</a> doesn’t support parallelization at the time of this writing.</p>
+
+<p>At the time of this writing researching this topic online lead to <strong>a lot</strong> of dead ends and I felt compelled to write a blog post about our proof of concept solution. Facebook’s <a href="https://github.com/facebook/xctool">xctool</a> list test run <a href="https://github.com/facebook/xctool#parallelizing-test-runs">parallelization</a> but during our tests that was true only for unit and <strong>not for <a href="https://github.com/facebook/xctool#parallelizing-test-runs">Apple’s UI tests</a></strong>. Amazon’s <a href="https://aws.amazon.com/device-farm/">AWS device farm</a> allows to spread UI tests over a number of different devices but not to parallelize in order to reduce execution time.</p>
+
+<p>Running multiple simulators on a single OSX workstation was a dead end. Running multiple physical devices connected to a OSX workstation would allow parallelization but it wasn’t a suitable solution for us.</p>
+
+<h2 id="this-proof-of-concept-stack">This proof of concept stack</h2>
+
+<p>We will use a mix of open and proprietary tools:</p>
+
+<ul>
+  <li>OSX (duh)</li>
+  <li>OSX server ($19)</li>
+  <li>VMware Fusion ($79.99)</li>
+  <li>Ruby + awesome gems ($0)</li>
+</ul>
+
+<p><strong>NOTE:</strong> Oracle’s Virtual Box is a free alternative to Fusion but it was giving us a hard time finding the OSX recovery partition to virtualize OSX.</p>
+
+<p>The setup of the first virtual OSX box is manual–it can then be cloned to increase the size of your virtual boxes test farm. Once the VMs are setup the Ruby script <code>run.rb</code> will inspect the project on the host, find the test files, distribute them to available guests (virtual machines) and finally collect the test results and logs.</p>
+
+<p>We’ve used a handful of awesome Ruby gems to orchestrate the parallelization:</p>
+
+<ul>
+  <li><a href="https://github.com/capistrano/sshkit">sshkit</a> is a tool to distribute ssh commands</li>
+  <li><a href="https://github.com/CocoaPods/Xcodeproj">xcodeproj</a> allows to detect targets and lists of test files</li>
+  <li><a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrent-ruby-ext</a> to use thread safe structures for the test list</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p><strong><a href="https://github.com/pivotalbeachla/parallelize-tests/">This solution</a> was developed during research and development as a proof of concept. It’s only been tested on a <a href="https://github.com/pivotalbeachla/parallelize-tests">test application</a>.</strong> Your milage may vary.</p>
+
+<p>From now on we will refer to your workstation (or CI server) as the HOST.</p>
+
+<h3 id="on-the-host">On the HOST:</h3>
+
+<ul>
+  <li><code>git clone https://github.com/pivotalbeachla/parallelize-tests.git</code></li>
+  <li><code>cd parallelize-tests</code> and then run <code>bundle</code></li>
+  <li>install OSX server from the AppStore</li>
+  <li>install VmWare Fusion</li>
+  <li>create a new VmWare Fusion OSX virtual machine–follow the wizard that will create the OS from the HOST recovery disk</li>
+  <li>turn on the virtual machine (refered to as GUEST from now on) and set its name ie. (parallel-ios-tests-1)</li>
+  <li>enable the GUEST ssh access from System Preferences -&gt; Sharing</li>
+</ul>
+
+<h3 id="provisioning-guest">Provisioning GUEST</h3>
+
+<ul>
+  <li>install xcode and necessary simulators</li>
+  <li>enable xcode developer mode</li>
+  <li>install git</li>
+  <li>install SSH certificate to allow git checkout</li>
+  <li>create a PROJECT_DIRECTORY and git clone your project–the project directory will be needed when Running the tests from the HOST</li>
+</ul>
+
+<h3 id="cloning-guest-and-enlarge-your-virtual-machines-test-farm">Cloning GUEST and enlarge your virtual machines test farm</h3>
+
+<ul>
+  <li>turn off the GUEST</li>
+  <li>from VmWare’s menu: Virtual Machine -&gt; Create full clone</li>
+  <li>once the new GUEST is turned on change its name (in the script I used <em>parallel-ios-tests-2</em> and <em>parallel-ios-tests-3</em>)</li>
+  <li>repeat this as long as you see your total test time decrease</li>
+</ul>
+
+<h2 id="running-the-script">Running the script</h2>
+
+<p>You will run the <code>run.rb</code> script from the HOST. Currently all the variables have to be provided via ENV variables ie.</p>
+
+<p><code>
+LIST_OF_VMS="parallel-ios-testbox-1.local parallel-ios-testbox-2.local parallel-ios-testbox-3.local" PROJECT_FILE=UnitTest.xcodeproj SCHEME=UnitTest VM_PROJECT_DIRECTORY="workspace/parallelize-tests" DESTINATION="platform=iOS Simulator,name=iPhone 7" ruby run.rb
+</code></p>
+
+<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/testsInProgress.jpg" alt="" /></p>
+
+<p>The test project name is UnitTest, sorry for the confusion :)</p>
+
+<p>You should see green dots for a successful test and red F for a fail. In the test project you’ll see all greens and one fail:</p>
+
+<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/running.jpg" alt="" /></p>
+
+<p>More information–including failures whole <code>xcodebuild</code> outputs–can be found inside the timestamped logs in the script’s directory ie. ios-parallel-tests-20161010_1026.log.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Before this I was thinking virtualizing OSX was hard and illegal but it turned out to be legal, very simple and a great way to distribute iOS UI tests.</p>
+
+<h2 id="credits">Credits</h2>
+
+<p>Tim Kersey and I paired on this during research and development time at Pivotal Labs in Santa Monica. You can find the code of the proof of concept on <a href="https://github.com/pivotalbeachla/parallelize-tests">GitHub</a>.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/untangle-unmaintainable-rails-controller-actions/" itemprop="url">Untangle unmaintainable Ruby on Rails controller actions</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/testing">testing</a>,  <a href="/topics/ioS">ioS</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

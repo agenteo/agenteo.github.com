@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ignore query strings in Ruby on Rails caching with rack-cache</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Ignore query strings in Ruby on Rails caching with rack-cache" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="{{ post.title }} This short post assumed you are familiar with what HTTP caching is and what rack-cache does. If not read [this](http://tomayko.com/writings/things-caches-do). I am using rack-cache 1.2 inside a Ruby on Rails 4.1 application, its default behaviour treats every URL including the query string as a separate fragment in..." />
+  
+  <meta property="og:url" content="http://teotti.com/ignore-query-strings-in-ruby-on-rails-caching-with-rack-cache/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/ignore-query-strings-in-ruby-on-rails-caching-with-rack-cache/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Ignore query strings in Ruby on Rails caching with rack-cache</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-01-09T00:00:00+00:00">09 Jan 2015</time>
+              , tagged on  <span class="post-tag-work"><a href="/topics/work">work</a></span> <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-ruby-on-rails"><a href="/topics/ruby-on-rails">ruby-on-rails</a></span> <span class="post-tag-caching"><a href="/topics/caching">caching</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          
+<p>This short post assumed you are familiar with what HTTP caching is and what rack-cache does. If not read <a href="http://tomayko.com/writings/things-caches-do">this</a>.</p>
+
+<p>I am using rack-cache 1.2 inside a Ruby on Rails 4.1 application, its default behaviour treats every URL including the query string as a separate fragment in the meta store.</p>
+
+<p>That means <code>http://example.com/content/piece</code> and <code>http://example.com/content/piece?utm_campaign=12345</code> will be cached as separate entries in the rack-cache meta store but reference the same reponse from the entity store (assuming they rendered the same markup). When you purge <code>/piece</code> its query stringed version <code>/piece?utm_campaign=12345</code> will still exist in the cache and serve the stale content.</p>
+
+<p>Our app triggers that cache purge when published content is updated or unpublished (we do that hitting the content URL with an HTTP DELETE). It would be impractical to purge query stringed URLs so we customized rack-cache to store fragments using only query strings we care about, for example a pagination value <code>page</code>.</p>
+
+<p>In your Ruby on Rails <code>production.rb</code> (or where you initialize rack-cache if you are on another rack framework) you need to specify <code>rack-cache.cache_key</code> to a class responsible for the cache key creation:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">action_dispatch</span><span class="o">.</span><span class="n">rack_cache</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">:metastore</span> <span class="o">=&gt;</span> <span class="n">client</span><span class="p">,</span>
+    <span class="ss">:verbose</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="s1">&#39;rack-cache.cache_key&#39;</span> <span class="o">=&gt;</span> <span class="no">AppHttpCacheKey</span><span class="p">,</span>
+    <span class="ss">:entitystore</span>  <span class="o">=&gt;</span> <span class="n">client</span>
+  <span class="p">}</span></code></pre></div>
+
+<p>Technically you can do that in a <code>lambda</code> but I prefer delegating the fragment creation to a class.</p>
+
+<p>Our <code>AppHttpCacheKey</code> is inheriting from <a href="https://github.com/rtomayko/rack-cache/blob/master/lib/rack/cache/key.rb">https://github.com/rtomayko/rack-cache/blob/master/lib/rack/cache/key.rb</a> overriding the <code>query_string</code> private method.</p>
+
+<p>Here&#8217;s the original code:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">query_string</span>
+  <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="vi">@request</span><span class="o">.</span><span class="n">query_string</span><span class="o">.</span><span class="n">nil?</span>
+
+  <span class="vi">@request</span><span class="o">.</span><span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/[&amp;;] */n</span><span class="p">)</span><span class="o">.</span>
+    <span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">unescape</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">}</span><span class="o">.</span>
+    <span class="n">sort</span><span class="o">.</span>
+    <span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">escape</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="n">escape</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span><span class="o">.</span>
+    <span class="n">join</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>I found it hard to understand what was going on so in my code you will see some refactoring as well as adding the functionality for query string filter:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rack/cache/key&#39;</span>
+
+<span class="k">class</span> <span class="nc">AppHttpCacheKey</span> <span class="o">&lt;</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Cache</span><span class="o">::</span><span class="no">Key</span>
+
+  <span class="no">ASCII_8BIT_QUERY_STRING_SEPARATOR_REGEXP</span> <span class="o">=</span> <span class="sr">/[&amp;;] */n</span>
+  <span class="no">VALID_QUERY_STRINGS_KEYS</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="o">]</span>
+  <span class="n">private_constant</span> <span class="ss">:ASCII_8BIT_QUERY_STRING_SEPARATOR_REGEXP</span>
+  <span class="n">private_constant</span> <span class="ss">:VALID_QUERY_STRINGS_KEYS</span>
+
+  <span class="kp">private</span>
+
+    <span class="c1"># We only consider some query strings for fragment creation.</span>
+    <span class="c1"># Build a normalized query string by alphabetizing all keys/values</span>
+    <span class="c1"># and applying consistent escaping.</span>
+    <span class="k">def</span> <span class="nf">query_string</span>
+      <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="vi">@request</span><span class="o">.</span><span class="n">query_string</span><span class="o">.</span><span class="n">nil?</span>
+
+      <span class="n">sorted_query_string_elements</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">query_string_key</span><span class="p">,</span> <span class="n">query_string_value</span><span class="o">|</span>
+        <span class="n">escape</span><span class="p">(</span><span class="n">query_string_key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="n">escape</span><span class="p">(</span><span class="n">query_string_value</span><span class="p">)</span> <span class="k">if</span> <span class="n">keep?</span><span class="p">(</span><span class="n">query_string_key</span><span class="p">)</span>
+      <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">keep?</span><span class="p">(</span><span class="n">query_string_key</span><span class="p">)</span>
+      <span class="no">VALID_QUERY_STRINGS_KEYS</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span> <span class="n">escape</span><span class="p">(</span><span class="n">query_string_key</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">sorted_query_string_elements</span>
+      <span class="n">unescaped_sortable_query_string_elements</span><span class="o">.</span><span class="n">sort</span>
+    <span class="k">end</span>
+
+    <span class="c1"># The split returns an array from the key value hash. I think this</span>
+    <span class="c1"># was done to facilitate the sorting.</span>
+    <span class="c1">#</span>
+    <span class="c1"># @returns Array of arrays</span>
+    <span class="k">def</span> <span class="nf">unescaped_sortable_query_string_elements</span>
+      <span class="n">query_string_elements</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">query_string_element</span><span class="o">|</span>
+        <span class="n">unescape</span><span class="p">(</span><span class="n">query_string_element</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">query_string_elements</span>
+      <span class="vi">@request</span><span class="o">.</span><span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="no">ASCII_8BIT_QUERY_STRING_SEPARATOR_REGEXP</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span></code></pre></div>
+
+<p>The bit I added is <code>if keep?(query_string_key)</code>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Overriding the cache key is not documented on the rack-cache site, it increases the potential of rack-cache and it&#8217;s pretty easy to customize. I hope this post will help people dealing with this problem.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/building-intention-revealing-ruby-on-rails-helpers/" itemprop="url">Building intention revealing Ruby on Rails helpers</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/work">work</a>,  <a href="/topics/ruby">ruby</a>,  <a href="/topics/ruby-on-rails">ruby-on-rails</a>,  <a href="/topics/caching">caching</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

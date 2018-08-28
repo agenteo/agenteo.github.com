@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ignorance Driven Development</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Ignorance Driven Development" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="**This article gives product owners and non technical executives examples of how ignorant technical management can bring software product development to a stall.** Every software developer practiced ignorance driven development at the beginning of their career. Great developers accept their ignorance early on and start a never ending journey to..." />
+  
+  <meta property="og:url" content="http://teotti.com/ignorance-driven-development/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/ignorance-driven-development/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Ignorance Driven Development</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-05-11T00:00:00+00:00">11 May 2015</time>
+              , tagged on  <span class="post-tag-executive"><a href="/topics/executive">executive</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p><strong>This article gives product owners and non technical executives examples of how ignorant technical management can bring software product development to a stall.</strong></p>
+
+<p>Every software developer practiced ignorance driven development at the beginning of their career. Great developers accept their ignorance early on and start a never ending journey to skill up through years <strong>and job titles</strong>. Mediocre developers never admit their ignorance and use the same approach for decades creating unmaintainable software convinced that working on big products must <em>feel</em> hard–wrong because of well established patterns to tackle software complexity and <a href="http://www.jamesshore.com/Agile-Book/incremental_design.html">incremental design</a>.</p>
+
+<p><strong>When developers that ignored patterns and incremental design for decades are leading teams or divisions they will set the course for the creation of software impractical to maintain and dreadful to work on. I call this ignorance driven development.</strong></p>
+
+<h2 id="symptoms">Symptoms</h2>
+
+<p>Any new system has a grace period in which ignoring incremental design doesn’t display any symptom but dents its long term maintainability and the cost to fix that will hit when you least expect it. Martin Fowler explain this in detail in <a href="http://martinfowler.com/bliki/DesignStaminaHypothesis.html">Design Stamina Hypothesis</a>.</p>
+
+<p>Say your core business functionality is the sum of <em>A + B + C + D</em> if you need to change <em>B</em> based on market feedback and the software code is a tangle of [<strong>ABCD</strong>] it’s gonna be hard to estimate how long the process will take because parts of <strong>B</strong> are mixed all over the place–instead if your software has clear boundaries [<strong>A</strong>][<strong>B</strong>][<strong>C</strong>][<strong>D</strong>] estimating a change to <strong>B</strong> is much easier.</p>
+
+<p><strong>For developers working on unmaintainable code is like speaking with someone that has a thick accent–you are talking the same language but it takes extra effort to communicate effectively.</strong></p>
+
+<p>High turnover of software developers is often a symptom. Motivated developers will put up with ignorance at first and try to introduce better practices but without recognition and backup they will move on leaving only mellow developers on the team.</p>
+
+<p>A product owner should be engaged in business logic conversations with the <strong>whole</strong> development team–<em>translating to a developer dialect</em> is a sign that the codebase diverged from the business terminology creating communication overhead and seeding future missunderstandings.</p>
+
+<p>Only a few clear symptoms of unmaintainable software reach a <strong>product owner</strong>: <em>constant slow down in delivered features</em>, <em>feature delivery consistently followed by new bugs</em> and <em>inconsistent estimations</em> requiring release dates to be postponed.</p>
+
+<p>Only when the slow down can’t be justified anymore <strong>executives</strong> will start hearing suggestions to <em>rebuild a portion or the entire system</em>.</p>
+
+<h2 id="excuses">Excuses</h2>
+
+<p>When questioned about those symptoms and the possibility of an unmaintainable code base I’ve heard technical executives using a list of excuses to conceal its root cause: <strong>poor design</strong>.</p>
+
+<h3 id="the-requirements-changed-one">The <em>requirements changed</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is unmaintainable because the requirements kept changing… the code was clean at the beginning!</p>
+  </blockquote>
+</blockquote>
+
+<p>You do not want to hear this from a tech lead or director. The sentence lacks the basic understanding of how software development works and someone like that shouldn’t manage others.</p>
+
+<p><em>One thing you can be sure of is that the domain is not going to remain static during the building process. It will change at a rate dictated by its markets and its own invention rate.</em> <a href="http://www.amazon.com/Waltzing-Bears-Managing-Software-Projects/dp/0932633609/ref=sr_1_1">Waltzing With Bears: Managing Risk on Software Projects</a></p>
+
+<p><strong>Requirements will change and software design has to adapt.</strong></p>
+
+<p>Software engineering is not like other forms of engineering where the product is limited by its physical form–once you build a pedestrian bridge it can’t become a train bridge it will need to be rebuilt. Software is like a pedestrian bridge built with Lego bricks that can be reshuffled to become a train bridge using an evolving <strong>supple design</strong> as business requirements change.</p>
+
+<h3 id="the-programming-language-one">The <em>programming language</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is unmaintainable but at least now it’s in Ruby so that’s good.</p>
+  </blockquote>
+</blockquote>
+
+<p>You might think this is a joke but I heard this in serious conversations and it demonstrates great ignorance about software programming.</p>
+
+<p>Bad designed code is going to affect all languages regardless of how popular or friendly they are–rebuilding an unmanageable legacy <em>.NET</em> application in to a unmaintainable <em>Ruby on Rails</em> application is not doing anyone any good because a mess is a mess. <strong>And if people blame Rails tell them to look at its <a href="http://teotti.com/component-based-rails-architecture-primer/">component based architecture</a>.</strong></p>
+
+<h3 id="the-minimal-viable-product-one">The <em>minimal viable product</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is not maintainable because we delivered a minimum viable product, we release it fast and dirty to get feedback and will tackle code design later.</p>
+  </blockquote>
+</blockquote>
+
+<p>Some technical people ignoring iterative software design use minimal viable product as an excuse to skip it but <strong>MVP should prioritize features to release a minimal and effective version of your product but not a design less one</strong>.</p>
+
+<p><strong>Iterative design</strong> is done by the whole team as part of the development process and is different from an <strong>upfront design</strong> were a handful of illuminati would discuss architecture for months and hold off development. The best resource on this topic is Evans <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Domain Driven Design</a> and <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627">Growing Object Oriented Software guided by tests</a>.</p>
+
+<p>When knowledgeable developers do iterative design it won’t add significant overhead but I’ve heard inexperienced leads talk as if it’s something that would make a difference between making the release or not so when under pressure it’s OK to omit.</p>
+
+<p><strong>In all but trivial projects is critical to include iterative design or when business requirements will inevitably change the code will be dreadful or impossible to manage.</strong> Technology alone can’t make your business successful but a crippling technology will impact it negatively or even make it fail.</p>
+
+<h3 id="the-deadline-one">The <em>deadline</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is not maintainable because we had a hard deadline and had to cut corners to deliver all those features.</p>
+  </blockquote>
+</blockquote>
+
+<p>In time bound projects the scope has to be negotiated through constant communication between the development team and the product owner.</p>
+
+<p>The negotiation might mean the scope is decreased or increased based on the velocity of the team–<strong>skipping design doesn’t mean you will deliver more features it means you will develop features impractical to maintain</strong>.</p>
+
+<h3 id="the-technical-debt-one">The <em>technical debt</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is not maintainable because we had a hard deadline and accumulated technical debt to deliver all those features.</p>
+  </blockquote>
+</blockquote>
+
+<p>This is similar to the one above but instead of cutting corners you hear <em>technical debt</em>. Calling technical debt the result of a development process ignoring incremental design is wrong–Martin Fowler in his <a href="http://martinfowler.com/bliki/TechnicalDebtQuadrant.html">Technical Debt Quadrant</a> makes a valuable distinction and calls it <em>inadvertent reckless debt</em>, Bob Martin speaks to this in <a href="https://sites.google.com/site/unclebobconsultingllc/a-mess-is-not-a-technical-debt">A mess is not technical debt</a>.</p>
+
+<p>Sometimes developers might make an informed decision in order to fix a urgent bug or complete a time bound feature leaving that specific area with a less supple design–in the future working on it will require extra effort and that’s ok because it’s <strong>on a specific portion of the application</strong>.</p>
+
+<h3 id="the-we-will-refactor-later-one">The <em>we will refactor later</em> one</h3>
+
+<blockquote>
+  <blockquote>
+    <p>The code is not maintainable but now that we released we can focus on refactoring and code quality.</p>
+  </blockquote>
+</blockquote>
+
+<p>Refactoring means improving software design leaving features unchanged and it should be done in small iterative steps–you need to understand it will slow down deliverables and a good reference here is <a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/">Refactoring: Improving the Design of Existing Code</a> but working for months ignoring design and then hope to refactor it all later is an amateurish approach and is different from <a href="http://alistair.cockburn.us/Extending+an+Architecture+as+it+Earns+Business+Value">extending an architecture as it earns business value</a> because there is no architecture in the first place.</p>
+
+<p>When the code is unmaintainable I like to do incremental restructuring on small isolated portions related to features I am working on so the code quality increases while delivering business value–this will be more challenging but you can confidently control the amount of changes introduced. A great books about this is <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?ie=UTF8&amp;qid=1430575139&amp;sr=8-1&amp;keywords=working+effectively+with+legacy+code">Working Effectively with Legacy Code</a>.</p>
+
+<p><strong>During refactoring run a retrospective to understand why the code is in its current design less form and address any lack of development knowledge</strong>.</p>
+
+<h2 id="acknowledge-and-fix">Acknowledge and fix</h2>
+
+<p>To learn if code is maintainable you need to actively work on it so if your tech directors and leads are not doing that their feedback is the opinion of an outsider. That can be positive if associated with knowledge of software design and updated hands on experience but without that is irrelevant and I’ve seen it contradicting and demoralizing talented developers lower in organization charts.</p>
+
+<p>Make sure to let the tech division know the company cares about long term code maintainability and keep collecting feedback from all levels.</p>
+
+<h3 id="is-it-necessary">Is it necessary?</h3>
+
+<p>Regardless of what industry you operate in <strong>you are a software company</strong>.</p>
+
+<p>In <a href="http://www.amazon.com/Good-Great-Some-Companies-Others-ebook/dp/B0058DRUV6/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1442956858&amp;sr=1-1&amp;keywords=good+to+great">Good to Great</a> Collins says:</p>
+
+<blockquote>
+  <blockquote>
+    <p>technology by itself is never a primary root cause of either greatness or decline</p>
+  </blockquote>
+</blockquote>
+
+<p>I agree that technology alone won’t make your company great but I’ve seen many companies struggling to pivot in a predictable timeframe because of their crippling codebase. Missing opportunities and lagging behind won’t make you great.</p>
+
+<p>You might think ignorance driven development is acceptable since you don’t know if your product will be successful and how long it will last but <strong>if you build your business to be successful you should build your software with the same mindset</strong>. </p>
+
+<p>If you don’t value code maintainability you will only attract mellow developers mildly concerned with your long term objectives.</p>
+
+<h3 id="skilling-up">Skilling up</h3>
+
+<p>In large organizations sending a tech lead or director to improve skills that should already been there can be very demoralizing for the team.</p>
+
+<p>I suggest the lead and directors join the team as developers and an external experienced mentor temporary takes over the development process to skill up the entire team and after a period of time the team will find his natural leader rather then relying on appointed roles.</p>
+
+<p><strong>Hoping that your team members will improve their skills in their personal time is an unsustainable passive strategy. Let your company take an active role and allocate work time for targeted skilling up.</strong></p>
+
+<h3 id="expert-mentoring">Expert mentoring</h3>
+
+<p>Developers can’t recognize unmaintainable software unless they have experience in building and maintaining year lasting projects and even then some developers with 10 years experience might really have a 1 year experience multiplied 10 times and lack those skills. Any development team of 5 should have a natural mentor able to evaluate and direct the incremental code design–without this figure team members might disregard best practices compromising morale and preventing the creation of a supple design.</p>
+
+<h3 id="cross-pollinating-knowledge">Cross-pollinating knowledge</h3>
+
+<p>When your company has different divisions and some are not displaying any symptoms of <em>ignorance driven development</em> cross pollinating developers might help. Internal knowledge sharing works in a healthy organization but in a dysfunctional one internal politics and pride will not facilitate it so a director or tech lead might disregard suggestions coming from a developer below them in the company hierarchy.  </p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Trusting technical management after an initial result can be misleading because of a new application grace period–concealed from your eyes there could be an accumulation of badly designed code and its clean up cost will kick in when you can least afford it.</p>
+
+<p>Tell your technical division you are aware of low code maintainability side effects and understand the meaning of an incremental design adapting to the long term product vision. Ensure appointed technical leaders have <strong>updated</strong> hands on experience and are capable of dealing with development–they should lead by example from the front rather then with politics from a golden chair.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/ruby-on-rails-partials-are-slowing-you-down/" itemprop="url">Ruby on Rails partials are slowing you down</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/executive">executive</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

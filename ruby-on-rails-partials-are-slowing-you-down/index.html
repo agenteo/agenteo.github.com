@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ruby on Rails partials are slowing you down</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Ruby on Rails partials are slowing you down" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="When a template grows over a certain number of lines I introduce partials to break it up in shorter maintainable units--in this post I will incrementally introduce partials in a test application and share findings merging partials in a real application and when their slowness is a symptom of other..." />
+  
+  <meta property="og:url" content="http://teotti.com/ruby-on-rails-partials-are-slowing-you-down/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/ruby-on-rails-partials-are-slowing-you-down/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Ruby on Rails partials are slowing you down</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-04-17T00:00:00+00:00">17 Apr 2015</time>
+              , tagged on  <span class="post-tag-ruby-on-rails"><a href="/topics/ruby-on-rails">ruby-on-rails</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>When a template grows over a certain number of lines I introduce partials to break it up in shorter maintainable units–in this post I will incrementally introduce partials in a test application and share findings merging partials in a real application and when their slowness is a symptom of other issues.</p>
+
+<p><strong>TL;DR they are slowing you down but the impact is negligible so keep using them.</strong></p>
+
+<h2 id="a-test-application">A test application</h2>
+
+<p>The application is a Rails 4.2 app in production mode using an in memory data model that generates 25 objects. I report the <strong>response time</strong> from production Rails logs–I did not involve database or caching to focus on Rails’s partials performance and I restarted the application after each test. You can find this application on <a href="https://github.com/agenteo/lab-partials-slowing-you-down">my github</a>. </p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/articles_controller.rb</span>
+<span class="k">def</span> <span class="nf">index</span>
+  <span class="vi">@articles</span> <span class="o">=</span> <span class="mi">25</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+    <span class="p">{</span> <span class="ss">title</span><span class="p">:</span> <span class="s2">&quot;Article </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="ss">body</span><span class="p">:</span> <span class="no">LiterateRandomizer</span><span class="o">.</span><span class="n">paragraph</span><span class="p">,</span> <span class="ss">published_at</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- app/views/articles/index.html.erb --&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Articles#index<span class="nt">&lt;/h1&gt;</span>
+
+<span class="err">&lt;</span>% @articles.each do |article| %&gt;
+  <span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;h2&gt;</span><span class="err">&lt;</span>%= article[:title] %&gt;<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= article[:body] %&gt;<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+<span class="err">&lt;</span>% end %&gt;</code></pre></div>
+
+<p>The initial test has a controller with a single view that I will incrementally break up in partials–<strong>this is an oversimplified usecase that in real life wouldn’t need them</strong>.</p>
+
+<p>Even when in production mode the first call is significantly slower <strong>549ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:45:41.578125 <span class="c">#50837]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:45:42.126382 <span class="c">#50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.7ms)</span>
+I, <span class="o">[</span>2015-03-09T11:45:42.127181 <span class="c">#50837]  INFO -- : Completed 200 OK in 549ms (Views: 4.4ms)</span></code></pre></div>
+
+<p>Second call is much faster <strong>50ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:46:34.747345 <span class="c">#50837]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:46:34.796360 <span class="c">#50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:46:34.797054 <span class="c">#50837]  INFO -- : Completed 200 OK in 50ms (Views: 1.4ms)</span></code></pre></div>
+
+<p>Subsequent calls are stable around <strong>50ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:47:03.984770 <span class="c">#50837]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:47:04.033530 <span class="c">#50837]  INFO -- :   Rendered articles/index.html.erb within layouts/application (0.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:04.033935 <span class="c">#50837]  INFO -- : Completed 200 OK in 49ms (Views: 0.9ms)</span></code></pre></div>
+
+<h3 id="introduce-a-partial">Introduce a partial</h3>
+
+<p>I show you the difference between current and previous version you can see each step as a commit on the <a href="https://github.com/agenteo/lab-partials-slowing-you-down">github repository</a>. I now introduce a single partial.</p>
+
+<div class="highlight"><pre><code class="language-diff" data-lang="diff"><span class="gh">diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb</span>
+new file mode 100644
+<span class="gh">index 0000000..fac0108</span>
+<span class="gd">--- /dev/null</span>
+<span class="gi">+++ b/app/views/articles/_article.html.erb</span>
+<span class="gu">@@ -0,0 +1,4 @@</span>
+<span class="gi">+&lt;article&gt;</span>
+<span class="gi">+  &lt;h2&gt;&lt;%= article[:title] %&gt;&lt;/h2&gt;</span>
+<span class="gi">+  &lt;p&gt;&lt;%= article[:body] %&gt;&lt;/p&gt;</span>
+<span class="gi">+&lt;/article&gt;</span>
+<span class="gh">diff --git a/app/views/articles/index.html.erb b/app/views/articles/index.html.erb</span>
+<span class="gh">index 24938da..f29b38b 100644</span>
+<span class="gd">--- a/app/views/articles/index.html.erb</span>
+<span class="gi">+++ b/app/views/articles/index.html.erb</span>
+<span class="gu">@@ -1,8 +1,5 @@</span>
+ &lt;h1&gt;Articles#index&lt;/h1&gt;
+
+ &lt;% @articles.each do |article| %&gt;
+<span class="gd">-  &lt;article&gt;</span>
+<span class="gd">-    &lt;h2&gt;&lt;%= article[:title] %&gt;&lt;/h2&gt;</span>
+<span class="gd">-    &lt;p&gt;&lt;%= article[:body] %&gt;&lt;/p&gt;</span>
+<span class="gd">-  &lt;/article&gt;</span>
+<span class="gi">+  &lt;%= render(partial: &#39;article&#39;, locals: { article: article } ) %&gt;</span>
+ &lt;% end %&gt;</code></pre></div>
+
+<p>on the first call I get a similar response time <strong>543ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:47:40.174517 <span class="c">#50991]  INFO -- : Started GET &quot;/articles/index&quot; for 127.0.0.1 at 2015-03-09 11:47:40 -0400</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.176238 <span class="c">#50991]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716048 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716243 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716391 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716510 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716623 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716743 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716852 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.716962 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717070 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717186 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717293 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717402 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717521 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717626 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717726 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717829 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717914 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.717996 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718080 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718175 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718254 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718331 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718427 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718505 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718590 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.718652 <span class="c">#50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (5.7ms)</span>
+I, <span class="o">[</span>2015-03-09T11:47:40.719538 <span class="c">#50991]  INFO -- : Completed 200 OK in 543ms (Views: 10.3ms)</span></code></pre></div>
+
+<p>Also on the second call I get a similar response of <strong>49ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:48:15.050356 <span class="c">#50991]  INFO -- : Started GET &quot;/articles/index&quot; for 127.0.0.1 at 2015-03-09 11:48:15 -0400</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.050936 <span class="c">#50991]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.095831 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.095994 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096116 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096226 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096342 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096445 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096555 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096660 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096761 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096871 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.096975 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097082 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097182 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097288 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097414 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097521 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097625 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097719 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097825 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.097928 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098036 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098168 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.1ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098265 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098355 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098442 <span class="c">#50991]  INFO -- :   Rendered articles/_article.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.098513 <span class="c">#50991]  INFO -- :   Rendered articles/index.html.erb within layouts/application (2.8ms)</span>
+I, <span class="o">[</span>2015-03-09T11:48:15.099667 <span class="c">#50991]  INFO -- : Completed 200 OK in 49ms (Views: 4.0ms)</span></code></pre></div>
+
+<p>Subsequent calls stable around <strong>50ms</strong>.</p>
+
+<h3 id="with-three-partials">With three partials</h3>
+
+<p>Now I am breaking up the template in three partials.</p>
+
+<div class="highlight"><pre><code class="language-diff" data-lang="diff"><span class="gh">diff --git a/app/views/articles/_article.html.erb b/app/views/articles/_article.html.erb</span>
+<span class="gh">index fac0108..e0fb7f3 100644</span>
+<span class="gd">--- a/app/views/articles/_article.html.erb</span>
+<span class="gi">+++ b/app/views/articles/_article.html.erb</span>
+<span class="gu">@@ -1,4 +1,4 @@</span>
+ &lt;article&gt;
+<span class="gd">-  &lt;h2&gt;&lt;%= article[:title] %&gt;&lt;/h2&gt;</span>
+<span class="gd">-  &lt;p&gt;&lt;%= article[:body] %&gt;&lt;/p&gt;</span>
+<span class="gi">+  &lt;%= render(partial: &#39;articles/article/title&#39;, locals: { title: article[:title] } ) %&gt;</span>
+<span class="gi">+  &lt;%= render(partial: &#39;articles/article/body&#39;, locals: { body: article[:body] } ) %&gt;</span>
+ &lt;/article&gt;
+<span class="gh">diff --git a/app/views/articles/article/_body.html.erb b/app/views/articles/article/_body.html.erb</span>
+new file mode 100644
+<span class="gh">index 0000000..69d8bf3</span>
+<span class="gd">--- /dev/null</span>
+<span class="gi">+++ b/app/views/articles/article/_body.html.erb</span>
+<span class="gu">@@ -0,0 +1 @@</span>
+<span class="gi">+&lt;p&gt;&lt;%= body %&gt;&lt;/p&gt;</span>
+<span class="gh">diff --git a/app/views/articles/article/_title.html.erb b/app/views/articles/article/_title.html.erb</span>
+new file mode 100644
+<span class="gh">index 0000000..07c61fa</span>
+<span class="gd">--- /dev/null</span>
+<span class="gi">+++ b/app/views/articles/article/_title.html.erb</span>
+<span class="gu">@@ -0,0 +1 @@</span>
+<span class="gi">+&lt;h2&gt;&lt;%= title %&gt;&lt;/h2&gt;</span></code></pre></div>
+
+<p>First call still around <strong>550ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:55:22.452183 <span class="c">#51383]  INFO -- : Started GET &quot;/articles/index&quot; for 127.0.0.1 at 2015-03-09 11:55:22 -0400</span>
+I, <span class="o">[</span>2015-03-09T11:55:22.453966 <span class="c">#51383]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.006269 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009235 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009322 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (6.7ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009530 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009651 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009729 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009870 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.009975 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010023 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010158 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010279 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010327 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010481 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010586 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010633 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010766 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010884 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.010930 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011104 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011210 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011256 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011395 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011509 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011556 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011691 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011807 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011863 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.011988 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012100 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012146 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012279 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012363 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012416 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012525 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012602 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012638 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012776 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012872 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.012909 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013033 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013114 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013150 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013258 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013361 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013397 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013504 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013602 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013638 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013746 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013825 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013860 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.013982 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014062 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014098 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014219 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014298 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014333 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014453 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014532 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014567 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014672 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014767 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014802 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014907 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.014988 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015037 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015142 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015219 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015254 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015372 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015454 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015489 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015609 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015688 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015723 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.015773 <span class="c">#51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (16.3ms)</span>
+I, <span class="o">[</span>2015-03-09T11:55:23.016680 <span class="c">#51383]  INFO -- : Completed 200 OK in 563ms (Views: 21.2ms)</span></code></pre></div>
+
+<p>Second call <strong>62ms</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">I, <span class="o">[</span>2015-03-09T11:56:00.645846 <span class="c">#51383]  INFO -- : Started GET &quot;/articles/index&quot; for 127.0.0.1 at 2015-03-09 11:56:00 -0400</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.646481 <span class="c">#51383]  INFO -- : Processing by ArticlesController#index as */*</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701164 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701391 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701460 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.4ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701606 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701732 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701780 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.701907 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702033 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702080 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702213 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702342 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702389 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702532 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702640 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702687 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702801 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702905 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.702952 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703072 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703180 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703226 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703365 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703466 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703516 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703645 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703734 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703791 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.703927 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704032 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704078 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704195 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704295 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704343 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704478 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704580 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704626 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704744 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704852 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.704898 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705013 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705154 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705201 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705340 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705444 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705500 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705628 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705732 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705778 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.705913 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706015 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706060 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706198 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706318 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706364 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706501 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706601 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706645 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706761 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706850 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.706895 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707013 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707117 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707162 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707275 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707377 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707422 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707558 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707658 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707703 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707838 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707939 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.707984 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.708121 <span class="c">#51383]  INFO -- :   Rendered articles/article/_title.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.708221 <span class="c">#51383]  INFO -- :   Rendered articles/article/_body.html.erb (0.0ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.708266 <span class="c">#51383]  INFO -- :   Rendered articles/_article.html.erb (0.2ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.708330 <span class="c">#51383]  INFO -- :   Rendered articles/index.html.erb within layouts/application (7.4ms)</span>
+I, <span class="o">[</span>2015-03-09T11:56:00.708709 <span class="c">#51383]  INFO -- : Completed 200 OK in 62ms (Views: 8.0ms)</span></code></pre></div>
+
+<p>And the subsequent calls are stable around <strong>62ms</strong>.</p>
+
+<p>Calls after the first are around 10ms slower a negligible speed deterioration.</p>
+
+<h2 id="impact-on-a-real-application">Impact on a real application</h2>
+
+<p>Before writing the article I was testing merging partials in an existing production application and benchmarks gave <strong>negligible difference in response times</strong>. Taking out partials from <strong>your</strong> application is the most accurate benchmark you can run but be rigorous and run local tests before assuming the change brings any benefit–if it does load test to get a definitive answer. Also remember:</p>
+
+<ul>
+  <li>run the application in production mode</li>
+  <li>any first call is always significantly slower because of framework startup and database query costs</li>
+  <li>be aware of any caching on your system and on databases or APIs you use</li>
+</ul>
+
+<p><strong>I’ve seen garbage collection (GC) manifesting in partial rendering with response time randomly fluctuating</strong> like:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Rendered articles/_article.html.erb <span class="o">(</span>0.2ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.3ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.2ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.4ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.175ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.2ms<span class="o">)</span>
+Rendered articles/_article.html.erb <span class="o">(</span>0.3ms<span class="o">)</span></code></pre></div>
+
+<p>the <code>0.175ms</code> was moving between partials and it was caused by the garbage collector.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/component-based-rails-architecture-primer/" itemprop="url">A component based Rails architecture primer</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby-on-rails">ruby-on-rails</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

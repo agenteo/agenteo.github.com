@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Create dependency structures with local Ruby Gems</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Create dependency structures with local Ruby Gems" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="Good object oriented practices can be sufficient to handle some complexity but when the project is over a certain size they don't help understand what the whole application does. **When you have to read several classes in order to visualize application dependencies you increase your cognitive load making your job..." />
+  
+  <meta property="og:url" content="http://teotti.com/create-dependency-structures-with-local-ruby-gems/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/create-dependency-structures-with-local-ruby-gems/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Create dependency structures with local Ruby Gems</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2016-01-11T00:00:00+00:00">11 Jan 2016</time>
+              , tagged on  <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-maintainability"><a href="/topics/maintainability">maintainability</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>Good object oriented practices can be sufficient to handle some complexity but when the project is over a certain size they don’t help understand what the whole application does. <strong>When you have to read several classes in order to visualize application dependencies you increase your cognitive load making your job harder.</strong></p>
+
+<p>Using a local gems dependency structure is complementary to good object oriented practices and allows you to incrementally design application boundaries resulting in an intention revealing structure that reduces cognitive load and facilitates code navigation.</p>
+
+<p><strong>There is a misconception that Ruby Gems are only for distributing libraries but they can be used locally as building blocks of a large Ruby application.</strong></p>
+
+<p>The focus of this article is test driving the technical implementation of local Ruby Gems dependencies structure using a simplified example adapted from a real life application, you can find the code <a href="https://github.com/agenteo/gem_dependency_structure">on GitHub</a>.</p>
+
+<blockquote>
+  <blockquote>
+    <p>As a health plan subscriber I want to see information about my plan so I know what drugs are covered</p>
+  </blockquote>
+</blockquote>
+
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_1.png" alt="we know more features are coming but let's focus on the first one" /></p>
+
+<h2 id="ruby-application">Ruby application</h2>
+
+<p>A Ruby application triggers the behaviour encapsulated in the gem dependency structure–it can be a script, rake task or web framework–it’s just a proxy to the business logic encapsulated within gems.</p>
+
+<p>In this example I will use a Ruby script that requires and makes calls to my health plan <strong>entry point gem</strong>.</p>
+
+<p>To ensure your dependency structure is solid you must add <em>unit tests for each gem</em> and <em>integration tests at the script level</em>. Let’s start from the latter, you will need a <code>Gemfile</code> to get our testing library <em>rspec</em>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+
+<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">&#39;rspec&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>run <code>bundle</code> and then run <code>rspec --init</code> to setup the automated tests. The full code is in <a href="https://github.com/agenteo/gem_dependency_structure/commit/9783895ede66b8516d746dd404493ae361be7d22">this GitHub commit</a>.</p>
+
+<p>Here’s our script triggering some <code>health_plan</code> class behaviour:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;health_plan&#39;</span>
+
+<span class="n">subscriber_id</span> <span class="o">=</span> <span class="s1">&#39;ASE123456789&#39;</span>
+<span class="n">aggregated_health_plan</span> <span class="o">=</span> <span class="no">HealthPlan</span><span class="o">::</span><span class="no">Aggregator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">subscriber_id</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">aggregated_health_plan</span><span class="o">.</span><span class="n">details</span></code></pre></div>
+
+<p>its automated test:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">describe</span> <span class="s1">&#39;run the script&#39;</span> <span class="k">do</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:script_root</span><span class="p">)</span> <span class="p">{</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../&#39;</span> <span class="p">}</span>
+
+  <span class="n">it</span> <span class="s1">&#39;should return a success code&#39;</span> <span class="k">do</span>
+    <span class="nb">system</span><span class="p">(</span><span class="s1">&#39;bundle&#39;</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ruby </span><span class="si">#{</span><span class="n">script_root</span><span class="si">}</span><span class="s2">run.rb&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to</span> <span class="n">be</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>triggers an expected error about the missing <code>health_plan</code> gem:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/Users/agenteo/code/lab/gem-dependency-structure/spec/../run.rb:1:in <span class="sb">`</span>require<span class="err">&#39;</span>: cannot load such file -- health_plan <span class="o">(</span>LoadError<span class="o">)</span></code></pre></div>
+
+<p>In the application root directory let’s create a <code>local_gems</code> directory to store our local gems–in production pick a name that is meaningful to your team–I often use <em>components</em>.</p>
+
+<h2 id="building-a-gem">Building a gem</h2>
+
+<p>There are many ways to create a gem, I use <a href="http://bundler.io/">bundler</a>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>local_gems
+<span class="nv">$ </span>bundle gem health_plan
+  create  health_plan/Gemfile
+  create  health_plan/Rakefile
+  create  health_plan/LICENSE.txt
+  create  health_plan/README.md
+  create  health_plan/.gitignore
+  create  health_plan/health_plan.gemspec
+  create  health_plan/lib/health_plan.rb
+  create  health_plan/lib/health_plan/version.rb
+Initializing git repo in /Users/agenteo/code/lab/gem-dependency-structure/local_gems/health_plan
+<span class="nv">$ </span>rm -Rf health_plan/.git*</code></pre></div>
+
+<p>This will create the necessary files including git files that you should remove <strong>since the gem will be local instead of published to a separate repository</strong>.</p>
+
+<p>Let’s have a look at the relevant files:</p>
+
+<h3 id="gemfile"><em>Gemfile</em></h3>
+
+<p>The gem’s <code>Gemfile</code> is only used for your gem’s automated tests and <strong>never by the main Ruby application</strong>.</p>
+
+<p>The generated <code>Gemfile</code> has a line with <code>gemspec</code></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">cat</span> <span class="n">local_gems</span><span class="o">/</span><span class="n">health_plan</span><span class="o">/</span><span class="no">Gemfile</span>
+<span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+
+<span class="c1"># Specify your gem&#39;s dependencies in health_plan.gemspec</span>
+<span class="n">gemspec</span></code></pre></div>
+
+<p>that tells bundler to install this gem dependencies from a <code>.gemspec</code> file living in the same directory in this case <code>health_plan.gemspec</code>.</p>
+
+<h3 id="gemspec"><em>.gemspec</em></h3>
+
+<p>This is the specification file part of Rubygems and looks like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">lib</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../lib&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+<span class="vg">$LOAD_PATH</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="n">lib</span><span class="p">)</span> <span class="k">unless</span> <span class="vg">$LOAD_PATH</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">lib</span><span class="p">)</span>
+<span class="nb">require</span> <span class="s1">&#39;health_plan/version&#39;</span>
+
+<span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">name</span>          <span class="o">=</span> <span class="s2">&quot;health_plan&quot;</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">version</span>       <span class="o">=</span> <span class="no">HealthPlan</span><span class="o">::</span><span class="no">VERSION</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">authors</span>       <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;Enrico Teotti&quot;</span><span class="o">]</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">email</span>         <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;me@example.com&quot;</span><span class="o">]</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{TODO: Write a short summary. Required.}</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{TODO: Write a longer description. Optional.}</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">homepage</span>      <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">license</span>       <span class="o">=</span> <span class="s2">&quot;MIT&quot;</span>
+
+  <span class="n">spec</span><span class="o">.</span><span class="n">files</span>         <span class="o">=</span> <span class="sb">`git ls-files -z`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x0</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">executables</span>   <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">test_files</span>    <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^(test|spec|features)/}</span><span class="p">)</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">require_paths</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;lib&quot;</span><span class="o">]</span>
+
+  <span class="n">spec</span><span class="o">.</span><span class="n">add_development_dependency</span> <span class="s2">&quot;bundler&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt; 1.7&quot;</span>
+  <span class="n">spec</span><span class="o">.</span><span class="n">add_development_dependency</span> <span class="s2">&quot;rake&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt; 10.0&quot;</span>
+<span class="k">end</span></code></pre></div>
+
+<p><strong>You must remove TODO from summary and description or a warning will prevent you from building the gem.</strong></p>
+
+<p>You can find details about the other fields on <a href="http://guides.rubygems.org/specification-reference/">rubygems.org</a>.</p>
+
+<h3 id="versionrb"><em>version.rb</em></h3>
+
+<p>I never update the version number for local gems but it’s good to have it there in case you will publish the gem to a private gem server and start versioning so multiple applications can use it.</p>
+
+<h2 id="add-gem-entry-point-to-ruby-application">Add gem entry point to Ruby application</h2>
+
+<p>Now that the gem is created–you can find the code in this <a href="https://github.com/agenteo/gem_dependency_structure/commit/ee009927308602a7eaf00069d202232111fe756b">GitHub commit</a>–you need to add the entry point gem to the Ruby application:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">path</span> <span class="s1">&#39;local_gems&#39;</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">&#39;health_plan&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Running the test now should be green. Remember the code is just an example to exercises the dependency structure.</p>
+
+<h2 id="setup-local-gems-dependencies">Setup local gems dependencies</h2>
+
+<p>Let’s add a local dependency from <code>health_plan</code> to a <code>drug_information</code> local gem that encapsulates access to drug information:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># health_plan.gemspec</span>
+<span class="c1"># within Gem::Specification.new do |spec|</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">add_dependency</span> <span class="s2">&quot;drug_information&quot;</span></code></pre></div>
+
+<p>Running <code>bundle</code> within the <code>health_plan</code> local gem directory errors on <code>drug_information</code> not being found:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bundle
+Fetching gem metadata from https://rubygems.org/..
+Resolving dependencies...
+Could not find gem <span class="s1">&#39;drug_information (&gt;= 0) ruby&#39;</span>, which is required by gem <span class="s1">&#39;health_plan (&gt;= 0) ruby&#39;</span>, in any of the sources.</code></pre></div>
+
+<p>That’s for two reasons: first <code>add_dependency</code> doesn’t yet know about local gems and second we haven’t created that gem. Let’s fix the second running from the local gems directory <code>bundle gem drug_information</code>.</p>
+
+<p>The first problem is <code>health_plan</code> local gem failed to find <code>drug_information</code> on <strong>rubygems.org which you must be vigilant about</strong>. What if somebody created and published a <code>drug_information</code> gem on rubygems?</p>
+
+<h3 id="gotcha-local--remote-gems-name-collisions">Gotcha: Local / remote gems name collisions</h3>
+
+<p>I’ve seen this edge case happening and the result is your application uses the remote gem and your Gemfile.lock is <strong>locked to the remote gem and prevent the local gem dependency to be picked up when created</strong>. <em>If you run in to this problem the solution is to delete the Gemfile.lock and bundle again after the local gem is created</em>.</p>
+
+<p>A safe way to prevent this problem is to have a project specific namespace wrapping the gem name ie. <code>ProjectName::DrugInformation</code>. Prefixing all your gems ie. <code>ProjectNameDrugInformation</code> works too but I find it obfuscates the gem name rather then creating proper boundaries like <code>ProjectName::DrugInformation</code> that reveals <strong>the project</strong> has a <strong>drug information</strong> boundary.</p>
+
+<p>What if your gem name isn’t used on rubygems.org today but somebody publishes a <code>drug_information</code> gem tomorrow? Once the Gemfile.lock is locked with the local gem this edge case isn’t a problem anymore because even if the <code>Gemfile.lock</code> is deleted the local gem has higher priority over the remote one.</p>
+
+<h3 id="add-local-gems-dependencies-path">Add local gems dependencies path</h3>
+
+<p>You must tell your local gem about its local dependencies path via the <code>Gemfile</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">path</span> <span class="s1">&#39;../&#39;</span></code></pre></div>
+
+<p>that adds everything located one directory above the <code>health_plan</code> to the gems search path. That is all the gems in <code>local_gems</code>. Run bundle within <code>health_plan</code> again and you should see:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Using health_plan 0.0.1 from <span class="nb">source </span>at .</code></pre></div>
+
+<p>You can find the code in this <a href="https://github.com/agenteo/gem_dependency_structure/commit/1c47b0d2cdc865431de665428d2977eefb4d27b7">GitHub commit</a>.</p>
+
+<h2 id="use-automated-tests-to-ensure-the-dependencies-are-solid">Use automated tests to ensure the dependencies are solid</h2>
+
+<p>Let’s update <code>HealthPlan::Aggregator</code> to access some dummy <code>drug_information</code> code:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">details</span>
+  <span class="n">fetched_drug_info</span> <span class="o">=</span> <span class="no">DrugInformation</span><span class="o">::</span><span class="no">Fetcher</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@subscriber_id</span><span class="p">)</span>
+  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The full package plan&#39;</span><span class="p">,</span> <span class="ss">drugs</span><span class="p">:</span> <span class="n">fetched_drug_info</span><span class="o">.</span><span class="n">details</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The dependency between <code>health_plan</code> and <code>drug_information</code> was set in the <code>health_plan</code> gem specification for its building process but <strong>it must be explicitly required</strong> or the code will not be found. <strong>This is the cause of many errors especially if you’re used to Ruby on Rails autoloader</strong>.</p>
+
+<p>The fix is to add a require statement, usually in the gem entrypoint file <code>lib/gemname.rb</code> in this case <code>lib/health_plan.rb</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;health_plan/version&quot;</span>
+<span class="nb">require</span> <span class="s2">&quot;health_plan/aggregator&quot;</span>
+
+<span class="nb">require</span> <span class="s2">&quot;drug_information&quot;</span>
+
+<span class="k">module</span> <span class="nn">HealthPlan</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Automated tests are an important part of software development but they are <strong>the only way to ensure local Ruby gems dependency structures are solid</strong>.</p>
+
+<h3 id="gotcha-flaky-bugs-caused-by-missing-requirement-statements">Gotcha: Flaky bugs caused by missing requirement statements</h3>
+
+<p>This is a problem affecting a Ruby process running in memory such as a web server or deamon. Let’s say you have a gem A requiring gem C and using its code, and you have a gem B <strong>not</strong> requiring gem C but using its code. A and B are two high level gems that your Ruby application can call.</p>
+
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/flaky_bugs.png" alt="visual representation" /></p>
+
+<p>When your application first access gem B an error will be triggered since it uses gem C code without requiring it.</p>
+
+<p>But when your application first executes gem A it requires gem C and leaves it in memory–if the application now access gem B it won’t fail because gem C was previously required.</p>
+
+<p><strong>A unit test on gem B would have caught that. And this is why you really must test all your local gems in isolation.</strong></p>
+
+<p>For example if we run:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;spec_helper&#39;</span>
+
+<span class="n">describe</span> <span class="no">HealthPlan</span><span class="o">::</span><span class="no">Aggregator</span> <span class="k">do</span>
+
+  <span class="n">describe</span> <span class="s2">&quot;#details&quot;</span> <span class="k">do</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="n">fetcher_double</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="s1">&#39;DrugInformation::Fetcher&#39;</span><span class="p">,</span> <span class="ss">details</span><span class="p">:</span> <span class="p">{})</span>
+      <span class="n">allow</span><span class="p">(</span><span class="no">DrugInformation</span><span class="o">::</span><span class="no">Fetcher</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">receive</span><span class="p">(</span><span class="ss">:new</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="n">fetcher_double</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">&quot;should not throw exceptions&quot;</span> <span class="k">do</span>
+      <span class="n">aggregator</span> <span class="o">=</span> <span class="no">HealthPlan</span><span class="o">::</span><span class="no">Aggregator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">aggregator</span><span class="o">.</span><span class="n">details</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">be_a_kind_of</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></div>
+
+<p>before requiring <code>drug_information</code> within <code>health_plan</code> the test will fail with an expected: <code>uninitialized constant DrugInformation::Fetcher</code>.</p>
+
+<h2 id="evolving-the-design-of-your-application">Evolving the design of your application</h2>
+
+<p>An application that doesn’t evolve is rarely useful and as it evolves it becomes more complex and requires extra resources to preserve and simplify its structure–these are concepts covered by Lehman’s <strong>law of continuing change</strong> and <strong>law of increasing complexity</strong>.</p>
+
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_2.png" alt="our evolved design" /></p>
+
+<p>The health plan requirement changed:</p>
+
+<blockquote>
+  <blockquote>
+    <p>As a subscriber I want to access my health plan page with drug information and claims information</p>
+  </blockquote>
+</blockquote>
+
+<p>From the technical side evolving your design is really as simple as updating <code>add_dependency</code> in your <em>.gemspec</em>–what is more challenging is how to associate boundaries to gems.</p>
+
+<p><strong>The target</strong> is to have an intention revealing dependency structure that reduce the cognitive load. <strong>The risk</strong> is to split in too fine grained components creating a dependency structure that is purely technical and doesn’t represent any business rule.</p>
+
+<p>In the first scenario you’d be able to talk about your boundaries/libraries with your business owners. In the second scenario your libraries are so abstract that impede conversation with business owners and shouldn’t have been split or perhaps be part of a shared utility library. What prevents the <em>shared utility gem</em> from becoming a kitchen sink? Team diligence.</p>
+
+<p>My guideline is to use a <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> and map business operational areas in to objects and namespaces. <strong>When more then two or three concepts are living in a single namespace I ask the business owner if they think it’s a different context or if a different team or company is operating that.</strong></p>
+
+<p>Conway’s law help with this:</p>
+
+<blockquote>
+  <blockquote>
+    <p>“organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations”</p>
+  </blockquote>
+</blockquote>
+
+<p>It’s hard work that can’t be delegated to someone outside the development team. The boundaries can and will change as the application evolves–that’s where the term evolutionary design comes from.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/reengineer-legacy-rails-applications/" itemprop="url">Reengineer legacy Rails applications</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby">ruby</a>,  <a href="/topics/maintainability">maintainability</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

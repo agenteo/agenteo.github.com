@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Rails vs Hanami</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Rails vs Hanami" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="**This article introduces Hanami--formerly known as Lotus--and compares its features with *regular* and *component based* Rails.** I will assume you are familiar with the Ruby on Rails conventions. --- *Hanami* is a modular [rack compliant](http://rack.github.io/) Ruby web framework promoting applications incremental design and separation of concerns beyond classical MVC. The..." />
+  
+  <meta property="og:url" content="http://teotti.com/rails-vs-hanami/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/rails-vs-hanami/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Rails vs Hanami</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-06-29T00:00:00+00:00">29 Jun 2015</time>
+              , tagged on  <span class="post-tag-rails"><a href="/topics/rails">rails</a></span> <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-hanami"><a href="/topics/hanami">hanami</a></span> <span class="post-tag-lotus"><a href="/topics/lotus">lotus</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p><strong>This article introduces Hanami–formerly known as Lotus–and compares its features with <em>regular</em> and <em>component based</em> Rails.</strong> I will assume you are familiar with the Ruby on Rails conventions.</p>
+
+<hr />
+
+<p><em>Hanami</em> is a modular <a href="http://rack.github.io/">rack compliant</a> Ruby web framework promoting applications incremental design and separation of concerns beyond classical MVC.</p>
+
+<p>The <em>conventional MVC Rails</em> structure fits simpler use cases and when their complexity increases you can use ingenuity in the form of <em><a href="http://teotti.com/component-based-rails-architecture-primer/">component based Rails</a></em> to achieve application modularity sometime as a stepping stone to <a href="http://teotti.com/rails-service-oriented-architecture-alternative-with-components/">service oriented architecture</a>.</p>
+
+<h2 id="preamble">Preamble</h2>
+
+<p>Using Hanami for rapid prototyping would be a mistake–Ruby on Rails is a much better fit for that leveraging its vast pool of plugins.</p>
+
+<p>Many Rails projects I saw had a plugin based prototype foundation making long term development a daunting plugin customization.</p>
+
+<p>Usually at the foundation of larger Rails plugins there are framework agnostic Ruby gems and rack middlewares–like <em>Warden</em> at the core of <em>Devise</em>–that can be used to accelerate development in Hanami.</p>
+
+<h2 id="multi-application-approach">Multi application approach</h2>
+
+<p>Hanami helps understanding what the whole project does by supporting sub applications.</p>
+
+<p>An example could be a <em>memory game</em> project where users can play games created by a team of game designers and with an API to publish leaderboards to mobile devices. This project domain can be broken up in to three applications: a <code>gamezone</code> application where users play games, a <code>workshop</code> application where game designers create games and an <code>api</code> application to publish game statistics to mobile devices. The assumption is they all share some domain logic and database connection so breaking them up in to three projects at the start will create more development overhead then benefits.</p>
+
+<h3 id="hanami">Hanami</h3>
+
+<p>Hanami can serve such a project with its default <a href="http://hanamirb.org/guides/architectures/container/"><em>container</em> architecture</a>. When the time comes for a portion to be deployed and developed in isolation it supports single applications with its <em>application</em> architecture.</p>
+
+<p>Having all the applications as one codebase speeds up project development and it’s great that Hanami <a href="http://hanamirb.org/guides/architectures/overview/">architecture supports</a> that at its core.</p>
+
+<p><strong>Some people might quickly dismiss this as impossible in Ruby on Rails but that’s wrong.</strong></p>
+
+<h3 id="rails">Rails</h3>
+
+<p>It’s true that in a <em>conventional Rails</em> project this is impossible to achieve–all your code lives inside <code>/app</code> and there is no way to set more applications boundaries. In simple cases this is not a problem–you could have a gamezone controller a workshop controller and an api controller but that’s rarely the case and even when it starts like that requirements will change and expand.</p>
+
+<p>So for larger more complex domains–or for applications started small and grew over time–missing the boundaries makes it hard to understand what the whole project does and to migrate one of those portions to its own service.</p>
+
+<p><strong>To solve this problem a few years ago people started leveraging Ruby gems and Rails engines in what is called <em>component based Rails architecture</em>.</strong></p>
+
+<p>A high level component can <em>simulate</em> a Hanami application boundary in Rails–to find out more about this <a href="http://teotti.com/component-based-rails-architecture-primer/">read a component based primer</a>.</p>
+
+<h2 id="hanami-directory-structure">Hanami directory structure</h2>
+
+<p>Let’s generate our <code>memory_game</code> project in Hanami–the default application would be called <code>web</code> but can be overridden when first running the generator:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">hanami</span> <span class="kp">new</span> <span class="n">memory_game</span> <span class="o">--</span><span class="n">application</span><span class="o">=</span><span class="n">game_zone</span></code></pre></div>
+
+<p>The directory structure at this point is:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">├── Gemfile
+├── Gemfile.lock
+├── Rakefile
+├── apps
+├── config
+├── config.ru
+├── db
+├── lib
+└── spec</code></pre></div>
+
+<p>Let’s add a <code>workshop</code> application to allow our staff to create games leaving <code>game_zone</code> focused on the web gaming experience:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">hanami</span> <span class="n">generate</span> <span class="n">app</span> <span class="n">workshop</span></code></pre></div>
+
+<p>the apps have the following directory structure:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">├── application.rb
+├── config
+├── controllers
+├── public
+├── templates
+└── views</code></pre></div>
+
+<p>All the Hanami applications share some domain logic and persistence–more about that later.</p>
+
+<h2 id="application-routing">Application routing</h2>
+
+<p>The Hanami applications routes are mounted via <code>config/environment.rb</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;hanami/setup&#39;</span>
+<span class="n">require_relative</span> <span class="s1">&#39;../lib/memory_game&#39;</span>
+<span class="n">require_relative</span> <span class="s1">&#39;../apps/game_zone/application&#39;</span>
+
+<span class="no">Hanami</span><span class="o">::</span><span class="no">Container</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+  <span class="n">mount</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<blockquote>
+  <blockquote>
+    <p>Mounting multiple Hanami applications on the same segment doesn’t work like mounting engines in Rails–only the first one will be served.</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Hanami</span><span class="o">::</span><span class="no">Container</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+  <span class="n">mount</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span>
+  <span class="n">mount</span> <span class="no">Workshop</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>In the example above the routes provided by <code>Workshop</code> will not be found. This means the mounted routes must be unique segments and you must leave the <em>greedier</em> one at the end, for example:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Hanami</span><span class="o">::</span><span class="no">Container</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+  <span class="n">mount</span> <span class="no">Workshop</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at</span><span class="p">:</span> <span class="s1">&#39;/workshop&#39;</span>
+  <span class="n">mount</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The routing syntax is reminishent of Rails and you will find a dose–not an overdose–of magic in Hanami.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># apps/APPLICATION_NAME/config/routes.rb</span>
+<span class="n">get</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&quot;games#index&quot;</span> <span class="c1"># =&gt; will route to GameZone::Controllers::Games::Index</span></code></pre></div>
+
+<p>to avoid the longer:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>   <span class="ss">to</span><span class="p">:</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">Controllers</span><span class="o">::</span><span class="no">Games</span><span class="o">::</span><span class="no">Index</span></code></pre></div>
+
+<h2 id="controller-actions">Controller actions</h2>
+
+<p>In Hanami the <a href="http://hanamirb.org/guides/actions/overview/">controller actions</a> are classes as opposed to Ruby on Rails class instance methods. This helps defining their single responsability and prevent bloated code sharing too much logic–in Hanami you can <a href="http://hanamirb.org/guides/actions/share-code/">share controller action logic</a> with a <code>prepare</code> block and callbacks.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">GameZone::Controllers::Games</span>
+  <span class="k">class</span> <span class="nc">Index</span>
+    <span class="kp">include</span> <span class="no">Hanami</span><span class="o">::</span><span class="no">Action</span>
+    <span class="n">expose</span> <span class="ss">:games</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+      <span class="vi">@games</span> <span class="o">=</span> <span class="no">Game</span><span class="o">.</span><span class="n">all</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Controller action instance variables will not be handed to the view template unless <a href="http://hanamirb.org/guides/actions/exposures/">exposed</a>–the <code>params</code> and <code>errors</code> variables are exposed by default. In the example above <code>@games</code> wouldn’t be available to the view without the <code>expose :games</code>.</p>
+
+<h2 id="domain-logic-and-persistence-layer">Domain logic and persistence layer</h2>
+
+<p>Hanami is ORM agnostic but it provides <a href="http://hanamirb.org/guides/models/overview/">hanami models</a> a structured persistence framework with <a href="http://hanamirb.org/guides/models/entities/">entities</a> and <a href="http://hanamirb.org/guides/models/repositories/">repositories</a> ideal in more complex domains where using <a href="http://guides.rubyonrails.org/active_record_basics.html">ActiveRecord</a> would be unsuitable–but Hanami won’t get in your way if that’s what you need. Just remember the “When to use” paragraph in Patterns of Enterprise Application Architecture:</p>
+
+<blockquote>
+  <blockquote>
+    <p>Active Record is a good choice for domain logic that isn’t too complex, such as creates, reads, updates, and deletes. Derivations and validations based on a single record work well in this structure.</p>
+  </blockquote>
+</blockquote>
+
+<p>For that reason Hanami models delegate validation at the controller action level–you can <a href="http://lucaguidi.com/2014/10/23/introducing-hanami-validations.html">read the full explanation here</a>.</p>
+
+<p>You won’t find <code>/models</code> inside the <code>/apps</code> directory–the application generator will build a properly namespaced structure in <code>/lib</code> and since Hanami <strong>does not have autoloading</strong> it must be required from <code>config/environment.rb</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">require_relative</span> <span class="s1">&#39;../lib/memory_game&#39;</span></code></pre></div>
+
+<p>Keep in mind the generators will add default require statements.</p>
+
+<h3 id="adding-more-domain-logic-with-gems">Adding more domain logic with gems</h3>
+
+<p>With Ruby namespaces alone you have some modularity but you can’t enforce a dependency structure and in complex domains your classes will end up creating a tangle of dependencies hard to follow. You can use ruby gems to handle your dependency structure.</p>
+
+<p>In this example I assume my application domain has <strong>significant logic</strong> related to calculating level progression using a statistical model so inside a <code>components</code> directory in the repository root I create two gems: <code>level_progression</code>, <code>bayesian_model</code>. The first depends on the latter and it will resolve that dependency internally without concerning the rest of the application. I only need to add the local gem <code>level_progression</code> to the Hanami application <code>Gemfile</code>:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">path</span> <span class="s1">&#39;components&#39;</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">&#39;level_progression&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>And <code>require 'level_progression'</code> in <code>config/environment.rb</code>. Now my actions can use:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">calculator</span> <span class="o">=</span> <span class="no">LevelProgression</span><span class="o">::</span><span class="no">Calculator</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">last_score</span><span class="p">,</span> <span class="n">current_score</span><span class="p">,</span> <span class="n">bonus</span><span class="p">)</span>
+<span class="n">calculator</span><span class="o">.</span><span class="n">next_level</span></code></pre></div>
+
+<p><strong>This same approach can be used in Rails and is a trait of <em>component based Rails architecture</em>.</strong></p>
+
+<h2 id="views-and-templates">Views and templates</h2>
+
+<p>In Hanami the separation between a controller action and its view layer is also well defined. The framework provides a <a href="http://hanamirb.org/guides/views/overview/">model-view </a> class linked to the controller action class that can act as a presenter in simple domains or instantiate more presenters in complex cases.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># apps/web/views/games/index.rb</span>
+<span class="k">module</span> <span class="nn">GameZone::Views::Games</span>
+  <span class="kp">include</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">View</span>
+
+  <span class="k">class</span> <span class="nc">Index</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The view will only have access to variables explicitly exposed from the controller action. There is no call to render–the framework takes care of passing from controller action to the apropriate view.</p>
+
+<p>A <code>GameZone::Views::Games::Index</code> view class will expect a template <code>templates/games/index.[format].[engine]</code>. What Rails calls <em>views</em> are called <a href="http://hanamirb.org/guides/views/templates/">templates</a> in Hanami and support popular Ruby templating like erb, haml, slim and more. </p>
+
+<h2 id="view-helpers">View helpers</h2>
+
+<p>In Rails you have a plethora of helpers available in your views. Hanami has a vast list of helpers added trough the optional <code>Hanami::Helpers</code> module–all are private so you must define an explicit interface in your view.</p>
+
+<p>For example using <code>format_number</code> directly in a template like:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;%=</span> <span class="n">format_number</span> <span class="n">game_session</span><span class="o">.</span><span class="n">current_score</span> <span class="o">%&gt;</span></code></pre></div>
+
+<p>will raise <code>NoMethodError: undefined method 'format_number'</code>. Instead it must be wrapped in a <code>current_score</code> helper method in the view like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># apps/game_zone/views/game_sessions/show.rb</span>
+<span class="k">module</span> <span class="nn">GameZone::Views::GameSessions</span>
+  <span class="kp">include</span> <span class="no">GameZone</span><span class="o">::</span><span class="no">View</span>
+
+  <span class="k">class</span> <span class="nc">Show</span>
+    <span class="k">def</span> <span class="nf">current_score</span>
+      <span class="c1"># I am assuming the GameZone::Controllers::GameSessions::Show</span>
+      <span class="c1"># to expose game_session</span>
+      <span class="n">format_number</span> <span class="n">game_session</span><span class="o">.</span><span class="n">current_score</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Then called in the template with:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;%=</span> <span class="n">current_score</span> <span class="o">%&gt;</span></code></pre></div>
+
+<p>Hanami counterpart to Rails’s custom helpers is based on plain Ruby and well explained <a href="http://hanamirb.org/guides/helpers/custom-helpers/">in its dedicated guides section</a>. If you have larger more complex custom helpers you can still adopt the <a href="http://teotti.com/building-intention-revealing-ruby-on-rails-helpers/">intention revealing helpers</a> strategy.</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+
+<p>Hanami isn’t an overnight hack–it’s been under development for over one year, its semantic versioned API is stable, people are using it in production and you can see passion and attention to detail in its modular design, automated tests, and <a href="http://hanamirb.org/guides">documentation</a>.</p>
+
+<p>Now you might wonder <em>who’s the winner?</em> Hanami and regular Rails excel in different areas knowing what your application needs is critical.</p>
+
+<p>If are working on a production Rails application before thinking to migrate it to Hanami evaluate <a href="http://teotti.com/component-based-rails-architecture-primer/">component based architecture</a>.</p>
+
+<p>Before committing to Hanami check for outstanding <a href="https://github.com/hanami/hanami/issues">github issues</a> some might be blocking you as well as missing features your might got used to from Rails. Luca and the team are helpful and inclusive if you want to contribute on fixing outstanding bugs–if after reading the <a href="http://hanamirb.org/guides/">Hanami documentation</a> you have questions the <a href="https://gitter.im/hanami/chat">chatroom</a> is a fast way to get feedback.</p>
+
+<p>I hope the article has sparkled interest in what Hanami has to offer. I only scratched the surface and skipped topics like <a href="http://hanamirb.org/guides/actions/testing/">testing</a>, <a href="http://hanamirb.org/guides/actions/http-caching/">caching</a>, <a href="http://hanamirb.org/guides/migrations/overview/">migrations</a>, <a href="http://hanamirb.org/guides/actions/sessions/">sessions</a> all covered in detail in Hanami excellent guides.</p>
+
+<p>I am looking forward to hear other Ruby and Rails developers feedback on Hanami.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/rails-service-oriented-architecture-alternative-with-components/" itemprop="url">Rails service oriented architecture alternative with components</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/rails">rails</a>,  <a href="/topics/ruby">ruby</a>,  <a href="/topics/hanami">hanami</a>,  <a href="/topics/lotus">lotus</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

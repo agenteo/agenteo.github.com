@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Reengineer legacy Rails applications</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Reengineer legacy Rails applications" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="**In this article I describe the steps I use to regain control of [big ball of mud](http://www.laputan.org/mud/) Ruby on Rails applications. The objective is defining the application operational boundaries by iteratively transition its procedural code to modular using a Gem based dependency structure.** I will guide you trough a **preparation**..." />
+  
+  <meta property="og:url" content="http://teotti.com/reengineer-legacy-rails-applications/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/reengineer-legacy-rails-applications/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Reengineer legacy Rails applications</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2015-11-07T00:00:00+00:00">07 Nov 2015</time>
+              , tagged on  <span class="post-tag-ruby"><a href="/topics/ruby">ruby</a></span> <span class="post-tag-ruby-on-rails"><a href="/topics/ruby-on-rails">ruby-on-rails</a></span> <span class="post-tag-component-based-rails-architecture"><a href="/topics/component-based-rails-architecture">component-based-rails-architecture</a></span> <span class="post-tag-workflow"><a href="/topics/workflow">workflow</a></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p><strong>In this article I describe the steps I use to regain control of <a href="http://www.laputan.org/mud/">big ball of mud</a> Ruby on Rails applications. The objective is defining the application operational boundaries by iteratively transition its procedural code to modular using a Gem based dependency structure.</strong> </p>
+
+<p>I will guide you trough a <strong>preparation</strong> to make sure this technique is what you need and highlight the challenges ahead, after that there is a critical section to <strong>understand what the application does</strong>, then we move on the technical part where I explain how to <strong>identify and iteratively transition code in to a library encapsulating its operational contexts</strong> and the last section is about <strong>drawbacks and what else can be done</strong>.</p>
+
+<p>In this article I will use a simplified example adapted from a combination of real life projects I worked on. Some of the practices I describe assume a colocated team and product owner but could be adapted to distributed teams.</p>
+
+<p><strong>This is an advanced article that assume you’re familiar with component based architecture, and know how to create and work with Ruby gems and Rails engines.</strong> I recommend reading <a href="http://teotti.com/component-based-rails-architecture-primer/">a component based Rails architecture primer</a> or visit <a href="http://cbra.info">CBRA</a> for an introduction.</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<p><strong>Right now</strong> your team is struggling to deliver business value because adding any new functionality to the code is a daunting experience. You have several god objects–models,services,controllers–causing cognitive overload by <strong>tangling responsibilities that belong to different application operational contexts</strong>.</p>
+
+<p>This article doesn’t document the challenges of reengineering application context built with a heavily customized Rails plugins foundation. The Rails plugins functionality usually pollute the global namespace and foster the creation or expansion of god objects forcing the components to depend on the main application functionality and reducing the effectiveness of a dependency structure.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/big-ball-of-mud.png" alt="This is what your application looks like today to a new developer." /></p>
+
+<p><strong>If you follow this article</strong> you will re-engineer your application to have a directory structure stating its operational contexts and defining a dependency structure allowing developers to add functionality to a dedicated section of the code confident it’ll only affect that <strong>component</strong>. Local Ruby Gems and Rails engines are the technical tool to create those components.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Final result to the eye of a new or seasoned developer." /></p>
+
+<p>Eventually the Rails application will have no functionality and just load the Engine high level entry points.</p>
+
+<h3 id="before-you-start">Before you start</h3>
+
+<p>Re-engineering software will feel like bringing up walls in a sea of mud–only a very diligent development team can prevent the mud from getting in. Make sure all the developers express their opinion on this and they are ok to try it for a period of time or in a certain application context. <strong>Do not start this if the team is against it–instead ask them to formulate a different plan to let the application deliver business value again</strong>. </p>
+
+<p><strong>Select a few measurable results to monitor progress</strong> ie. feature delivered, bug reports, team mood, code metrics. Collect this every week and display it on your whiteboard. Do your best job but don’t be afraid to call the codebase not salvageable if you don’t see measurable progress.</p>
+
+<h3 id="no-naming-no-blaming-but-incrementally-improving">No naming no blaming but incrementally improving</h3>
+
+<p>The application is in the state it is today for different reasons. Some of the initial team might not be around anymore some might be and their feelings on the application are probably mixed. Everyone has surely made mistakes and learned lessons on the project–<strong>make sure there is no blaming or naming individuals over code quality or the current state of the project</strong>. Remember Kerth’s prime directive:</p>
+
+<blockquote>
+  <blockquote>
+    <p>Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.</p>
+  </blockquote>
+</blockquote>
+
+<p>Also remember this popular quote:</p>
+
+<blockquote>
+  <blockquote>
+    <p>Errare humanum est, sed in errare perseverare diabolicum</p>
+  </blockquote>
+</blockquote>
+
+<p>which translates to <em>To err is human, but to persist in error is diabolical</em>.</p>
+
+<h2 id="understand-what-the-application-does">Understand what the application does</h2>
+
+<p>Let’s start by stating the obvious: you can’t re-engineer an application without understanding what it does and gather the contexts it operates on–your product owner or stakeholders should be able to help with that. If there is no product owner or if the product owner doesn’t know perhaps the maintenance team knows.</p>
+
+<p><strong>The absence of a dedicated product owner transforms reengineering in merely technical task that will only deliver technical results and not necessarily business value.</strong></p>
+
+<p>Start by getting a 5 minutes summary of what the application does from a tech lead or product owner and then schedule a timeboxed session to <strong>sketch the application high level moving parts and contexts on a whiteboard in front of the whole development team</strong>–everybody regardless of their title or experience should be allowed to pitch in.</p>
+
+<p>Applications usually operate in a few different contexts and looking at them everyday on a whiteboard can help developers organize code that way.</p>
+
+<blockquote>
+  <blockquote>
+    <p>The example application for this article is a car sharing service. A registered member can go on the website or app and book a car (<strong>booking</strong>). The member uses a key fob to open the car, the car fob reader contacts the API to notify the system about ongoing trips and when the car was picked up/dropped off (<strong>trip</strong>). The car sharing company run monthly payments based on member car usages (<strong>payment</strong>).</p>
+  </blockquote>
+</blockquote>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/simplified-example.png" alt="Our simplified example" /></p>
+
+<h2 id="identify-and-set-application-boundaries">Identify and set application boundaries</h2>
+
+<p>Retrofitting components in an existing Rails application requires a different strategy then when introducing them incrementally in a brand new application.</p>
+
+<p>Your product owner must decide which functionality is the most valuable and that’s usually the one you should start re engineering on. If you’re not feeling confident just pick a less critical functionality.</p>
+
+<p>Now gather this functionality entrypoints meaning Rails routes and controllers. In our example that could be the reservation booking and payments APIs or the trip API used to track car returns.</p>
+
+<p><strong>A single controller handling multiple business workflows is an anomaly that will complicate the creation of clear boundaries.</strong> A ReservationController should not handle a reservation booking and a reservation payment so you have two options:</p>
+
+<ul>
+  <li>refactor to separate the logic in two controllers <code>ReservationBookingController</code> and <code>ReservationPaymentController</code></li>
+  <li>duplicate the entrypoint controller code</li>
+</ul>
+
+<p>You can do a combination of the two if you have shared private controller methods like:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ReservationController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">book</span>
+    <span class="c1"># booking code</span>
+    <span class="c1"># private_method_call</span>
+    <span class="c1"># using instance variable</span>
+    <span class="c1"># more booking code</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">pay</span>
+    <span class="c1"># payment code</span>
+    <span class="c1"># private_method_call</span>
+    <span class="c1"># using instance variable</span>
+    <span class="c1"># more payment code</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>inside the <code>BookingApi</code> engine:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">BookingApi</span>
+  <span class="k">class</span> <span class="nc">ReservationController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">create</span>
+      <span class="c1"># booking code</span>
+      <span class="c1"># private_method_call</span>
+      <span class="c1"># using instance variable</span>
+      <span class="c1"># more booking code</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>and inside the <code>PaymentApi</code> engine:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">PaymentApi</span>
+  <span class="k">class</span> <span class="nc">ReservationController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">create</span>
+      <span class="c1"># payment code</span>
+      <span class="c1"># private_method_call</span>
+      <span class="c1"># using instance variable</span>
+      <span class="c1"># more payment code</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>I am not an advocate of duplication but if refactoring is an endeavour that exceed the allocated time I consider duplication a valid temporary option–<strong>be sure to leave a contextual commit message in version control to describe the reasoning behind your strategy</strong>.</p>
+
+<h3 id="rotting-routes">Rotting routes</h3>
+
+<p>Sometime the thousand line long <code>routes.rb</code> has unused entries indicating unused code. Monitor the production logs to ensure which entry points are used and flag the rest for deprecation and removal. If it was indeed used version control will allow you to roll back.</p>
+
+<h3 id="integration-tests-are-critical">Integration tests are critical</h3>
+
+<p>The behaviour that’s moving from the main application in to a entry point component must be exercised by <strong>acceptance tests</strong> or you risk to spawn bugs hard to detect. </p>
+
+<p>When the application has a complete lack of automated tests introduce just enough to be comfortable about the workflow you are moving.</p>
+
+<p><strong>If the project has a high defect rates and low deliverables and your organization is completely ignoring TDD you need to first introduce that and some agile methodologies or any reengineering effort will be futile</strong>.</p>
+
+<p>When a component is introduced incrementally in an application with a dependency structure those integration test would live within the component to exercise it in isolation. Big ball of mud applications have a tangle of dependencies be pretty hard to fix in one step so it’s ok to leave the component integration tests in the main application and initially just move <strong>route or controller tests</strong>.</p>
+
+<p>Creating a Ruby gem or Rails engine is not the focus of this article–I explained that in <a href="http://teotti.com/component-based-rails-architecture-primer/">a component based Rails architecture primer</a>.</p>
+
+<p>At this stage your new components <code>payment_api</code> and <code>booking_api</code> implements the entry points of the payment and booking context. Some entrypoint–the trip API in our example–remain in the main application which is fine. The objective is to restructure in small steps focusing on what the product owner wants delivered and it’s ok to leave some never changing code in the main application.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/first-components.png" alt="First components (Rails engines in this case) taking some routing and controller logic away from the main application" /></p>
+
+<h3 id="move-related-classes-in-the-components">Move related classes in the components</h3>
+
+<p>Once all the entry points of a context live in high level entry point component you can start focusing on moving code only used there–these could be service objects, presenters, ActiveRecord models. Remember not to follow the <a href="http://teotti.com/application-directories-named-as-architectural-patterns-antipattern/">application directories named as architectural patterns antipattern</a>.</p>
+
+<p>If you encounter classes used in more then one context timebox a refactoring and fallback to duplicate the code. <strong>Using duplication everywhere is not sustainable</strong>–if that’s what’s happening increase the refactoring time or involve the whole team on a retrospective on why refactoring never yield results. Make sure this task has the most experienced developer anchoring the task and pairing to share the work done with the rest of the team.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/components-encapsulating-all-logic.png" alt="Components encapsulating all logic" /></p>
+
+<p>Sometime a Rails engine component is sufficient to encapsulate all the logic of one context but more often I’ve seen part of its behaviour split in a separate Ruby Gem component. In this example the payment might need a fair amount of logic to recalculate the booking quote and that section of the payment could be moved to a separate component Gem <code>quote_recalculator</code> only used by the <code>payment_api</code> Engine component.</p>
+
+<p><strong>The advantage</strong> of that is an intention revealing dependency structure that reduce the cognitive load. <strong>The danger</strong> is to split in too fine grained components creating a dependency structure that is purely technical and doesn’t follow any business rule.</p>
+
+<p>My guideline is to map business operational areas in to objects names and namespaces. When more then two or three concepts are living in a single namespace I ask the business owner if this is a different context. As a baseline use Conway’s law:</p>
+
+<blockquote>
+  <blockquote>
+    <p>organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="what-to-do-next">What to do next</h2>
+
+<p>Once the code is in a recognizable state keeping it that way will require diligence.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Ideal final dependency structure." /></p>
+
+<p>When the main Rails application loads all the Engine and Gem components Ruby will not enforce their dependency structure.</p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/in-memory-representation.png" alt="Actual in memory representation" /></p>
+
+<p>In a Rails application a component can access any component breaking encapsulation. <strong>This is not a Rails problem but a limitation–or design choice–of Ruby that you should be very aware of.</strong></p>
+
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/what-could-go-wrong.png" alt="Only automated tests can prevent this" /></p>
+
+<p><strong>Automated tests exercising the components in isolation is the only warning for a broken dependency structure</strong>.</p>
+
+<p>Make sure when you’re onboarding new developers they know about the business context and the components responsibilities. I like to create a one sentence README in each component root directory explaining its responsibility and its intended boundary of operation.</p>
+
+<p>As you gather more information from your product owner and better understand the domain those boundaries will inevitably shift and so will your Engine and Gems components names and responsibility. </p>
+
+<p>Once you’re here a secondary objective can be to migrate certain contexts to a brand new technology in the so called <a href="http://paulhammant.com/2013/07/14/legacy-application-strangulation-case-studies/">strangler pattern</a>.</p>
+
+<p>Once you encapsulate portions of your Rails application in to a high level component you can <a href="http://teotti.com/feature-flagging-portions-of-your-ruby-on-rails-application-with-engines/">deploy it in isolation</a>, <a href="http://teotti.com/reduce-memory-footprint-requiring-portions-of-your-component-based-rails-applications/">reducing the whole application memory footprint</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Re-engineering is hard work and inside a Ruby application there is a lot of freedom that makes automated refactoring harder then in compiled languages.</p>
+
+<p>Applications using a lot of meta programming or conventional Rails plugins and practices might be impractical to re-engineer.</p>
+
+<p>Don’t be fooled in to switching to a <a href="http://teotti.com/rails-service-oriented-architecture-alternative-with-components/">service oriented architecture</a> for code organization. A modular monolithic application is better then an overengineered service oriented application.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/application-directories-named-as-architectural-patterns-antipattern/" itemprop="url">Application directories named as architectural patterns antipattern</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/ruby">ruby</a>,  <a href="/topics/ruby-on-rails">ruby-on-rails</a>,  <a href="/topics/component-based-rails-architecture">component-based-rails-architecture</a>,  <a href="/topics/workflow">workflow</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

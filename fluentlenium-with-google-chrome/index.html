@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Fluentlenium with Google Chrome</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Fluentlenium with Google Chrome" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="[Fluentlenium](http://www.fluentlenium.org/) is a Java acceptance test tool hinting to code maintainability thanks to native support for [page objects](http://martinfowler.com/bliki/PageObject.html) working out of the box with Firefox and therein lies the rub. There isn't much documentation on their page on how to switch to Google Chrome so that's what this article is..." />
+  
+  <meta property="og:url" content="http://teotti.com/fluentlenium-with-google-chrome/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/fluentlenium-with-google-chrome/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/fluentlenium-with-google-chrome/hero.jpg )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Fluentlenium with Google Chrome</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2016-04-13 00:00">13 Apr 2016</time>
+              , tagged on  <span class="post-tag-java"><a href="/topics/java">java</a></span> <span class="post-tag-testing"><a href="/topics/testing">testing</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p><a href="http://www.fluentlenium.org/">Fluentlenium</a> is a Java acceptance test tool hinting to code maintainability thanks to native support for <a href="http://martinfowler.com/bliki/PageObject.html">page objects</a> working out of the box with Firefox and therein lies the rub.</p>
+
+<p>There isn’t much documentation on their page on how to switch to Google Chrome so that’s what this article is about.</p>
+
+<p><strong>First having Google Chrome installed on your OS is not sufficient</strong>–you must get <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">chrome driver</a>.</p>
+
+<p>Once that’s done you need to override the default <em>fluentlenium</em> driver with:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">WebDriver</span> <span class="n">driver</span><span class="o">;</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">WebDriver</span> <span class="nf">getDefaultDriver</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;webdriver.chrome.driver&quot;</span><span class="o">,</span> <span class="n">PATH_TO_CHROME_DRIVER</span><span class="o">);</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ChromeDriver</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">driver</span><span class="o">;</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Change <code>PATH_TO_CHROME_DRIVER</code> to the path to the chromedriver you downloaded to your machine. Here’s the full code adapted from fluentlenium homepage to use Chrome:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.fluentlenium.adapter.FluentTest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.WebDriver</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.chrome.ChromeDriver</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">assertj</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PlayTest</span> <span class="kd">extends</span> <span class="n">FluentTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">WebDriver</span> <span class="n">driver</span><span class="o">;</span>
+    <span class="c1">// Overrides the default driver</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">WebDriver</span> <span class="nf">getDefaultDriver</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;webdriver.chrome.driver&quot;</span><span class="o">,</span> <span class="s">&quot;/Users/agenteo/Downloads/chromedriver&quot;</span><span class="o">);</span>
+        <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ChromeDriver</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">driver</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">title_of_bing_should_contain_search_query_name</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">goTo</span><span class="o">(</span><span class="s">&quot;http://www.bing.com&quot;</span><span class="o">);</span>
+        <span class="n">fill</span><span class="o">(</span><span class="s">&quot;#sb_form_q&quot;</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="s">&quot;Teotti&quot;</span><span class="o">);</span>
+        <span class="n">submit</span><span class="o">(</span><span class="s">&quot;#sb_form_go&quot;</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">title</span><span class="o">()).</span><span class="na">contains</span><span class="o">(</span><span class="s">&quot;Teotti&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/sikulix-automated-testing-with-image-recognition/" itemprop="url">SikuliX automated testing with image recognition</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/java">java</a>,  <a href="/topics/testing">testing</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

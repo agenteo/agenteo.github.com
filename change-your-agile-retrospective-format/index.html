@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Time to change your agile retrospective format?</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Time to change your agile retrospective format?" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="In this article--targeted to retrospective facilitators--I describe my experience going from a simple retrospective format to a more structured one following Derby and Larsen's book on Agile Retrospectives. I've seen the first format working for teams of 2/3 developers new to retrospectives but it was ineffective for larger teams on..." />
+  
+  <meta property="og:url" content="http://teotti.com/change-your-agile-retrospective-format/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/change-your-agile-retrospective-format/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/time-to-change-your-agile-retrospective-format/hero.png )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Time to change your agile retrospective format?</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2017-08-23 00:00">23 Aug 2017</time>
+              , tagged on  <span class="post-tag-workflow"><a href="/topics/workflow">workflow</a></span> <span class="post-tag-retrospectives"><a href="/topics/retrospectives">retrospectives</a></span> <span class="post-tag-agile"><a href="/topics/agile">agile</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>In this article–targeted to retrospective facilitators–I describe my experience going from a simple retrospective format to a more structured one following Derby and Larsen’s book on Agile Retrospectives.</p>
+
+<p>I’ve seen the first format working for teams of 2/3 developers new to retrospectives but it was ineffective for larger teams on challenging projects–it ended up feeling like a status update meeting–so I introduced to the second format. </p>
+
+<p>I start by describing what I call a classic retrospective and the biggest risk I encountered with it. Then I describe the structured retrospective I introduced. Finally some tradeoffs of the structured retrospective.</p>
+
+<p>I gave a 15 minutes talk about this subject at Pivotal Labs in Los Angeles, you can watch it <a href="https://www.youtube.com/watch?v=-Pw-p6DzvFQ">here</a>. If you’re interested I wrote a blog post about <a href="http://teotti.com/measure-success-of-your-agile-retrospective/">measuring retrospective success</a>.</p>
+
+<p><strong>This article is about retrospective for co-located teams</strong>.</p>
+
+<h2 id="the-classic-retrospective">The classic retrospective</h2>
+
+<p>If you’re practicing a retrospective it’s very likely that this is the format you’re using.</p>
+
+<p>The whole team gets in a room.</p>
+
+<p>Then a random person is picked as the facilitator to ensure the conversations are kept on track and timeboxed.</p>
+
+<p>Then the whole group starts adding last iteration events to a whiteboard–or an electronic equivalent–with three columns:</p>
+
+<ul>
+  <li>mad</li>
+  <li>sad</li>
+  <li>glad</li>
+</ul>
+
+<p>representing the feeling that the event triggered <strong>for that person</strong>. Multiple variations of this exists–ie. start, stop, continue–but the root activity stays the same.</p>
+
+<p>After the team is done adding items the facilitator kicks off the retrospective by reviewing the outcome of the last retrospective and then starting timeboxed discussions about each event on the board.</p>
+
+<p>The facilitator is also asking if there is any “action item” to make that event better. In this retrospective format an action item is often described as an attempt to prevent a negative event from reoccurring.</p>
+
+<blockquote>
+  <blockquote>
+    <p>Sometime the scrum master act as the facilitator. In my experience is very unlikely that the team will recognize the same person pressing for delivery and deadlines as an unbiased facilitator. The result will be that <strong>the retrospective will feel just like a status update meeting</strong>.</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="pro-of-this-retro">Pro of this retro</h3>
+
+<ul>
+  <li>It’s really simple to explain to people new to retrospectives because the format is always the same</li>
+  <li>Everybody’s event is very likely to be–perhaps briefly–discussed</li>
+  <li>The facilitator can be a random team member and doesn’t need any special training (not quite true but more on this …)</li>
+</ul>
+
+<h3 id="cons-of-this-retro">Cons of this retro</h3>
+
+<ul>
+  <li>A <strong>randomly picked facilitator</strong> might not have the skills,empathy or willingness to manage arguments. In extreme cases I’ve seen that person <strong>hijack the retrospective making it about a subject of his/her interest</strong>.</li>
+  <li>Using the same format for months <strong>won’t keep people’s brain engaged</strong>. It’s the responsibility of a diligent facilitator to do that.</li>
+  <li>The mad, sad, glad–or whatever names you use–is an effective way to collect events but <strong>can’t generate insight of the overarching problems that generates them</strong>.</li>
+</ul>
+
+<h2 id="the-biggest-risk-is">The biggest risk is…</h2>
+
+<p><strong>focusing on each event and missing an opportunity to see the overarching root cause.</strong></p>
+
+<p>This is an example based on a real project I was on: a sad face on “slow deployment” and someone starts talking about <em>“how deployments take over a long time and that’s really slow yada yada yada”</em> so someone comes up with an <strong>“action item”</strong> to <strong>“investigate deployment speed”</strong>.</p>
+
+<p>Then a meh item is <em>“integration with the BAM API is unreliable”</em> and someone talks about <em>“how 3 out of 5 times BAM is down”</em> and so someone comes with another <strong>“action item”</strong> to <strong>“use circuit breaker pattern to tackle BAM unavailability”</strong>. </p>
+
+<blockquote>
+  <blockquote>
+    <p>These “action items” seem adequate solutions to each problem but by attempting to individually fix them we obfuscate a possible overarching issue and might miss the root cause that would affect them both.</p>
+  </blockquote>
+</blockquote>
+
+<p>In this example the overarching problem–unveiled by the structured retrospective I’ll introduce next–was miscommunication with the BAM team which was also sharing the responsibility of dev-ops deployments. Later in the article I’ll describe the experiment we attempted to fix that.</p>
+
+<h2 id="so-whats-the-alternative">So what’s the alternative?</h2>
+
+<p>A quick fix would be introducing pattern matching. After the board is filled up the whole team works towards grouping the events. But what about the multiple action items? And the rotating facilitator?</p>
+
+<p>Let’s be clear: it’s critical for the facilitator to be skilled or willing to learn and experiment. <strong>Facilitation is a very hard job and it’s too often dismissed</strong>. Ideally the facilitator is external to the team so it doesn’t have a stake in the project.</p>
+
+<blockquote>
+  <blockquote>
+    <p>Have you tried to borrow a facilitator from another team?</p>
+  </blockquote>
+</blockquote>
+
+<p>The facilitator should try a structured retrospective. For the sake of this article’s clarity I use the word structured to distinguish it from the mad,sad,glad + action item that I’ll call “classic retrospective”.</p>
+
+<p>A structured retrospective is divided in 5 parts:</p>
+
+<ul>
+  <li>setting the stage (5 minutes)</li>
+  <li>gather data (20 minutes)</li>
+  <li>generate insight (15 minutes)</li>
+  <li>plan an experiment (10 minutes)</li>
+  <li>close up (10 minutes)</li>
+</ul>
+
+<p>I divided the activities so the retrospective would last 60 minutes. I suggest you schedule it for 75 minutes for padding between activities. If you have iterations longer then one week you might need more time. It’s very unlikely that you can achieve an effective retrospective in less then one hour I used a visual timer so the group can see how much time is left. </p>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timetimer.jpg" alt="" /></p>
+
+<p>One of the major differences from the “classic retrospective” is the <strong>plan an experiment</strong> part focused on one experiment rather then a series of “action items”.</p>
+
+<p>People accustomed to the classic version want to focus the retrospective on their topic so explain that that might not happen and that instead the team will focus on what has higher priority for the group.</p>
+
+<p><strong>This might upset someone</strong> using retrospectives to vent their feelings. Make sure that there is still a place for them to do that perhaps before the retrospective.</p>
+
+<blockquote>
+  <blockquote>
+    <p>As the facilitator have you asked your team <strong>what will achieve value for time invested in this retrospective?</strong></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>As the facilitator have you asked your team <strong>what have we tried before? what happened? what would you like to happen differently?</strong></p>
+  </blockquote>
+</blockquote>
+
+<p>Make sure the retrospective objective is <strong>defined by the team</strong>.</p>
+
+<h3 id="setting-the-stage">Setting the stage</h3>
+
+<p>Asking those two questions is a good way to <em>set the stage</em> and make sure everybody understands the purpose of the retrospective. One of my favourites exercise is to read <em>Kerth’s prime directive</em>:</p>
+
+<blockquote>
+  <blockquote>
+    <p>Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.</p>
+  </blockquote>
+</blockquote>
+
+<p>ask for a verbal yes from each member. If there are individuals not willing to set aside opinions–at least for the sake of the retrospective–then you have a bigger problem and you should cancel the retrospective. There might be someone in the room that people don’t feel comfortable around or other group dynamics that need investigation. Have one on one conversations with those individuals that didn’t agree with the directive and investigate what their opinion is.</p>
+
+<p>The retrospective should be a no naming no blaming activity and the prime directive is a strong and meaningful sentence that encapsulates those values.</p>
+
+<h4 id="explorer-shopper-vacationer-prisoner">Explorer, Shopper, Vacationer, Prisoner</h4>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/esvp.png" alt="ESVP" /></p>
+
+<p>A good activity to discover–or track–team interest about the retrospective is ESVP. You will <strong>anonymously</strong> collect how the participants feel about the retrospective.</p>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/explorer.jpg" alt="the explorer" /></p>
+
+<p>At one end the explorer wanting to leave no stone unturned and enthusiastically learn as much as possible.  At the opposite end the prisoner that was forced in to the retrospective.</p>
+
+<p>If you have a room full of prisoners you should consider cancel the retrospective. Having occasional prisoners is ok–<strong>make sure you acknoledge their presence and thank them for their patience and participation</strong>.</p>
+
+<p><strong>Do not ask who’s the prisoner</strong> if they feel like speaking up they will.</p>
+
+<p>In one retrospective I facilitated I had some prisoners. I eventually learned–during the closeout step–that the time of the retro was too close to the end of day forcing them to rush catching their train back home.</p>
+
+<blockquote>
+  <blockquote>
+    <p>Make sure you comunicate to the group how long the retrospective will last and commit to end on time.</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="gather-data">Gather data</h3>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timeline.png" alt="" /></p>
+
+<p>I asked the team to collect data during the week on a <a href="https://www.infoq.com/articles/rising-continuous-retrospective">continuous timeline</a> so during retrospective they could read that and <strong>remember</strong> what happened during that iteration–add new things if they forgot–ask each other questions and be ready for the next step.</p>
+
+<p><strong>It’s important for the whole team to read and understand what’s on the board.</strong></p>
+
+<p>Some of those events can be color coded at the time of the writing or you can decide to color code during the retrospective. The second option might spark interesting conversations because an event–ie. quick and dirty refactoring–that is sad from the eyes of the author could be a happy for others.</p>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timeline-color-coded.png" alt="" /></p>
+
+<p>Other good pieces of data to show at this point are number of delivered stories/points, number of deployments, bug count.</p>
+
+<p>The timeline should collect events–and hard data–for example: “spent 16 hours fixing the dropdown bug” instead of “we don’t deliver fast enough” which is a personal consideration. Personal consideration and feeling are important and they will be discussed in the next step: generate insight.</p>
+
+<blockquote>
+  <blockquote>
+    <p>Suggestion: If you’re keeping the post-its from the weekly continuous timeline for a longer project retrospective I found it useful to timestamp the iteration week to facilitate the creation of the project timeline:</p>
+  </blockquote>
+</blockquote>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timestamped-events.png" alt="" /></p>
+
+<h3 id="generate-insight">Generate insight</h3>
+
+<p>Once we have information about what happened on the last iteration the team can start looking for patterns. Ask them to move the events in to groups/topics. As a facilitator make sure the whole team participate.</p>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/generate-insight.png" alt="" /></p>
+
+<p>You should now be halfway trough your restrospective and have a handful of overarching topics. Ask the team to vote on each group so the one with highest count will be the focus of the experiment.</p>
+
+<h4 id="it-doesnt-always-work">It doesn’t always work</h4>
+
+<p>If the group is large or the team has a lot of friction it might be hard to decide a topic to discuss within the time allocated for retro. In that case is good to prepare a list of topics to generate insight on. I like to ask those to individual team members before the retro.
+<img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/team-radar.jpg" alt="team radar" /></p>
+
+<p>During team radar people vote from 0 to 10 how well the team perform on a number of topics. Then the conversation starts and the facilitator add notes as people talk about the reason for their votes. This is a direct way to generate insights on specific areas/topics.</p>
+
+<h3 id="experiment">Experiment</h3>
+
+<p>Once one ovearching topic has been identified it’s time to formalize a measurable experiment to incorporate in the next iteration. I like to stick it to the timeline so everyone can read it.</p>
+
+<p><img src="http://teotti.com/assets/article_images/change-your-agile-retrospective-format/experiment.png" alt="" /></p>
+
+<p>I like the experiment to have the following format:</p>
+
+<ul>
+  <li><strong>Hypotesis</strong>: “a supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation”.</li>
+  <li><strong>Experiment</strong>: “a procedure undertaken to test a hypothesis”</li>
+  <li><strong>Measurement</strong>: having measurements help determine if the experiment was successful or not</li>
+</ul>
+
+<p>example one:</p>
+
+<ul>
+  <li>Hypotesis: Having two BAM API developers pairing–ideally on site–with the team will help speed up deployments and debug BAM problems.</li>
+  <li>Experiment: Propose to the BAM team manager to have two devs to work next to the team. If not possible use remote desktop sharing with webcams to see each other.</li>
+  <li>Measurement: Count number of times BAM is not operational. How long it takes for BAM to be operational again. How many times BAM developers are pairing on site. How many times BAM developers are pairing remotely.</li>
+</ul>
+
+<p>example two:</p>
+
+<ul>
+  <li>Hypotesis: The team agrees that: 9’oclock is an acceptable standup time and starting standup everyday at the same time regardless of who’s missing.</li>
+  <li>Experiment: Standup starts at 9am everyday with a–weekly–facilitator assigned on the calendar. If the measurement shows low presence reschedule standup at 9.30am. Enrico will create the facilitator calendar for the next 2 months.</li>
+  <li>Measurement: How many times standup starts after 9? How many people are missing the 9’oclock standup.</li>
+</ul>
+
+<h3 id="closing">Closing</h3>
+
+<p>Now is the time to finish the retrospective and there are two activities I like.</p>
+
+<p>One is to end on a high note with the <strong>apreciation</strong> activity. This activity is <strong>only for praises</strong>.  For example: <strong>I apreciate Linda for her hard work commuting everyday to be onsite.</strong> or <strong>I apreciate David for his honest feedback while discussing code.</strong></p>
+
+<p><strong>There will be akward silence.</strong></p>
+
+<p>Remind everyone to think back the whole iteration and that even small things should be brough out.</p>
+
+<p>I facilitate a team where people were offsite and unable to attend the retrospective so I suggested to write the apreciation on a piece of paper and let the product owner delier that once back at the office.</p>
+
+<p>Another activity is to get retrospective feedback from the group. I’d start with anonymous feedback. This is a great way to make sure you and the group are on the same page.</p>
+
+<h2 id="cons-of-a-structured-retrospective">Cons of a structured retrospective</h2>
+
+<p>I was told this retrospective format feels like you’re working. It’s true. The facilitator needs to prepare activities and collect data and the group will need to be much more engaged and will feel like they’re working rather then sitting in a status meeting. I think this is good but be prepared.</p>
+
+<p>If you don’t have a willing facilitator it’s hard to introduce this retrospective format.</p>
+
+<p>In small teams of 2/3 individuals this format is not very effective. I tried and the folks didn’t see an advantage over the classic format.</p>
+
+<p>The activities are made for face to face interactions and are much harder–sometime inadeguate–to run with remote folks. With a remote team try run the structured retrospective when the team meets face to face.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If your classic retrospective feels like a status meeting I hope you will switch to a structured one and pick some new activities from this article and <a href="http://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649">Derby&amp;Larsen book</a>.</p>
+
+<p>I’d love to hear your experiences and challenges switching from a classic to structured retro in the comments. If you’d rather start a 1:1 conversation feel free to private message me on twitter @agenteo.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/" itemprop="url">Concourse pipeline for consumer driven tests with Spring boot and Ruby</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/workflow">workflow</a>,  <a href="/topics/retrospectives">retrospectives</a>,  <a href="/topics/agile">agile</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

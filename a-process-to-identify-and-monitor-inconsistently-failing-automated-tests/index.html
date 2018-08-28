@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>A process to identify and monitor inconsistently failing automated tests</title>
+  <meta name="description" content="developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="A process to identify and monitor inconsistently failing automated tests" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:description" content="Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust in the entire automated test approach. I came..." />
+  
+  <meta property="og:url" content="http://teotti.com/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/" />
+
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+
+  <link rel="canonical" href="http://teotti.com/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57294014-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d976e32f0ec904" async="async"></script>
+
+    <!-- header start -->
+
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg )" >
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">A process to identify and monitor inconsistently failing automated tests</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
+              on
+              <time datetime="2015-02-16 00:00">16 Feb 2015</time>
+              , tagged on  <span class="post-tag-work"><a href="/topics/work">work</a></span> <span class="post-tag-testing"><a href="/topics/testing">testing</a></span> <span class="post-tag-process"><a href="/topics/process">process</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <p>Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new features. When it has inconsistently failing tests (often referred to as flaky tests) it generates mistrust in the entire automated test approach.</p>
+
+<p>I came up with a workflow to help identify and monitor inconsistently failing automated tests to increase trust in your build and your process.</p>
+
+<h2 id="do-not-commit-broken-code">Do not commit broken code</h2>
+
+<p>Might sound naive but you can facilitate that by making sure your build is:</p>
+
+<h3 id="easy-to-run">easy to run</h3>
+
+<p>create a <code>./build</code> script to run the build locally before committing, ie. in a Ruby project you can combine rspec and jasmine like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/bin/bash</span>
+<span class="n">exit_code</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">bundle</span> <span class="n">install</span> <span class="o">|</span> <span class="n">grep</span> <span class="no">Installing</span>
+
+<span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rspec</span> <span class="n">spec</span>
+<span class="n">exit_code</span><span class="o">+=</span><span class="vg">$?</span>
+
+<span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">app</span><span class="p">:</span><span class="ss">jasmine</span><span class="p">:</span><span class="n">ci</span>
+<span class="n">exit_code</span><span class="o">+=</span><span class="vg">$?</span>
+
+<span class="nb">exit</span> <span class="vg">$exit_code</span></code></pre></div>
+
+<h3 id="documented">documented</h3>
+
+<p>ensure new developers are onboarded on the testing workflow by pair programming while following (and if necessary updating) a wiki page documenting the process and possible gotchas for future reference.</p>
+
+<h3 id="fast">fast</h3>
+
+<p>the suite should not run for more then 10 minutes. A longer time would create pockets of unproductive time inbetween delivering features, developers might entirely give up running tests.</p>
+
+<p>If your build takes longer focus on parallelizing your tests or pruning excessive integration tests.</p>
+
+<h2 id="ensure-the-build-is-green-on-ci">Ensure the build is green on CI</h2>
+
+<p>Once the build is green on your workstation ensure it’s green in a shared environment accessible by the team: your continuous integration (CI) server.</p>
+
+<p>If the build fails on CI do not dismiss it as a flaky test yet. <strong>If you run the build again and fails you’re likely to have a CI only failing test.</strong></p>
+
+<p>Surely there are reasons why it worked on your workstation and not on CI. Examining the stack trace and the circumstances might reveal what went wrong.</p>
+
+<p>Examples of consistently failing on CI only are:</p>
+
+<ul>
+  <li>full stack (PhantomJS/Selenium) tests using different default viewports between CI and workstation</li>
+  <li>CI timezone different from workstation</li>
+  <li>mismatching libraries/binaries versions between workstation and CI</li>
+  <li>concurrent builds sharing database</li>
+</ul>
+
+<blockquote>
+  <blockquote>
+    <p>Do not leave a consistently failing test on CI or people will loose trust in the automated build</p>
+  </blockquote>
+</blockquote>
+
+<p>It’s usually good to keep your peers updated with your efforts but in some environments you might want to skip that. I’ve seen people dismissing these errors as <strong>“it’s only failing on CI so it’s not worth spending time on it”</strong> and they’d rather leave the build failing or skip the test.</p>
+
+<p>In my opinion that is a mistake that brings to mind the broken window theory:</p>
+
+<blockquote>
+  <blockquote>
+    <p>Consider a building with a few broken windows. If the windows are not repaired, the tendency is for vandals to break a few more windows. Eventually, they may even break into the building, and if it’s unoccupied, perhaps become squatters or light fires inside. <a href="http://en.wikipedia.org/wiki/Broken_windows_theory">Wikipedia</a></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="identify-a-flaky-test">Identify a flaky test</h2>
+
+<p>If simply running again a broken build suddenly fixes a previously failing test you got a “flaky test”. But do not dismiss it just yet, take a few moments to examine the fail stack trace and the circumstances to get a glimpse of what went wrong.</p>
+
+<p>An example of this might be two CI builds pointing to the same database and creating inconsistent states on each other tests.</p>
+
+<p>The solution might not always be quick or easy, so after you’ve spent the allocated time document the flaky test to help the next team member that will likely have to face it.</p>
+
+<h2 id="document-the-flaky-test">Document the flaky test</h2>
+
+<p>Rather then asking your colleagues if they know the CI error you’re seeing search it in your archives. I like to create github issues marked <code>flaky-test</code></p>
+
+<p>If the failing test is already in your archives add a comment with the build number it was spotted on</p>
+
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/add_comment_on_existing_flaky_test.png" alt="Comment the flaky test pointing to the CI failed build URL" /></p>
+
+<p>If you can’t find one create a new issue, file one failing test per github issue:</p>
+
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/create_new_flaky_test.png" alt="Create a new issue for a new flaky test" /></p>
+
+<p>I like the title to be: <code>ERRORING_FILE_NAME_AND_LINE || APPLICATION EXCEPTION</code> for example: <code>spec/features/preview/article_mobile_spec.rb:24 || Capybara::Poltergeist::TimeoutError</code> and mark the issue with the tag <code>flaky-test</code>.</p>
+
+<blockquote>
+  <blockquote>
+    <p>We now have the information to focus resolution efforts on frequently occurring issues, perhaps pinpoint some fails to a 3rd party system having issues at that time</p>
+  </blockquote>
+</blockquote>
+
+<p>After confirming a flaky test add that information in jenkins with the “edit build information”. A title “flaky test” and description the github issue that tracks the flaky test.</p>
+
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/ci_build_history.png" alt="looking at the build history quickly shows the flaky tests" /></p>
+
+<p>If you commit a possible fix, referencing the <code>flaky-test</code> issue in the commit message will add an entry to the comments informing your teammates of what attempt or progress has been made:</p>
+
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/attempt_to_fix.png" alt="It's good to see attempts to fix flaky tests!" /></p>
+
+<h2 id="throttle-your-network-connection-to-external-sites">Throttle your network connection to external sites</h2>
+
+<p>Flaky test can be caused by external resources misbehaving. I worked on an Angular application using a payment gateway iframe that would always be present and work well during development and on production but trigger intermittent test failures. Using <a href="https://www.charlesproxy.com">Charles proxy</a> I was able to intercept and slow down connections to the payment gateway making the flaky test fail consistently. In this particular case it wasn’t worth spending time to fix a problem that we didn’t see in production but adding a comment explaining the root cause helps increase the team confidence in the build.</p>
+
+<h2 id="develop-in-a-virtual-machine">Develop in a virtual machine</h2>
+
+<p>Running your development in a virtual machine matching the CI server (and your deploy server) libraries configuration helps revealing errors during TDD rather then waiting until the CI server runs the build.</p>
+
+<p>Using a vagrant virtual box I’ve seen user interfaces relying heavily on AJAX calls failing way more frequently or even consistently. An example:</p>
+
+<blockquote>
+  <blockquote>
+    <p>While starting typing a new article a JS heavy UI contacts the backend to persist it in a new document. If your feature doesn’t notify the UI about success or fail of that data persistence, your test will continue assuming that call was successful perhaps hitting the publish button for a document that will not be found and cause a “flaky test” fail. The next time the first AJAX call might finish before the second and the test will pass.</p>
+  </blockquote>
+</blockquote>
+
+<p>I’ve seen this error formerly a CI flaky test transforming in a consistent fail when run in a vagrant virtual box. <strong>This is an example of a poorly built feature unveiled by an integration test.</strong> </p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In my experience inconsistent automated test fail for a reason and dismissing them is an unsustainable policy.</p>
+
+<p>It’s important to maintain trust in the automated test build. Knowing that there is <strong>a process in place for identifying and tracking flaky tests</strong> will help establish or solidify that trust. </p>
+
+<p>I hope these steps will help shape your CI build from a black box showing green or red lights in to a more controlled process.</p>
+
+<p>You can download the workflow <a href="https://gist.github.com/agenteo/504dc05d9a6294f5c9ef" target="_blank">barebone Github Gist</a>.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="agenteo" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+            <a href="https://twitter.com/agenteo" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @agenteo</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </footer>
+        
+        <div class="page-content">
+          
+          <h3>Next up:</h3>
+          <div class="wrapper">
+            <main class="content" role="main">
+              <header class="post-header">
+                <div class="article-item">
+                  <h2 class="post-title" itemprop="name"><a href="/create-maintainable-mongodb-queries-in-ruby-with-query-object-and-mongoid-criterias/" itemprop="url">Create maintainable mongodb queries in Ruby with query object and mongoid criterias</a></h2>
+                </div>
+              </header>
+            </main>
+          </div>
+          
+          <h3>More reads about  <a href="/topics/work">work</a>,  <a href="/topics/testing">testing</a>,  <a href="/topics/process">process</a>,  <a href="/topics">other topics</a></h3>
+      </div>
+
+        
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'enricoteotti'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/hero_image.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Enrico Teotti</h1>
+        <h2 class="blog-description">developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

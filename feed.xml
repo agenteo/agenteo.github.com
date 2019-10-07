@@ -6,9 +6,50 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 28 Aug 2018 12:47:57 +0000</pubDate>
-    <lastBuildDate>Tue, 28 Aug 2018 12:47:57 +0000</lastBuildDate>
+    <pubDate>Mon, 07 Oct 2019 16:29:26 +0000</pubDate>
+    <lastBuildDate>Mon, 07 Oct 2019 16:29:26 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Remote visual facilitation with iPad pro</title>
+        <description>&lt;p&gt;In this brif post I explain how I do visual facilitation and visual recording with an iPad, Mac Book and Zoom. You can probably use a PC instead of a Mac Book but I haven’t tried.&lt;/p&gt;
+
+&lt;h2 id=&quot;ipad-screen-sharing&quot;&gt;iPad screen sharing&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Connect the iPad with a USB cable to the Mac Book pro&lt;/li&gt;
+  &lt;li&gt;Make sure you accept whatever prompt about trusting computer etc.&lt;/li&gt;
+  &lt;li&gt;Open quicktime and select “New Movie Recording”, choose iPad from the drop down. If you don’t see iPad listed the connection failed and you’ll have to truble shoot that first. In my experience unplugging and re-connecting the USB cable helps.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At this point you are “seeing” what’s on the iPad from your Mac Book. Open your visual facilitation app of choice and confirm its as responsive as you would like. &lt;/p&gt;
+
+&lt;p&gt;I use Zoom to screen share with remote participants. If you know of other tools that allow for multiple screen sharing leave  a comment.&lt;/p&gt;
+
+&lt;h2 id=&quot;zoom&quot;&gt;Zoom&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;open the Zoom settings and update to use dual monitors &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Once you start your meeting ensure your meeting sharing option is set to the correct option: “Multiple participant can share simultaneously” &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;At this point multiple participants can share their screen, here I am using it with two folks &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;This solution is working for me today when I do visual recording–aka scribing–and lead remote visual facilitation for meetings.&lt;/p&gt;
+
+&lt;p&gt;One downside in the latter is participants can’t interact with your whiteboard. I use an interactive online tool–like Miro aka RealTimeBoard–to promote and allow participation, potentially you could export the note to your online board when you need to be more interactive.&lt;/p&gt;
+
+&lt;p&gt;Leave us a comment if you have a similar strategy and different tools.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/remote-visual-facilitation-with-ipad-pro/</link>
+        <guid isPermaLink="true">http://teotti.com/remote-visual-facilitation-with-ipad-pro/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>Challenge Kerth&#39;s prime directive when you set the stage of your retro</title>
@@ -1238,64 +1279,6 @@ LIST_OF_VMS=&quot;parallel-ios-testbox-1.local parallel-ios-testbox-2.local para
         <category>rails</category>
         
         <category>search</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Fluentlenium with Google Chrome</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.fluentlenium.org/&quot;&gt;Fluentlenium&lt;/a&gt; is a Java acceptance test tool hinting to code maintainability thanks to native support for &lt;a href=&quot;http://martinfowler.com/bliki/PageObject.html&quot;&gt;page objects&lt;/a&gt; working out of the box with Firefox and therein lies the rub.&lt;/p&gt;
-
-&lt;p&gt;There isn’t much documentation on their page on how to switch to Google Chrome so that’s what this article is about.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;First having Google Chrome installed on your OS is not sufficient&lt;/strong&gt;–you must get &lt;a href=&quot;https://sites.google.com/a/chromium.org/chromedriver/downloads&quot;&gt;chrome driver&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Once that’s done you need to override the default &lt;em&gt;fluentlenium&lt;/em&gt; driver with:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebDriver&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebDriver&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDefaultDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;webdriver.chrome.driver&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PATH_TO_CHROME_DRIVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ChromeDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Change &lt;code&gt;PATH_TO_CHROME_DRIVER&lt;/code&gt; to the path to the chromedriver you downloaded to your machine. Here’s the full code adapted from fluentlenium homepage to use Chrome:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.fluentlenium.adapter.FluentTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.openqa.selenium.WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.openqa.selenium.chrome.ChromeDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Assertions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertThat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PlayTest&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FluentTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebDriver&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Overrides the default driver&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebDriver&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDefaultDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;webdriver.chrome.driver&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;/Users/agenteo/Downloads/chromedriver&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ChromeDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;title_of_bing_should_contain_search_query_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;goTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://www.bing.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#sb_form_q&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Teotti&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#sb_form_go&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;assertThat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Teotti&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 13 Apr 2016 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/fluentlenium-with-google-chrome/</link>
-        <guid isPermaLink="true">http://teotti.com/fluentlenium-with-google-chrome/</guid>
-        
-        <category>java</category>
-        
-        <category>testing</category>
         
         
       </item>

@@ -6,9 +6,141 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 Oct 2019 16:29:26 +0000</pubDate>
-    <lastBuildDate>Mon, 07 Oct 2019 16:29:26 +0000</lastBuildDate>
+    <pubDate>Mon, 20 Jan 2020 22:33:31 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Jan 2020 22:33:31 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Make your retrospective facilitation even more effective? Here&#39;s 4 values to look at</title>
+        <description>&lt;p&gt;In this post I refer to retrospectives as a type of meeting inspired by the 12th agile principle “At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.”.&lt;/p&gt;
+
+&lt;p&gt;Many factors–specific to your context–can reduce the effectiveness of a retrospective and cause frustration and mistrust in the group. &lt;strong&gt;In this brief blog post I will describe how psychological safety, purpose, preparedness and collaboration can help make your retrospectives even more effective&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;p&gt;I want to highlight this is not a checklist. And depending on what system/subsystem your retrospective is working with you might need to switch between lens/approaches for complicated or complex domains. I’ll probably followup on that in a separate post.&lt;/p&gt;
+
+&lt;p&gt;This post is for retrospective facilitators and regular team members that want to take on that role. You don’t need to be a trained facilitator, scrum master or product manager to introduce changes and make your retrospective even more effective.&lt;/p&gt;
+
+&lt;h2 id=&quot;psychological-safety&quot;&gt;Psychological Safety&lt;/h2&gt;
+
+&lt;p&gt;Amy Edmondson has done extensive research since the 90s on the subject–and published a book in 2018–&lt;a href=&quot;https://www.amazon.com/Fearless-Organization-Psychological-Workplace-Innovation/dp/1119477247&quot;&gt;The Fearless Organization&lt;/a&gt;–Norm Kerth talks about a “Create Safety” exercise in his seminal &lt;a href=&quot;https://www.amazon.com/Project-Retrospectives-Handbook-Team-Reviews/dp/0932633447&quot;&gt;Project retrospectives&lt;/a&gt; book published in 1999.&lt;/p&gt;
+
+&lt;p&gt;Have you ever felt your retrospective is a blame game more than a reflection? Let me start from the foundation. &lt;strong&gt;Your retrospective outcomes will always be subpar if your team or organization does not support psychological safety&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If people are punished when speaking up they will withhold information or play the blame game fostering a low energy retrospective. Improving psychological safety at the organizational level is outside the purpose of this post but &lt;strong&gt;there are strategies you can use to assess and improve psychological safety at the team level&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;assess-the-team-psychological-safety&quot;&gt;Assess the team psychological safety&lt;/h3&gt;
+
+&lt;p&gt;Start by collecting data on the psychological safety level of the group. &lt;strong&gt;Try to have&lt;/strong&gt; one-on-ones with team members before the retrospective and take notes about their feelings.   &lt;strong&gt;Try to run an anonymous activity&lt;/strong&gt; (like &lt;a href=&quot;https://retromat.org/en/?id=1&quot;&gt;Explorer, Shopper, Vacationer, Prisoner&lt;/a&gt; or &lt;a href=&quot;https://retromat.org/en/?id=130&quot;&gt;Elephant in the room&lt;/a&gt;) when you set the stage of your retrospective to anonymously collect the safety levels.&lt;/p&gt;
+
+&lt;p&gt;If the the psychological safety level is low–say a room full of Prisoners in &lt;a href=&quot;https://retromat.org/en/?id=1https://retromat.org/en/?id=1&quot;&gt;ESVP&lt;/a&gt;–you should switch the focus of the retrospective to increase the safety level. Try to run an anonymous brainstorm on “what is one thing that would have to change to make you all not be prisoners?”. &lt;strong&gt;It’s possible that the outcome of the whole retrospective will be a team norm document to ensure people feel comfortable to speak up… and that’s great!&lt;/strong&gt; If you decide to continue with the original retrospective plan–despite a room full of disengaged folks–remind the group they will have a chance at the end of retro to provide feedback to make the next one safer.&lt;/p&gt;
+
+&lt;h3 id=&quot;establish-a-safe-space-with-the-retrospective-prime-directive&quot;&gt;Establish a safe space with the Retrospective Prime Directive&lt;/h3&gt;
+
+&lt;p&gt;There are a multitude of activities to set a safe stage for your retrospective, one is to read “The prime directive” by Norm Kerth:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;“Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For some groups printing the directive, reading it and asking for a verbal “yes I believe it”–or alternatively “I believe for the duration/sake of this retrospective”–is sufficient to set a safe positive stage. In more dis-engaged groups some will say yes just to move on… but they truly believe someone messed up… they truly believe it’s someone’s fault. At times their fault. &lt;strong&gt;What do you believe as the facilitator?&lt;/strong&gt; If you–the retrospective facilitator–doubt the directive then it’s nonsensical to ask for a group agreement on it. You can read an article I wrote that &lt;a href=&quot;https://teotti.com/analyze-kerth-prime-directive/&quot;&gt;dissects the prime directive&lt;/a&gt; and better understand its roots. There is also a retrospective activity to &lt;a href=&quot;https://teotti.com/challenge-agile-retrospectives-prime-directive/&quot;&gt;challenge the retrospective&lt;/a&gt; prime directive with the group so instead of just a verbal yes you’d have a conversation about it.&lt;/p&gt;
+
+&lt;p&gt;The prime directive is similar to bounded rationality and when embraced allows the group to shift from looking for a culprit to collaboratively looking at the context and generate insights.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-retrospective-purpose&quot;&gt;The retrospective purpose&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;If people don’t know why they’re in a retrospective and what they will get out of it they will be disengaged.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Have you ever felt your retro is more like a happy hour then a reflection? Very often teams go through the motions and always run retrospective to “reflect on what could be improved from the last iteration”. For a 3 or 4 people team and smaller challenges that could work for a little while but I’ve seen that purpose lead to premature convergence. I’ve seen retros where people would discuss for the same amount of time items like “someone left a glass on the desk and there is now mold in it” and “we should refactor the reservation class based on the application’s bounded contexts”.&lt;/p&gt;
+
+&lt;p&gt;I think spending 2 minutes discussing an item is not reflection. The problem I see is that people only share information during retrospective so you end up with a lot of those smaller items. I call whack-a-mole retrospective when the team generates lots of mad/sad/glad items and try to fix all the sad with rushed action items. The outcomes I’ve seen are too many action items–carrying over from one iteration to the next–and people never getting to them.&lt;/p&gt;
+
+&lt;p&gt;There are at least a couple of options.&lt;/p&gt;
+
+&lt;h3 id=&quot;agree-on-a-real-time-agenda&quot;&gt;Agree on a real time agenda&lt;/h3&gt;
+
+&lt;p&gt;Check if the group is ok to try a retrospective with a real time agenda (aka &lt;a href=&quot;https://retromat.org/en/?id=51&quot;&gt;lean coffee&lt;/a&gt;). This helps because once the topics are listed the group can create clusters with a silent mapping activity, run a poll to prioritise what to talk about first. In this format the group decides if they want to keep talking about a topic of move on.&lt;/p&gt;
+
+&lt;p&gt;A critical piece–where the facilitator or an action item taker can help–is to acknowledge when a discussion ie. “we should refactor the reservation class based on the application’s bounded contexts” &lt;strong&gt;will not fit in the allocated timebox and agree to have a separate meeting dedicated to that topic&lt;/strong&gt;. You must be clear about the purpose of the followup meeting. Is it to share information? Advance the thinking? Provide input? Make decisions? Improve communication? These goals are from Sam Kaner’s “&lt;a href=&quot;https://www.amazon.com/Facilitators-Participatory-Decision-Making-Jossey-bass-Management/dp/1118404955&quot;&gt;Facilitator’s guide to participatory decision making&lt;/a&gt;” another great resource about having clear meeting is “&lt;a href=&quot;https://www.amazon.com/Where-Action-Meetings-Break-Organization/dp/1732205205&quot;&gt;Where the action is&lt;/a&gt;”.&lt;/p&gt;
+
+&lt;h3 id=&quot;pick-a-retrospective-topic&quot;&gt;Pick a retrospective topic&lt;/h3&gt;
+
+&lt;p&gt;Another approach would be to focus the retrospective on a topic agreed with the team before the meeting–but that assume there was some preparation. When we focus the retrospective someone in the group might still want to talk about off-topic items. If people feel strongly about sharing something with the group let them do it. I think a better strategy is to run daily 10 minutes retrospectives–for teams of 4 or 5–so the team has space to share information during the week and focus on overarching issues during the iteration retrospective.&lt;/p&gt;
+
+&lt;h2 id=&quot;preparedness&quot;&gt;Preparedness&lt;/h2&gt;
+
+&lt;p&gt;A retrospective is a meeting and to run a good meeting you need a clear purpose and some preparation.  Your plan might not survive contact with the team–and their evershifting context–so it’s ok to improvise at that point. &lt;strong&gt;The facilitator should not go in and improvise activities by default or come in unprepared&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Going in to retrospective without a clue of what happened during the iteration should be an exception. &lt;/p&gt;
+
+&lt;p&gt;In small (5/6 people teams) I like to prevent that by taking one-on-one time with the group before retrospective to see what’s on their mind and prepare a retrospective plan that fits where they are at this time. For larger teams you can collect information with the help of co-facilitators.&lt;/p&gt;
+
+&lt;p&gt;I once was in a retrospective where the facilitator was trying to explain Jean Tabaka’s Sailboat activity while reading it on the phone. The group was pretty confused. When I pick up a new activity I write down a little script to explain the activity purpose and what the individuals are expected  to do. If it involves drawing I practice it beforehand.&lt;/p&gt;
+
+&lt;p&gt;I think too often people focus on the retrospective activity rather than on the framework.&lt;/p&gt;
+
+&lt;h3 id=&quot;know-your-retrospective-framework-instead-of-activities&quot;&gt;Know your retrospective framework instead of activities&lt;/h3&gt;
+
+&lt;p&gt;A framework gives structure to your retrospective and a clear start and end. I base my retrospectives plans on Derby/Larsen’s 5 steps framework and I pick activities that fit the group’s journey. I’ll briefly describe the 5 steps and you can look up other options like &lt;a href=&quot;https://www.lucidmeetings.com/glossary/orid&quot;&gt;ORID&lt;/a&gt; by &lt;a href=&quot;https://www.icacan.org/&quot;&gt;The institute of cultural affairs&lt;/a&gt;or &lt;a href=&quot;https://www.hsdinstitute.org/resources/adaptive-action.html&quot;&gt;Adaptive Action&lt;/a&gt; by &lt;a href=&quot;https://www.hsdinstitute.org/&quot;&gt;Human system dynamics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Set the stage&lt;/strong&gt; &lt;em&gt;purpose&lt;/em&gt;: the group understands the goal of the retrospective, the room has psychological safety, roles are assigned, team norms acknowledged&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gather data&lt;/strong&gt; &lt;em&gt;purpose&lt;/em&gt;: ensures the group is on the same page about what happened about the topic we’re focused on or the timespawn we’re looking at. The outcome should be a snapshot of all perspectives about what happened and hopefully mutual understanding. If the group doesn’t reach mutual understanding I’d spend more time until you get there. Reading “Facilitator’s guide to participatory decision-making” can give strategies to bring a group to mutual understanding.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Generate insights&lt;/strong&gt; &lt;em&gt;purpose&lt;/em&gt;: the group finds focus on a topic with affinity mapping, polling, prioritization to allow the team to go past the immediate solutioning and have a deeper conversation about no more than 1/2 topics. The outcome should be a set of ideas to formalise into an experiment for change.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Decide what to do&lt;/strong&gt; &lt;em&gt;purpose&lt;/em&gt;: the group comes up with a specific, measurable and time bound experiment (aka action item) or acknowledging if the topic is too broad and the time left during retrospective is not sufficient to come up with a detailed plan. If so schedule a followup meeting with its purpose and its desired outcome.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Close out&lt;/strong&gt; &lt;em&gt;purpose&lt;/em&gt;: the group acknowledges what was achieved in the meeting and is clear about next steps and responsibilities. Now is a good time to end on a high note with a round of &lt;a href=&quot;https://retromat.org/en/?id=15&quot;&gt;appreciation&lt;/a&gt;. To speed up time in larger groups you can try having folks share appreciations via post-it notes or Jurgen Appelo’s &lt;a href=&quot;https://management30.com/practice/kudo-cards/&quot;&gt;Kudos cards&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This is a great time to run a quick retro on your retrospective, I use a +ΔROTI. ROTI came from Esther Derby and it’s a Return Of Time Invested activity where you collect between 0 to 4 how well spent the time was. I ask the group to write the number on a post it note, and add a short sentence next to a Δ sign for the one improvement that would have made their ROTI go up by 1, and a short sentence next to a + for something they liked about today’s retro
+    - 0: complete waste of time, I learned nothing
+    - 1: mostly a waste of time but I learned one thing
+    - 2: broke even, satisfactory retrospective
+    - 3: better then an average, I learned quite a few things
+    - 4: awesome, best retrospective of my life&lt;/p&gt;
+
+&lt;p&gt;If you’d like to learn more about the framework read Derby/Larsen’s book about &lt;a href=&quot;https://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649&quot;&gt;“Agile Retrospectives”&lt;/a&gt;. If you want to learn the origin of the 5 steps framework you can listen to my interview with Diana Larsen on my Retrospective facilitation podcast &lt;a href=&quot;https://thisisretrospectivefacilitation.com/episodes/the-five-steps-retrospective-framework&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;collaboration&quot;&gt;Collaboration&lt;/h2&gt;
+
+&lt;p&gt;As the facilitator you’re not alone. If the retrospective is in a safe environment and there is a purpose and you are prepared the group should be there to help.&lt;/p&gt;
+
+&lt;p&gt;If you’re trying to juggle time keeping, note taking and action item collection while facilitating you can ask for volunteers for those tasks! That way there is a shared ownership of the process.&lt;/p&gt;
+
+&lt;p&gt;If you are the facilitator but also a team member–scrum master/product manager/lead/whatever–you have a hard job to keep your biases under control. I know I do as the team product manager–and previously principal engineer–I had very strong opinions on team topics we talked in retrospective I was facilitating. When I had something that I felt was critical for the group to hear I would say: “I am taking my facilitator hat off and as a PM I think…”. I usually try to keep it to a brief sentence to give more colour and then go back to my facilitator role unless more context is required. It might be good to have a backup facilitator if you feel your stakes are too high and you might not be an impartial facilitator.&lt;/p&gt;
+
+&lt;p&gt;You can ensure there is collaboration by having silent activities. For example instead of having an open discussion–where introverts and less loud people would be having a harder time contributing–use an activity like &lt;a href=&quot;http://www.liberatingstructures.com/1-1-2-4-all/&quot;&gt;1-2-4-all&lt;/a&gt;. Its purpose, having individuals brainstorm–ideas or topic–alone, then in pairs, then 4 then with the whole group. There are a multitude of activities out there, &lt;a href=&quot;http://www.liberatingstructures.com&quot;&gt;Liberating Structures&lt;/a&gt; or &lt;a href=&quot;http://retromat.org&quot;&gt;Retromat&lt;/a&gt; are good repositories.&lt;/p&gt;
+
+&lt;p&gt;Remember the facilitator skills:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Encourage full participation&lt;/li&gt;
+  &lt;li&gt;Promote mutual understanding&lt;/li&gt;
+  &lt;li&gt;Foster inclusive solutions&lt;/li&gt;
+  &lt;li&gt;Cultivate shared responsibility&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;In order for a retrospective to become more effective your organization and team should foster &lt;strong&gt;psychological safety&lt;/strong&gt;, as the facilitator try to &lt;strong&gt;prepare&lt;/strong&gt; and define a clear retrospective &lt;strong&gt;purpose&lt;/strong&gt; to ensure the group stays engaged and takes on targeted action items. Ultimately a retrospective requires &lt;strong&gt;collaboration&lt;/strong&gt; and the facilitator (you?) is there to make sure the ride goes smoothly.&lt;/p&gt;
+
+&lt;p&gt;If you want to tackle organizational issues remember the team is part of a system. Look up Larsen/Shore’s &lt;a href=&quot;https://www.agilefluency.org&quot;&gt;agile fluency&lt;/a&gt; maturity model and Snowden’s &lt;a href=&quot;https://cognitive-edge.com/videos/cynefin-framework-introduction/&quot;&gt;Cynefin&lt;/a&gt; sense making framework for seeing issues and contexts from different lenses.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of resources out there if you’re interested in the topic of reflection, retrospectives and facilitation. Here’s a few links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649&quot;&gt;Derby/Larsen Agile retrospectives book&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Retrospective-Handbook-guide-agile-teams/dp/1480247871&quot;&gt;Kua’s The Retrospective Handbook: A guide for agile teams&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Facilitators-Participatory-Decision-Making-Jossey-bass-Management/dp/1118404955&quot;&gt;Kaner’s Facilitator’s Guide to Participatory Decision-Making&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://thisisretrospectivefacilitation.com/about&quot;&gt;Retrospectives Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What challenges do you face in your retrospectives? What are the part of this post that you won’t be able to use? Why?&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-values-to-look-at/</link>
+        <guid isPermaLink="true">http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-values-to-look-at/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>Remote visual facilitation with iPad pro</title>
@@ -1214,71 +1346,6 @@ LIST_OF_VMS=&quot;parallel-ios-testbox-1.local parallel-ios-testbox-2.local para
         <category>java</category>
         
         <category>testing</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Thinking Sphinx search one model with two indices with static attributes</title>
-        <description>&lt;p&gt;In this short article I describe how to use Sphinx and Thinking Sphinx (v3) in a Ruby on Rails application to index the same ActiveRecord model with separate criterias using two indices.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This article is not an intruduction on the open source search engine &lt;a href=&quot;http://sphinxsearch.com/&quot;&gt;Sphinx&lt;/a&gt; and its Ruby library &lt;a href=&quot;http://freelancing-gods.com/thinking-sphinx/&quot;&gt;ThinkingSphinx&lt;/a&gt; but rather how to solve a problem I faced multiple times and not very well documented online.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;I will use a simplified example adapted from a real life application.&lt;/strong&gt; A company has a web portal where users can view product representatives details. The company has a mangement console where admins can update the product representatives information. Both need to search the representatives data stored in a relational database table–and loaded in a Contact ActiveRecord object–but with different criterias.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/diagram.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To make this example manageable I am defining only one criteria different between admin and user search: &lt;strong&gt;A user can’t see a contact that isn’t active but an admin can&lt;/strong&gt;. You already know real life applications aren’t that simple–in real life there are likely a multitude of criterias different between admin and user search and this solution works there.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# /app/indices/contact_index.rb&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;ThinkingSphinx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:with&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active_record&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;indexes&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:first_name&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;indexes&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:last_name&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;indexes&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:phone_number&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;active = true&amp;quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# simplified condition to make the example manageable&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;has&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user_view_only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# /app/indices/admin_contact_index.rb&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;ThinkingSphinx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;admin_contact&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:with&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active_record&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;indexes&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:first_name&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;indexes&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:last_name&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;has&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:admin_view_only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;em&gt;admin_contact&lt;/em&gt; is a separate index used for admin search only but by default searching on &lt;code&gt;Contact.search&lt;/code&gt; or doing an application wide search via &lt;code&gt;ThinkingSphinx.search&lt;/code&gt; would use both the &lt;code&gt;admin_contact_index.rb&lt;/code&gt; and &lt;code&gt;admin_contact.rb&lt;/code&gt; indexes–that is why I leverage the &lt;strong&gt;admin_view_only&lt;/strong&gt; static attribute to ignore the user view index. For example:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Enrico&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;last_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Teotti&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Enrico&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;last_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Piovani&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# reindex Sphinx on console with rake ts:index&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;ThinkingSphinx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Enrico&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;admin_view_only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# returns Contact entries for admin only, ignoring the filter on active flag&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# set on regular index. Given the above data you will get both Piovani and&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Teotti back.&lt;/span&gt;
- 
-&lt;span class=&quot;no&quot;&gt;ThinkingSphinx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Enrico&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_view_only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Only Piovani will come back because of the active filter.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
-
-&lt;p&gt;I think one disadvantage of this solution is to add an attribute to all non admin indexes to ensure they don’t conflict and also a second index increasing file size and potentially indexing time.&lt;/p&gt;
-
-&lt;p&gt;The advantage is delegating to Sphinx the search rather then having specific search parameters set on search calls for each application portion–also this strategy can be shared by the other indices that need different search criteria between user view and admin.&lt;/p&gt;
-
-&lt;p&gt;The described condition alone doesn’t justify the use of Sphinx or this strategy but in a real evolving application that is rarely the only condition that search runs on–this static attribute strategy has been a good fit when implementing search segregation.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/</link>
-        <guid isPermaLink="true">http://teotti.com/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/</guid>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-        <category>search</category>
         
         
       </item>

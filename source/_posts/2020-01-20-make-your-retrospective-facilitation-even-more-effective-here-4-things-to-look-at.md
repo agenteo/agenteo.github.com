@@ -1,9 +1,9 @@
 ---
-title: Make your retrospective facilitation even more effective? Here's 4 values to look at
+title: Make your retrospective facilitation even more effective? Here's 4 things to look at
 layout: post
 comments: true
-image: /assets/article_images/make-your-retrospective-facilitation-even-more-effective-here-4-values-to-look-at/hero.jpg
-og_description: Many factors--specific to your context--can reduce the effectiveness of a retrospective and cause frustration and mistrust in the group. In this brief blog post I will describe how psychological safety, purpose, preparation and collaboration can help make your retrospectives even more effective**sharing.
+image: /assets/article_images/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/hero.jpg
+og_description: Many factors--specific to your context--can reduce the effectiveness of a retrospective and cause frustration and mistrust in the group. In this brief blog post I will describe how psychological safety, purpose, preparation and collaboration can help make your retrospectives even more effective**.
 tags:
   - process
 ---

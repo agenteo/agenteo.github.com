@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Enrico Teotti - developer and agile mentor with over 15 years experience in the IT industry</title>
-    <description>developer and agile mentor with over 15 years of experience in the IT industry across Europe, Australia and the US.
+    <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
+    <description>developer and agile mentor with over 18 years of experience in the IT industry across Europe, Australia and the US.
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jan 2020 22:33:31 +0000</pubDate>
-    <lastBuildDate>Mon, 20 Jan 2020 22:33:31 +0000</lastBuildDate>
+    <pubDate>Tue, 21 Jan 2020 01:45:51 +0000</pubDate>
+    <lastBuildDate>Tue, 21 Jan 2020 01:45:51 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -138,6 +138,278 @@
         <guid isPermaLink="true">http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-values-to-look-at/</guid>
         
         <category>process</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Event storming one year later</title>
+        <description>&lt;p&gt;About 15 months ago I participated in an Event Storm masterclass in Milan with Alberto Brandolini. This post assumes you already know what event storm is and you’re interested in reading about usecases.&lt;/p&gt;
+
+&lt;p&gt;Let me start with a foundamental premise. What I like of event storm is how collaborative it is. &lt;strong&gt;When I see a facilitator doing all the work in an event storm it’s really hard for me to be politically correct and say “you’re doing it differently” what I wanna say is “you’re doing it wrong”.&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Granted there might be scenarios where the facilitator wants to speed trough the process but the power I’ve seen in event storm is when the group discovers and communicates to create a shared picture. If a facilitator is the only one adding information then event storm isn’t much different then a service blueprint.&lt;/p&gt;
+
+&lt;p&gt;In the last 15 months I’ve run multiple event storms here’s a few use cases with pro and cons.&lt;/p&gt;
+
+&lt;h3 id=&quot;internal-training&quot;&gt;Internal training&lt;/h3&gt;
+
+&lt;p&gt;I did a 2 hours internal training event storm to “learn how my company works while practicing event storm”. As Alberto did in the masterclass I kept instructions at a minimum and threw all the participant in the water.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People: 15 (from 5 divisions)&lt;/li&gt;
+  &lt;li&gt;Pro: people got to learn more about other parts of the company. Easy to contribute domain events without needing to setup role-play.&lt;/li&gt;
+  &lt;li&gt;Con: the large org (3K ppl) meant there was a lot of details. See photo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;project-kickoff--future-state&quot;&gt;Project kickoff + future state&lt;/h3&gt;
+
+&lt;p&gt;At a project kickoff I run a 4 hours session with a small company ~10 people to walk us trough their current processes. As the project went on we used event storm to visualise the future state.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People: 3 (CEO, Director of Underwriting, Director of Sales) ~3h&lt;/li&gt;
+  &lt;li&gt;Pro: All client folks aligned on where the hotspots are. Contractors ramped up pretty fast on the domain.&lt;/li&gt;
+  &lt;li&gt;Con: CEO wanted to fix everything. It took some tries to start in one spot. We didn’t have CEO or Sales director for Future state exercise which created misunderstandings.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;scoping-of-work&quot;&gt;Scoping of work&lt;/h3&gt;
+
+&lt;p&gt;A client scoping to understand their current process and their priorities for a subsystem to add to their processes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People: ~6 on their side (3 divisions) ~2h&lt;/li&gt;
+  &lt;li&gt;Pro: gave contractors a good return on time invested to create a next steps proposal.&lt;/li&gt;
+  &lt;li&gt;Con: unclear what systems/events were there and which ones were future state. For mitigation, I asked to mark the future state with a black dot on the top right.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sharing-domain-expertise-to-rampup-devs&quot;&gt;Sharing domain expertise to rampup devs&lt;/h3&gt;
+
+&lt;p&gt;A client that worked in a domain that contractors were not familiar in–contractual bonding–shared the business flow.
+* People: ~10 client + contractors ~2h
+* Pro: the two domaine experts shared information and folks with partial knowledge &lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;I see event storm as a tool to design for emergence.&lt;/p&gt;
+
+&lt;p&gt;Its final result is a snapshot in time and context. It’s a snapshot of the current understanding of the system or subsystem we’re looking at.&lt;/p&gt;
+
+&lt;p&gt;I did take photos of the outcome to document the process but I kept reminding everyone present we shouldn’t consider the outcome as a golden document.&lt;/p&gt;
+
+&lt;p&gt;We should be able to recreate it. Probably not alone.&lt;/p&gt;
+
+&lt;p&gt;In my experience it’s been a useful tool to allow groups to gain a shared understanding on a system and align on what to takle first.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/event-storming-one-year-later/</link>
+        <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
+        
+        <category>process</category>
+        
+        <category>emergence</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Big picture event storming. My notes from the masterclass.</title>
+        <description>&lt;p&gt;This is a summary of what I learned–circa 15 months ago–about big picture event storming during a two day workshop with Alberto Brandolini creator of Event Storming. I’ll skip the domain modelling usecase.&lt;/p&gt;
+
+&lt;p&gt;I am not sure how useful this is for anyone else, I wrote a blog post about my experience using this tecnique.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;The objective of big picture event storming is finding.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Alberto describes three context:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;organization reboot&lt;/li&gt;
+  &lt;li&gt;startup kickoff&lt;/li&gt;
+  &lt;li&gt;project kickoff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find out where the business is today. If the project kickoff is about something in the wrong spot that’s valuable information.&lt;/p&gt;
+
+&lt;p&gt;Event storming can be used to get a picture of what a company does. Specifically it outlines &lt;strong&gt;what people want to do&lt;/strong&gt; vs. &lt;strong&gt;what the process mandates them to do&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;p&gt;The result is a map. A snapshot of the current situation. Expect all the dysfunction to be visible. Then as a group you can decide to focus on what’s the top priority.&lt;/p&gt;
+
+&lt;h2 id=&quot;scenarios&quot;&gt;Scenarios&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“Maybe your process is doing a great job. Then you don’t need investigation. You’d end up telling a story that is just working.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For a start-up that doesn’t have any existing infrastructure you can use event storming to scope where they want to be.&lt;/p&gt;
+
+&lt;p&gt;For an enterprise with legacy systems you can use event storming to outline their current &lt;strong&gt;understanding&lt;/strong&gt;, the way they think their company works, and according to Alberto more often then not there is a feeling of awe when he runs those sessions. People realized what other division do. This session helps collecting understanding.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;“As a facilitator you want to hear/see different voices”&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;rule-number-one&quot;&gt;Rule number one&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“The number one rule is to get the right people in the room.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Coming from an Agile Retrospective background where I try to gage the team feelings and interactions before the meeting the first question I had was “do you chat with the individuals before the event storming session?”. The answer was no, &lt;strong&gt;because chatting one by one wouldn’t be as effective as hearing those conversations for the first time when the whole group is in the room&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another question I asked was &lt;em&gt;how do you make sure it’s the right people?&lt;/em&gt; You will find out at the end of the session. If the meeting constantly mention James and he’s not in the room perhaps we need him after all. Based on how much influence you have in the company you might not start with the right people in the room but as you show how effective the methodology is you will gain more sponsors.&lt;/p&gt;
+
+&lt;h2 id=&quot;anti-patterns&quot;&gt;Anti-patterns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ask questions first&lt;/li&gt;
+  &lt;li&gt;agree upfront&lt;/li&gt;
+  &lt;li&gt;the committee&lt;/li&gt;
+  &lt;li&gt;start from the beginning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;patterns&quot;&gt;Patterns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the ice-breaker (someone will eventually put the first domain event… just wait for it… or do it yourself)&lt;/li&gt;
+  &lt;li&gt;make a mess&lt;/li&gt;
+  &lt;li&gt;start from the center&lt;/li&gt;
+  &lt;li&gt;one person one marker&lt;/li&gt;
+  &lt;li&gt;the inifinite buffet (aka make sure space doesn’t limit the process)&lt;/li&gt;
+  &lt;li&gt;just do it (I never asked to do it right)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“The goal for an event storming facilitator is to remove impediments. Not enforcing rules or agendas.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Chaos first then timeline. You start asking individuals to add &lt;strong&gt;domain events&lt;/strong&gt; on orange sticky notes. Don’t worry too much about the order &lt;em&gt;just do it&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;You need chaos to challenge the perception people have of reality.&lt;/p&gt;
+
+&lt;p&gt;After you made a mess it’s time to start sorting. This is a good time to take care of duplicates. There are different strategies to sort:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pivotal events&lt;/li&gt;
+  &lt;li&gt;phases (roles &amp;amp; responsabilities)&lt;/li&gt;
+  &lt;li&gt;temporal milestones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you look at pivotal events identify &lt;strong&gt;domain event&lt;/strong&gt; that are critical to your business. One easy way is to identify which events are listening for the &lt;strong&gt;pivotal event&lt;/strong&gt; to happen.&lt;/p&gt;
+
+&lt;h2 id=&quot;hotspots--opportunities&quot;&gt;Hotspots + opportunities&lt;/h2&gt;
+
+&lt;p&gt;After you create this map you can start asking where are the problems? As an event storming facilitator you are entitiled to ask stupid questions. That’s your superpower! Look at the audience to check if the conversation is relevant to the group.&lt;/p&gt;
+
+&lt;p&gt;It’s good to balance out bad with good. Ask the group to add green stickys for opportunities.&lt;/p&gt;
+
+&lt;p&gt;Let hotspots be a voice for concerns. Should you focus on a corner case? Look at the rest of the audience, is it a problem for the group? If not move on. Alberto describes how looking at the audience reaction to discovery can lead to interesting next steps. He describes how sometimes individuals are disengaged bored of hearing the same thing again and again… and other times they lean forward and discovered something new about their organization!&lt;/p&gt;
+
+&lt;h2 id=&quot;people--systems&quot;&gt;People / systems&lt;/h2&gt;
+
+&lt;p&gt;At this point you add external systems your business relies on. This could be software we own or a SAS. Let system definition be fuzzy. Just make things visible. No wordsmithing.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“A system is “whatever you can put the blame on”.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pretty spot-on.&lt;/p&gt;
+
+&lt;p&gt;Visualize everything. Start being agressive not on the problem but on the message. Make everything visible so we can see the enemy.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions how making hypothesis in a startup environment is ok. But in a corporate environment a domain expert looking up and scratching beard/head is a sign that this guy is not the real domain expert. Just a proxy.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions the “karaoke singer” where an individual overtake the stage. He suggests to talk with someone that didn’t go live during the workshop. Probably later after the workday ends.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions how event storming can’t solve people problems. He was in a sessions where two individuals wouldn’t establish eye contact… or even talk to each other!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Alberto says he’s got a default plan but it can be hijacked if the group wants to.&lt;/strong&gt; What to dig on is up to the group.&lt;/p&gt;
+
+&lt;p&gt;A suggestion Alberto gave was do not ask permission to run event storming. &lt;strong&gt;Say you will run a modelling process.&lt;/strong&gt; Events grooming / gathering to get a big picture of the business. In some environments this might be easier then getting buy-in for a “new technique”.&lt;/p&gt;
+
+&lt;p&gt;Business people will talk about requirements not edge cases.&lt;/p&gt;
+
+&lt;h2 id=&quot;telling-the-story---enterpise-wise-defrag&quot;&gt;Telling the story - Enterpise wise defrag&lt;/h2&gt;
+
+&lt;p&gt;Now it’s time for the facilitator to slowly revisit the flow. Accelerate or jump to section. Set the the tone and have people contradicting you. Ask the audience “please tell your version of the story”. As the facilitator you &lt;strong&gt;want&lt;/strong&gt; to invite someone in the group to be the narrator.&lt;/p&gt;
+
+&lt;p&gt;The facilitator is a glue between words and the visible model.&lt;/p&gt;
+
+&lt;h2 id=&quot;telling-the-story-backwards---reverse-narrative&quot;&gt;Telling the story backwards - Reverse narrative&lt;/h2&gt;
+
+&lt;p&gt;This helps making the story more consistent. The facilitator usually leads this. Sometimes it allows to discover new areas.&lt;/p&gt;
+
+&lt;p&gt;During this session we’re not looking for completeness. If everybody is forgetting about something maybe it’s not important.&lt;/p&gt;
+
+&lt;p&gt;After an event storming session there should be no invisible stuff.&lt;/p&gt;
+
+&lt;h2 id=&quot;arrow-voting&quot;&gt;Arrow voting&lt;/h2&gt;
+
+&lt;p&gt;The group must vote and decide what has higher priority. Explore with no scope limitation but then narrow down to one item.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t use arrow voting with the wrong people in the room.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Your perception of the problem is completely flawed if everybody says the problem is what you don’t expect. &lt;/p&gt;
+
+&lt;h2 id=&quot;what-happens-next&quot;&gt;What happens next?&lt;/h2&gt;
+
+&lt;p&gt;Sometime people just acknowledge problems and opportunities but decide to skip the rollercoaster ride. You want to go on the rollercoaster and have some fun working on this issues! Skipping the ride, or pretending that’s not a problem would be the company’s loss. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;What should you do if someone says “oh we know that’s bad” and doesn’t wanna act. What I learned is it depends. Who’s the sponsor? What’s the goal?&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;End of day 1 you should have priorities and hotspots / opportunities. In the morning of day 2 look for something actionable.&lt;/p&gt;
+
+&lt;p&gt;After the workshop you might get impromptu conversations. Go in early the following day. They might adjust the timeline the morning after. &lt;/p&gt;
+
+&lt;h3 id=&quot;selection-bias&quot;&gt;Selection bias&lt;/h3&gt;
+
+&lt;p&gt;If there is an imbalance–selection bias–on the group and developers vs business arrow situation then the facilitator should mediate between business and developers.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“Can the problem be solved with software? Maybe you’re missing knowledge, expertise, dysfunctional communication patterns.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;During an event storming session you can determing that the symptom is here but the root causes might be somewhere else. &lt;/p&gt;
+
+&lt;p&gt;After an event storming session the team got a little bit wiser then at the beginning.&lt;/p&gt;
+
+&lt;h2 id=&quot;outcome--formats&quot;&gt;Outcome &amp;amp; formats&lt;/h2&gt;
+
+&lt;h2 id=&quot;event-storming-as-a-regular-investment&quot;&gt;Event storming as a regular investment&lt;/h2&gt;
+
+&lt;p&gt;Alberto runs regular–every 2/3 months–event storming sessions at his company as a way to on-board new team members and to review current process / pain-points. When running it this was you want to ask what’s the best outcome given the time? The point is not to explore everything but rather explore everything enough so that pain points surface. You should design different workshops for different purposes to achieve maximum gain.&lt;/p&gt;
+
+&lt;p&gt;During this session you can assess if we can do better then this. If you can we can just go ahead and change it!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I hope this write up give more context to folks interested in event storming. For more info Alberto is working on a &lt;a href=&quot;https://leanpub.com/introducing_eventstorming&quot;&gt;book&lt;/a&gt;. If you’d like a quicker read I wrote &lt;a href=&quot;https://teotti.com/event-storming-one-year-later&quot;&gt;another post&lt;/a&gt; about my experience with this technique.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/big-picture-event-storming/</link>
+        <guid isPermaLink="true">http://teotti.com/big-picture-event-storming/</guid>
+        
+        <category>process</category>
+        
+        <category>emergence</category>
         
         
       </item>
@@ -1002,350 +1274,6 @@ LIST_OF_VMS=&quot;parallel-ios-testbox-1.local parallel-ios-testbox-2.local para
         <category>testing</category>
         
         <category>ioS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Untangle unmaintainable Ruby on Rails controller actions</title>
-        <description>&lt;p&gt;This article is an example of how to refactor a Ruby on Rails controller action containing a mix of framework specific instructions–ie. redirect, render, flash–and business logic. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://www.osnews.com/images/comics/wtfm.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This is not a silver bullet that will solve all your problems and suddenly increase your Ruby on Rails application code quality. It is an object oriented approach that can–and should–be used in combination with other patterns.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Evaluating if your problem domain complexity accounts for this approach is probably the hardest bit&lt;/strong&gt; and without experiencing the pain of maintaining a big ball of mud for more then a few months that complexity can be hard to spot. To mitigate that instead of a toy example I will use &lt;strong&gt;a simplified problem adapted from a real life usecase&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this example I assume the server to render the view layer.&lt;/p&gt;
-
-&lt;h2 id=&quot;our-feature-set&quot;&gt;Our feature set&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;A regional representative (rep) access an edit/confirm page to update/confirm his profile&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A few scenarios can happen within that feature:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;the regional rep submits invalid data and fails to edit/confirm the profile&lt;/li&gt;
-  &lt;li&gt;the regional rep successfuly updates the profile&lt;/li&gt;
-  &lt;li&gt;the regional rep successfuly updates the profile and uploads a new photo&lt;/li&gt;
-  &lt;li&gt;the regional rep used an expired notification link and can’t edit/confirm the profile&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The server side handles rendering the view layer and at some point the controller action code might have looked like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;
-  &lt;span class=&quot;vi&quot;&gt;@regional_representative&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@regional_representative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update_attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:regional_representative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_profile_show_url&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;But after introducing that feature set it looks like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_access_token&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;present?&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expired?&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ConfirmProfileForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update_params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:regional_representative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valid?&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;photo_path&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:photo_update_notice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The new photo will be checked and updated by our staff within 72 hours&amp;quot;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;n&quot;&gt;profile_updater&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ProfileUpdater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;profile_updater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_representative_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-      &lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_profile_show_url&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_representative_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;rep/shared/expired_token&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Sine 2005 when I started working with Ruby and Rails I rarely saw controllers actions staying in their initial state–&lt;strong&gt;they keep growing as the application evolves you see more actions more private methods and it’s always just another little change. Until…&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/3R1dpjYOfnzJm/giphy.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;the-code-is-not-that-bad&quot;&gt;The code is not that bad&lt;/h2&gt;
-
-&lt;p&gt;This example controller action code is already implementing some good practices to make it more maintainable and intention revealing.&lt;/p&gt;
-
-&lt;h3 id=&quot;form-object-handling-data-validation&quot;&gt;Form object handling data validation&lt;/h3&gt;
-
-&lt;p&gt;Since the validation rules for a regional representative confirming his profile are specific to that &lt;strong&gt;context&lt;/strong&gt; the code uses a &lt;code&gt;ConfirmProfileForm&lt;/code&gt;–an &lt;code&gt;ActiveModel&lt;/code&gt; that handles validation of a &lt;code&gt;regional_representative&lt;/code&gt; &lt;em&gt;entity&lt;/em&gt; instead of creating a special validation case on the &lt;code&gt;Contact&lt;/code&gt; ActiveRecord object.&lt;/p&gt;
-
-&lt;h3 id=&quot;service-encapsulating-persistence-layer-and-notifications&quot;&gt;Service encapsulating persistence layer and notifications&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;ProfileUpdater&lt;/code&gt; is a service object that encapsulate the ActiveRecord object update and dispatch emails/sms notifications to the regional representative as well as attaching an updated photo to the admin email–to make the example more manageable I’ve skipped the code handling service faliure.&lt;/p&gt;
-
-&lt;h3 id=&quot;explicit-view-variables&quot;&gt;Explicit view variables&lt;/h3&gt;
-
-&lt;p&gt;The rendering of the view templates explicitly provide local variables instead of having instance variables that as the application grows are difficult to track and leak between partials.&lt;/p&gt;
-
-&lt;p&gt;Most developers are able to see and implement those refactorings and when the leftover logic is minimal it can be kept in the controller action &lt;strong&gt;but in this case logic handling steps 1 to 4 is in that controller action and it’s not very intention revealing because it’s closely coupled with framework behaviour&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;domain-logic-mixed-with-the-framework&quot;&gt;Domain logic mixed with the framework&lt;/h2&gt;
-
-&lt;p&gt;Let’s identify the controller action code that interacts with the Rails framework:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# when a photo is updated&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:photo_update_notice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Your photo will be updated by the admin.&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# when profile is successfuly updated--possibly with photo update&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_profile_show_url&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# when profile update fails&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_representative_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirm_profile_form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# when using an expired token&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;rep/shared/expired_token&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Imagine encapsulating all that framework specific behaviour in a single object that delegates to the controller using Ruby’s &lt;a href=&quot;http://ruby-doc.org/stdlib-2.2.1/libdoc/delegate/rdoc/SimpleDelegator.html&quot;&gt;SimpleDelegator&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Rep&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProfileUpdateResponse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleDelegator&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;profile_updated&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_profile_show_url&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;profile_updated_and_new_photo&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;profile_updated&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:photo_update_notice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Your photo will be updated by the admin.&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;profile_update_failed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_representative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full_error_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;regional_representative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full_error_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;expired_access_token&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;rep/expired_token&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;And pass that object to a &lt;code&gt;ProfileChange&lt;/code&gt; service that encapsulate the business logic and given some user input will interact with the controller:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Rep&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProfileController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ProfileChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ProfileUpdateResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:regional_representative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Let’s look at &lt;code&gt;ProfileChange&lt;/code&gt; internals:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Rep&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProfileChange&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@listener&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listener&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;regional_rep_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;# not_expires is an ActiveRecord criteria on AccessToken&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;not_expired&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;update_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_rep_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;vi&quot;&gt;@listener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expired_access_token&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-
-    &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;AccessToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;permitted_action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:rep_confirm_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_rep_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ConfirmProfileForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_rep_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valid?&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;update_valid_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;regional_rep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contact_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;vi&quot;&gt;@listener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profile_update_failed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regional_rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_valid_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;profile_updater&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ProfileUpdater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;profile_updater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contact_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;photo_path&lt;/span&gt;
-        &lt;span class=&quot;vi&quot;&gt;@listener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profile_updated_and_new_photo&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@listener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profile_updated&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;code&gt;ProfileChange&lt;/code&gt; does its job and interacts with the framework via &lt;code&gt;ProfileUpdateResponse&lt;/code&gt;–when test driving &lt;code&gt;ProfileChange&lt;/code&gt; in isolation the framework behaviour can easily be abstracted away to focus on the core logic. &lt;/p&gt;
-
-&lt;p&gt;If framework abstraction isn’t a concern this same refactor could be done in the controller via private methods except very often a single controller holds logic for multiple actions ending up with a mix of responsabilities and a tangle of private methods and shared state.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
-
-&lt;p&gt;In this scenario moving code out of the controller action in to this layer of abstraction untangles framework and domain logic making the profile change intent explicit–in simpler cases this abstraction could just get in the way and leaving the whole logic in the controller action is adequate. This separation concept is based on &lt;a href=&quot;http://alistair.cockburn.us/Hexagonal+architecture&quot;&gt;Ports &amp;amp; Adapters / Hexagonal Architecuture&lt;/a&gt; by Alistair Cockburn.&lt;/p&gt;
-
-&lt;h3 id=&quot;bigger-picture&quot;&gt;Bigger picture&lt;/h3&gt;
-
-&lt;p&gt;Our fictional organization portal operates other contexts:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;a customer can view products and contact a regional representative for support&lt;/li&gt;
-  &lt;li&gt;an administrator can manage products and regional representative&lt;/li&gt;
-  &lt;li&gt;a regional representative can confirm and manage their profile&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This example–even after the refactor–is part of &lt;strong&gt;one boundary&lt;/strong&gt;–I’ve left the &lt;code&gt;Rep&lt;/code&gt; module to indicate that–but as the application evolves those three operational contexts will have cross boundary dependencies that this approach doesn’t highlight but it’s easy to move this approach in a &lt;a href=&quot;http://teotti.com/component-based-rails-architecture-primer/&quot;&gt;component based&lt;/a&gt; with Ruby Gems and Rails engines.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 20 Sep 2016 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/untangle-unmaintainable-rails-controller-actions/</link>
-        <guid isPermaLink="true">http://teotti.com/untangle-unmaintainable-rails-controller-actions/</guid>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-        <category>rails4</category>
-        
-        <category>architecture</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Simplelenium with Google Chrome</title>
-        <description>&lt;p&gt;This is a very quick post to clarify a way to override the default Simplelenium browser.&lt;/p&gt;
-
-&lt;p&gt;By default it’s PhantomJS and Simplelenium documentation says you need to set a &lt;code&gt;-Dbrowse=chrome&lt;/code&gt; to switch to Chrome. If you’re running your tests via an IDE you can set that in its configuration but CI would need the same configuration instead I used the &lt;code&gt;System.setProperty&lt;/code&gt; in my test like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@Before&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;executedBeforeEach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;browser&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;chrome&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Here’s the full integration test code:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shamelessrecruiter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;net.codestory.simplelenium.DomElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;net.codestory.simplelenium.PageObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.Before&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;net.codestory.simplelenium.SeleniumTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.runner.RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.test.SpringApplicationConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.test.WebIntegrationTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.test.context.junit4.SpringJUnit4ClassRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpringJUnit4ClassRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@SpringApplicationConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShamelessrecruiterApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@WebIntegrationTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;server.port:9000&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegrationTest&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SeleniumTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;ReportRecruiterPage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDefaultBaseUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://localhost:9000&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Before&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;executedBeforeEach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;browser&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;chrome&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reportAnnoyingRecruiter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;goTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldDisplayWelcomeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldDisplayReportForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fillInReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Ajeje Brazu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;ajeje@bra.zu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-                                         &lt;span class=&quot;s&quot;&gt;&amp;quot;Dear candidate, I have the perfect opportunity for you...&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;submitReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldDisplaySuccessMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;goTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fillInInvalidReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Ajeje Brazu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;ajeje bra.zu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&amp;quot;Dear candidate, I have the perfect opportunity for you...&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;submitReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldDisplayValidationErrorMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;reportRecruiterPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldFillFormWithRejectedReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Ajeje Brazu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;ajeje bra.zu&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&amp;quot;Dear candidate, I have the perfect opportunity for you...&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ReportRecruiterPage&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;DomElement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;DomElement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nameField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input#name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;DomElement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emailField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input#email&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;DomElement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;textarea#message&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;DomElement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;submitButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input#submitReport&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shouldDisplayWelcomeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Welcome to ShamelessRecruiter&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shouldDisplayReportForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;nameField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;haveSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;emailField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;haveSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;messageField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;haveSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fillInReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;nameField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;emailField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;messageField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fillInInvalidReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;fillInReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;submitReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;submitButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shouldDisplaySuccessMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Thanks for reporting a shameless recruiter&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shouldDisplayValidationErrorMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;should&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;not a well-formed email address&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shouldFillFormWithRejectedReport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;nameField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;emailField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;messageField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Fri, 03 Jun 2016 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/simplelenium-with-chrome/</link>
-        <guid isPermaLink="true">http://teotti.com/simplelenium-with-chrome/</guid>
-        
-        <category>java</category>
-        
-        <category>testing</category>
         
         
       </item>

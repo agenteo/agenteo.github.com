@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Enrico Teotti - developer and agile coach with over 18 years experience in the IT industry</title>
-    <description>developer and agile coach with over 18 years of experience in the IT industry across Europe, Australia and the US.
+    <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
+    <description>developer and agile mentor with over 18 years of experience in the IT industry across Europe, Australia and the US.
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 12 Mar 2020 05:46:28 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Mar 2020 05:46:28 +0000</lastBuildDate>
+    <pubDate>Sun, 22 Mar 2020 01:53:11 +0000</pubDate>
+    <lastBuildDate>Sun, 22 Mar 2020 01:53:11 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>What happens before an agile retrospective</title>
+        <description>&lt;p&gt;In this post I share what happens before I facilitate an agile retrospective.&lt;/p&gt;
+
+&lt;p&gt;Most team I joined approach retrospectives as something that has to be done once a week in 1 hour and you don’t need any preparation.&lt;/p&gt;
+
+&lt;p&gt;In my experience that’s when retrospectives yield more basic results and in the worst cases become counterproductive.&lt;/p&gt;
+
+&lt;p&gt;Before a retrospective–any meeting in my opinion–you must prepare.&lt;/p&gt;
+
+&lt;p&gt;Granted you can’t come up with a plan that’s perfect. You work in a complex adaptive system so be ready for the unexpected. But you can take care of some due diligence and I’ll explain my approach in this post.&lt;/p&gt;
+
+&lt;p&gt;The first question is what’s your role? Are you an external facilitator? A team member? A lead developer, product manager scrum master? If you feel like you’re overstepping your role by following this advice maybe treat it like an experiment. See how it goes. For the longest time I was a developer when I designed and facilitated my team retrospectives.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We’re all biased but if you’re a scrum master or a team member probably even more. Be aware of that and maybe ask for a co-facilitator or co-designer external to the team.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;is-there-a-retrospective-purpose&quot;&gt;Is there a retrospective purpose?&lt;/h2&gt;
+
+&lt;p&gt;With teams of 6/10 I like to run short 1:1s or watercooler convos about what’s on the team member’s minds. If I see a pattern I propose that as the retrospective theme before the retrospective. Always check with the group before making that call final and designing the structure.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Tip I learned the hard way: When you focus your retrospective on a theme you must have a way for the little low hanging fruit to be tackled. I like to do that in short 10/15m daily retrospectives. Those are action item focused. The themed retrospective is focused on reflection.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The theme might be coming from the person “leading” the team, or if you’re an external facilitator from the stakeholder that brought you in. If you have time try to check in with the team anyways.&lt;/p&gt;
+
+&lt;p&gt;That theme should hint at the purpose. &lt;strong&gt;You can do this investigation inside a retrospective that has purpose of “improving what we did this iteration” but you’d spend time doing that sifting instead of reflecting.&lt;/strong&gt; It’s very contextual sometime you might want the group to do that but in my experience I prefer to prepare a theme before. And if the group has a topic or a theme emerging different than what was planned I go with it. It’s their meeting. If the majority of the room expresses desire to explore other direction. This is where you–the facilitator–need to get out of the group’s way. &lt;strong&gt;If you’re a product manager, scrum master, tech lead that’s gonna be very hard to let go of your bias and your agenda&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next is the retrospective design.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-retrospective-design&quot;&gt;The retrospective design&lt;/h3&gt;
+
+&lt;p&gt;This is so that you don’t pick a random format on retromat print it and walk in the retrospective.&lt;/p&gt;
+
+&lt;p&gt;Here’s a few questions that I like to ask once the theme is defined:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Who’s gonna be there?&lt;/li&gt;
+  &lt;li&gt;Why are we taking their time?&lt;/li&gt;
+  &lt;li&gt;What do we want to get out of this?&lt;/li&gt;
+  &lt;li&gt;How are we getting there?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last question is where I design the retrospective with activities that fit the group and the context. &lt;strong&gt;This is the plan and no plan survives contact with the enemy. So don’t be married to it.&lt;/strong&gt; That’s where the complexity of this facilitation job is. And why I love it.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Void of context they might not give a lot of insights but these are examples of retrospectives design I helped other folks with. Those sessions would take anything from 15 minutes to 30/40 minutes. Groups size were between 6 to 20.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Have I sparked some intrest in dedicating some time finding a theme and designing your next retrospective? Are you already doing it? How much time do you dedicate to it? Who helps you? Leave a comment or a tweet.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/what-happens-before-an-agile-retrospective/</link>
+        <guid isPermaLink="true">http://teotti.com/what-happens-before-an-agile-retrospective/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>Make your retrospective facilitation even more effective? Here&#39;s 4 things to look at</title>
@@ -1153,127 +1231,6 @@
         <category>ruby</category>
         
         <category>java</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Parallelising iOS UI tests</title>
-        <description>&lt;p&gt;This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines–the objective is to speed up a time consuming iOS UI test suite. You can find the script, its dependencies and a test project on &lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests&quot;&gt;github&lt;/a&gt;. &lt;strong&gt;I really hope to save someone’s hours of time I spent on UI testing parallelization dead ends.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;tldr&quot;&gt;tldr;&lt;/h3&gt;
-
-&lt;p&gt;Xcode8 has a &lt;code&gt;xcodebuild&lt;/code&gt; option called &lt;code&gt;--only-test&lt;/code&gt; to run single test files–our &lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests/blob/master/run.rb&quot;&gt;proof of concept Ruby script&lt;/a&gt; collects the Xcode project test file list and runs them via ssh on multiple virtual machines–legally–running OSX. This script doesn’t allow to distribute test functions across virtual machines even if that is a valid option to &lt;code&gt;--only-test&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Our &lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests&quot;&gt;test project&lt;/a&gt; has around 15 tests–some with sleeps–and it takes around 20 minutes running on a single iMac (16GB ram, 3.5 GHz Intel Core i5 quad core). This script runs them in 7/8 minutes (with 3 virtual machines running on the same iMac). During our tests we confirmed that a shorter 2/3 minutes test suite did not benefit from this virtualization.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
-
-&lt;p&gt;As a project grows sets of diverse features over months and years its UI tests will increase and so will the suite execution time.&lt;/p&gt;
-
-&lt;p&gt;Apple doesn’t make it easy to parallelise a test run–its xcodebuild has an option to parallelize a build but not the automated tests and its &lt;a href=&quot;https://developer.apple.com/library/content/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/&quot;&gt;xcode server&lt;/a&gt; doesn’t support parallelization at the time of this writing.&lt;/p&gt;
-
-&lt;p&gt;At the time of this writing researching this topic online lead to &lt;strong&gt;a lot&lt;/strong&gt; of dead ends and I felt compelled to write a blog post about our proof of concept solution. Facebook’s &lt;a href=&quot;https://github.com/facebook/xctool&quot;&gt;xctool&lt;/a&gt; list test run &lt;a href=&quot;https://github.com/facebook/xctool#parallelizing-test-runs&quot;&gt;parallelization&lt;/a&gt; but during our tests that was true only for unit and &lt;strong&gt;not for &lt;a href=&quot;https://github.com/facebook/xctool#parallelizing-test-runs&quot;&gt;Apple’s UI tests&lt;/a&gt;&lt;/strong&gt;. Amazon’s &lt;a href=&quot;https://aws.amazon.com/device-farm/&quot;&gt;AWS device farm&lt;/a&gt; allows to spread UI tests over a number of different devices but not to parallelize in order to reduce execution time.&lt;/p&gt;
-
-&lt;p&gt;Running multiple simulators on a single OSX workstation was a dead end. Running multiple physical devices connected to a OSX workstation would allow parallelization but it wasn’t a suitable solution for us.&lt;/p&gt;
-
-&lt;h2 id=&quot;this-proof-of-concept-stack&quot;&gt;This proof of concept stack&lt;/h2&gt;
-
-&lt;p&gt;We will use a mix of open and proprietary tools:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;OSX (duh)&lt;/li&gt;
-  &lt;li&gt;OSX server ($19)&lt;/li&gt;
-  &lt;li&gt;VMware Fusion ($79.99)&lt;/li&gt;
-  &lt;li&gt;Ruby + awesome gems ($0)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Oracle’s Virtual Box is a free alternative to Fusion but it was giving us a hard time finding the OSX recovery partition to virtualize OSX.&lt;/p&gt;
-
-&lt;p&gt;The setup of the first virtual OSX box is manual–it can then be cloned to increase the size of your virtual boxes test farm. Once the VMs are setup the Ruby script &lt;code&gt;run.rb&lt;/code&gt; will inspect the project on the host, find the test files, distribute them to available guests (virtual machines) and finally collect the test results and logs.&lt;/p&gt;
-
-&lt;p&gt;We’ve used a handful of awesome Ruby gems to orchestrate the parallelization:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/capistrano/sshkit&quot;&gt;sshkit&lt;/a&gt; is a tool to distribute ssh commands&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/CocoaPods/Xcodeproj&quot;&gt;xcodeproj&lt;/a&gt; allows to detect targets and lists of test files&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/ruby-concurrency/concurrent-ruby&quot;&gt;concurrent-ruby-ext&lt;/a&gt; to use thread safe structures for the test list&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests/&quot;&gt;This solution&lt;/a&gt; was developed during research and development as a proof of concept. It’s only been tested on a &lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests&quot;&gt;test application&lt;/a&gt;.&lt;/strong&gt; Your milage may vary.&lt;/p&gt;
-
-&lt;p&gt;From now on we will refer to your workstation (or CI server) as the HOST.&lt;/p&gt;
-
-&lt;h3 id=&quot;on-the-host&quot;&gt;On the HOST:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;git clone https://github.com/pivotalbeachla/parallelize-tests.git&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;cd parallelize-tests&lt;/code&gt; and then run &lt;code&gt;bundle&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;install OSX server from the AppStore&lt;/li&gt;
-  &lt;li&gt;install VmWare Fusion&lt;/li&gt;
-  &lt;li&gt;create a new VmWare Fusion OSX virtual machine–follow the wizard that will create the OS from the HOST recovery disk&lt;/li&gt;
-  &lt;li&gt;turn on the virtual machine (refered to as GUEST from now on) and set its name ie. (parallel-ios-tests-1)&lt;/li&gt;
-  &lt;li&gt;enable the GUEST ssh access from System Preferences -&amp;gt; Sharing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;provisioning-guest&quot;&gt;Provisioning GUEST&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;install xcode and necessary simulators&lt;/li&gt;
-  &lt;li&gt;enable xcode developer mode&lt;/li&gt;
-  &lt;li&gt;install git&lt;/li&gt;
-  &lt;li&gt;install SSH certificate to allow git checkout&lt;/li&gt;
-  &lt;li&gt;create a PROJECT_DIRECTORY and git clone your project–the project directory will be needed when Running the tests from the HOST&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cloning-guest-and-enlarge-your-virtual-machines-test-farm&quot;&gt;Cloning GUEST and enlarge your virtual machines test farm&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;turn off the GUEST&lt;/li&gt;
-  &lt;li&gt;from VmWare’s menu: Virtual Machine -&amp;gt; Create full clone&lt;/li&gt;
-  &lt;li&gt;once the new GUEST is turned on change its name (in the script I used &lt;em&gt;parallel-ios-tests-2&lt;/em&gt; and &lt;em&gt;parallel-ios-tests-3&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;repeat this as long as you see your total test time decrease&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;running-the-script&quot;&gt;Running the script&lt;/h2&gt;
-
-&lt;p&gt;You will run the &lt;code&gt;run.rb&lt;/code&gt; script from the HOST. Currently all the variables have to be provided via ENV variables ie.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-LIST_OF_VMS=&quot;parallel-ios-testbox-1.local parallel-ios-testbox-2.local parallel-ios-testbox-3.local&quot; PROJECT_FILE=UnitTest.xcodeproj SCHEME=UnitTest VM_PROJECT_DIRECTORY=&quot;workspace/parallelize-tests&quot; DESTINATION=&quot;platform=iOS Simulator,name=iPhone 7&quot; ruby run.rb
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/parallelising-ios-ui-tests/testsInProgress.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The test project name is UnitTest, sorry for the confusion :)&lt;/p&gt;
-
-&lt;p&gt;You should see green dots for a successful test and red F for a fail. In the test project you’ll see all greens and one fail:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/parallelising-ios-ui-tests/running.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;More information–including failures whole &lt;code&gt;xcodebuild&lt;/code&gt; outputs–can be found inside the timestamped logs in the script’s directory ie. ios-parallel-tests-20161010_1026.log.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Before this I was thinking virtualizing OSX was hard and illegal but it turned out to be legal, very simple and a great way to distribute iOS UI tests.&lt;/p&gt;
-
-&lt;h2 id=&quot;credits&quot;&gt;Credits&lt;/h2&gt;
-
-&lt;p&gt;Tim Kersey and I paired on this during research and development time at Pivotal Labs in Santa Monica. You can find the code of the proof of concept on &lt;a href=&quot;https://github.com/pivotalbeachla/parallelize-tests&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/parallelising-ios-ui-tests/</link>
-        <guid isPermaLink="true">http://teotti.com/parallelising-ios-ui-tests/</guid>
-        
-        <category>testing</category>
-        
-        <category>ioS</category>
         
         
       </item>

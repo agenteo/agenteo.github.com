@@ -6,6 +6,7 @@ image: /assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg
 og_description: Brief explanation of how I do remote visual facilitation with iPad pro and screen sharing.
 tags:
   - process
+  - visual-thinking
 ---
 
 In this brif post I explain how I do visual facilitation and visual recording with an iPad, Mac Book and Zoom. You can probably use a PC instead of a Mac Book but I haven't tried.

@@ -5,7 +5,9 @@ comments: true
 image: /assets/article_images/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/hero.jpg
 og_description: Many factors--specific to your context--can reduce the effectiveness of a retrospective and cause frustration and mistrust in the group. In this brief blog post I will describe how psychological safety, purpose, preparation and collaboration can help make your retrospectives even more effective**.
 tags:
+  - retrospectives
   - process
+  - agile
 ---
 
 In this post I refer to retrospectives as a type of meeting inspired by the 12th agile principle "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.".

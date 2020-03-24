@@ -5,7 +5,9 @@ comments: true
 image: /assets/article_images/what-happens-before-an-agile-retrospective/hero.jpg
 og_description: 
 tags:
+  - retrospectives
   - process
+  - agile
 ---
 
 In this post I share what happens before I facilitate an agile retrospective.

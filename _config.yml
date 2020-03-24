@@ -18,15 +18,15 @@ destination: public
 title: "Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry"
 welcome_message: "Hello, I am Enrico Teotti"
 description: > # this means to ignore newlines until "email:"
-  developer and agile mentor with over 18 years of experience in the IT industry across Europe, Australia and the US.
-og_description: "Visit my homepage to find out more about me and my work"
+  agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
+og_description: "Visit my blog to find out more about me and my work"
 
 email: enrico@teotti.com
 #blog logo
 main_logo: "/assets/images/me.jpg"
 logo: "/assets/images/ita_aus_flag.jpg"
 # blog cover
-cover: "/assets/images/hero-reef.jpg"
+cover: "/assets/images/hero_image.jpg"
 
 name: 'Enrico Teotti'
 author: 'Enrico Teotti'

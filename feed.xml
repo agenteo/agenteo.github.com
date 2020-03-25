@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
-    <description>developer and agile mentor with over 18 years of experience in the IT industry across Europe, Australia and the US.
+    <description>agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 22 Mar 2020 01:53:11 +0000</pubDate>
-    <lastBuildDate>Sun, 22 Mar 2020 01:53:11 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Mar 2020 16:55:28 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Mar 2020 16:55:28 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -83,7 +83,11 @@
         <link>http://teotti.com/what-happens-before-an-agile-retrospective/</link>
         <guid isPermaLink="true">http://teotti.com/what-happens-before-an-agile-retrospective/</guid>
         
+        <category>retrospectives</category>
+        
         <category>process</category>
+        
+        <category>agile</category>
         
         
       </item>
@@ -215,7 +219,11 @@
         <link>http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</link>
         <guid isPermaLink="true">http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</guid>
         
+        <category>retrospectives</category>
+        
         <category>process</category>
+        
+        <category>agile</category>
         
         
       </item>
@@ -529,6 +537,8 @@
         <guid isPermaLink="true">http://teotti.com/remote-visual-facilitation-with-ipad-pro/</guid>
         
         <category>process</category>
+        
+        <category>visual-thinking</category>
         
         
       </item>

@@ -21,11 +21,11 @@
   
   <meta property="og:description" content="This article demonstrates how a [Concourse](http://concourse.ci) CI pipeline can run consumer driven tests between two cross language apps: a Java Spring Boot web app and a Ruby Sinatra API. The examples use the [PACT framework](https://docs.pact.io) and its [jvm](https://github.com/DiUS/pact-jvm) and [Ruby](https://github.com/realestate-com-au/pact) implementations. This article assumes basic understanding of pact and how..." />
   
-  <meta property="og:url" content="http://localhost:4000/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/" />
+  <meta property="og:url" content="http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/" />
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://localhost:4000/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/">
+  <link rel="canonical" href="http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -54,7 +54,7 @@
 
     <!-- header start -->
 
-<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -119,7 +119,7 @@
 
 <p><a href="http://concourse.ci/">Concourse</a> is a CI pipeline that helps visualizing the consumer/provider dependency and automating the contract publishing and verification. </p>
 
-<p><img src="http://localhost:4000/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/pipeline.png" alt="" /></p>
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/pipeline.png" alt="" /></p>
 
 <h2 id="consumer-driven-change">Consumer driven change</h2>
 
@@ -127,19 +127,19 @@
 
 <p>I pushed a <a href="https://github.com/agenteo/spring-boot-pact-consumer/commit/41f4f51d2aa2344a02813f1af99f4e3fe140bb9c">consumer change</a> to add a <code>members_price</code> on the provider. The pipeline picks up that change and runs the consumer tests.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/consumer-pass.gif" alt="" /></p>
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/consumer-pass.gif" alt="" /></p>
 
 <p>That consumer test passes and it generates a JSON PACT (<strong>consumer-driven-api-contracts</strong>) that the pipeline will upload to a <a href="https://github.com/agenteo/pact-repository/commit/e6ac9c6e3636747ab3270d18f7a683a323d6541b">contract git repository</a>. <em>There is only one PACT file in this simplified example</em>.</p>
 
 <p>The Concourse pipeline will monitor the contract repository. When the new one is published it will run the API provider job (<strong>seal-api-provider-tests</strong>) and that will fail.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.gif" alt="" /></p>
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.gif" alt="" /></p>
 
 <h2 id="provider-update-to-fix-the-pipeline">Provider update to fix the pipeline</h2>
 
 <p>The provider tests are broken.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.png" alt="see pact complaining about missing members_price" /></p>
+<p><img src="http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.png" alt="see pact complaining about missing members_price" /></p>
 
 <p><strong>On your workstation you will need to fetch the latest contract repositories to get the failing test.</strong></p>
 

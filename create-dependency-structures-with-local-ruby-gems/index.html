@@ -21,11 +21,11 @@
   
   <meta property="og:description" content="Good object oriented practices can be sufficient to handle some complexity but when the project is over a certain size they don't help understand what the whole application does. **When you have to read several classes in order to visualize application dependencies you increase your cognitive load making your job..." />
   
-  <meta property="og:url" content="http://localhost:4000/create-dependency-structures-with-local-ruby-gems/" />
+  <meta property="og:url" content="http://teotti.com/create-dependency-structures-with-local-ruby-gems/" />
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://localhost:4000/create-dependency-structures-with-local-ruby-gems/">
+  <link rel="canonical" href="http://teotti.com/create-dependency-structures-with-local-ruby-gems/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -54,7 +54,7 @@
 
     <!-- header start -->
 
-<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -96,7 +96,7 @@
   </blockquote>
 </blockquote>
 
-<p><img src="http://localhost:4000/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_1.png" alt="we know more features are coming but let's focus on the first one" /></p>
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_1.png" alt="we know more features are coming but let's focus on the first one" /></p>
 
 <h2 id="ruby-application">Ruby application</h2>
 
@@ -285,7 +285,7 @@ Could not find gem <span class="s1">&#39;drug_information (&gt;= 0) ruby&#39;</s
 
 <p>This is a problem affecting a Ruby process running in memory such as a web server or deamon. Let’s say you have a gem A requiring gem C and using its code, and you have a gem B <strong>not</strong> requiring gem C but using its code. A and B are two high level gems that your Ruby application can call.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/create-dependency-structures-with-local-ruby-gems/flaky_bugs.png" alt="visual representation" /></p>
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/flaky_bugs.png" alt="visual representation" /></p>
 
 <p>When your application first access gem B an error will be triggered since it uses gem C code without requiring it.</p>
 
@@ -319,7 +319,7 @@ Could not find gem <span class="s1">&#39;drug_information (&gt;= 0) ruby&#39;</s
 
 <p>An application that doesn’t evolve is rarely useful and as it evolves it becomes more complex and requires extra resources to preserve and simplify its structure–these are concepts covered by Lehman’s <strong>law of continuing change</strong> and <strong>law of increasing complexity</strong>.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_2.png" alt="our evolved design" /></p>
+<p><img src="http://teotti.com/assets/article_images/create-dependency-structures-with-local-ruby-gems/dependencies_step_2.png" alt="our evolved design" /></p>
 
 <p>The health plan requirement changed:</p>
 

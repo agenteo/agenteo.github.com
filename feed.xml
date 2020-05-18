@@ -4,11 +4,171 @@
     <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
     <description>agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
 </description>
-    <link>http://teotti.com/</link>
-    <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 24 Mar 2020 16:55:28 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Mar 2020 16:55:28 +0000</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 18 May 2020 13:45:02 +0000</pubDate>
+    <lastBuildDate>Mon, 18 May 2020 13:45:02 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>The law of two feet in open space online</title>
+        <description>&lt;p&gt;This article is for facilitators holding space and organizers of Open Space events that moved–or want to move–online.&lt;/p&gt;
+
+&lt;p&gt;This article assumes you know what Open Space Technology is and participated in a phisical one.&lt;/p&gt;
+
+&lt;p&gt;The focus of the article is to share my experience with the “law of two feet” in an online space and I reflect on preparation of online open spaces.&lt;/p&gt;
+
+&lt;p&gt;In a phisical open space you probably experienced getting up and walking to another session when you felt you were not contributing or you were not getting anything out of it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“Briefly stated, this law says that every individual has two feet, and must be prepared to use them. Responsibility for a successful outcome in any Open Space Event resides with exactly one person—each participant. Individuals can make a difference and must make a difference. If that is not true in a given situation, they, and they alone, must take responsibility to use their two feet, and move to a new place where they can make a difference.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How does “law of two feet” translate when you are in an open space event that moved online? By the way I am not sure if we should still call it Open Space but that’s for another article.&lt;/p&gt;
+
+&lt;h2 id=&quot;responsibility-for-a-successful-outcome-in-any-open-space-event-resides-with-exactly-one-personeach-participant&quot;&gt;Responsibility for a successful outcome in any Open Space Event resides with exactly one person—each participant&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;they, and they alone, must take responsibility to use their two feet, and move to a new place where they can make a difference&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Works in a phisical open space. We all know how to go from point A to point B. But what about online? Does all my audience know where to click how to navigate to other rooms?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images//the-law-of-two-feet-in-open-space-online/5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;do-you-know-how-to-get-to-another-session&quot;&gt;Do you know how to get to another session?&lt;/h2&gt;
+
+&lt;p&gt;My first time as a &lt;strong&gt;session host&lt;/strong&gt; in open space online, after welcoming the group I asked “do you know how to get to another session?”. I think that’s of paramount importance but…&lt;/p&gt;
+
+&lt;p&gt;as an &lt;strong&gt;openspace organizer&lt;/strong&gt; I can’t expect all session hosts to do that. Some might not think about that, some might have a million other things happening as their hosting and some might simply cling to their audience.&lt;/p&gt;
+
+&lt;p&gt;As an &lt;strong&gt;openspace organizer&lt;/strong&gt; I must prepare the space to account for the “the law of two clicks”. I first heard that name from Gerardo De Luzenberger from the italian chapter of IAF. It means moving to another session with just a couple of mouse clicks.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-law-of-two-clicks&quot;&gt;The law of two clicks&lt;/h2&gt;
+
+&lt;p&gt;Gerardo and IAF hold an open space with about 100 people and used &lt;a href=&quot;https://qiqochat.com/about&quot;&gt;QiQo chat&lt;/a&gt;. Qiqo is pretty solid at allowing people moving between Zoom rooms and facilitate people movement between sessions. There are reduced chances for the audience to make mistakes. Still, you have to account for individuals that might now see Zoom messages and having technical difficulties.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I don’t think there is a one size fits all technical solution.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;I could have an online spreadsheet–or slide or text document–with a list of Zoom room URLs (or Google Meet or Jitsi ot whatever).&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Is my audience able to add and navigate those without messing up other meeting IDs? What’s my contigency if Jack accidentally deletes Luke’s meeting URL? A backchannel? Is everybody aware/invited?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;I could let the session organizers selforganize and pick their remote video call tool.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Will the audience be familiar with those tools? And willing to perhaps install a new one? &lt;strong&gt;The online agile coach camp coming up in August addressed that by asking all participant to bring their personal (free) Zoom Account to (I assume) have sessions hosts create personal meetings.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Regardless of the video call tool, there must be a clear way for the participants to view current sessions and navigate between rooms and to communicate with me (the organizer) when they have technical difficulties.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;every individual is &lt;strong&gt;X&lt;/strong&gt; clicks away from another room, and must be prepared to click. Responsibility for a successful outcome resides with exactly one person—each participant. Individuals can make a difference and must make a difference. If that is not true in a given situation, they, and they alone, must take responsibility to use their two clicks, and move to a new place where they can make a difference &lt;strong&gt;or ask for help&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How many clicks does my audience need to get to another room?&lt;/p&gt;
+
+&lt;h2 id=&quot;the-click-bus-experiment&quot;&gt;The click bus experiment&lt;/h2&gt;
+
+&lt;p&gt;An experiemnt I conducted to assess how the law of two feet translated online was the clickbus.&lt;/p&gt;
+
+&lt;p&gt;I was in an open space with over 80 people and I hosted a session called the “click bus” virtually moving around the online open space sessions.&lt;/p&gt;
+
+&lt;p&gt;The clickbus purpose was to help folks stuck in open space online rooms to navigate and move to other rooms.&lt;/p&gt;
+
+&lt;p&gt;The clickbus group met in a Zoom call where we assigned a head and tail member. The bus head would tell the clickbus participants what was the next stop, make sure we all understood then be the first to leave. The tail would wait for all members to be out of the current room, and be the last to leave for the next room. Both head and tail were tech savvy.&lt;/p&gt;
+
+&lt;p&gt;The clickbus had a dedicated backchannel (we used a free online chat called &lt;a href=&quot;http://www.e-chat.co&quot;&gt;http://www.e-chat.co&lt;/a&gt;) so we wouldn’t disturb the conversation or chat of the rooms we visited.&lt;/p&gt;
+
+&lt;p&gt;Once in the new room the bus head would silently announce to the session participants that the clickbus arrived. That was done either in the chat or via videocamera post-it. The announce would include an invite for people that wanted to leave with a link to the backchannel chat.&lt;/p&gt;
+
+&lt;p&gt;Everyone (beside the head and tail volunteers) were free to leave and stay in the visited room–or go anwhere else–at any time.&lt;/p&gt;
+
+&lt;p&gt;Clickbus could be run &lt;strong&gt;before&lt;/strong&gt; the space opens as a technical pre-check activity or offered as a service to bring some of the human contact you get walking around in a phisical open space.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;With about 20 years of software development and product management I really don’t have a problem moving around but &lt;strong&gt;COVID made me realise even more how many folks are having technical trouble out there&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;As an open space organizer we should provide support mechanisms to avoid folks feeling stupid for not “getting it”. If we support the audience there is a better chance they will contribute.&lt;/p&gt;
+
+&lt;p&gt;Also, people might be calling from tablets, Windows, OSX so as organizers we need to be ready / aware to deal with technical difficulties on different systems. Do we ask the audience to run a speed test before the event? What do we do if out of 300 people 150 have dialup? Do we change our setup accordingly? How do we support people with slower connections?&lt;/p&gt;
+
+&lt;p&gt;I don’t think there is a one size fits all solution but I don’t think we can get away with “whatever happens is the only thing that could have happened”. Would you say that if you picked an open space phisical venue that is not wheelchair accessible?&lt;/p&gt;
+</description>
+        <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/the-law-of-two-feet-in-open-space-online/</link>
+        <guid isPermaLink="true">http://localhost:4000/the-law-of-two-feet-in-open-space-online/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Video call from your LAN during COVID-19</title>
+        <description>&lt;p&gt;In this short blog I explain how to have great video calls with nearby–within your wifi signal range–people. This avoids going out and back from the internet.&lt;/p&gt;
+
+&lt;p&gt;I found myself in my house in my Italian home town (with a shitty internet connection). Family lives in a house next to me and we share the same (shitty) wifi.&lt;/p&gt;
+
+&lt;p&gt;Because of covid we’re trying to avoid contact and calling via internet has been tedious and really really unreliable.&lt;/p&gt;
+
+&lt;p&gt;So guess what you can use your local area network to video call and message. For free. And it’ll take about 5 minutes to setup.&lt;/p&gt;
+
+&lt;p&gt;My goal was to install a simple app on phone / computer and allow the communication.&lt;/p&gt;
+
+&lt;p&gt;I looked in to two solutions: jitsi and linphone.&lt;/p&gt;
+
+&lt;h2 id=&quot;jitsi&quot;&gt;Jitsi&lt;/h2&gt;
+
+&lt;p&gt;Is web based, used WebRTC, really cool project BUT you need a centralized server. Great &lt;a href=&quot;https://jitsi.org/news/new-tutorial-installing-jitsi-meet-on-your-own-linux-server/&quot;&gt;explanation on how to set it up from skratch on Ubuntu&lt;/a&gt; they also have a &lt;a href=&quot;https://github.com/jitsi/docker-jitsi-meet&quot;&gt;docker container&lt;/a&gt; that is plug and play. I was able to setup and test locally the http version in minutes.&lt;/p&gt;
+
+&lt;h2 id=&quot;linphone&quot;&gt;Linphone&lt;/h2&gt;
+
+&lt;p&gt;Kudos to Stefano Zaglio that pointed me to &lt;a href=&quot;http://linphone.org/&quot;&gt;linphone&lt;/a&gt;. OMG it’s amazing.&lt;/p&gt;
+
+&lt;p&gt;It has android, ios, osx, windows, linux clients and it does not require a server!&lt;/p&gt;
+
+&lt;p&gt;So I am almost done with the post. Install linphone on your device!&lt;/p&gt;
+
+&lt;p&gt;You do not need to sign up for an account. Once installed you will have a SIP address like this: &lt;code&gt;sip:enrico@192.168.1.3:5060&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In order to start chatting you need to comunicate the sip address to your pal (or viceversa).&lt;/p&gt;
+
+&lt;h3 id=&quot;quick-gotchas&quot;&gt;Quick gotchas&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Your device SIP address uses your local IP. In my experience wifi AP are generally keeping your IP the same (linked to your MAC address) but it’s possible for it to change. In that case your pal on the other side won’t be able to contact you anymore.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you have multiple devices iphone, ipad, mac the other person has to add each SIP address to her contacts. It’s a bit like having multiple extensions.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;I hope this helps some folks out there. I think offloading the internet of local communications makes sense. I can see SIP as a way to connect to your elderly neighbour that might not have a recent phone Let me know how your experiment goes!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/video-call-from-your-LAN-during-covid19/</link>
+        <guid isPermaLink="true">http://localhost:4000/video-call-from-your-LAN-during-covid19/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>What happens before an agile retrospective</title>
@@ -61,27 +221,27 @@
 
 &lt;p&gt;Void of context they might not give a lot of insights but these are examples of retrospectives design I helped other folks with. Those sessions would take anything from 15 minutes to 30/40 minutes. Groups size were between 6 to 20.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Have I sparked some intrest in dedicating some time finding a theme and designing your next retrospective? Are you already doing it? How much time do you dedicate to it? Who helps you? Leave a comment or a tweet.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/what-happens-before-an-agile-retrospective/</link>
-        <guid isPermaLink="true">http://teotti.com/what-happens-before-an-agile-retrospective/</guid>
+        <link>http://localhost:4000/what-happens-before-an-agile-retrospective%20copy/</link>
+        <guid isPermaLink="true">http://localhost:4000/what-happens-before-an-agile-retrospective%20copy/</guid>
         
         <category>retrospectives</category>
         
@@ -216,8 +376,8 @@
 &lt;p&gt;What challenges do you face in your retrospectives? What are the part of this post that you won’t be able to use? Why?&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</link>
-        <guid isPermaLink="true">http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</guid>
+        <link>http://localhost:4000/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</link>
+        <guid isPermaLink="true">http://localhost:4000/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</guid>
         
         <category>retrospectives</category>
         
@@ -287,8 +447,8 @@
 &lt;p&gt;In my experience it’s been a useful tool to allow groups to gain a shared understanding on a system and align on what to takle first.&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/event-storming-one-year-later/</link>
-        <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
+        <link>http://localhost:4000/event-storming-one-year-later/</link>
+        <guid isPermaLink="true">http://localhost:4000/event-storming-one-year-later/</guid>
         
         <category>process</category>
         
@@ -490,8 +650,8 @@
 &lt;p&gt;I hope this write up give more context to folks interested in event storming. For more info Alberto is working on a &lt;a href=&quot;https://leanpub.com/introducing_eventstorming&quot;&gt;book&lt;/a&gt;. If you’d like a quicker read I wrote &lt;a href=&quot;https://teotti.com/event-storming-one-year-later&quot;&gt;another post&lt;/a&gt; about my experience with this technique.&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/big-picture-event-storming/</link>
-        <guid isPermaLink="true">http://teotti.com/big-picture-event-storming/</guid>
+        <link>http://localhost:4000/big-picture-event-storming/</link>
+        <guid isPermaLink="true">http://localhost:4000/big-picture-event-storming/</guid>
         
         <category>process</category>
         
@@ -519,9 +679,9 @@
 &lt;h2 id=&quot;zoom&quot;&gt;Zoom&lt;/h2&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;open the Zoom settings and update to use dual monitors &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Once you start your meeting ensure your meeting sharing option is set to the correct option: “Multiple participant can share simultaneously” &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;At this point multiple participants can share their screen, here I am using it with two folks &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;open the Zoom settings and update to use dual monitors &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/step1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Once you start your meeting ensure your meeting sharing option is set to the correct option: “Multiple participant can share simultaneously” &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/step2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;At this point multiple participants can share their screen, here I am using it with two folks &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
@@ -533,8 +693,8 @@
 &lt;p&gt;Leave us a comment if you have a similar strategy and different tools.&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/remote-visual-facilitation-with-ipad-pro/</link>
-        <guid isPermaLink="true">http://teotti.com/remote-visual-facilitation-with-ipad-pro/</guid>
+        <link>http://localhost:4000/remote-visual-facilitation-with-ipad-pro/</link>
+        <guid isPermaLink="true">http://localhost:4000/remote-visual-facilitation-with-ipad-pro/</guid>
         
         <category>process</category>
         
@@ -626,8 +786,8 @@
 &lt;p&gt;Before trying this activity &lt;a href=&quot;/analyze-kerth-prime-directive/&quot;&gt;make sure you fully understand the directive&lt;/a&gt; there is another great post about &lt;a href=&quot;https://www.infoq.com/articles/retrospective-prime-directive&quot;&gt;questioning the directive&lt;/a&gt; with input from though leaders in the retrospective community.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/challenge-agile-retrospectives-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/challenge-agile-retrospectives-prime-directive/</guid>
+        <link>http://localhost:4000/challenge-agile-retrospectives-prime-directive/</link>
+        <guid isPermaLink="true">http://localhost:4000/challenge-agile-retrospectives-prime-directive/</guid>
         
         <category>retrospectives</category>
         
@@ -717,8 +877,8 @@
 &lt;p&gt;I accept it. Do you?&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/analyze-kerth-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/analyze-kerth-prime-directive/</guid>
+        <link>http://localhost:4000/analyze-kerth-prime-directive/</link>
+        <guid isPermaLink="true">http://localhost:4000/analyze-kerth-prime-directive/</guid>
         
         <category>retrospectives</category>
         
@@ -815,7 +975,7 @@
 
 &lt;h2 id=&quot;measure-team-engagement-esvp&quot;&gt;Measure team engagement (ESVP)&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/esvp.png&quot; alt=&quot;&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/measure-success-of-your-agile-retrospective/esvp.png&quot; alt=&quot;&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;When you start retrospective&lt;/strong&gt; you should spend 5/10 minutes measuring the team engagement. Depending on how safe it is you can make it anonymous or not.&lt;/p&gt;
 
@@ -841,7 +1001,7 @@
 
 &lt;p&gt;It will also allow you to celebrate when the team shifts the other way around! Learn what you’re doing well and try do more of it or &lt;strong&gt;share it with other teams in your organization&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/esvp_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/measure-success-of-your-agile-retrospective/esvp_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -871,7 +1031,7 @@
 
 &lt;p&gt;After they choose a number ask one suggestion/idea to improve by one point. The retrospective is coming to an end so tell the team we won’t engage in long discussions about those ideas but rather collect them and review them to adjust our next retro. Timebox each person to 60 seconds.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/roti_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/measure-success-of-your-agile-retrospective/roti_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -884,363 +1044,14 @@
 &lt;p&gt;Are you going to try some of the suggested strategies? Do you already measure your retrospectives? What challenges do you face?&lt;/p&gt;
 </description>
         <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/measure-success-of-your-agile-retrospective/</link>
-        <guid isPermaLink="true">http://teotti.com/measure-success-of-your-agile-retrospective/</guid>
+        <link>http://localhost:4000/measure-success-of-your-agile-retrospective/</link>
+        <guid isPermaLink="true">http://localhost:4000/measure-success-of-your-agile-retrospective/</guid>
         
         <category>workflow</category>
         
         <category>agile</category>
         
         <category>retrospectives</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Time to change your agile retrospective format?</title>
-        <description>&lt;p&gt;In this article–targeted to retrospective facilitators–I describe my experience going from a simple retrospective format to a more structured one following Derby and Larsen’s book on Agile Retrospectives.&lt;/p&gt;
-
-&lt;p&gt;I’ve seen the first format working for teams of 2/3 developers new to retrospectives but it was ineffective for larger teams on challenging projects–it ended up feeling like a status update meeting–so I introduced to the second format. &lt;/p&gt;
-
-&lt;p&gt;I start by describing what I call a classic retrospective and the biggest risk I encountered with it. Then I describe the structured retrospective I introduced. Finally some tradeoffs of the structured retrospective.&lt;/p&gt;
-
-&lt;p&gt;I gave a 15 minutes talk about this subject at Pivotal Labs in Los Angeles, you can watch it &lt;a href=&quot;https://www.youtube.com/watch?v=-Pw-p6DzvFQ&quot;&gt;here&lt;/a&gt;. If you’re interested I wrote a blog post about &lt;a href=&quot;http://teotti.com/measure-success-of-your-agile-retrospective/&quot;&gt;measuring retrospective success&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This article is about retrospective for co-located teams&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-classic-retrospective&quot;&gt;The classic retrospective&lt;/h2&gt;
-
-&lt;p&gt;If you’re practicing a retrospective it’s very likely that this is the format you’re using.&lt;/p&gt;
-
-&lt;p&gt;The whole team gets in a room.&lt;/p&gt;
-
-&lt;p&gt;Then a random person is picked as the facilitator to ensure the conversations are kept on track and timeboxed.&lt;/p&gt;
-
-&lt;p&gt;Then the whole group starts adding last iteration events to a whiteboard–or an electronic equivalent–with three columns:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mad&lt;/li&gt;
-  &lt;li&gt;sad&lt;/li&gt;
-  &lt;li&gt;glad&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;representing the feeling that the event triggered &lt;strong&gt;for that person&lt;/strong&gt;. Multiple variations of this exists–ie. start, stop, continue–but the root activity stays the same.&lt;/p&gt;
-
-&lt;p&gt;After the team is done adding items the facilitator kicks off the retrospective by reviewing the outcome of the last retrospective and then starting timeboxed discussions about each event on the board.&lt;/p&gt;
-
-&lt;p&gt;The facilitator is also asking if there is any “action item” to make that event better. In this retrospective format an action item is often described as an attempt to prevent a negative event from reoccurring.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Sometime the scrum master act as the facilitator. In my experience is very unlikely that the team will recognize the same person pressing for delivery and deadlines as an unbiased facilitator. The result will be that &lt;strong&gt;the retrospective will feel just like a status update meeting&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;pro-of-this-retro&quot;&gt;Pro of this retro&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;It’s really simple to explain to people new to retrospectives because the format is always the same&lt;/li&gt;
-  &lt;li&gt;Everybody’s event is very likely to be–perhaps briefly–discussed&lt;/li&gt;
-  &lt;li&gt;The facilitator can be a random team member and doesn’t need any special training (not quite true but more on this …)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cons-of-this-retro&quot;&gt;Cons of this retro&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A &lt;strong&gt;randomly picked facilitator&lt;/strong&gt; might not have the skills,empathy or willingness to manage arguments. In extreme cases I’ve seen that person &lt;strong&gt;hijack the retrospective making it about a subject of his/her interest&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Using the same format for months &lt;strong&gt;won’t keep people’s brain engaged&lt;/strong&gt;. It’s the responsibility of a diligent facilitator to do that.&lt;/li&gt;
-  &lt;li&gt;The mad, sad, glad–or whatever names you use–is an effective way to collect events but &lt;strong&gt;can’t generate insight of the overarching problems that generates them&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;the-biggest-risk-is&quot;&gt;The biggest risk is…&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;focusing on each event and missing an opportunity to see the overarching root cause.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This is an example based on a real project I was on: a sad face on “slow deployment” and someone starts talking about &lt;em&gt;“how deployments take over a long time and that’s really slow yada yada yada”&lt;/em&gt; so someone comes up with an &lt;strong&gt;“action item”&lt;/strong&gt; to &lt;strong&gt;“investigate deployment speed”&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then a meh item is &lt;em&gt;“integration with the BAM API is unreliable”&lt;/em&gt; and someone talks about &lt;em&gt;“how 3 out of 5 times BAM is down”&lt;/em&gt; and so someone comes with another &lt;strong&gt;“action item”&lt;/strong&gt; to &lt;strong&gt;“use circuit breaker pattern to tackle BAM unavailability”&lt;/strong&gt;. &lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;These “action items” seem adequate solutions to each problem but by attempting to individually fix them we obfuscate a possible overarching issue and might miss the root cause that would affect them both.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this example the overarching problem–unveiled by the structured retrospective I’ll introduce next–was miscommunication with the BAM team which was also sharing the responsibility of dev-ops deployments. Later in the article I’ll describe the experiment we attempted to fix that.&lt;/p&gt;
-
-&lt;h2 id=&quot;so-whats-the-alternative&quot;&gt;So what’s the alternative?&lt;/h2&gt;
-
-&lt;p&gt;A quick fix would be introducing pattern matching. After the board is filled up the whole team works towards grouping the events. But what about the multiple action items? And the rotating facilitator?&lt;/p&gt;
-
-&lt;p&gt;Let’s be clear: it’s critical for the facilitator to be skilled or willing to learn and experiment. &lt;strong&gt;Facilitation is a very hard job and it’s too often dismissed&lt;/strong&gt;. Ideally the facilitator is external to the team so it doesn’t have a stake in the project.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Have you tried to borrow a facilitator from another team?&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The facilitator should try a structured retrospective. For the sake of this article’s clarity I use the word structured to distinguish it from the mad,sad,glad + action item that I’ll call “classic retrospective”.&lt;/p&gt;
-
-&lt;p&gt;A structured retrospective is divided in 5 parts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;setting the stage (5 minutes)&lt;/li&gt;
-  &lt;li&gt;gather data (20 minutes)&lt;/li&gt;
-  &lt;li&gt;generate insight (15 minutes)&lt;/li&gt;
-  &lt;li&gt;plan an experiment (10 minutes)&lt;/li&gt;
-  &lt;li&gt;close up (10 minutes)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I divided the activities so the retrospective would last 60 minutes. I suggest you schedule it for 75 minutes for padding between activities. If you have iterations longer then one week you might need more time. It’s very unlikely that you can achieve an effective retrospective in less then one hour I used a visual timer so the group can see how much time is left. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timetimer.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;One of the major differences from the “classic retrospective” is the &lt;strong&gt;plan an experiment&lt;/strong&gt; part focused on one experiment rather then a series of “action items”.&lt;/p&gt;
-
-&lt;p&gt;People accustomed to the classic version want to focus the retrospective on their topic so explain that that might not happen and that instead the team will focus on what has higher priority for the group.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This might upset someone&lt;/strong&gt; using retrospectives to vent their feelings. Make sure that there is still a place for them to do that perhaps before the retrospective.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;As the facilitator have you asked your team &lt;strong&gt;what will achieve value for time invested in this retrospective?&lt;/strong&gt;&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;As the facilitator have you asked your team &lt;strong&gt;what have we tried before? what happened? what would you like to happen differently?&lt;/strong&gt;&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Make sure the retrospective objective is &lt;strong&gt;defined by the team&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;setting-the-stage&quot;&gt;Setting the stage&lt;/h3&gt;
-
-&lt;p&gt;Asking those two questions is a good way to &lt;em&gt;set the stage&lt;/em&gt; and make sure everybody understands the purpose of the retrospective. One of my favourites exercise is to read &lt;em&gt;Kerth’s prime directive&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ask for a verbal yes from each member. If there are individuals not willing to set aside opinions–at least for the sake of the retrospective–then you have a bigger problem and you should cancel the retrospective. There might be someone in the room that people don’t feel comfortable around or other group dynamics that need investigation. Have one on one conversations with those individuals that didn’t agree with the directive and investigate what their opinion is.&lt;/p&gt;
-
-&lt;p&gt;The retrospective should be a no naming no blaming activity and the prime directive is a strong and meaningful sentence that encapsulates those values.&lt;/p&gt;
-
-&lt;h4 id=&quot;explorer-shopper-vacationer-prisoner&quot;&gt;Explorer, Shopper, Vacationer, Prisoner&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/esvp.png&quot; alt=&quot;ESVP&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;A good activity to discover–or track–team interest about the retrospective is ESVP. You will &lt;strong&gt;anonymously&lt;/strong&gt; collect how the participants feel about the retrospective.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/explorer.jpg&quot; alt=&quot;the explorer&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;At one end the explorer wanting to leave no stone unturned and enthusiastically learn as much as possible.  At the opposite end the prisoner that was forced in to the retrospective.&lt;/p&gt;
-
-&lt;p&gt;If you have a room full of prisoners you should consider cancel the retrospective. Having occasional prisoners is ok–&lt;strong&gt;make sure you acknoledge their presence and thank them for their patience and participation&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Do not ask who’s the prisoner&lt;/strong&gt; if they feel like speaking up they will.&lt;/p&gt;
-
-&lt;p&gt;In one retrospective I facilitated I had some prisoners. I eventually learned–during the closeout step–that the time of the retro was too close to the end of day forcing them to rush catching their train back home.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Make sure you comunicate to the group how long the retrospective will last and commit to end on time.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;gather-data&quot;&gt;Gather data&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timeline.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I asked the team to collect data during the week on a &lt;a href=&quot;https://www.infoq.com/articles/rising-continuous-retrospective&quot;&gt;continuous timeline&lt;/a&gt; so during retrospective they could read that and &lt;strong&gt;remember&lt;/strong&gt; what happened during that iteration–add new things if they forgot–ask each other questions and be ready for the next step.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;It’s important for the whole team to read and understand what’s on the board.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Some of those events can be color coded at the time of the writing or you can decide to color code during the retrospective. The second option might spark interesting conversations because an event–ie. quick and dirty refactoring–that is sad from the eyes of the author could be a happy for others.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timeline-color-coded.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Other good pieces of data to show at this point are number of delivered stories/points, number of deployments, bug count.&lt;/p&gt;
-
-&lt;p&gt;The timeline should collect events–and hard data–for example: “spent 16 hours fixing the dropdown bug” instead of “we don’t deliver fast enough” which is a personal consideration. Personal consideration and feeling are important and they will be discussed in the next step: generate insight.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Suggestion: If you’re keeping the post-its from the weekly continuous timeline for a longer project retrospective I found it useful to timestamp the iteration week to facilitate the creation of the project timeline:&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/timestamped-events.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-insight&quot;&gt;Generate insight&lt;/h3&gt;
-
-&lt;p&gt;Once we have information about what happened on the last iteration the team can start looking for patterns. Ask them to move the events in to groups/topics. As a facilitator make sure the whole team participate.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/generate-insight.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You should now be halfway trough your restrospective and have a handful of overarching topics. Ask the team to vote on each group so the one with highest count will be the focus of the experiment.&lt;/p&gt;
-
-&lt;h4 id=&quot;it-doesnt-always-work&quot;&gt;It doesn’t always work&lt;/h4&gt;
-
-&lt;p&gt;If the group is large or the team has a lot of friction it might be hard to decide a topic to discuss within the time allocated for retro. In that case is good to prepare a list of topics to generate insight on. I like to ask those to individual team members before the retro.
-&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/team-radar.jpg&quot; alt=&quot;team radar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;During team radar people vote from 0 to 10 how well the team perform on a number of topics. Then the conversation starts and the facilitator add notes as people talk about the reason for their votes. This is a direct way to generate insights on specific areas/topics.&lt;/p&gt;
-
-&lt;h3 id=&quot;experiment&quot;&gt;Experiment&lt;/h3&gt;
-
-&lt;p&gt;Once one ovearching topic has been identified it’s time to formalize a measurable experiment to incorporate in the next iteration. I like to stick it to the timeline so everyone can read it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/change-your-agile-retrospective-format/experiment.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I like the experiment to have the following format:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Hypotesis&lt;/strong&gt;: “a supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation”.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Experiment&lt;/strong&gt;: “a procedure undertaken to test a hypothesis”&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Measurement&lt;/strong&gt;: having measurements help determine if the experiment was successful or not&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;example one:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Hypotesis: Having two BAM API developers pairing–ideally on site–with the team will help speed up deployments and debug BAM problems.&lt;/li&gt;
-  &lt;li&gt;Experiment: Propose to the BAM team manager to have two devs to work next to the team. If not possible use remote desktop sharing with webcams to see each other.&lt;/li&gt;
-  &lt;li&gt;Measurement: Count number of times BAM is not operational. How long it takes for BAM to be operational again. How many times BAM developers are pairing on site. How many times BAM developers are pairing remotely.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;example two:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Hypotesis: The team agrees that: 9’oclock is an acceptable standup time and starting standup everyday at the same time regardless of who’s missing.&lt;/li&gt;
-  &lt;li&gt;Experiment: Standup starts at 9am everyday with a–weekly–facilitator assigned on the calendar. If the measurement shows low presence reschedule standup at 9.30am. Enrico will create the facilitator calendar for the next 2 months.&lt;/li&gt;
-  &lt;li&gt;Measurement: How many times standup starts after 9? How many people are missing the 9’oclock standup.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;closing&quot;&gt;Closing&lt;/h3&gt;
-
-&lt;p&gt;Now is the time to finish the retrospective and there are two activities I like.&lt;/p&gt;
-
-&lt;p&gt;One is to end on a high note with the &lt;strong&gt;apreciation&lt;/strong&gt; activity. This activity is &lt;strong&gt;only for praises&lt;/strong&gt;.  For example: &lt;strong&gt;I apreciate Linda for her hard work commuting everyday to be onsite.&lt;/strong&gt; or &lt;strong&gt;I apreciate David for his honest feedback while discussing code.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;There will be akward silence.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Remind everyone to think back the whole iteration and that even small things should be brough out.&lt;/p&gt;
-
-&lt;p&gt;I facilitate a team where people were offsite and unable to attend the retrospective so I suggested to write the apreciation on a piece of paper and let the product owner delier that once back at the office.&lt;/p&gt;
-
-&lt;p&gt;Another activity is to get retrospective feedback from the group. I’d start with anonymous feedback. This is a great way to make sure you and the group are on the same page.&lt;/p&gt;
-
-&lt;h2 id=&quot;cons-of-a-structured-retrospective&quot;&gt;Cons of a structured retrospective&lt;/h2&gt;
-
-&lt;p&gt;I was told this retrospective format feels like you’re working. It’s true. The facilitator needs to prepare activities and collect data and the group will need to be much more engaged and will feel like they’re working rather then sitting in a status meeting. I think this is good but be prepared.&lt;/p&gt;
-
-&lt;p&gt;If you don’t have a willing facilitator it’s hard to introduce this retrospective format.&lt;/p&gt;
-
-&lt;p&gt;In small teams of 2/3 individuals this format is not very effective. I tried and the folks didn’t see an advantage over the classic format.&lt;/p&gt;
-
-&lt;p&gt;The activities are made for face to face interactions and are much harder–sometime inadeguate–to run with remote folks. With a remote team try run the structured retrospective when the team meets face to face.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;If your classic retrospective feels like a status meeting I hope you will switch to a structured one and pick some new activities from this article and &lt;a href=&quot;http://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649&quot;&gt;Derby&amp;amp;Larsen book&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I’d love to hear your experiences and challenges switching from a classic to structured retro in the comments. If you’d rather start a 1:1 conversation feel free to private message me on twitter @agenteo.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/change-your-agile-retrospective-format/</link>
-        <guid isPermaLink="true">http://teotti.com/change-your-agile-retrospective-format/</guid>
-        
-        <category>workflow</category>
-        
-        <category>retrospectives</category>
-        
-        <category>agile</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Concourse pipeline for consumer driven tests with Spring boot and Ruby</title>
-        <description>&lt;p&gt;This article demonstrates how a &lt;a href=&quot;http://concourse.ci&quot;&gt;Concourse&lt;/a&gt; CI pipeline can run consumer driven tests between two cross language apps: a Java Spring Boot web app and a Ruby Sinatra API. The examples use the &lt;a href=&quot;https://docs.pact.io&quot;&gt;PACT framework&lt;/a&gt; and its &lt;a href=&quot;https://github.com/DiUS/pact-jvm&quot;&gt;jvm&lt;/a&gt; and &lt;a href=&quot;https://github.com/realestate-com-au/pact&quot;&gt;Ruby&lt;/a&gt; implementations. This article assumes basic understanding of pact and how it works so if you want to learn more about it visit &lt;a href=&quot;http://pact.io&quot;&gt;http://pact.io&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;PACT has a broker to share contracts across applications but if your applications ecosystem is already in a pipeline contracts tests can be part of that.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;All of the code is on github&lt;/strong&gt;: the &lt;a href=&quot;https://github.com/agenteo/pact_concourse_pipeline&quot;&gt;pipeline&lt;/a&gt;, the &lt;a href=&quot;https://github.com/agenteo/spring-boot-pact-consumer&quot;&gt;consumer&lt;/a&gt;, the &lt;a href=&quot;https://github.com/agenteo/ruby-sinatra-pact-provider&quot;&gt;provider&lt;/a&gt; and the &lt;a href=&quot;https://github.com/agenteo/pact-repository&quot;&gt;pact repository&lt;/a&gt;. To run the example on your machine you’ll need to fork the repos and update the &lt;code&gt;pipeline.yml&lt;/code&gt; with the new URLs. You’ll also have to specify your Github key when setting the pipeline ie. &lt;code&gt;fly --target travel-inc set-pipeline --config pipeline.yml --pipeline travel-offers --var &quot;pact-repository-key=$(cat your_id_rsa)&quot;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;For the sake of brevity I kept the tech stacks simple: the consumer code is a Spring Boot app using static templates, I used hardcoded provider responses for the Ruby API.&lt;/p&gt;
-
-&lt;p&gt;In this example I will start from a green pipeline and then commit a &lt;a href=&quot;https://github.com/agenteo/spring-boot-pact-consumer/commit/41f4f51d2aa2344a02813f1af99f4e3fe140bb9c&quot;&gt;consumer change&lt;/a&gt; that will break the &lt;a href=&quot;https://github.com/agenteo/ruby-sinatra-pact-provider/commit/e1bebbe59387473cc001d6c8228f8c0b96bae0c1&quot;&gt;provider state&lt;/a&gt;. After &lt;a href=&quot;https://github.com/agenteo/ruby-sinatra-pact-provider/commit/33f657593c8d54c50794dfbf231b82b185b68c0e&quot;&gt;fixing the provider&lt;/a&gt; the pipeline will go back to green.&lt;/p&gt;
-
-&lt;h2 id=&quot;background-about-the-example&quot;&gt;Background about the example&lt;/h2&gt;
-
-&lt;p&gt;This is a simplified example adapted from a real live application.&lt;/p&gt;
-
-&lt;p&gt;The web application &lt;strong&gt;Travel Offers&lt;/strong&gt; displays fabulous travel offers fetched from the tedious legacy &lt;strong&gt;SEAL API&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;The travel offers is a green field app so everybody on the team is excited about using new technologies and want to make sure the API integration is solid.&lt;/p&gt;
-
-&lt;p&gt;Instead the SEAL API is the classic app that nobody wants to work on, 5 years old, lots of &lt;a href=&quot;https://martinfowler.com/bliki/TechnicalDebtQuadrant.html&quot;&gt;inadvertent tech debt&lt;/a&gt; and a long backlog of bugfixes and features.&lt;/p&gt;
-
-&lt;p&gt;When the SEAL API team is asked to add a new endpoint or field by a consumer their approach has been to add all possible fields and then publish a document so the consumer can’t possibly ask for anything else.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Consumer driven test is a refreshing and pragmatic strategy to API design that helps comunication but it will fail miserably if there is no support on the SEAL API team.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Make sure the SEAL API team is willing to test and honor their contract&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;pipeline-to-the-help&quot;&gt;Pipeline to the help&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://concourse.ci/&quot;&gt;Concourse&lt;/a&gt; is a CI pipeline that helps visualizing the consumer/provider dependency and automating the contract publishing and verification. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/pipeline.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;consumer-driven-change&quot;&gt;Consumer driven change&lt;/h2&gt;
-
-&lt;p&gt;The pipeline has a &lt;strong&gt;travel-offers-webapp-consumer-tests&lt;/strong&gt; job that tests the travel offers consumer app interaction with the API provider SEAL API.&lt;/p&gt;
-
-&lt;p&gt;I pushed a &lt;a href=&quot;https://github.com/agenteo/spring-boot-pact-consumer/commit/41f4f51d2aa2344a02813f1af99f4e3fe140bb9c&quot;&gt;consumer change&lt;/a&gt; to add a &lt;code&gt;members_price&lt;/code&gt; on the provider. The pipeline picks up that change and runs the consumer tests.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/consumer-pass.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;That consumer test passes and it generates a JSON PACT (&lt;strong&gt;consumer-driven-api-contracts&lt;/strong&gt;) that the pipeline will upload to a &lt;a href=&quot;https://github.com/agenteo/pact-repository/commit/e6ac9c6e3636747ab3270d18f7a683a323d6541b&quot;&gt;contract git repository&lt;/a&gt;. &lt;em&gt;There is only one PACT file in this simplified example&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The Concourse pipeline will monitor the contract repository. When the new one is published it will run the API provider job (&lt;strong&gt;seal-api-provider-tests&lt;/strong&gt;) and that will fail.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;provider-update-to-fix-the-pipeline&quot;&gt;Provider update to fix the pipeline&lt;/h2&gt;
-
-&lt;p&gt;The provider tests are broken.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/provider-fail.png&quot; alt=&quot;see pact complaining about missing members_price&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;On your workstation you will need to fetch the latest contract repositories to get the failing test.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I &lt;a href=&quot;https://github.com/agenteo/ruby-sinatra-pact-provider/commit/33f657593c8d54c50794dfbf231b82b185b68c0e&quot;&gt;update the provider&lt;/a&gt; to satisfy the new contract. The pipeline will pickup the provider change and run its tests again returning to a green state.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;If you want to run consumer driven tests in a highly visible Continuous Integration server Concourse can do that.&lt;/p&gt;
-
-&lt;p&gt;Rather then making the entire test suite fail having a consumer driven dedicated pipeline or jobs can increase the understanding of which parts of your ecosystem are broken and allow an incremental approach to TDD and CI.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 24 May 2017 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/</link>
-        <guid isPermaLink="true">http://teotti.com/concourse-pipeline-for-consumer-driven-tests-with-spring-boot-and-ruby/</guid>
-        
-        <category>testing</category>
-        
-        <category>ruby</category>
-        
-        <category>java</category>
         
         
       </item>

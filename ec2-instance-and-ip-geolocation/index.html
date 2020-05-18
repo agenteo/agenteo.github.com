@@ -21,11 +21,11 @@
   
   <meta property="og:description" content="I was building a feature to redirect traffic coming from Australia to an Australian partner that given the original URL would serve different content. For example if somebody in Sydney visits `http://myapp.com/wedding-cakes` I need to redirect to `http://anotherapp.com.au/redirct-myapp?path=%2fwedding-cakes`. In order to do that I relied on our CDN geolocation to..." />
   
-  <meta property="og:url" content="http://teotti.com/ec2-instance-and-ip-geolocation/" />
+  <meta property="og:url" content="http://localhost:4000/ec2-instance-and-ip-geolocation/" />
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/ec2-instance-and-ip-geolocation/">
+  <link rel="canonical" href="http://localhost:4000/ec2-instance-and-ip-geolocation/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -54,7 +54,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -104,7 +104,7 @@ Updated:        2014-10-20
 
 <p>I tested the IP of that Sydney region instance on an online IP geolocation <a href="http://www.iplocation.net/">http://www.iplocation.net/</a> and different services returned different countries: US, France, Australia.</p>
 
-<p><img src="http://teotti.com/assets/article_images/ec2-instance-and-ip-geolocation/ec2_sydney_region.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/ec2-instance-and-ip-geolocation/ec2_sydney_region.png" alt="" /></p>
 
 <p>Geo IP location is fragile that can’t be trusted to determine locations of servers in the cloud. <a href="http://stackoverflow.com/questions/274308/how-does-geographic-lookup-by-ip-work">This</a> is a very good explanation on how geo IP works.</p>
 

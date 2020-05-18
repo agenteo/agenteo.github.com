@@ -21,11 +21,11 @@
   
   <meta property="og:description" content="In this article I explain how **extraneous cognitive load negatively affects software development and maintenance and I'll give you an easy way to mitigate that.** What is cognitive load? >> In cognitive psychology, cognitive load refers to the total amount of mental effort being used in the working memory. You're..." />
   
-  <meta property="og:url" content="http://teotti.com/cognitive-overload-in-software-development/" />
+  <meta property="og:url" content="http://localhost:4000/cognitive-overload-in-software-development/" />
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/cognitive-overload-in-software-development/">
+  <link rel="canonical" href="http://localhost:4000/cognitive-overload-in-software-development/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -54,7 +54,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -102,37 +102,37 @@
 
 <p>Diego gathers from Sergio and his new team that the application allows to <strong>book car share reservations</strong>, then on the scheduled day the user would <strong>pickup, drive and dropoff the car</strong>, finally the user is <strong>invoiced</strong> for the usage.</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/business_model.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/business_model.png" alt="" /></p>
 
 <p><strong>Three distinct areas of business operational contexts but the code doesn’t have any reference to that model</strong>. To Diego the code looks like a bunch of shapeless files:</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.001.png" alt="Diego: this application is a mess" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.001.png" alt="Diego: this application is a mess" /></p>
 
 <p>This type of load is called <strong>extraneous load</strong>–it’s load imposed by how information is presented and it doesn’t help learning.</p>
 
 <p>But the <strong>extraneous load</strong> isn’t affecting Sergio. He’s operating on a familiar codebase fetching an existing schema from <em>long term memory</em>–in his mind the familiar application looks like this:</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.002.png" alt="Sergio: this application is just fine" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.002.png" alt="Sergio: this application is just fine" /></p>
 
 <p>Sergio helps Diego learn the files he needs to change for an update to the booking system and his mental model evolves:</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.003.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.003.png" alt="" /></p>
 
 <p>Diego is assigned to work on more booking related features to familiarize himself with that code. His product owner talks about a change to booking with dropoff different then pickup–Diego has no idea where to find that in the code and so he starts a long code navigation causing <strong>extraneous load</strong>.</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.004.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.004.png" alt="" /></p>
 
 <p>Diego knowledge is evolving and he’s affected by another type of load called <strong>intrinsic load</strong>–defined as “anything that needs to be or has been learned, such as concept or procedure”.</p>
 
 <p>For example when Diego was assigned an update to the booking quote recalculation logic he had to learn the existing algorithm–this <strong>intrinsic load</strong> can’t be removed.</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.005.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.005.png" alt="" /></p>
 
 <h2 id="after-one-week-at-the-new-company">After one week at the new company</h2>
 
 <p>Diego is assigned a task related to the driving API–he discovers a whole new boundary:</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.006.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.006.png" alt="" /></p>
 
 <p>Meanwhile he’s affected by another type of load: <strong>germane load</strong>–this is the effort to move the schema in long term memory.</p>
 
@@ -140,7 +140,7 @@
 
 <p>You can’t remove <strong>intrinsic</strong> or <strong>germane</strong> load–programming is knowledge work after all but you can mitigate or aim to remove the <strong>extraneous</strong> load keeping a diligent match between business operational context and the source code:</p>
 
-<p><img src="http://teotti.com/assets/article_images/cognitive-overload-in-software-development/useful.007.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/cognitive-overload-in-software-development/useful.007.png" alt="" /></p>
 
 <p>Imagine how much time would be saved if Diego first saw the mental model that Sergio had in his head. In small codebases the mental model can be transfered in a few hours but in larger ones it becomes so slow that onboarding becomes daunting and in combination with turnover the project stalls.</p>
 

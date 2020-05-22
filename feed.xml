@@ -6,9 +6,46 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 19 May 2020 17:11:55 +0000</pubDate>
-    <lastBuildDate>Tue, 19 May 2020 17:11:55 +0000</lastBuildDate>
+    <pubDate>Fri, 22 May 2020 21:04:34 +0000</pubDate>
+    <lastBuildDate>Fri, 22 May 2020 21:04:34 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Reduce your bandwith utilization on zoom calls</title>
+        <description>&lt;p&gt;This is for folks using a PC or a Mac spending lots of time (and bandwith) on Zoom calls. Do you know how fast your internet uploads? Do you know how much bandwith are Zoom calls are chewing up?&lt;/p&gt;
+
+&lt;p&gt;What I found out today (using &lt;a href=&quot;https://www.wireshark.org&quot;&gt;Wireshark&lt;/a&gt;) on OSX 10.15.5 is the gallery view in Zoom (tested with 5.0.2) generates a lot more (3 times) traffic on a 12 person call.&lt;/p&gt;
+
+&lt;p&gt;Granted you might wanna see people on most of your call there might be situations where you want to reduce your traffic by compromising that experience.&lt;/p&gt;
+
+&lt;p&gt;I assume you use two monitor windows, so if you’re not following me on twitter (and missing out on all those zoom and agile retrospectives nerdy comments) this is the option you’ll need to reduce your bandwith:&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;You might already know but Zoom has a dual window / dual monitor feature to allow you to split the video or the screen share from the gallery view. First pic is the speaker on window 1 and gallery on window 2. Second pic, is the shared screen on window 1 and gallery window 2. HTH &lt;a href=&quot;https://t.co/DXTHodUcIq&quot;&gt;pic.twitter.com/DXTHodUcIq&lt;/a&gt;&lt;/p&gt;&amp;mdash; 𝐸𝓃𝓇𝒾𝒸𝑜 𝒯𝑒𝑜𝓉𝓉𝒾 (@agenteo) &lt;a href=&quot;https://twitter.com/agenteo/status/1256572194181787650?ref_src=twsrc%5Etfw&quot;&gt;May 2, 2020&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;One you have two Zoom windows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;gallery view&lt;/li&gt;
+  &lt;li&gt;speaker view&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;you can minimize the gallery view you will reduce Zoom’s traffic and you’ll still see the active speaker on your second Zoom window.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/zoom-on-bandwith-reduction.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You might be able to achieve the same reduction with a single window and hide all gallery speakers but I did not test it. Does this trick works on Windows? Let me know!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/</link>
+        <guid isPermaLink="true">http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>The law of two feet in open space online</title>
@@ -38,7 +75,7 @@
 
 &lt;p&gt;Works in a physical open space. We all know how to go from point A to point B. But what about online? Does all my audience know where to click how to navigate to other rooms?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images//the-law-of-two-feet-in-open-space-online/5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images//the-law-of-two-feet-in-open-space-online%20copy/5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;do-you-know-how-to-get-to-another-session&quot;&gt;Do you know how to get to another session?&lt;/h2&gt;
 
@@ -109,8 +146,8 @@
 &lt;p&gt;I don’t think there is a one size fits all solution, but I think we need to do better and prepare for our audience. What are you doing to make it better for your participants?&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/the-law-of-two-feet-in-open-space-online/</link>
-        <guid isPermaLink="true">http://teotti.com/the-law-of-two-feet-in-open-space-online/</guid>
+        <link>http://teotti.com/the-law-of-two-feet-in-open-space-online%20copy/</link>
+        <guid isPermaLink="true">http://teotti.com/the-law-of-two-feet-in-open-space-online%20copy/</guid>
         
         <category>process</category>
         
@@ -886,173 +923,6 @@
         <category>process</category>
         
         <category>agile</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Measure success of your agile retrospective</title>
-        <description>&lt;p&gt;Retrospectives should be a core practice for any team but &lt;strong&gt;you must have a way to measure their success and team engagement otherwise they can become just another meeting&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;The retrospective should generate a quantitatively measurable experiment/action item and the team engagement metrics will generate qualitative measurements.&lt;/p&gt;
-
-&lt;p&gt;In this article I’ll explain why they’re both critical to retrospective success. Folks that have been in retrospectives and wondered “what’s the point of this meeting?” should get a better understanding of their purpose and facilitators/scrum masters will learn when/how to measure retrospective engagement and success metrics.&lt;/p&gt;
-
-&lt;h3 id=&quot;preamble&quot;&gt;Preamble&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;You retrospective must be a safe environment or people won’t speak their mind&lt;/strong&gt;. I gave a 20 minutes talk at the Sydney Pivotal office about &lt;a href=&quot;https://www.youtube.com/watch?v=0hatxoP-MU0&quot;&gt;How to measure retrospective success&lt;/a&gt; and I share ideas to check your retrospective safety and how to improve it. If you’re interested in retrospectives I gave a talk about &lt;a href=&quot;https://www.youtube.com/watch?v=-Pw-p6DzvFQ&quot;&gt;switching retrospective formats&lt;/a&gt; loosely based on my &lt;a href=&quot;http://teotti.com/change-your-agile-retrospective-format/&quot;&gt;blog post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-we-run-retrospectives&quot;&gt;Why we run retrospectives?&lt;/h2&gt;
-
-&lt;p&gt;The right mindset for a retrospective requires the team to understand and agree that today &lt;strong&gt;we know more then we did last week&lt;/strong&gt;. I think Kerth’s prime directive captures that:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I think the agile manifesto captures the spirit of why we run retrospectives:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly. &lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;You want to run retrospectives &lt;strong&gt;at regular intervals&lt;/strong&gt; because doing it “when we need it” is like seeking urgent dental care after you pop a decade old filling–and half your tooth–instead of preventing that with regular checkups. Regular intervals will allow you to measure how the team feel about retrospective–more on this later.&lt;/p&gt;
-
-&lt;p&gt;You want the team to &lt;strong&gt;reflect on how to become more effective&lt;/strong&gt; because acting on individual issues might fix the symptoms instead of the root cause. Reflect on hard data and feelings then look for patterns, generate insights. Take time to reflect and don’t rush to find a solution for each item that comes up like if you were playing a whack a mole game.&lt;/p&gt;
-
-&lt;p&gt;You want the team to commit to &lt;strong&gt;tune and adjust its behavior&lt;/strong&gt; with an agreed and quantitatively measurable experiment. &lt;/p&gt;
-
-&lt;h2 id=&quot;measure-your-retrospective-success&quot;&gt;Measure your retrospective success&lt;/h2&gt;
-
-&lt;p&gt;I like to use the S.M.A.R.T. experiment–SMART is a simple acronym to remind us to come up with an experiment that is:&lt;/p&gt;
-
-&lt;h3 id=&quot;specific&quot;&gt;Specific:&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;We should pair program more&lt;/strong&gt;&lt;/em&gt; isn’t very specific. Instead use: &lt;strong&gt;Pair program everyday 4 hours per day&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;measurable&quot;&gt;Measurable:&lt;/h3&gt;
-
-&lt;p&gt;You can measure how many times you &lt;strong&gt;Pair program 4 hours per day&lt;/strong&gt;. You should also measure hard data like velocity, delivered stories, bugs.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;p&gt;This measurement should be quantitative and related to how effective your team is. &lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;achievable&quot;&gt;Achievable:&lt;/h3&gt;
-
-&lt;p&gt;Use an experiment that generate consensus with the team. It won’t be a good idea to come up with &lt;strong&gt;Pair program everyday 8 hours per day&lt;/strong&gt; when you know people are skeptic about it. Find a more suitable experiment, maybe &lt;strong&gt;Pair program 2 days per week&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Use an experiment that makes the team step out of their comfort zone without attempting to fix things clearly out of reach. &lt;/p&gt;
-
-&lt;h3 id=&quot;relevant&quot;&gt;Relevant:&lt;/h3&gt;
-
-&lt;p&gt;Why do you want to pair program? Because someone told you so? Not very relevant or meaningful.&lt;/p&gt;
-
-&lt;p&gt;Perhaps someone called out that &lt;em&gt;Jack was sick 4 days and we could not work on the iOS react native UI components&lt;/em&gt; and also &lt;em&gt;designers are not available to clarify how user interface should work&lt;/em&gt; so you might &lt;strong&gt;want to break knowledge silos that block team progress&lt;/strong&gt;. That’s one great use of pair programming!&lt;/p&gt;
-
-&lt;h3 id=&quot;timebound&quot;&gt;Timebound:&lt;/h3&gt;
-
-&lt;p&gt;Do not use an open ended experiment. Make sure there is an end to it like &lt;strong&gt;we will try pair programming for 2 weeks&lt;/strong&gt; and then decide to continue or adjust the experiment. Having a timebound experiment should create common ground between optimists and skeptics and facilitate trying new things.&lt;/p&gt;
-
-&lt;p&gt;Here’s our measurable SMART experiment:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;We want to break knowledge silos that often block our team progress. In order to do that developers will pair program 4 hours a day for the next 2 weeks. Designers will pair program 1hour a day with developers to clarify and learn app internal behavior We will keep track of how many times we do that on the pair programming sheet on our shared workspace. In 2 weeks we will review this experiment and decide if we want to continue or adjust it.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I started the article explaining how to measure your retrospective success to address the quantitative measurement first but the experiment is formulated in the middle of the retrospective. When you start your retrospective you should get a qualitative measurement on team engagement.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;measure-team-engagement-esvp&quot;&gt;Measure team engagement (ESVP)&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/esvp.png&quot; alt=&quot;&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;When you start retrospective&lt;/strong&gt; you should spend 5/10 minutes measuring the team engagement. Depending on how safe it is you can make it anonymous or not.&lt;/p&gt;
-
-&lt;p&gt;I like to do that using an activity–from Derby and Larsen’s &lt;a href=&quot;https://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649&quot;&gt;book&lt;/a&gt;–called ESVP. You ask the team which role between &lt;strong&gt;Explorer, Shopper, Vacationer, Prisoner&lt;/strong&gt; represents best how they feel about today’s retrospective:&lt;/p&gt;
-
-&lt;h3 id=&quot;explorers&quot;&gt;Explorers&lt;/h3&gt;
-
-&lt;p&gt;They want to make the most out of today’s retrospective. Learn everything they can about the iteration/project, leave no stone unturned.&lt;/p&gt;
-
-&lt;h3 id=&quot;shoppers&quot;&gt;Shoppers&lt;/h3&gt;
-
-&lt;p&gt;They’re happy to be part of the retrospective and want to actively look for something to put in their cart.&lt;/p&gt;
-
-&lt;h3 id=&quot;vacationers&quot;&gt;Vacationers&lt;/h3&gt;
-
-&lt;p&gt;They’re not interested in retrospective but they rather be in it then doing actual work at their desk.&lt;/p&gt;
-
-&lt;h3 id=&quot;prisoners&quot;&gt;Prisoners&lt;/h3&gt;
-
-&lt;p&gt;They’ve been forced to sit in this meeting but don’t see a point in it and won’t be actively participating.&lt;/p&gt;
-
-&lt;p&gt;Collecting these at regular intervals will allow you to learn when the team is shifting from engaged to disengaged and adjust your retrospective accordingly.&lt;/p&gt;
-
-&lt;p&gt;It will also allow you to celebrate when the team shifts the other way around! Learn what you’re doing well and try do more of it or &lt;strong&gt;share it with other teams in your organization&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/esvp_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;measure-the-return-of-time-invested-roti&quot;&gt;Measure the return of time invested (ROTI)&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Before you finish retrospective&lt;/strong&gt; you should spend 5/10 minutes measuring how well we spent the allocated time. I usually ask the team how was the return of time invested for this meeting between 0 and 4 where&lt;/p&gt;
-
-&lt;h3 id=&quot;excellent&quot;&gt;4: Excellent&lt;/h3&gt;
-
-&lt;p&gt;Means this meeting was invaluable and if you skipped it you would have missed some key piece of information. You’re very glad you were in it.&lt;/p&gt;
-
-&lt;h3 id=&quot;above-average&quot;&gt;3: Above average&lt;/h3&gt;
-
-&lt;p&gt;This meeting was a good use of your time you learned new things.&lt;/p&gt;
-
-&lt;h3 id=&quot;average&quot;&gt;2: Average&lt;/h3&gt;
-
-&lt;p&gt;This meeting gave you enough to justify your presence for the time spent on it.&lt;/p&gt;
-
-&lt;h3 id=&quot;below-average&quot;&gt;1: Below average&lt;/h3&gt;
-
-&lt;p&gt;You gained some value but it was mostly a waste of time. This meeting was below average and wasn’t worth 100% of your time.&lt;/p&gt;
-
-&lt;h3 id=&quot;useless&quot;&gt;0: Useless&lt;/h3&gt;
-
-&lt;p&gt;This meeting was a waste of time. You gained nothing and wished you skipped it.&lt;/p&gt;
-
-&lt;p&gt;After they choose a number ask one suggestion/idea to improve by one point. The retrospective is coming to an end so tell the team we won’t engage in long discussions about those ideas but rather collect them and review them to adjust our next retro. Timebox each person to 60 seconds.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/measure-success-of-your-agile-retrospective/roti_graph.png&quot; alt=&quot;print the weekly figures on a graph on your shared space&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Making your team more effective doesn’t need to tackle huge issues all the time. What is critical is to measure and review the experiment progress at regular intervals so the team can trust retrospective to be a meaningful tool to adjust their process.&lt;/p&gt;
-
-&lt;p&gt;Keep a constant eye on how the team feels about retro because failing to do so might generate a room full of disengaged prisoners that believe they’re wasting their time making your experiment not achievable.&lt;/p&gt;
-
-&lt;p&gt;Are you going to try some of the suggested strategies? Do you already measure your retrospectives? What challenges do you face?&lt;/p&gt;
-</description>
-        <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/measure-success-of-your-agile-retrospective/</link>
-        <guid isPermaLink="true">http://teotti.com/measure-success-of-your-agile-retrospective/</guid>
-        
-        <category>workflow</category>
-        
-        <category>agile</category>
-        
-        <category>retrospectives</category>
         
         
       </item>

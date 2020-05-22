@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Mongo command line client brackets highlighter</title>
+  <title>Reduce your bandwith utilization on zoom calls</title>
   <meta name="description" content="agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
 " />
 
@@ -17,28 +17,28 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="Using mongo command line client has a portability advantage that no GUI has – but when creating a long query unmatched parentheses or curly bracket can be ha..." />
-  <meta property="og:url" content="http://teotti.com/mongo-command-line-brackets-highlighter/" />
+  <meta property="og:description" content="This is for folks using a PC or a Mac spending lots of time (and bandwith) on Zoom calls. Do you know how fast your internet uploads? Do you know how much ba..." />
+  <meta property="og:url" content="http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/" />
   <meta property="og:site_name" content="Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry" />
-  <meta property="og:title" content="Mongo command line client brackets highlighter" />
+  <meta property="og:title" content="Reduce your bandwith utilization on zoom calls" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://teotti.com" />
+  <meta property="og:image" content="http://teotti.com/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
 
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Mongo command line client brackets highlighter">
-  <meta name="twitter:description" content="Using mongo command line client has a portability advantage that no GUI has – but when creating a long query unmatched parentheses or curly bracket can be ha...">
-  <meta name="twitter:image" content="http://teotti.com">
-  <meta name="twitter:url" content="http://teotti.com/mongo-command-line-brackets-highlighter/">
+  <meta name="twitter:title" content="Reduce your bandwith utilization on zoom calls">
+  <meta name="twitter:description" content="This is for folks using a PC or a Mac spending lots of time (and bandwith) on Zoom calls. Do you know how fast your internet uploads? Do you know how much ba...">
+  <meta name="twitter:image" content="http://teotti.com/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png">
+  <meta name="twitter:url" content="http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/mongo-command-line-brackets-highlighter/">
+  <link rel="canonical" href="http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -74,44 +74,55 @@
     <main class="content" role="main">
       <article class="post">
         
-        <div class="noarticleimage">
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png )" >
+            Article Image
+          </div>
           <div class="post-meta">
-            <h1 class="post-title">Mongo command line client brackets highlighter</h1>
+            <h1 class="post-title">Reduce your bandwith utilization on zoom calls</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Enrico Teotti</h4>
               on
-              <time datetime="2015-03-03T00:00:00+00:00">03 Mar 2015</time>
-              , tagged on  <span class="post-tag-mongodb"><a href="/topics/mongodb">mongodb</a></span>
+              <time datetime="2020-05-22 00:00">22 May 2020</time>
+              , tagged on  <span class="post-tag-process"><a href="/topics/process">process</a></span>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
             </div>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
         
         <section class="post-content">
           <div class="post-reading">
             <span class="post-reading-time"></span> read
           </div>
           <a name="topofpage"></a>
-          <p>Using <code>mongo</code> command line client has a portability advantage that no GUI has – but when creating a long query unmatched parentheses or curly bracket can be hard to find and break your query. If you are using OSX and iTerm you might be missing <code>mongo</code> default <a href="https://jira.mongodb.org/browse/SERVER-2767">bracket highlighting</a>.</p>
+          <p>This is for folks using a PC or a Mac spending lots of time (and bandwith) on Zoom calls. Do you know how fast your internet uploads? Do you know how much bandwith are Zoom calls are chewing up?</p>
 
-<p><img src="http://teotti.com/assets/article_images//mongo-command-line-brackets-highlighter/no-syntax-highlighting.png" alt="" /></p>
+<p>What I found out today (using <a href="https://www.wireshark.org">Wireshark</a>) on OSX 10.15.5 is the gallery view in Zoom (tested with 5.0.2) generates a lot more (3 times) traffic on a 12 person call.</p>
 
-<p>To make sure it’s working open <em>iTerm -&gt; Preferences</em> and click on Text tab and <strong>uncheck</strong> the <code>Draw bold text in bold font</code> and <code>Draw bold text in bright colors</code>:</p>
+<p>Granted you might wanna see people on most of your call there might be situations where you want to reduce your traffic by compromising that experience.</p>
 
-<p><img src="http://teotti.com/assets/article_images//mongo-command-line-brackets-highlighter/i-term-settings.png" alt="iTerm settings" /></p>
+<p>I assume you use two monitor windows, so if you’re not following me on twitter (and missing out on all those zoom and agile retrospectives nerdy comments) this is the option you’ll need to reduce your bandwith:</p>
 
-<p>your <code>mongo</code> console will now highlight matching parentheses and curly bracket:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">You might already know but Zoom has a dual window / dual monitor feature to allow you to split the video or the screen share from the gallery view. First pic is the speaker on window 1 and gallery on window 2. Second pic, is the shared screen on window 1 and gallery window 2. HTH <a href="https://t.co/DXTHodUcIq">pic.twitter.com/DXTHodUcIq</a></p>&mdash; 𝐸𝓃𝓇𝒾𝒸𝑜 𝒯𝑒𝑜𝓉𝓉𝒾 (@agenteo) <a href="https://twitter.com/agenteo/status/1256572194181787650?ref_src=twsrc%5Etfw">May 2, 2020</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<p><img src="http://teotti.com/assets/article_images/mongo-command-line-brackets-highlighter/mongo-syntax-highlight.gif" alt="" /></p>
+<p>One you have two Zoom windows:</p>
 
-<p>Hovering an extra <strong>curly bracket</strong> will hint at the upcoming syntax error by highlighting an <strong>opening parentheses</strong>:</p>
+<ol>
+  <li>gallery view</li>
+  <li>speaker view</li>
+</ol>
 
-<p><img src="http://teotti.com/assets/article_images/mongo-command-line-brackets-highlighter/mongo-syntax-highlight-extra-curly-bracket.gif" alt="" /></p>
+<p>you can minimize the gallery view you will reduce Zoom’s traffic and you’ll still see the active speaker on your second Zoom window.</p>
 
-<p>This is not a full syntax highlighter but helps navigating long queries.</p>
+<p><img src="/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png" /></p>
+
+<p><img src="/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/zoom-on-bandwith-reduction.png" /></p>
+
+<p>You might be able to achieve the same reduction with a single window and hide all gallery speakers but I did not test it. Does this trick works on Windows? Let me know!</p>
 
         </section>
         <footer class="post-footer">
@@ -129,13 +140,13 @@
             <main class="content" role="main">
               <header class="post-header">
                 <div class="article-item">
-                  <h2 class="post-title" itemprop="name"><a href="/a-successful-ruby-on-rails-performance-analysis-guideline/" itemprop="url">A successful Ruby on Rails performance analysis guideline</a></h2>
+                  <h2 class="post-title" itemprop="name"><a href="/the-law-of-two-feet-in-open-space-online%20copy/" itemprop="url">The law of two feet in open space online</a></h2>
                 </div>
               </header>
             </main>
           </div>
           
-          <h3>More reads about  <a href="/topics/mongodb">mongodb</a>,  <a href="/topics">other topics</a></h3>
+          <h3>More reads about  <a href="/topics/process">process</a>,  <a href="/topics">other topics</a></h3>
       </div>
 
         

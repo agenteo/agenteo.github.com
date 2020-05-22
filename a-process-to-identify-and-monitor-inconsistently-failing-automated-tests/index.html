@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new fea..." />
-  <meta property="og:url" content="http://localhost:4000/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/" />
+  <meta property="og:url" content="http://teotti.com/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/" />
   <meta property="og:site_name" content="Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry" />
   <meta property="og:title" content="A process to identify and monitor inconsistently failing automated tests" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg" />
+  <meta property="og:image" content="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="A process to identify and monitor inconsistently failing automated tests">
   <meta name="twitter:description" content="Having a suite of automated tests can be a blessing and a curse. When consistently working it can ensure no regression is introduced while developing new fea...">
-  <meta name="twitter:image" content="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg">
-  <meta name="twitter:url" content="http://localhost:4000/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/">
+  <meta name="twitter:image" content="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/hero.jpg">
+  <meta name="twitter:url" content="http://teotti.com/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://localhost:4000/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/">
+  <link rel="canonical" href="http://teotti.com/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -180,11 +180,11 @@
 
 <p>If the failing test is already in your archives add a comment with the build number it was spotted on</p>
 
-<p><img src="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/add_comment_on_existing_flaky_test.png" alt="Comment the flaky test pointing to the CI failed build URL" /></p>
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/add_comment_on_existing_flaky_test.png" alt="Comment the flaky test pointing to the CI failed build URL" /></p>
 
 <p>If you can’t find one create a new issue, file one failing test per github issue:</p>
 
-<p><img src="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/create_new_flaky_test.png" alt="Create a new issue for a new flaky test" /></p>
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/create_new_flaky_test.png" alt="Create a new issue for a new flaky test" /></p>
 
 <p>I like the title to be: <code>ERRORING_FILE_NAME_AND_LINE || APPLICATION EXCEPTION</code> for example: <code>spec/features/preview/article_mobile_spec.rb:24 || Capybara::Poltergeist::TimeoutError</code> and mark the issue with the tag <code>flaky-test</code>.</p>
 
@@ -196,11 +196,11 @@
 
 <p>After confirming a flaky test add that information in jenkins with the “edit build information”. A title “flaky test” and description the github issue that tracks the flaky test.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/ci_build_history.png" alt="looking at the build history quickly shows the flaky tests" /></p>
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/ci_build_history.png" alt="looking at the build history quickly shows the flaky tests" /></p>
 
 <p>If you commit a possible fix, referencing the <code>flaky-test</code> issue in the commit message will add an entry to the comments informing your teammates of what attempt or progress has been made:</p>
 
-<p><img src="http://localhost:4000/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/attempt_to_fix.png" alt="It's good to see attempts to fix flaky tests!" /></p>
+<p><img src="http://teotti.com/assets/article_images/a-process-to-identify-and-monitor-inconsistently-failing-automated-tests/attempt_to_fix.png" alt="It's good to see attempts to fix flaky tests!" /></p>
 
 <h2 id="throttle-your-network-connection-to-external-sites">Throttle your network connection to external sites</h2>
 

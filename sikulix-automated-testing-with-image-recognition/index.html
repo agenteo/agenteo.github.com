@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="I first found out Sikuli–an open source screen automated testing tool–in 2013 when my team was building ActiveMemory a portal to allow game designers to crea..." />
-  <meta property="og:url" content="http://teotti.com/sikulix-automated-testing-with-image-recognition/" />
+  <meta property="og:url" content="http://localhost:4000/sikulix-automated-testing-with-image-recognition/" />
   <meta property="og:site_name" content="Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry" />
   <meta property="og:title" content="SikuliX automated testing with image recognition" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/hero.jpg" />
+  <meta property="og:image" content="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/hero.jpg" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="SikuliX automated testing with image recognition">
   <meta name="twitter:description" content="I first found out Sikuli–an open source screen automated testing tool–in 2013 when my team was building ActiveMemory a portal to allow game designers to crea...">
-  <meta name="twitter:image" content="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/hero.jpg">
-  <meta name="twitter:url" content="http://teotti.com/sikulix-automated-testing-with-image-recognition/">
+  <meta name="twitter:image" content="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/hero.jpg">
+  <meta name="twitter:url" content="http://localhost:4000/sikulix-automated-testing-with-image-recognition/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/sikulix-automated-testing-with-image-recognition/">
+  <link rel="canonical" href="http://localhost:4000/sikulix-automated-testing-with-image-recognition/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -116,33 +116,33 @@
 
 <p>This is the SikuliX script that opens my homepage in Safari–running on my workstation–clicking on the browser scrollbar to reach a blog post about cognitive overload and clicking its title to go to the post page:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/script-visit-homepage.png" alt="this is the Sikuli code" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/script-visit-homepage.png" alt="this is the Sikuli code" /></p>
 
 <p>And this is a recording of the script running:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/script-visit-homepage.gif" alt="the Sikuli script on my homepage" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/script-visit-homepage.gif" alt="the Sikuli script on my homepage" /></p>
 
 <p><strong>This is pretty cool but how does this tool perform when the UI look slightly changes?</strong> Browser specific automated tools like Selenium or PhantomJS abstract the view layer so if we changed the background from white to red the test would not be affected.</p>
 
 <p>I changed my homepage background to red and the test script was unable to find the icon with my face but the SikuliX IDE provides a match settings and tuning that allowed the test to match.</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/successfully-tune-ocr-to-match-face-on-red-background.png" alt="the Sikuli script can't find my face!" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/successfully-tune-ocr-to-match-face-on-red-background.png" alt="the Sikuli script can't find my face!" /></p>
 
 <p>But the script had problems locating the sidebar and tuning did not help this time:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/failed-tune-ocr-to-match-sidebar-on-red-background.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/failed-tune-ocr-to-match-sidebar-on-red-background.png" alt="" /></p>
 
 <p>so I had to update the script with a new sidebar picture on the red background:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/script-updated-for-sidebar-on-red-background.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/script-updated-for-sidebar-on-red-background.png" alt="" /></p>
 
 <p>and then the article name find on red background failed:</p>
 
-<p>[](http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/failed-tune-ocr-to-match-red-background.png)</p>
+<p>[](http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/failed-tune-ocr-to-match-red-background.png)</p>
 
 <p>so I had to update that too:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/script-updated-for-test-on-red-background.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/script-updated-for-test-on-red-background.png" alt="" /></p>
 
 <h3 id="second-test">Second test</h3>
 
@@ -152,8 +152,8 @@
 
 <p>I can’t show the recording of the application interaction because of client agreements but here’s the full script–minus sensitive information–that I wrote:</p>
 
-<p><img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/real-app-script-part1.png" alt="" />
-<img src="http://teotti.com/assets/article_images/sikulix-automated-testing-with-image-recognition/real-app-script-part2.png" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/real-app-script-part1.png" alt="" />
+<img src="http://localhost:4000/assets/article_images/sikulix-automated-testing-with-image-recognition/real-app-script-part2.png" alt="" /></p>
 
 <p>I stumbled on a few issues that you’d never see in Selenium or PhantomJS like a confirm box to ignore storing password in Safari or when my password manager 1Password took focus and I had to click back in the brower to give it back the focus.</p>
 

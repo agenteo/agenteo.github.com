@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines–the objective is to speed up a time cons..." />
-  <meta property="og:url" content="http://teotti.com/parallelising-ios-ui-tests/" />
+  <meta property="og:url" content="http://localhost:4000/parallelising-ios-ui-tests/" />
   <meta property="og:site_name" content="Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry" />
   <meta property="og:title" content="Parallelising iOS UI tests" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/hero.jpg" />
+  <meta property="og:image" content="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/hero.jpg" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Parallelising iOS UI tests">
   <meta name="twitter:description" content="This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines–the objective is to speed up a time cons...">
-  <meta name="twitter:image" content="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/hero.jpg">
-  <meta name="twitter:url" content="http://teotti.com/parallelising-ios-ui-tests/">
+  <meta name="twitter:image" content="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/hero.jpg">
+  <meta name="twitter:url" content="http://localhost:4000/parallelising-ios-ui-tests/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/parallelising-ios-ui-tests/">
+  <link rel="canonical" href="http://localhost:4000/parallelising-ios-ui-tests/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -100,13 +100,13 @@
           <a name="topofpage"></a>
           <p>This article explains how to run iOS UI tests in parallel on a OSX host running multiple guests OSX virtual machines–the objective is to speed up a time consuming iOS UI test suite. You can find the script, its dependencies and a test project on <a href="https://github.com/pivotalbeachla/parallelize-tests">github</a>. <strong>I really hope to save someone’s hours of time I spent on UI testing parallelization dead ends.</strong></p>
 
-<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step1.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/step1.jpg" alt="" /></p>
 
 <h3 id="tldr">tldr;</h3>
 
 <p>Xcode8 has a <code>xcodebuild</code> option called <code>--only-test</code> to run single test files–our <a href="https://github.com/pivotalbeachla/parallelize-tests/blob/master/run.rb">proof of concept Ruby script</a> collects the Xcode project test file list and runs them via ssh on multiple virtual machines–legally–running OSX. This script doesn’t allow to distribute test functions across virtual machines even if that is a valid option to <code>--only-test</code>.</p>
 
-<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/step3.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/step3.jpg" alt="" /></p>
 
 <p>Our <a href="https://github.com/pivotalbeachla/parallelize-tests">test project</a> has around 15 tests–some with sleeps–and it takes around 20 minutes running on a single iMac (16GB ram, 3.5 GHz Intel Core i5 quad core). This script runs them in 7/8 minutes (with 3 virtual machines running on the same iMac). During our tests we confirmed that a shorter 2/3 minutes test suite did not benefit from this virtualization.</p>
 
@@ -188,13 +188,13 @@
 LIST_OF_VMS="parallel-ios-testbox-1.local parallel-ios-testbox-2.local parallel-ios-testbox-3.local" PROJECT_FILE=UnitTest.xcodeproj SCHEME=UnitTest VM_PROJECT_DIRECTORY="workspace/parallelize-tests" DESTINATION="platform=iOS Simulator,name=iPhone 7" ruby run.rb
 </code></p>
 
-<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/testsInProgress.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/testsInProgress.jpg" alt="" /></p>
 
 <p>The test project name is UnitTest, sorry for the confusion :)</p>
 
 <p>You should see green dots for a successful test and red F for a fail. In the test project you’ll see all greens and one fail:</p>
 
-<p><img src="http://teotti.com/assets/article_images/parallelising-ios-ui-tests/running.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/parallelising-ios-ui-tests/running.jpg" alt="" /></p>
 
 <p>More information–including failures whole <code>xcodebuild</code> outputs–can be found inside the timestamped logs in the script’s directory ie. ios-parallel-tests-20161010_1026.log.</p>
 

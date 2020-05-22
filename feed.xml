@@ -4,10 +4,10 @@
     <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
     <description>agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
 </description>
-    <link>http://teotti.com/</link>
-    <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 22 May 2020 21:11:45 +0000</pubDate>
-    <lastBuildDate>Fri, 22 May 2020 21:11:45 +0000</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 22 May 2020 21:17:05 +0000</pubDate>
+    <lastBuildDate>Fri, 22 May 2020 21:17:05 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -39,8 +39,8 @@
 &lt;p&gt;You might be able to achieve the same reduction with a single window and hide all gallery speakers but I did not test it. Does this trick works on Windows? Let me know!&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</link>
-        <guid isPermaLink="true">http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</guid>
+        <link>http://localhost:4000/reduce-your-network-utilization-on-zoom-calls/</link>
+        <guid isPermaLink="true">http://localhost:4000/reduce-your-network-utilization-on-zoom-calls/</guid>
         
         <category>process</category>
         
@@ -75,7 +75,7 @@
 
 &lt;p&gt;Works in a physical open space. We all know how to go from point A to point B. But what about online? Does all my audience know where to click how to navigate to other rooms?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images//the-law-of-two-feet-in-open-space-online%20copy/5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images//the-law-of-two-feet-in-open-space-online%20copy/5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;do-you-know-how-to-get-to-another-session&quot;&gt;Do you know how to get to another session?&lt;/h2&gt;
 
@@ -146,8 +146,8 @@
 &lt;p&gt;I don’t think there is a one size fits all solution, but I think we need to do better and prepare for our audience. What are you doing to make it better for your participants?&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/the-law-of-two-feet-in-open-space-online%20copy/</link>
-        <guid isPermaLink="true">http://teotti.com/the-law-of-two-feet-in-open-space-online%20copy/</guid>
+        <link>http://localhost:4000/the-law-of-two-feet-in-open-space-online%20copy/</link>
+        <guid isPermaLink="true">http://localhost:4000/the-law-of-two-feet-in-open-space-online%20copy/</guid>
         
         <category>process</category>
         
@@ -199,8 +199,8 @@
 &lt;p&gt;I hope this helps some folks out there. I think offloading the internet of local communications makes sense. I can see SIP as a way to connect to your elderly neighbour that might not have a recent phone Let me know how your experiment goes!&lt;/p&gt;
 </description>
         <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/video-call-from-your-LAN-during-covid19/</link>
-        <guid isPermaLink="true">http://teotti.com/video-call-from-your-LAN-during-covid19/</guid>
+        <link>http://localhost:4000/video-call-from-your-LAN-during-covid19/</link>
+        <guid isPermaLink="true">http://localhost:4000/video-call-from-your-LAN-during-covid19/</guid>
         
         <category>process</category>
         
@@ -258,27 +258,27 @@
 
 &lt;p&gt;Void of context they might not give a lot of insights but these are examples of retrospectives design I helped other folks with. Those sessions would take anything from 15 minutes to 30/40 minutes. Groups size were between 6 to 20.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/what-happens-before-an-agile-retrospective%20copy/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Have I sparked some intrest in dedicating some time finding a theme and designing your next retrospective? Are you already doing it? How much time do you dedicate to it? Who helps you? Leave a comment or a tweet.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/what-happens-before-an-agile-retrospective%20copy/</link>
-        <guid isPermaLink="true">http://teotti.com/what-happens-before-an-agile-retrospective%20copy/</guid>
+        <link>http://localhost:4000/what-happens-before-an-agile-retrospective%20copy/</link>
+        <guid isPermaLink="true">http://localhost:4000/what-happens-before-an-agile-retrospective%20copy/</guid>
         
         <category>retrospectives</category>
         
@@ -414,8 +414,8 @@
 &lt;p&gt;What challenges do you face in your retrospectives? What are the part of this post that you won’t be able to use? Why?&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</link>
-        <guid isPermaLink="true">http://teotti.com/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</guid>
+        <link>http://localhost:4000/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</link>
+        <guid isPermaLink="true">http://localhost:4000/make-your-retrospective-facilitation-even-more-effective-here-4-things-to-look-at/</guid>
         
         <category>retrospectives</category>
         
@@ -485,8 +485,8 @@
 &lt;p&gt;In my experience it’s been a useful tool to allow groups to gain a shared understanding on a system and align on what to takle first.&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/event-storming-one-year-later/</link>
-        <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
+        <link>http://localhost:4000/event-storming-one-year-later/</link>
+        <guid isPermaLink="true">http://localhost:4000/event-storming-one-year-later/</guid>
         
         <category>process</category>
         
@@ -688,8 +688,8 @@
 &lt;p&gt;I hope this write up give more context to folks interested in event storming. For more info Alberto is working on a &lt;a href=&quot;https://leanpub.com/introducing_eventstorming&quot;&gt;book&lt;/a&gt;. If you’d like a quicker read I wrote &lt;a href=&quot;https://teotti.com/event-storming-one-year-later&quot;&gt;another post&lt;/a&gt; about my experience with this technique.&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/big-picture-event-storming/</link>
-        <guid isPermaLink="true">http://teotti.com/big-picture-event-storming/</guid>
+        <link>http://localhost:4000/big-picture-event-storming/</link>
+        <guid isPermaLink="true">http://localhost:4000/big-picture-event-storming/</guid>
         
         <category>process</category>
         
@@ -717,9 +717,9 @@
 &lt;h2 id=&quot;zoom&quot;&gt;Zoom&lt;/h2&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;open the Zoom settings and update to use dual monitors &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Once you start your meeting ensure your meeting sharing option is set to the correct option: “Multiple participant can share simultaneously” &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/step2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;At this point multiple participants can share their screen, here I am using it with two folks &lt;img src=&quot;http://teotti.com/assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;open the Zoom settings and update to use dual monitors &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/step1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Once you start your meeting ensure your meeting sharing option is set to the correct option: “Multiple participant can share simultaneously” &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/step2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;At this point multiple participants can share their screen, here I am using it with two folks &lt;img src=&quot;http://localhost:4000/assets/article_images/remote-visual-facilitation-with-ipad-pro/hero.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
@@ -731,8 +731,8 @@
 &lt;p&gt;Leave us a comment if you have a similar strategy and different tools.&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/remote-visual-facilitation-with-ipad-pro/</link>
-        <guid isPermaLink="true">http://teotti.com/remote-visual-facilitation-with-ipad-pro/</guid>
+        <link>http://localhost:4000/remote-visual-facilitation-with-ipad-pro/</link>
+        <guid isPermaLink="true">http://localhost:4000/remote-visual-facilitation-with-ipad-pro/</guid>
         
         <category>process</category>
         
@@ -824,8 +824,8 @@
 &lt;p&gt;Before trying this activity &lt;a href=&quot;/analyze-kerth-prime-directive/&quot;&gt;make sure you fully understand the directive&lt;/a&gt; there is another great post about &lt;a href=&quot;https://www.infoq.com/articles/retrospective-prime-directive&quot;&gt;questioning the directive&lt;/a&gt; with input from though leaders in the retrospective community.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/challenge-agile-retrospectives-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/challenge-agile-retrospectives-prime-directive/</guid>
+        <link>http://localhost:4000/challenge-agile-retrospectives-prime-directive/</link>
+        <guid isPermaLink="true">http://localhost:4000/challenge-agile-retrospectives-prime-directive/</guid>
         
         <category>retrospectives</category>
         
@@ -915,8 +915,8 @@
 &lt;p&gt;I accept it. Do you?&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/analyze-kerth-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/analyze-kerth-prime-directive/</guid>
+        <link>http://localhost:4000/analyze-kerth-prime-directive/</link>
+        <guid isPermaLink="true">http://localhost:4000/analyze-kerth-prime-directive/</guid>
         
         <category>retrospectives</category>
         

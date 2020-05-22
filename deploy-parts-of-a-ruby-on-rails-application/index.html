@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="This article explains how to deploy portions of a Ruby on Rails application to separate servers with the use of Ruby Gems and Rails Engines." />
-  <meta property="og:url" content="http://teotti.com/deploy-parts-of-a-ruby-on-rails-application/" />
+  <meta property="og:url" content="http://localhost:4000/deploy-parts-of-a-ruby-on-rails-application/" />
   <meta property="og:site_name" content="Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry" />
   <meta property="og:title" content="Deploy parts of a Ruby on Rails application" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://teotti.com" />
+  <meta property="og:image" content="http://localhost:4000" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Deploy parts of a Ruby on Rails application">
   <meta name="twitter:description" content="This article explains how to deploy portions of a Ruby on Rails application to separate servers with the use of Ruby Gems and Rails Engines.">
-  <meta name="twitter:image" content="http://teotti.com">
-  <meta name="twitter:url" content="http://teotti.com/deploy-parts-of-a-ruby-on-rails-application/">
+  <meta name="twitter:image" content="http://localhost:4000">
+  <meta name="twitter:url" content="http://localhost:4000/deploy-parts-of-a-ruby-on-rails-application/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/deploy-parts-of-a-ruby-on-rails-application/">
+  <link rel="canonical" href="http://localhost:4000/deploy-parts-of-a-ruby-on-rails-application/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -129,7 +129,7 @@
 
 <p>In order to do this we gradually moved code from the <code>/app</code> directory in to two entry point component engines: <code>admin_ui</code> and <code>public_ui</code> each with their own dependency structure.</p>
 
-<p><img src="http://teotti.com/assets/article_images/deploy-parts-of-a-ruby-on-rails-application/dependency_structure.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/deploy-parts-of-a-ruby-on-rails-application/dependency_structure.jpg" alt="" /></p>
 
 <p>The main application would mount the entry point Engines routes based on a unix environment variable like this:</p>
 
@@ -171,7 +171,7 @@
 
 <p>Editors were review existing content in the legacy application and mark it for migration–overnight it would be pushed to an Amazon queue and the Rails application would pull and upsert the content in the new database. We didn’t want to mix that logic with the <strong>persistence</strong> engine but where else? We encapsulated all that behaviour in one component/engine: <code>legacy_migration</code>–after launch that engine was removed leaving no trace behind about the migration scripts. </p>
 
-<p><img src="http://teotti.com/assets/article_images/deploy-parts-of-a-ruby-on-rails-application/dependency_structure_with_migration.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/article_images/deploy-parts-of-a-ruby-on-rails-application/dependency_structure_with_migration.jpg" alt="" /></p>
 
 <h3 id="adequate-memory-usage">Adequate memory usage</h3>
 

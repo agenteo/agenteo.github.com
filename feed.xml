@@ -6,41 +6,41 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 22 May 2020 21:04:34 +0000</pubDate>
-    <lastBuildDate>Fri, 22 May 2020 21:04:34 +0000</lastBuildDate>
+    <pubDate>Fri, 22 May 2020 21:11:45 +0000</pubDate>
+    <lastBuildDate>Fri, 22 May 2020 21:11:45 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>Reduce your bandwith utilization on zoom calls</title>
-        <description>&lt;p&gt;This is for folks using a PC or a Mac spending lots of time (and bandwith) on Zoom calls. Do you know how fast your internet uploads? Do you know how much bandwith are Zoom calls are chewing up?&lt;/p&gt;
+        <title>Reduce your network utilization on Zoom calls</title>
+        <description>&lt;p&gt;This is for folks using a PC or a Mac spending lots of time (and network utilization) on Zoom calls. Do you know how fast your Internet is? Do you know how much traffic are Zoom calls are chewing up?&lt;/p&gt;
 
 &lt;p&gt;What I found out today (using &lt;a href=&quot;https://www.wireshark.org&quot;&gt;Wireshark&lt;/a&gt;) on OSX 10.15.5 is the gallery view in Zoom (tested with 5.0.2) generates a lot more (3 times) traffic on a 12 person call.&lt;/p&gt;
 
 &lt;p&gt;Granted you might wanna see people on most of your call there might be situations where you want to reduce your traffic by compromising that experience.&lt;/p&gt;
 
-&lt;p&gt;I assume you use two monitor windows, so if you’re not following me on twitter (and missing out on all those zoom and agile retrospectives nerdy comments) this is the option you’ll need to reduce your bandwith:&lt;/p&gt;
+&lt;p&gt;I’ll assume you use two monitor windows. If you’re not following me on twitter (and missing out on all those zoom and agile retrospectives nerdy comments) this is the option you’ll need to reduce your network:&lt;/p&gt;
 
 &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;You might already know but Zoom has a dual window / dual monitor feature to allow you to split the video or the screen share from the gallery view. First pic is the speaker on window 1 and gallery on window 2. Second pic, is the shared screen on window 1 and gallery window 2. HTH &lt;a href=&quot;https://t.co/DXTHodUcIq&quot;&gt;pic.twitter.com/DXTHodUcIq&lt;/a&gt;&lt;/p&gt;&amp;mdash; 𝐸𝓃𝓇𝒾𝒸𝑜 𝒯𝑒𝑜𝓉𝓉𝒾 (@agenteo) &lt;a href=&quot;https://twitter.com/agenteo/status/1256572194181787650?ref_src=twsrc%5Etfw&quot;&gt;May 2, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;One you have two Zoom windows:&lt;/p&gt;
+&lt;p&gt;Once you have two Zoom windows:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;gallery view&lt;/li&gt;
   &lt;li&gt;speaker view&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;you can minimize the gallery view you will reduce Zoom’s traffic and you’ll still see the active speaker on your second Zoom window.&lt;/p&gt;
+&lt;p&gt;by minimizing the gallery view you will reduce Zoom’s traffic and still see the active speaker on your second Zoom window.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/hero.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-network-utilization-on-zoom-calls/hero.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-bandwith-utilization-on-zoom-calls/zoom-on-bandwith-reduction.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/reduce-your-network-utilization-on-zoom-calls/zoom-on-network-reduction.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You might be able to achieve the same reduction with a single window and hide all gallery speakers but I did not test it. Does this trick works on Windows? Let me know!&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/</link>
-        <guid isPermaLink="true">http://teotti.com/reduce-your-bandwith-utilization-on-zoom-calls/</guid>
+        <link>http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</link>
+        <guid isPermaLink="true">http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</guid>
         
         <category>process</category>
         

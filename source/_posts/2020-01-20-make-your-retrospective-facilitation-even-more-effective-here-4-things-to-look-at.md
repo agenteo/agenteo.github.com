@@ -122,8 +122,7 @@ There are a lot of resources out there if you're interested in the topic of refl
 - [Derby/Larsen Agile retrospectives book](https://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649)
 - [Kua's The Retrospective Handbook: A guide for agile teams](https://www.amazon.com/Retrospective-Handbook-guide-agile-teams/dp/1480247871)
 - [Kaner's Facilitator's Guide to Participatory Decision-Making](https://www.amazon.com/Facilitators-Participatory-Decision-Making-Jossey-bass-Management/dp/1118404955)
+- [Retrium's video guide to retrospectives by David Horowitz](https://www.retrium.com/ultimate-guide-to-agile-retrospectives/intro)
 - [Retrospectives Podcast](http://thisisretrospectivefacilitation.com/about)
-
-
 
 What challenges do you face in your retrospectives? What are the part of this post that you won't be able to use? Why?

@@ -26,7 +26,7 @@ How does "law of two feet" translate when you are in an open space event that mo
 
 Works in a physical open space. We all know how to go from point A to point B. But what about online? Does all my audience know where to click how to navigate to other rooms?
 
-![I am so stuck]({{ site.url }}/assets/article_images/{{ page.url }}5x2.jpg)
+![I am so stuck]({{ site.url }}/assets/article_images/{{ page.url }}/5x2.jpg)
 
 ## Do you know how to get to another session?
 

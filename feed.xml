@@ -6,9 +6,61 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 25 May 2020 08:07:11 +0000</pubDate>
-    <lastBuildDate>Mon, 25 May 2020 08:07:11 +0000</lastBuildDate>
+    <pubDate>Thu, 18 Jun 2020 17:14:18 +0000</pubDate>
+    <lastBuildDate>Thu, 18 Jun 2020 17:14:18 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>From software engineer to visualizer</title>
+        <description>&lt;p&gt;In this post I’ll describe my journey in to the visualization world with links to resources that helped in my progression and that I wish I had on day 1. My background has been 18 years of sofware development with no art and minimal drawing or sketching.&lt;/p&gt;
+
+&lt;p&gt;So if you think you lack the artistic skill read on, visualization techniques like sketchnoting and visual facilitation &lt;strong&gt;are not art&lt;/strong&gt;! &lt;/p&gt;
+
+&lt;p&gt;My visualization journey started about two years ago. I currently use visualization for facilitation, presentations, sketchnoting. Let me show you some or &lt;a href=&quot;#list-of-visualization-resources&quot;&gt;jump to the list of resources&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/from-software-engineer-to-visualizer/digital.jpg&quot; alt=&quot;Yes you can do it digitally!&quot; /&gt;
+&lt;img src=&quot;/assets/article_images/from-software-engineer-to-visualizer/example.jpg&quot; alt=&quot;Visual presentation&quot; /&gt;
+&lt;img src=&quot;/assets/article_images/from-software-engineer-to-visualizer/happy-birthday-yvan.jpg&quot; alt=&quot;Sketchnote of a virtual birthday call&quot; /&gt;
+&lt;img src=&quot;/assets/article_images/from-software-engineer-to-visualizer/open-space-session.jpg&quot; alt=&quot;Sketch of an open space session I hosted&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;our-common-background&quot;&gt;Our common background&lt;/h2&gt;
+
+&lt;p&gt;At some point in our life we were drawing. And we were having fun at it. Until some of us stopped because someone–probably a teacher or a parent–said the drawing is not good enough anymore.&lt;/p&gt;
+
+&lt;p&gt;Did we also stop writing? We’re still sending emails and text messages, writing reminders even if we did not excell in writing classes. We wouldn’t think to stop writing just cause someone said it’s not up to par anymore :)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;So, learning visualization it’s totally doable because we’ve already done it! :)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For me it all started when I attended Alberto Brandolini’s workshop on Event Storming and saw his initial slide with “Event Storming masterclass” title and a swimming pool, he said “my approach to teach Event Storming is to trow you in the swimmingpool”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/article_images/from-software-engineer-to-visualizer/visualization-event-storming.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the end of the class I asked about it and someone in the group said “oh yeah that’s visual presentation… it’s easy just follow a few rules and you’ll get it”.&lt;/p&gt;
+
+&lt;p&gt;My head exploded.&lt;/p&gt;
+
+&lt;p&gt;The problem was I didn’t have a list of URLs or books! So this blog post is the list I wish I had.&lt;/p&gt;
+
+&lt;h2 id=&quot;list-of-visualization-resources&quot;&gt;List of Visualization resources&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The first free resource I’d reccomand is &lt;a href=&quot;http://educationaltoolsportal.eu/en/visual-facilitation-cookbook&quot;&gt;Visual Facilitation cookbook&lt;/a&gt;. Made from the ERASMUs program it has a lot of good tips on how to get started with visualization.&lt;/li&gt;
+  &lt;li&gt;Second I’d reccomand to start practicing! You don’t need fancy markers! Follow the booklet and practice! I started with mindmaps of meetings I was in. The purpose was to keep me engaged and to have some visuals to see where the conversation went. Little by little I started adding pictograms on some nodes.&lt;/li&gt;
+  &lt;li&gt;Third I’d reccomand Benjamin Felis class &lt;a href=&quot;https://graphic-recording-and-visual-facilitation.teachable.com/p/communicate-with-visuals-your-new-super-power?affcode=297856_zgdjgkfq&quot;&gt;Communicate with visuals – your new super power!&lt;/a&gt; a 120 Euro video class. Totally worth it.&lt;/li&gt;
+  &lt;li&gt;Next I’d reccomand &lt;a href=&quot;https://bikablo.com/blog/2017/09/18/uzmo-thinking-with-your-pen-the-bikablo-visualisation-guide-now-in-english/&quot;&gt;UZMO Thinking with your pen&lt;/a&gt;. It guides in understand why are you visualizing? What’s your goal? What’s the context? On top of all that it gives very practical advice on how to create composite pictograms, approaches templates. Very solid. Only downside I see they are very specific on the Bikablo technique which is not the only way you can visualize :)&lt;/li&gt;
+  &lt;li&gt;After that I’d reccomand &lt;a href=&quot;https://davidsibbet.com/visual-meetings-book/&quot;&gt;Visual Meetings by David Sibbet&lt;/a&gt;. It helped me–as a facilitator–see the larger picture of where visualization fits in meetings–I actually read it before UZMO.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I hope this list helps someone out there :) What’s stopping you from starting visualizing? What resources have you used to start your journey? Leave comments or hit me up on &lt;a href=&quot;https://twitter.com/agenteo&quot;&gt;twitter&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/from-software-engineer-to-visualizer/</link>
+        <guid isPermaLink="true">http://teotti.com/from-software-engineer-to-visualizer/</guid>
+        
+        <category>process</category>
+        
+        
+      </item>
     
       <item>
         <title>Reduce your network utilization on Zoom calls</title>
@@ -826,97 +878,6 @@
         <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
         <link>http://teotti.com/challenge-agile-retrospectives-prime-directive/</link>
         <guid isPermaLink="true">http://teotti.com/challenge-agile-retrospectives-prime-directive/</guid>
-        
-        <category>retrospectives</category>
-        
-        <category>process</category>
-        
-        <category>agile</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Analyze Kerth prime directive</title>
-        <description>&lt;p&gt;This post assumes you know what a retrospective is and focuses on Kerth’s prime directive to ensure the facilitator can answer common challenges around the directive and confidently explain it to the group.&lt;/p&gt;
-
-&lt;p&gt;Weeks ago I gave a public presentation about retrospectives and &lt;a href=&quot;https://www.youtube.com/watch?v=0hatxoP-MU0&amp;amp;t=7m00s&quot;&gt;after introducing Kerth’s directive&lt;/a&gt; a person in the audience shouted to me “that is a lie!”. Btw that link is the same presentation but different audience so no shouting.&lt;/p&gt;
-
-&lt;p&gt;In order to create a constructive session Kerth’s prime directive is usually read–and agreed upon–at the beginning of a retrospective:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Regardless of what we discover, we must understand and truly believe that everyone did the best job he or she could given what was known at the time, his or her skills and abilities, the resources available, and the situation at hand.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I tried to ask what in the directive was bothering that person but he mostly vented how some people can only do a poor job.&lt;/p&gt;
-
-&lt;p&gt;The directive sends a strong message that is often misunderstood. I might have not explained it very well so I decided to write down my thoughts in this blog post.&lt;/p&gt;
-
-&lt;h2 id=&quot;dissecting-the-directive&quot;&gt;Dissecting the directive&lt;/h2&gt;
-
-&lt;p&gt;The first part of the prime directive states that:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Regardless of what we discover, we must understand and truly believe that everyone did the best job he or she could&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;which leads to misunderstandings &lt;strong&gt;without reflecting on the second part of the directive&lt;/strong&gt;: &lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;given what was known at the time, his or her skills and abilities, the resources available, and the situation at hand.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The prime directive doesn’t pardon negligent acts–more on this point later–it gently reminds us that there are &lt;strong&gt;factors&lt;/strong&gt; to provide context on why &lt;strong&gt;the best job that someone did&lt;/strong&gt; might look so poor in retrospect.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Accepting the directive means we are willing to focus the retrospective on those factors instead of playing a quick and easy blame game.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;given-what-was-known-at-the-time&quot;&gt;Given what was known at the time&lt;/h3&gt;
-
-&lt;p&gt;Of course today–&lt;em&gt;after&lt;/em&gt; the event happened–we probably already know more then back then or maybe decisions were made based on lack of context! &lt;strong&gt;“Was the new testing URL shared with all developers with enough time? Even the new hires from last week?”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;given-his-or-her-skills-and-abilities&quot;&gt;Given his or her skills and abilities&lt;/h3&gt;
-
-&lt;p&gt;Maybe the refactor triggered a runtime error–crashing the production app–because the person joined last week and had no prior experience with the backend language or didn’t know how to run our test framework.&lt;/p&gt;
-
-&lt;h3 id=&quot;given-the-resources-available&quot;&gt;Given the resources available&lt;/h3&gt;
-
-&lt;p&gt;Perhaps the developer was &lt;strong&gt;rushed to deploy the change in 30 minutes&lt;/strong&gt; before the all-hands status meeting.&lt;/p&gt;
-
-&lt;h3 id=&quot;given-the-situation-at-hand&quot;&gt;Given the situation at hand&lt;/h3&gt;
-
-&lt;p&gt;Perhaps that &lt;strong&gt;part of changed code was a knowledge silo owned by another developer that quit the day before&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;it-must-be-someones-fault&quot;&gt;It must be someone’s fault&lt;/h2&gt;
-
-&lt;p&gt;If a developer brings a production API down was that the best job he could do? He’s probably aware of his mistake and ready to take the blame. But what good does finding a culprit bring us if we don’t learn the circumstances and look for a root cause?&lt;/p&gt;
-
-&lt;p&gt;Maybe it was the best job he could do &lt;strong&gt;given what he knew at that time&lt;/strong&gt; if for example he didn’t have any context on what API he was about to turn off! &lt;strong&gt;Perhaps no one was awake to tell him that deployxyz.myapp.com was switched to be the production API URL during this morning 4am hotfix&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;promoting-incompetence&quot;&gt;Promoting incompetence?&lt;/h2&gt;
-
-&lt;p&gt;The prime directive doesn’t mean there isn’t accountability. It simply tells us to stop looking for blame and accept that there are factors we need to gather a fuller picture.&lt;/p&gt;
-
-&lt;p&gt;If when you have the full picture some actions are proven to be grave work misconducts they should be addressed by HR outside of a retrospective.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;I think the first time Kerth’s prime directive is introduced to a team it deserves to be dissected, questioned and explained rather then just read and asked for agreement. If you don’t you risk people resenting it because they will accept it without fully understanding it. &lt;/p&gt;
-
-&lt;p&gt;Hopefully this article will help retrospective facilitators to better understand Kerth’s prime directive and engage in constructive conversations with their group. I am writing a post about an activity to set the stage to challenge the prime directive to help with this.&lt;/p&gt;
-
-&lt;p&gt;Is the prime directive a lie? I don’t think so.&lt;/p&gt;
-
-&lt;p&gt;Is it a philosophical mind trick? I don’t know.&lt;/p&gt;
-
-&lt;p&gt;Does it help starting retrospectives in a positive environment and focus on learning instead of playing the blame game? Yes.&lt;/p&gt;
-
-&lt;p&gt;I accept it. Do you?&lt;/p&gt;
-</description>
-        <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/analyze-kerth-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/analyze-kerth-prime-directive/</guid>
         
         <category>retrospectives</category>
         

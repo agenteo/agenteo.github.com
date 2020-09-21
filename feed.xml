@@ -6,9 +6,81 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 30 Jul 2020 06:44:37 +0000</pubDate>
-    <lastBuildDate>Thu, 30 Jul 2020 06:44:37 +0000</lastBuildDate>
+    <pubDate>Mon, 21 Sep 2020 15:39:18 +0000</pubDate>
+    <lastBuildDate>Mon, 21 Sep 2020 15:39:18 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>How I ask for questions while facilitating online</title>
+        <description>&lt;p&gt;I don’t remember when but I always knew when I asked questions without giving enough time for answers. I think I did it because I couldn’t stand the silence. &lt;strong&gt;I think I also tought if you have a question you better be quick cause we’re working here!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As I transitioned to a coaching role, with software developers, product managers and leadership I tweaked that &lt;strong&gt;quite&lt;/strong&gt; a bit.&lt;/p&gt;
+
+&lt;p&gt;I hope this blog post will help you reflect on how you’re asking questions online and in person.&lt;/p&gt;
+
+&lt;h3 id=&quot;wait-20-seconds&quot;&gt;Wait 20 seconds&lt;/h3&gt;
+
+&lt;p&gt;After I ask a question in an online call–with or without video–my default is to count in my head between 5 to 20 seconds.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Give people time to reflect on the question and come up with replies.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I count like one-thousand-and-one, one-thousand-and-two and so on. I am cool with the uncomfortable silence. I am actually excited as I wait for questions. Ask yourself: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Am I ok with uncomfortable silence?&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Always 20 seconds? Nope. Someone one told me always and never don’t apply to facilitation. And I reply “it’s depends”.&lt;/p&gt;
+
+&lt;p&gt;When the group is small (say 4/5) and I see all faces shaking no I cut it short and move on.&lt;/p&gt;
+
+&lt;p&gt;On some video call platforms you can ask for non verbal feedback–ie raise hand for questions but on online calls larger then 10/15 I still rather wait it out and give people time to think.&lt;/p&gt;
+
+&lt;h3 id=&quot;syncronous-vs-asyncronous&quot;&gt;Syncronous vs asyncronous&lt;/h3&gt;
+
+&lt;p&gt;Some people might not feel comfortable speaking up in from of the whole group. Or simply need more time to reflect on what the question they have. Asking to write down–in the chat, in your virtual space–can help with that and the latter can give anononymity too.&lt;/p&gt;
+
+&lt;p&gt;I use asyncronous in groups larger then 5/6, after I see a few popping up I ask would anyone like to share their question? If nobody starts I just go ahead read the post it and answer.&lt;/p&gt;
+
+&lt;p&gt;I find especially useful to use the async for debriefing activities or questions for groups larger then 10/15.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-ask-questions&quot;&gt;How to ask questions&lt;/h3&gt;
+
+&lt;p&gt;It’s probably not great to ask “everything is clear right?” wait 1 second and move on.&lt;/p&gt;
+
+&lt;p&gt;I avoid leading questions, good way to ask for feedback would be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;is there any question? (duh)&lt;/li&gt;
+  &lt;li&gt;is it clear to everybody what we’re doing next? – after a brief&lt;/li&gt;
+  &lt;li&gt;imagine you applied this in your context, what questions would come up for you? – after some more theoretical piece&lt;/li&gt;
+  &lt;li&gt;after looking at a set of data might be a good fit to use the questions from Adaptive action (HSD’s set of powerful question that lead to wise action): Where are you now? Where would you like to be? How are you gonna get there?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;a-note-on-emergence&quot;&gt;A note on emergence&lt;/h4&gt;
+
+&lt;p&gt;In facilitating emerging activities–that are left purpusefully vague and open–I avoid the questions above since they would give too much guidance. I explain at the best of my abilities and then ask “raise your hand if you have enough information to be able to get to work”.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;I hope you’ve found something useful, where are you know in your asking questions online journey? Where would you like to be? How are you gonna get there? Let me know in the comments or on twitter!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/how-to-ask-for-feedback-questions/</link>
+        <guid isPermaLink="true">http://teotti.com/how-to-ask-for-feedback-questions/</guid>
+        
+        <category>process</category>
+        
+        <category>facilitation</category>
+        
+        
+      </item>
     
       <item>
         <title>From software engineer to visualizer</title>
@@ -789,101 +861,6 @@
         <category>process</category>
         
         <category>visual-thinking</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Challenge Kerth&#39;s prime directive when you set the stage of your retro</title>
-        <description>&lt;p&gt;This post assumes you know what a retrospective is and focuses on an activity to set the stage challenging what Kert’s prime directive means to the group.&lt;/p&gt;
-
-&lt;p&gt;This is an 80% muted–no talking–activity to use at the start of your retro. It should last between 5 to 10 minutes.&lt;/p&gt;
-
-&lt;p&gt;Often the facilitator asks the group for a verbal yes to agree with Kerth’s prime directive. Most people can see its value but sometime you get a “&lt;em&gt;yeaahh sure I agree… they did the best job they could&lt;/em&gt;” but what that person really thinks is “&lt;strong&gt;they did a really stinky job&lt;/strong&gt;”.&lt;/p&gt;
-
-&lt;p&gt;Sometime people think that about themselves.&lt;/p&gt;
-
-&lt;h3 id=&quot;when-to-use-the-activity&quot;&gt;When to use the activity&lt;/h3&gt;
-
-&lt;p&gt;I’d use this activity on groups new to Kerth’s prime directive or groups where an individual dismissed the directive.&lt;/p&gt;
-
-&lt;p&gt;The objective is to give time to the group to better understand the meaning of the sentence.&lt;/p&gt;
-
-&lt;p&gt;Before using this activity &lt;a href=&quot;/analyze-kerth-prime-directive/&quot;&gt;make sure you fully understand the directive yourself&lt;/a&gt; or it will be challenging to deal with questions from your group.&lt;/p&gt;
-
-&lt;h2 id=&quot;activity-introduction&quot;&gt;Activity introduction&lt;/h2&gt;
-
-&lt;p&gt;The facilitator reads the prime directive and explains that by accepting it the group will make retrospective a more constructive and effective environment.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Regardless of what we discover, we must understand and truly believe that everyone did the best job he or she could given what was known at the time, his or her skills and abilities, the resources available, and the situation at hand.&lt;/p&gt;
-
-  &lt;p&gt;Norm Kerth prime directive&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Instead of asking the group for the directive acceptance with a verbal yes tell them we will spend a few minutes questioning the directive.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Give the group a minute or two to remember an episode in their previous job where they believe the prime directive could not be applied. Read the directive highlighting the &lt;strong&gt;givens&lt;/strong&gt; portion:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;given what was known at the time&lt;/li&gt;
-  &lt;li&gt;given his or her skills and abilities&lt;/li&gt;
-  &lt;li&gt;given the resources available&lt;/li&gt;
-  &lt;li&gt;given the situation at hand&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;After&lt;/strong&gt; the two minutes of thinking back–or less–ask them to summarize the episode on a post-it note. If people believe in the directive you can ask to summarize an episode where the directive was applicable.&lt;/p&gt;
-
-&lt;p&gt;Once done writing ask them to reflect on the &lt;strong&gt;factors&lt;/strong&gt; that might have affected that episode:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;what was known at the time of the episode/incident&lt;/li&gt;
-  &lt;li&gt;what were that person’s–or group–skills and abilities&lt;/li&gt;
-  &lt;li&gt;what resources–time, team size, bandwidth–were available&lt;/li&gt;
-  &lt;li&gt;what was the situation at hand&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Reflecting about these factors will help us gain a better understanding of the events we look during retrospective.&lt;/p&gt;
-
-&lt;h2 id=&quot;activity-debriefing&quot;&gt;Activity debriefing&lt;/h2&gt;
-
-&lt;p&gt;After reflecting on how these factors impacted the job done ask if they still think the best job wasn’t done given these &lt;strong&gt;factors&lt;/strong&gt; or if perhaps they don’t know how to answer about these &lt;strong&gt;factors&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now is the time to ask each participants if they accept the prime directive for today’s retrospective.&lt;/p&gt;
-
-&lt;h3 id=&quot;skeptics-in-the-group&quot;&gt;Skeptics in the group&lt;/h3&gt;
-
-&lt;p&gt;Remind the group that it’s ok to still think the directive doesn’t apply to their episode.&lt;/p&gt;
-
-&lt;p&gt;Ask if they are ok sharing the episode with the group and try to understand the factors. Also acknowledge that sometimes there are extreme situations where individuals might purposely sabotaging projects and use an unprofessional conduct.&lt;/p&gt;
-
-&lt;p&gt;Ask them if they are ok &lt;strong&gt;putting aside their biases and accept the directive for the duration of today’s retrospective&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;If they accept thank them. If they still refuse–even just for today’s retro–there must be a deeper issue that needs to be tackled.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;If it’s an individual I’d say continue the retrospective and keep an eye on his/her behavior and follow-up one-on-one afterwards&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;If the majority of the group feels that way it’s better to call the retrospective off and investigate further on the root cause of that tension.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Retrospectives are the most important part of an iteration and changing their format is imperative to keep people engaged.&lt;/p&gt;
-
-&lt;p&gt;If people understand Kerth’s prime directive printing it out and reminding people about it is usually enough.&lt;/p&gt;
-
-&lt;p&gt;When people are new to Kerth’s prime directive it’s good to explain it and challenge it instead of getting a–often disengaged–verbal yes.&lt;/p&gt;
-
-&lt;p&gt;Before trying this activity &lt;a href=&quot;/analyze-kerth-prime-directive/&quot;&gt;make sure you fully understand the directive&lt;/a&gt; there is another great post about &lt;a href=&quot;https://www.infoq.com/articles/retrospective-prime-directive&quot;&gt;questioning the directive&lt;/a&gt; with input from though leaders in the retrospective community.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/challenge-agile-retrospectives-prime-directive/</link>
-        <guid isPermaLink="true">http://teotti.com/challenge-agile-retrospectives-prime-directive/</guid>
-        
-        <category>retrospectives</category>
-        
-        <category>process</category>
-        
-        <category>agile</category>
         
         
       </item>

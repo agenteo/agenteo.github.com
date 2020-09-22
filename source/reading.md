@@ -7,6 +7,9 @@ permalink: /reading/
 This is a chronological list of the work related books I've read. They are about communication, management, agile methodologies, Go, Swift/iOS, Java, Ruby, Javascript and other topics that I am interested in.
 
 ### 2018
+
+* [Fearless change]
+* [Getting Things Done]
 * [Ego is the enemy](https://www.amazon.com/Ego-Enemy-Ryan-Holiday/dp/1591847818)
 * [Improving Agile Retrospectives](https://www.amazon.com/Improving-Agile-Retrospectives-Efficient-Addison-Wesley/dp/0134678346/ref=sr_1_3?s=books&ie=UTF8&qid=1530340343&sr=1-3&keywords=retrospectives)
 

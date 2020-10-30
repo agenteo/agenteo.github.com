@@ -6,38 +6,9 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Oct 2020 21:55:31 +0000</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2020 21:55:31 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2020 21:59:05 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2020 21:59:05 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
-    
-      <item>
-        <title>Is your Agile Retrospective dealing with simple, complicated or complex issues?</title>
-        <description>&lt;p&gt;There are many complexity frameworks out there, HSD and Cynefin come to mind.&lt;/p&gt;
-
-&lt;p&gt;Around Cynefin, it can be used in two main ways:
-* as a sense-making framework
-* as a categorization framework&lt;/p&gt;
-
-&lt;p&gt;I’ll focus on the second option but you should be aware that there is large power in the first one too.&lt;/p&gt;
-
-&lt;p&gt;Way too often Agile Retrospective&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;It’s important for the group to zoom in and zoom out, find an adeguate granularity and determine if what we’re tackling in our Retrospectives is a clear, complicated or complex issue. Adaptive action helps with that but when we’re missing the “so what” we don’t have time to look for patterns and we can only react with linear thinking.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/your-retrospective-with-cynefin-tackling-simple-complicated-or-complex-issues/</link>
-        <guid isPermaLink="true">http://teotti.com/your-retrospective-with-cynefin-tackling-simple-complicated-or-complex-issues/</guid>
-        
-        <category>process</category>
-        
-        <category>facilitation</category>
-        
-        <category>retrospectives</category>
-        
-        
-      </item>
     
       <item>
         <title>Questions to ponder when Agile Retrospectives are missing reflection</title>
@@ -776,6 +747,209 @@
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
         <link>http://teotti.com/event-storming-one-year-later/</link>
         <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
+        
+        <category>process</category>
+        
+        <category>emergence</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Big picture event storming. My notes from the masterclass.</title>
+        <description>&lt;p&gt;This is a summary of what I learned–circa 15 months ago–about big picture event storming during a two day workshop with Alberto Brandolini creator of Event Storming. I’ll skip the domain modelling usecase.&lt;/p&gt;
+
+&lt;p&gt;I am not sure how useful this is for anyone else, I wrote a blog post about my experience using this tecnique.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;The objective of big picture event storming is finding.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Alberto describes three context:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;organization reboot&lt;/li&gt;
+  &lt;li&gt;startup kickoff&lt;/li&gt;
+  &lt;li&gt;project kickoff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find out where the business is today. If the project kickoff is about something in the wrong spot that’s valuable information.&lt;/p&gt;
+
+&lt;p&gt;Event storming can be used to get a picture of what a company does. Specifically it outlines &lt;strong&gt;what people want to do&lt;/strong&gt; vs. &lt;strong&gt;what the process mandates them to do&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;p&gt;The result is a map. A snapshot of the current situation. Expect all the dysfunction to be visible. Then as a group you can decide to focus on what’s the top priority.&lt;/p&gt;
+
+&lt;h2 id=&quot;scenarios&quot;&gt;Scenarios&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“Maybe your process is doing a great job. Then you don’t need investigation. You’d end up telling a story that is just working.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For a start-up that doesn’t have any existing infrastructure you can use event storming to scope where they want to be.&lt;/p&gt;
+
+&lt;p&gt;For an enterprise with legacy systems you can use event storming to outline their current &lt;strong&gt;understanding&lt;/strong&gt;, the way they think their company works, and according to Alberto more often then not there is a feeling of awe when he runs those sessions. People realized what other division do. This session helps collecting understanding.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;“As a facilitator you want to hear/see different voices”&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;rule-number-one&quot;&gt;Rule number one&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“The number one rule is to get the right people in the room.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Coming from an Agile Retrospective background where I try to gage the team feelings and interactions before the meeting the first question I had was “do you chat with the individuals before the event storming session?”. The answer was no, &lt;strong&gt;because chatting one by one wouldn’t be as effective as hearing those conversations for the first time when the whole group is in the room&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another question I asked was &lt;em&gt;how do you make sure it’s the right people?&lt;/em&gt; You will find out at the end of the session. If the meeting constantly mention James and he’s not in the room perhaps we need him after all. Based on how much influence you have in the company you might not start with the right people in the room but as you show how effective the methodology is you will gain more sponsors.&lt;/p&gt;
+
+&lt;h2 id=&quot;anti-patterns&quot;&gt;Anti-patterns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ask questions first&lt;/li&gt;
+  &lt;li&gt;agree upfront&lt;/li&gt;
+  &lt;li&gt;the committee&lt;/li&gt;
+  &lt;li&gt;start from the beginning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;patterns&quot;&gt;Patterns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the ice-breaker (someone will eventually put the first domain event… just wait for it… or do it yourself)&lt;/li&gt;
+  &lt;li&gt;make a mess&lt;/li&gt;
+  &lt;li&gt;start from the center&lt;/li&gt;
+  &lt;li&gt;one person one marker&lt;/li&gt;
+  &lt;li&gt;the inifinite buffet (aka make sure space doesn’t limit the process)&lt;/li&gt;
+  &lt;li&gt;just do it (I never asked to do it right)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“The goal for an event storming facilitator is to remove impediments. Not enforcing rules or agendas.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Chaos first then timeline. You start asking individuals to add &lt;strong&gt;domain events&lt;/strong&gt; on orange sticky notes. Don’t worry too much about the order &lt;em&gt;just do it&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;You need chaos to challenge the perception people have of reality.&lt;/p&gt;
+
+&lt;p&gt;After you made a mess it’s time to start sorting. This is a good time to take care of duplicates. There are different strategies to sort:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pivotal events&lt;/li&gt;
+  &lt;li&gt;phases (roles &amp;amp; responsabilities)&lt;/li&gt;
+  &lt;li&gt;temporal milestones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you look at pivotal events identify &lt;strong&gt;domain event&lt;/strong&gt; that are critical to your business. One easy way is to identify which events are listening for the &lt;strong&gt;pivotal event&lt;/strong&gt; to happen.&lt;/p&gt;
+
+&lt;h2 id=&quot;hotspots--opportunities&quot;&gt;Hotspots + opportunities&lt;/h2&gt;
+
+&lt;p&gt;After you create this map you can start asking where are the problems? As an event storming facilitator you are entitiled to ask stupid questions. That’s your superpower! Look at the audience to check if the conversation is relevant to the group.&lt;/p&gt;
+
+&lt;p&gt;It’s good to balance out bad with good. Ask the group to add green stickys for opportunities.&lt;/p&gt;
+
+&lt;p&gt;Let hotspots be a voice for concerns. Should you focus on a corner case? Look at the rest of the audience, is it a problem for the group? If not move on. Alberto describes how looking at the audience reaction to discovery can lead to interesting next steps. He describes how sometimes individuals are disengaged bored of hearing the same thing again and again… and other times they lean forward and discovered something new about their organization!&lt;/p&gt;
+
+&lt;h2 id=&quot;people--systems&quot;&gt;People / systems&lt;/h2&gt;
+
+&lt;p&gt;At this point you add external systems your business relies on. This could be software we own or a SAS. Let system definition be fuzzy. Just make things visible. No wordsmithing.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“A system is “whatever you can put the blame on”.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pretty spot-on.&lt;/p&gt;
+
+&lt;p&gt;Visualize everything. Start being agressive not on the problem but on the message. Make everything visible so we can see the enemy.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions how making hypothesis in a startup environment is ok. But in a corporate environment a domain expert looking up and scratching beard/head is a sign that this guy is not the real domain expert. Just a proxy.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions the “karaoke singer” where an individual overtake the stage. He suggests to talk with someone that didn’t go live during the workshop. Probably later after the workday ends.&lt;/p&gt;
+
+&lt;p&gt;Alberto mentions how event storming can’t solve people problems. He was in a sessions where two individuals wouldn’t establish eye contact… or even talk to each other!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Alberto says he’s got a default plan but it can be hijacked if the group wants to.&lt;/strong&gt; What to dig on is up to the group.&lt;/p&gt;
+
+&lt;p&gt;A suggestion Alberto gave was do not ask permission to run event storming. &lt;strong&gt;Say you will run a modelling process.&lt;/strong&gt; Events grooming / gathering to get a big picture of the business. In some environments this might be easier then getting buy-in for a “new technique”.&lt;/p&gt;
+
+&lt;p&gt;Business people will talk about requirements not edge cases.&lt;/p&gt;
+
+&lt;h2 id=&quot;telling-the-story---enterpise-wise-defrag&quot;&gt;Telling the story - Enterpise wise defrag&lt;/h2&gt;
+
+&lt;p&gt;Now it’s time for the facilitator to slowly revisit the flow. Accelerate or jump to section. Set the the tone and have people contradicting you. Ask the audience “please tell your version of the story”. As the facilitator you &lt;strong&gt;want&lt;/strong&gt; to invite someone in the group to be the narrator.&lt;/p&gt;
+
+&lt;p&gt;The facilitator is a glue between words and the visible model.&lt;/p&gt;
+
+&lt;h2 id=&quot;telling-the-story-backwards---reverse-narrative&quot;&gt;Telling the story backwards - Reverse narrative&lt;/h2&gt;
+
+&lt;p&gt;This helps making the story more consistent. The facilitator usually leads this. Sometimes it allows to discover new areas.&lt;/p&gt;
+
+&lt;p&gt;During this session we’re not looking for completeness. If everybody is forgetting about something maybe it’s not important.&lt;/p&gt;
+
+&lt;p&gt;After an event storming session there should be no invisible stuff.&lt;/p&gt;
+
+&lt;h2 id=&quot;arrow-voting&quot;&gt;Arrow voting&lt;/h2&gt;
+
+&lt;p&gt;The group must vote and decide what has higher priority. Explore with no scope limitation but then narrow down to one item.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t use arrow voting with the wrong people in the room.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Your perception of the problem is completely flawed if everybody says the problem is what you don’t expect. &lt;/p&gt;
+
+&lt;h2 id=&quot;what-happens-next&quot;&gt;What happens next?&lt;/h2&gt;
+
+&lt;p&gt;Sometime people just acknowledge problems and opportunities but decide to skip the rollercoaster ride. You want to go on the rollercoaster and have some fun working on this issues! Skipping the ride, or pretending that’s not a problem would be the company’s loss. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;What should you do if someone says “oh we know that’s bad” and doesn’t wanna act. What I learned is it depends. Who’s the sponsor? What’s the goal?&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;End of day 1 you should have priorities and hotspots / opportunities. In the morning of day 2 look for something actionable.&lt;/p&gt;
+
+&lt;p&gt;After the workshop you might get impromptu conversations. Go in early the following day. They might adjust the timeline the morning after. &lt;/p&gt;
+
+&lt;h3 id=&quot;selection-bias&quot;&gt;Selection bias&lt;/h3&gt;
+
+&lt;p&gt;If there is an imbalance–selection bias–on the group and developers vs business arrow situation then the facilitator should mediate between business and developers.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“Can the problem be solved with software? Maybe you’re missing knowledge, expertise, dysfunctional communication patterns.”&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;During an event storming session you can determing that the symptom is here but the root causes might be somewhere else. &lt;/p&gt;
+
+&lt;p&gt;After an event storming session the team got a little bit wiser then at the beginning.&lt;/p&gt;
+
+&lt;h2 id=&quot;outcome--formats&quot;&gt;Outcome &amp;amp; formats&lt;/h2&gt;
+
+&lt;h2 id=&quot;event-storming-as-a-regular-investment&quot;&gt;Event storming as a regular investment&lt;/h2&gt;
+
+&lt;p&gt;Alberto runs regular–every 2/3 months–event storming sessions at his company as a way to on-board new team members and to review current process / pain-points. When running it this was you want to ask what’s the best outcome given the time? The point is not to explore everything but rather explore everything enough so that pain points surface. You should design different workshops for different purposes to achieve maximum gain.&lt;/p&gt;
+
+&lt;p&gt;During this session you can assess if we can do better then this. If you can we can just go ahead and change it!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I hope this write up give more context to folks interested in event storming. For more info Alberto is working on a &lt;a href=&quot;https://leanpub.com/introducing_eventstorming&quot;&gt;book&lt;/a&gt;. If you’d like a quicker read I wrote &lt;a href=&quot;https://teotti.com/event-storming-one-year-later&quot;&gt;another post&lt;/a&gt; about my experience with this technique.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/big-picture-event-storming/</link>
+        <guid isPermaLink="true">http://teotti.com/big-picture-event-storming/</guid>
         
         <category>process</category>
         

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Enrico Teotti - developer and agile mentor with over 18 years experience in the IT industry</title>
-    <description>agile coach, facilitator with an 18 years background in development and product management across Europe, Australia and the US.
+    <title>Enrico Teotti - agile coach, (visual) facilitator with a background in development and product management across since 2001 in Europe, Australia and the US.</title>
+    <description>agile coach, (visual) facilitator with a background in development and product management across since 2001 in Europe, Australia and the US.
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Oct 2020 22:04:12 +0000</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2020 22:04:12 +0000</lastBuildDate>
+    <pubDate>Sat, 31 Oct 2020 09:15:13 +0000</pubDate>
+    <lastBuildDate>Sat, 31 Oct 2020 09:15:13 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -122,6 +122,9 @@
 &lt;p&gt;The question that stuck most for me was “why do you care about this?”. It took me a little to reply and the answer is I want to leave the world in a better place than I’ve found it, and fostering reflection is for me a way to do that.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Clearing out why I care gave me more energy in making Agile Retrospectives the tool they’re meant to be and not just a checkbox.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For me it’s important that the group zooms in and zooms out
+* they are an adeguate granularity and determine if what they’re tackling in the Retrospectives is a clear, complicated or complex issue. Adaptive action helps with that but when we’re missing the “so what” we don’t have time to look for patterns and we can only react with linear thinking.&lt;/p&gt;
 
 &lt;p&gt;How did those questions resonate with you? Do they inspire you to a wise next step on your Agile Retrospectives that are lacking reflection? Do they make you see your current issue differently?&lt;/p&gt;
 

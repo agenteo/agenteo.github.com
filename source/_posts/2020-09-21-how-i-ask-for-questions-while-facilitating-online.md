@@ -7,7 +7,8 @@ og_description: How I ask for questions and antipatterns
 tags:
   - process
   - facilitation
-redirect_from: /how-to-ask-for-feedback-questions
+redirect_from:
+  - /how-to-ask-for-feedback-questions/
 ---
 
 I don't remember when but I always knew when I asked questions without giving enough time for answers. I think I did it because I couldn't stand the silence. **I think I also tought if you have a question you better be quick cause we're working here!**

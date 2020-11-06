@@ -10,7 +10,7 @@ tags:
   - retrospectives
 ---
 
-Recently I was on a reocurring call with Human System Dynamics (HSD) associates and friends where a voluneer shares a wicked issue they have and then listen to questions without answering. **The questions are open ended, not disguised advice, beyond the knowledge of the asker**.
+Recently I was on a reoccurring call with Human System Dynamics (HSD) associates and friends where a volunteer shares a wicked issue they have and then listen to questions without answering. **The questions are open ended, not disguised advice, beyond the knowledge of the asker**.
 
 I hope these questions will help you see a next step for your Agile Retrospective missing reflection.
 
@@ -22,10 +22,10 @@ I hope these questions will help you see a next step for your Agile Retrospectiv
 The groups follows HSD simple rules:
 
 * Stand in inquiry
-    - Turn judgement in to curiosity
-    - Turn conflict in to shared exploration
-    - Turn defensiveness into self-reflection
-    - Turn assumptions in to questions
+  * Turn judgment in to curiosity
+  * Turn conflict in to shared exploration
+  * Turn defensiveness into self-reflection
+  * Turn assumptions in to questions
 * Search for true and useful
 * Find the energy in difference
 * Zoom in and zoom out
@@ -57,46 +57,46 @@ Here are some graphics I created to explain the process in a micro talk I gave:
 
 * GE : What does time have to do with it?
 * JK: What kind of false time lines do we put on ourselves and our teams?
-* GE : What if you started with the SO WHAT and left out the WHAT and NOW WHAT onece?
-* Royce: Where else do you see that lack of reflection
+* GE : What if you started with the SO WHAT and left out the WHAT and NOW WHAT once?
+* RH: Where else do you see that lack of reflection
 * GE : How many different tools and models exist to support SO WHAT?
 * GE : What do feelings have to do with it?
 * BMC : Are there other spaces or processes where the team is capable of doing reflection? What’s different?
 * JJ : If you can apply only ONE simple rule (HSD) to trigger off the introspection, what would it be?
-* SB : Building on Michaels….is there judgment usually at play?
-* Royce: What kinds of invitation do you have and how do people know what to reflect on?
+* SB : Building on MKS.is there judgment usually at play?
+* RH: What kinds of invitation do you have and how do people know what to reflect on?
 * GE : Are there some people who are better at SO WHAT than others are?
 * BMC : Are they aware that they are skipping the step?
 * SB : where  might they do so what elsewhere?
 * JK: How does our current educational system teach and promote reflection?
-* Leslie : What pattern(s) are these reflection times intended to generate?
+* LP : What pattern(s) are these reflection times intended to generate?
 * EMN : Have you worked with a team that does  reflection intuitively and what is different about that team?
-* Royce: Is engaging in retrospective a finite game or an infinite game?
+* RH: Is engaging in retrospective a finite game or an infinite game?
 * MKS : What is your So What on the teams not doing a So What?
 * JJ : What is the "fear" behind the skipping Reflection?
 * SB : What’s the normative truth about the so what?
 * GE : How is the retrospective about individual and how about team performance?
 * JJ : Is time/urgency more important than quality?
 * GE : How would a retrospective work if it were totally in inquiry?
-* Royce: How do your team members understand or use the inquiry practices?
+* RH: How do your team members understand or use the inquiry practices?
 * SB : what do they really want to know?
 * EMN : Are there any fun games that require reflection?  
 * GE : What would a prospective look like?
-* Royce: How would we turn some of the models and methods into games?
+* RH: How would we turn some of the models and methods into games?
 * MKS : Would the team even do a retrospective, if given the choice?
 * GE : What would happen if you took this wicked issue to the group?
 * GE : What does it have to do with learning?
-* Leslie : What role do questions play in a retrospective?
-* Royce: What’s the difference between an invitation and a “rule”?
+* LP : What role do questions play in a retrospective?
+* RH: What’s the difference between an invitation and a “rule”?
 * GE : Who wins the retrospective game?
 * GE : Where besides Agile world does this issue happen?
 * SB : What are the simple rules that govern how the retrospective is done now?
 
 I enjoyed this session, it was comforting hearing similar questions to the ones I am asking and the different ones that I didn't explore yet.
 
-Those questions aren’t "disguised advice” but tokens to get to a deeper insight.
+Those questions aren’t "disguised advice" but tokens to get to a deeper insight.
 
-After that there was a conversation with many interesting exchanged, somebody raised a good point about the **downside of too much reflection**. That made me realise how some people have been burned--or are concerned--by analysis-paralysis and might be leaning towards action/reaction. **That's why I find the adaptive action cycle step "Now what?" such a natural and important one**.
+After that there was a conversation with many interesting exchanged, somebody raised a good point about the **downside of too much reflection**. That made me realize how some people have been burned--or are concerned--by analysis-paralysis and might be leaning towards action/reaction. **That's why I find the adaptive action cycle step "Now what?" such a natural and important one**.
 
 ## Now what?
 

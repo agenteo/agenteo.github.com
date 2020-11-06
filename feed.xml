@@ -6,9 +6,179 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 31 Oct 2020 17:08:50 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Oct 2020 17:08:50 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Nov 2020 12:09:11 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2020 12:09:11 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Cynefin helps Agile Retrospectives</title>
+        <description>&lt;p&gt;Do you feel like your Agile Retrospective is only tackling low hanging fruit and missing out on real improvements? Have you ever wondered if in your retro you’re dealing with clear, complicated or complex issues? In this article I’ll share the way I’ve tackled that using concepts from Cognitive Edge’s Cynefin and other frameworks.&lt;/p&gt;
+
+&lt;h2 id=&quot;what&quot;&gt;What?&lt;/h2&gt;
+
+&lt;p&gt;Let me start describing a popular Agile Retrospective approach.&lt;/p&gt;
+
+&lt;p&gt;You gather data about your last iteration–or retrospective theme–then you might move in to generating insights to have the group do some sense-making to create action items to make their work more effective.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There is usually a question to the group: “Do you see any patterns in the data?”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, that’s assuming the facilitator doesn’t facipulate and create clusters and make decisions for the group. Don’t do that!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I usually see a prioritization, brief discussions about the clusters or cards leading to “is there something we can do about this?” if no let’s move on, if yes jump to define action items for the item.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-4.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;popular-agile-retrospective-approach-works-for-clear-or-complicated-issues&quot;&gt;Popular Agile Retrospective approach works for clear or complicated issues&lt;/h2&gt;
+
+&lt;p&gt;This popular Agile Retrospective approach–I’ve seen it in 90% of teams–&lt;strong&gt;is adequate for the items or clusters that are in an ordered domain where there is link–or a chain of links–between cause and effect&lt;/strong&gt;. Here linear thinking where a plan–a series of actions–can fix their root cause.&lt;/p&gt;
+
+&lt;p&gt;Cynefin defines those as ordered domains. In &lt;strong&gt;clear&lt;/strong&gt; you can create an action item a best practice a process that will work everytime and fix the issue. Here you sense, categorize, respond.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-clear.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cynefin calls &lt;strong&gt;complicated&lt;/strong&gt; where the link between cause and effect is a chain. There are stable patterns that an expert or study can analyze. Here you sense, analyze, respond.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complicated.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Who decides which domain you’re in?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; width=&quot;200&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Spoiler alert it should not be the scrum master and it should not be the teach lead. It should be a group sense-making that leads to finding the right granularity and consensus on what we’re dealing with. Later I introduce a couple of ways your group can practically determine if topics are clear, complicated or complex.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-brief-story-about-root-causes&quot;&gt;A brief story about root causes&lt;/h3&gt;
+
+&lt;p&gt;This is a simplified example adapted from a real life production incident I witnessed.&lt;/p&gt;
+
+&lt;p&gt;Let me introduce James and Anna. They both work at Acme Inc, James with devops, Anna software developer within our team. They’re not in the same nation. They never met.&lt;/p&gt;
+
+&lt;p&gt;Some context:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is a Cloud configuration repository with the configurations for all the apps in the cloud&lt;/li&gt;
+  &lt;li&gt;there is an App repository that Anna and her team work on&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The events:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Anna pushes a change to the app Cloud configuration repository with a “{cipher}encrypted code” line to enable a new feature&lt;/li&gt;
+  &lt;li&gt;The App update with the code to use cypher is not on master but that doesn’t matter since the team run their own deployments not devops. Production deploy is gonna happen in a day or two anyways.&lt;/li&gt;
+  &lt;li&gt;James is running a cluster wide security update that triggers an automatic redeploy of all apps&lt;/li&gt;
+  &lt;li&gt;App is deployed with the new Cloud config but runs on old code&lt;/li&gt;
+  &lt;li&gt;App fails, production is down&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Where is the root cause of this failure? Hold on to that thought I am introducing a quote that might influence you.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;“When we look at problems only as scientific or technical in nature, removed from the context to which they are responding, they may be complicated, but they generally can be solved through straightforward, scientific and engineering design models.
+But, when we understand these problems as embedded within human contexts that organize themselves through changing social, political, economic, and cultural belief systems, we are in the realm of complexity”.
+Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What does that mean? If you look at code in a vacuum you can and will find the root cause of a bug. If you’re trying to reduce the number of bugs–or production incidents–on your project you’re not gonna “fix it” by fixing the root causes of those incidents. It will keep coming back.&lt;/p&gt;
+
+&lt;p&gt;After this incident–the last of many involving devops and Acme’s software development cycle–I heard leadership say that devops were “borderline incompetent”. Would it be any different if they said Anna was borderline incompetent? Or that Anna and James are borderline incompetent?&lt;/p&gt;
+
+&lt;p&gt;It’s easy to blame Anna or James or their lack of “best practices”. There is always an expert that will tell you that. It’s much more interesting to look at the context of that incident and reflect if we see any patterns and how can we influence them. Influencing the issue to use a safe to fail approach (resilience) rather then failsafe (perfection).&lt;/p&gt;
+
+&lt;h2 id=&quot;so-what&quot;&gt;So what?&lt;/h2&gt;
+
+&lt;p&gt;The first important step in our Agile Retrospectives is for the group–and the wider organization–to appreciate that &lt;strong&gt;the issues we face are not all the same and we can’t tackle them all with best practices or experts fixing the root cause&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-domains.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;in-complex-domains&quot;&gt;In complex domains&lt;/h3&gt;
+
+&lt;p&gt;Because of the high number of agents and relationships you can’t use analytic techniques or categorization. Here we can only perceive (not predict) emergent patterns.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If we try to predict them with retrospective coherence and prepare a procedure to “fix it” as soon as the emergent pattern shows up in a differnt way the procedure will be useless or harmful!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s important for the group to zoom in and zoom out, help the group find an adequate granularity and determine if what we’re tackling in our Agile Retrospectives is a clear or complicated (something that can be tackled with linear thinking) or instead a complex or chaotic issue that needs a different approach.&lt;/p&gt;
+
+&lt;p&gt;In Complexity Cynefin talks about probe, sense, respond. The probing part is looking for patterns in your gathered data, the sense is a reflection to make sense of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-3.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The result of the sense making is a response, an experiment with an hypothesis (classic retros call it action item). We define signs of success and failure so we can radiate the experiment or dampen it.&lt;/p&gt;
+
+&lt;p&gt;In this space you can use approaches like Polarity Management or Adaptive Action cycles. These are NOT activities but rather approaches to tackle a wicked problem (that’s how complex problems are sometime referred as).&lt;/p&gt;
+
+&lt;h3 id=&quot;in-chaotic-domain&quot;&gt;In chaotic domain&lt;/h3&gt;
+
+&lt;p&gt;There is no time to probe and you can only intervene decisively to reduce the turbulence. You will then sense the system’s reacted perhaps shifting the system or subsystem to another domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-chaos.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;now-what-should-i-do-in-my-agile-retrospective&quot;&gt;Now what should I do in my Agile Retrospective?&lt;/h2&gt;
+
+&lt;p&gt;After you gather the data while you generate insights do you let the group do some &lt;strong&gt;sensing on what they see&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;Have you tried to introduce the Cynefin domains and use them as a categorization framework? Introduce the framework first then see where individuals put cards in the domains, be curious about the ones that appear in multiple domains.&lt;/p&gt;
+
+&lt;p&gt;Have you tried a contextualized Cynefin framework? Use prompts to build a framework from the data or use activities like 4 points to do that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-4-points.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As an alternative to Cynefin you can approach the sense making in generate insights with Stacey Matrix which has horizontal axis for Close and Far from certainty and a vertical axis for Close and Far from agreement.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve identified issues in a complex domain, probed for patterns &lt;strong&gt;let the group prepare an experiment with an hypothesis to define the granularity at which you want to influence the issue, your next wise step and your expected sign of success and possible signs of failure&lt;/strong&gt;. You could even specify amplification actions and dampening actions.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-power-is-in-the-sense-making-and-dialogue&quot;&gt;The power is in the sense making and dialogue&lt;/h3&gt;
+
+&lt;p&gt;What I find powerful is the dialogue and sense making that follows. Individuals might have different opinions of where things live, inviting to duplicate clusters and topics that are seen as simple, complicated and complex by different people creates valuable differences that when highlighted can help the whole group figure out what kinda of issue they’re dealing with.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-shared-language.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;That’s the real sense making. That’s where a retrospective gets past the low hanging fruit and in to deeper issues&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;warning-about-this-approach-to-agile-retrospectives&quot;&gt;Warning about this approach to Agile Retrospectives&lt;/h2&gt;
+
+&lt;p&gt;Sense-making and creating an experiment can take time and tends to cut the focus on low hanging fruit (which can also be valuable).&lt;/p&gt;
+
+&lt;p&gt;If the only time to deal with low hanging fruit is during the Agile Retrospective I suggest a shorter daily practice to talk about that.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Treating all issues with a linear cause and effect approach can be detrimental. You might fix some of the low hanging fruit but the underlying patterns won’t be influenced.&lt;/p&gt;
+
+&lt;p&gt;When generating insights in your Agile Retrospective spend time reflecting on what kinda of issues we’re looking at, use Cynefin as a binocular to look at things from different angles. Are we in a ordered domain? Are we in complexity? Are we in chaos? Do not facipulate, disinter-mediate the sense making.&lt;/p&gt;
+
+&lt;p&gt;What kinda of sense making do you run in your retrospectives? In what domains is your group tackling most issues?&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cognitive-edge.com/videos/cynefin-framework-introduction/&quot;&gt;Cynefin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hsdinstitute.org/resources/adaptive-action.html&quot;&gt;HSD Adaptive action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.goodreads.com/book/show/288117.Polarity_Management&quot;&gt;Polarity Management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/cynefin-helps-agile-retrospectives/</link>
+        <guid isPermaLink="true">http://teotti.com/cynefin-helps-agile-retrospectives/</guid>
+        
+        <category>process</category>
+        
+        <category>facilitation</category>
+        
+        <category>retrospectives</category>
+        
+        
+      </item>
     
       <item>
         <title>Questions to ponder when Agile Retrospectives are missing reflection</title>
@@ -747,209 +917,6 @@
         <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
         <link>http://teotti.com/event-storming-one-year-later/</link>
         <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
-        
-        <category>process</category>
-        
-        <category>emergence</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Big picture event storming. My notes from the masterclass.</title>
-        <description>&lt;p&gt;This is a summary of what I learned–circa 15 months ago–about big picture event storming during a two day workshop with Alberto Brandolini creator of Event Storming. I’ll skip the domain modelling usecase.&lt;/p&gt;
-
-&lt;p&gt;I am not sure how useful this is for anyone else, I wrote a blog post about my experience using this tecnique.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;The objective of big picture event storming is finding.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Alberto describes three context:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;organization reboot&lt;/li&gt;
-  &lt;li&gt;startup kickoff&lt;/li&gt;
-  &lt;li&gt;project kickoff&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Find out where the business is today. If the project kickoff is about something in the wrong spot that’s valuable information.&lt;/p&gt;
-
-&lt;p&gt;Event storming can be used to get a picture of what a company does. Specifically it outlines &lt;strong&gt;what people want to do&lt;/strong&gt; vs. &lt;strong&gt;what the process mandates them to do&lt;/strong&gt;. &lt;/p&gt;
-
-&lt;p&gt;The result is a map. A snapshot of the current situation. Expect all the dysfunction to be visible. Then as a group you can decide to focus on what’s the top priority.&lt;/p&gt;
-
-&lt;h2 id=&quot;scenarios&quot;&gt;Scenarios&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;“Maybe your process is doing a great job. Then you don’t need investigation. You’d end up telling a story that is just working.”&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;For a start-up that doesn’t have any existing infrastructure you can use event storming to scope where they want to be.&lt;/p&gt;
-
-&lt;p&gt;For an enterprise with legacy systems you can use event storming to outline their current &lt;strong&gt;understanding&lt;/strong&gt;, the way they think their company works, and according to Alberto more often then not there is a feeling of awe when he runs those sessions. People realized what other division do. This session helps collecting understanding.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;p&gt;“As a facilitator you want to hear/see different voices”&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;rule-number-one&quot;&gt;Rule number one&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;“The number one rule is to get the right people in the room.”&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Coming from an Agile Retrospective background where I try to gage the team feelings and interactions before the meeting the first question I had was “do you chat with the individuals before the event storming session?”. The answer was no, &lt;strong&gt;because chatting one by one wouldn’t be as effective as hearing those conversations for the first time when the whole group is in the room&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Another question I asked was &lt;em&gt;how do you make sure it’s the right people?&lt;/em&gt; You will find out at the end of the session. If the meeting constantly mention James and he’s not in the room perhaps we need him after all. Based on how much influence you have in the company you might not start with the right people in the room but as you show how effective the methodology is you will gain more sponsors.&lt;/p&gt;
-
-&lt;h2 id=&quot;anti-patterns&quot;&gt;Anti-patterns&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ask questions first&lt;/li&gt;
-  &lt;li&gt;agree upfront&lt;/li&gt;
-  &lt;li&gt;the committee&lt;/li&gt;
-  &lt;li&gt;start from the beginning&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;patterns&quot;&gt;Patterns&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the ice-breaker (someone will eventually put the first domain event… just wait for it… or do it yourself)&lt;/li&gt;
-  &lt;li&gt;make a mess&lt;/li&gt;
-  &lt;li&gt;start from the center&lt;/li&gt;
-  &lt;li&gt;one person one marker&lt;/li&gt;
-  &lt;li&gt;the inifinite buffet (aka make sure space doesn’t limit the process)&lt;/li&gt;
-  &lt;li&gt;just do it (I never asked to do it right)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;“The goal for an event storming facilitator is to remove impediments. Not enforcing rules or agendas.”&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Chaos first then timeline. You start asking individuals to add &lt;strong&gt;domain events&lt;/strong&gt; on orange sticky notes. Don’t worry too much about the order &lt;em&gt;just do it&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;You need chaos to challenge the perception people have of reality.&lt;/p&gt;
-
-&lt;p&gt;After you made a mess it’s time to start sorting. This is a good time to take care of duplicates. There are different strategies to sort:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pivotal events&lt;/li&gt;
-  &lt;li&gt;phases (roles &amp;amp; responsabilities)&lt;/li&gt;
-  &lt;li&gt;temporal milestones&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When you look at pivotal events identify &lt;strong&gt;domain event&lt;/strong&gt; that are critical to your business. One easy way is to identify which events are listening for the &lt;strong&gt;pivotal event&lt;/strong&gt; to happen.&lt;/p&gt;
-
-&lt;h2 id=&quot;hotspots--opportunities&quot;&gt;Hotspots + opportunities&lt;/h2&gt;
-
-&lt;p&gt;After you create this map you can start asking where are the problems? As an event storming facilitator you are entitiled to ask stupid questions. That’s your superpower! Look at the audience to check if the conversation is relevant to the group.&lt;/p&gt;
-
-&lt;p&gt;It’s good to balance out bad with good. Ask the group to add green stickys for opportunities.&lt;/p&gt;
-
-&lt;p&gt;Let hotspots be a voice for concerns. Should you focus on a corner case? Look at the rest of the audience, is it a problem for the group? If not move on. Alberto describes how looking at the audience reaction to discovery can lead to interesting next steps. He describes how sometimes individuals are disengaged bored of hearing the same thing again and again… and other times they lean forward and discovered something new about their organization!&lt;/p&gt;
-
-&lt;h2 id=&quot;people--systems&quot;&gt;People / systems&lt;/h2&gt;
-
-&lt;p&gt;At this point you add external systems your business relies on. This could be software we own or a SAS. Let system definition be fuzzy. Just make things visible. No wordsmithing.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;“A system is “whatever you can put the blame on”.”&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pretty spot-on.&lt;/p&gt;
-
-&lt;p&gt;Visualize everything. Start being agressive not on the problem but on the message. Make everything visible so we can see the enemy.&lt;/p&gt;
-
-&lt;p&gt;Alberto mentions how making hypothesis in a startup environment is ok. But in a corporate environment a domain expert looking up and scratching beard/head is a sign that this guy is not the real domain expert. Just a proxy.&lt;/p&gt;
-
-&lt;p&gt;Alberto mentions the “karaoke singer” where an individual overtake the stage. He suggests to talk with someone that didn’t go live during the workshop. Probably later after the workday ends.&lt;/p&gt;
-
-&lt;p&gt;Alberto mentions how event storming can’t solve people problems. He was in a sessions where two individuals wouldn’t establish eye contact… or even talk to each other!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Alberto says he’s got a default plan but it can be hijacked if the group wants to.&lt;/strong&gt; What to dig on is up to the group.&lt;/p&gt;
-
-&lt;p&gt;A suggestion Alberto gave was do not ask permission to run event storming. &lt;strong&gt;Say you will run a modelling process.&lt;/strong&gt; Events grooming / gathering to get a big picture of the business. In some environments this might be easier then getting buy-in for a “new technique”.&lt;/p&gt;
-
-&lt;p&gt;Business people will talk about requirements not edge cases.&lt;/p&gt;
-
-&lt;h2 id=&quot;telling-the-story---enterpise-wise-defrag&quot;&gt;Telling the story - Enterpise wise defrag&lt;/h2&gt;
-
-&lt;p&gt;Now it’s time for the facilitator to slowly revisit the flow. Accelerate or jump to section. Set the the tone and have people contradicting you. Ask the audience “please tell your version of the story”. As the facilitator you &lt;strong&gt;want&lt;/strong&gt; to invite someone in the group to be the narrator.&lt;/p&gt;
-
-&lt;p&gt;The facilitator is a glue between words and the visible model.&lt;/p&gt;
-
-&lt;h2 id=&quot;telling-the-story-backwards---reverse-narrative&quot;&gt;Telling the story backwards - Reverse narrative&lt;/h2&gt;
-
-&lt;p&gt;This helps making the story more consistent. The facilitator usually leads this. Sometimes it allows to discover new areas.&lt;/p&gt;
-
-&lt;p&gt;During this session we’re not looking for completeness. If everybody is forgetting about something maybe it’s not important.&lt;/p&gt;
-
-&lt;p&gt;After an event storming session there should be no invisible stuff.&lt;/p&gt;
-
-&lt;h2 id=&quot;arrow-voting&quot;&gt;Arrow voting&lt;/h2&gt;
-
-&lt;p&gt;The group must vote and decide what has higher priority. Explore with no scope limitation but then narrow down to one item.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Don’t use arrow voting with the wrong people in the room.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Your perception of the problem is completely flawed if everybody says the problem is what you don’t expect. &lt;/p&gt;
-
-&lt;h2 id=&quot;what-happens-next&quot;&gt;What happens next?&lt;/h2&gt;
-
-&lt;p&gt;Sometime people just acknowledge problems and opportunities but decide to skip the rollercoaster ride. You want to go on the rollercoaster and have some fun working on this issues! Skipping the ride, or pretending that’s not a problem would be the company’s loss. &lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;What should you do if someone says “oh we know that’s bad” and doesn’t wanna act. What I learned is it depends. Who’s the sponsor? What’s the goal?&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;End of day 1 you should have priorities and hotspots / opportunities. In the morning of day 2 look for something actionable.&lt;/p&gt;
-
-&lt;p&gt;After the workshop you might get impromptu conversations. Go in early the following day. They might adjust the timeline the morning after. &lt;/p&gt;
-
-&lt;h3 id=&quot;selection-bias&quot;&gt;Selection bias&lt;/h3&gt;
-
-&lt;p&gt;If there is an imbalance–selection bias–on the group and developers vs business arrow situation then the facilitator should mediate between business and developers.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;“Can the problem be solved with software? Maybe you’re missing knowledge, expertise, dysfunctional communication patterns.”&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;During an event storming session you can determing that the symptom is here but the root causes might be somewhere else. &lt;/p&gt;
-
-&lt;p&gt;After an event storming session the team got a little bit wiser then at the beginning.&lt;/p&gt;
-
-&lt;h2 id=&quot;outcome--formats&quot;&gt;Outcome &amp;amp; formats&lt;/h2&gt;
-
-&lt;h2 id=&quot;event-storming-as-a-regular-investment&quot;&gt;Event storming as a regular investment&lt;/h2&gt;
-
-&lt;p&gt;Alberto runs regular–every 2/3 months–event storming sessions at his company as a way to on-board new team members and to review current process / pain-points. When running it this was you want to ask what’s the best outcome given the time? The point is not to explore everything but rather explore everything enough so that pain points surface. You should design different workshops for different purposes to achieve maximum gain.&lt;/p&gt;
-
-&lt;p&gt;During this session you can assess if we can do better then this. If you can we can just go ahead and change it!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;I hope this write up give more context to folks interested in event storming. For more info Alberto is working on a &lt;a href=&quot;https://leanpub.com/introducing_eventstorming&quot;&gt;book&lt;/a&gt;. If you’d like a quicker read I wrote &lt;a href=&quot;https://teotti.com/event-storming-one-year-later&quot;&gt;another post&lt;/a&gt; about my experience with this technique.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/big-picture-event-storming/</link>
-        <guid isPermaLink="true">http://teotti.com/big-picture-event-storming/</guid>
         
         <category>process</category>
         

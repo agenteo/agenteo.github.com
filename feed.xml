@@ -6,9 +6,193 @@
 </description>
     <link>http://teotti.com/</link>
     <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Nov 2020 16:25:37 +0000</pubDate>
-    <lastBuildDate>Fri, 06 Nov 2020 16:25:37 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2020 17:43:46 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2020 17:43:46 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Star Wars Agile Retrospectives a Principle 12 Story</title>
+        <description>&lt;p&gt;Many folks love themed retrospectives a popular one I often see is around Star Wars. Here’s my take at it.&lt;/p&gt;
+
+&lt;p&gt;It might be good to check with your group before using a franchise might not relate to them.&lt;/p&gt;
+
+&lt;p&gt;To simplify this article I’ll describe the container for this Retrospective:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a team of 5/6 people involved (better if somewhat familiar with the Star Wars franchise)&lt;/li&gt;
+  &lt;li&gt;two weeks iteration&lt;/li&gt;
+  &lt;li&gt;a Retrospective focused on “what can we make to make our work even more effective”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ll provide links to a Miro and Google Slides template to help you run this a Star Wars flavored Agile Retrospective.&lt;/p&gt;
+
+&lt;p&gt;Spoiler alert: there are some minor spoilers.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-the-engines&quot;&gt;Starting the engines&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You could have Kerth’s Prime directive printed in a Star Wars scrolling text to set the mood. There is a deep purpose behind the Prime directive, you can read my toughts in two extensive articles on &lt;a href=&quot;http://teotti.com/challenge-agile-retrospectives-prime-directive/&quot;&gt;Challenging the directive&lt;/a&gt; and &lt;a href=&quot;http://teotti.com/analyze-kerth-prime-directive/&quot;&gt;Dissecting the directive&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I would then continue setting the stage, to allow the group to connect with each other and with the last iteration.&lt;/p&gt;
+
+&lt;p&gt;I am using a variation of ESVP. I put at the bottom of the spectrum Finn a good folk forced in to being a Storm Trooper, it’s but with potential for redemption aka re-engagement. The reason is to ensure we don’t create a us vs them that is predominant in the franchise.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Which identity represents how you feel about this retrospective?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Storm Trooper: I don’t wanna be here but this is what I’ve always done.&lt;/li&gt;
+  &lt;li&gt;Mandalorian: Not sure why we’re here. This is an ok break in-between bounty hunting contracts.&lt;/li&gt;
+  &lt;li&gt;Rebel Alliance member: I am here to work together for a better future for the galaxy!&lt;/li&gt;
+  &lt;li&gt;Jedi: I want to leave no stone unturned and bring more light to the next iteration.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have a bunch of Storm Troopers and Mandalorians… you might want to switch your focus on that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pick a space ship that indicates how the last iteration was for you&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;I am using a variation of the “pick a form of transportation that represents the last iteration for you”.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;AT-AT&lt;/li&gt;
+  &lt;li&gt;Millenium Falcon&lt;/li&gt;
+  &lt;li&gt;X-Wing&lt;/li&gt;
+  &lt;li&gt;DeathStar&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can explore the differences, why people picked their choice, or simply acknowledge them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;looking-at-what-happened&quot;&gt;Looking at what happened&lt;/h2&gt;
+
+&lt;p&gt;Then I create questions to gather data that connect to the metaphor and to the team. This is what I mostly saw in the “Fun Star Wars Retrospectives” with a jump to what can we do about it which is linear thinking and taps in business as usual mind.  &lt;/p&gt;
+
+&lt;p&gt;You can add a fun spin to “no naming no blaming” with:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;To prevent bounty hunters contract, it’s our policy to avoid people’s names and rather point to systems and sub-systems. ie. rather then saying: “Luke messed up the database on Monday” we should use “the database got Error Code: 1117. Too many columns after adding one column to its 1699”.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here’s the prompts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What was turning off our hyperdrive? (frustrating)&lt;/li&gt;
+  &lt;li&gt;Did we blow up the Death Star? How?&lt;/li&gt;
+  &lt;li&gt;What felt like a trap? Why was it a trap? (surprise)&lt;/li&gt;
+  &lt;li&gt;Where was the force bringing the best out of us? Why?&lt;/li&gt;
+  &lt;li&gt;Where was the dark side bringing the worst out of us? Why?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I like to give a few minutes to let the group asking questions about the meaning of some cards. We do not jump to solutioning yet.&lt;/p&gt;
+
+&lt;p&gt;Those prompts are phrased to explore what we saw rather then where we want to go. That’s coming up next.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-do-we-sense&quot;&gt;What do we sense?&lt;/h2&gt;
+
+&lt;p&gt;Let’s move those cards and create a map, do we see any patterns? Do they have names?&lt;/p&gt;
+
+&lt;p&gt;Out of this you should have clusters of themes and patterns and some stand alone cards.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-can-we-do-about-it&quot;&gt;What can we do about it?&lt;/h2&gt;
+
+&lt;p&gt;Which cluster shall we focus on? Which one would make our team work more effectively?&lt;/p&gt;
+
+&lt;p&gt;Do we want this Agile Retrospective outcome to destroy a tie-fighter or defeat the empire?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Let’s reflect for 5 minutes and think of ideas that can reduce the negative patterns and radiate the positives.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How can we come up with a thoughtful but actionable plan?&lt;/p&gt;
+
+&lt;p&gt;Here we’re hinting at the group if we want to focus on simple, complicated or complex issues. I use a Star Wars metaphor for that. See my &lt;a href=&quot;http://teotti.com/cynefin-helps-agile-retrospectives/&quot;&gt;Cynefin helps retrospectives&lt;/a&gt; article for more background on difference between these domains.&lt;/p&gt;
+
+&lt;p&gt;If the group replies: “we defeat the Empire by destroying all Tie fighters” you might need to to explore linearity and complexity with them. Short answer is, even if you destroy tie-fighters they’ll build more. To free the galaxy, at some point we will need to shift the Empire power.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step3.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Out of this you should have ideas on what to do for your patterns and stand alone cards.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-the-force-in-your-next-action-item&quot;&gt;Use the FORCE in your next action item!&lt;/h2&gt;
+
+&lt;p&gt;This is the time to make those ideas actionable. I came up with a FORCE acronym:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First step: what is the first step of this plan?&lt;/li&gt;
+  &lt;li&gt;Observable: what is an observable result that the first step is positively influencing the system? What is an observable result of it negatively influencing the system?&lt;/li&gt;
+  &lt;li&gt;Responsibility: who is responsible to check on this plan progress?&lt;/li&gt;
+  &lt;li&gt;Controllable: is the first step something within the team control zone?&lt;/li&gt;
+  &lt;li&gt;Energy: how much energy do we have for this first step?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Use the acronym to get an idea of what action is the one to carry over. Perhaps use a poll to decide which one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step4.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once one or two actions are defined you can start closing your Retrospective.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-was-the-time-spent-in-this-retrospective&quot;&gt;How was the time spent in this Retrospective?&lt;/h2&gt;
+
+&lt;p&gt;Variation of Esther’s Plus Delta Return On Time Invested:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0 - Jar Jar Binks - This was a complete waste of time &lt;/li&gt;
+  &lt;li&gt;1 - Jabba the Hutt - I learned one thing, but this was mostly a waste of time&lt;/li&gt;
+  &lt;li&gt;2 - Bobba Fett - I got paid back for the effort I put in to this&lt;/li&gt;
+  &lt;li&gt;3 - Han Solo - I got a lot more out of this then I expected!&lt;/li&gt;
+  &lt;li&gt;4 - Luke Skywalker - This was amazing!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One idea that would have made you vote one point higher, and one thing you liked about today Retro.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step5.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And boom, there goes the Death Start and you have an Agile Retrospective and freedom in the Galaxy. For this iteration.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;Introducing a metaphor to your Agile Retrospective can switch things up but you must have a purpose.&lt;/p&gt;
+
+&lt;p&gt;Most Fun retrospective sounds are just another variation to the put data in n-columns + action items. A style that fosters linear thinking and jumping from Gather data to Decide what to do skipping focus on a critical step: Generate insights. &lt;/p&gt;
+
+&lt;p&gt;In this post I hope I outlined the difference between the two approaches: exercising divergent thinking on a prioritized topic or theme before deciding what to do.&lt;/p&gt;
+
+&lt;p&gt;Linear thinking is now always bad. It’s great to tackle simple or complicated problems. When applied to complex or wicked problems it can (and does) backfire.&lt;/p&gt;
+
+&lt;p&gt;What have you read from this post that made you shake your head in disagreement? What made you nod in approval? What challenges would you face with this Star Wars themes Agile Retrospective?&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.google.com/presentation/d/1X9U0Ik4Q0dR8PMchGKV4jFPaV6tcOkQ_gSUcv5C3IP0/edit?usp=sharing&quot;&gt;Google Slides template&lt;/a&gt; you have to clone it to your own drive&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://miro.com/app/board/o9J_kx2R6sk=/&quot;&gt;Miro&lt;/a&gt; Let me know if you’d like to use it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ps
+All product names, character names, illustrations, logos, and brands are property of their respective owners.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate>
+        <link>http://teotti.com/star-wars-agile-retrospectives-a-principle-12-story/</link>
+        <guid isPermaLink="true">http://teotti.com/star-wars-agile-retrospectives-a-principle-12-story/</guid>
+        
+        <category>process</category>
+        
+        <category>facilitation</category>
+        
+        <category>retrospectives</category>
+        
+        
+      </item>
     
       <item>
         <title>Cynefin helps Agile Retrospectives</title>
@@ -852,75 +1036,6 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
         <category>process</category>
         
         <category>agile</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Event storming one year later</title>
-        <description>&lt;p&gt;About 15 months ago I participated in an Event Storm masterclass in Milan with Alberto Brandolini. This post assumes you already know what event storm is and you’re interested in reading about usecases.&lt;/p&gt;
-
-&lt;p&gt;Let me start with a foundamental premise. What I like of event storm is how collaborative it is. &lt;strong&gt;When I see a facilitator doing all the work in an event storm it’s really hard for me to be politically correct and say “you’re doing it differently” what I wanna say is “you’re doing it wrong”.&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Granted there might be scenarios where the facilitator wants to speed trough the process but the power I’ve seen in event storm is when the group discovers and communicates to create a shared picture. If a facilitator is the only one adding information then event storm isn’t much different then a service blueprint.&lt;/p&gt;
-
-&lt;p&gt;In the last 15 months I’ve run multiple event storms here’s a few use cases with pro and cons.&lt;/p&gt;
-
-&lt;h3 id=&quot;internal-training&quot;&gt;Internal training&lt;/h3&gt;
-
-&lt;p&gt;I did a 2 hours internal training event storm to “learn how my company works while practicing event storm”. As Alberto did in the masterclass I kept instructions at a minimum and threw all the participant in the water.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;People: 15 (from 5 divisions)&lt;/li&gt;
-  &lt;li&gt;Pro: people got to learn more about other parts of the company. Easy to contribute domain events without needing to setup role-play.&lt;/li&gt;
-  &lt;li&gt;Con: the large org (3K ppl) meant there was a lot of details. See photo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;project-kickoff--future-state&quot;&gt;Project kickoff + future state&lt;/h3&gt;
-
-&lt;p&gt;At a project kickoff I run a 4 hours session with a small company ~10 people to walk us trough their current processes. As the project went on we used event storm to visualise the future state.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;People: 3 (CEO, Director of Underwriting, Director of Sales) ~3h&lt;/li&gt;
-  &lt;li&gt;Pro: All client folks aligned on where the hotspots are. Contractors ramped up pretty fast on the domain.&lt;/li&gt;
-  &lt;li&gt;Con: CEO wanted to fix everything. It took some tries to start in one spot. We didn’t have CEO or Sales director for Future state exercise which created misunderstandings.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;scoping-of-work&quot;&gt;Scoping of work&lt;/h3&gt;
-
-&lt;p&gt;A client scoping to understand their current process and their priorities for a subsystem to add to their processes.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;People: ~6 on their side (3 divisions) ~2h&lt;/li&gt;
-  &lt;li&gt;Pro: gave contractors a good return on time invested to create a next steps proposal.&lt;/li&gt;
-  &lt;li&gt;Con: unclear what systems/events were there and which ones were future state. For mitigation, I asked to mark the future state with a black dot on the top right.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;sharing-domain-expertise-to-rampup-devs&quot;&gt;Sharing domain expertise to rampup devs&lt;/h3&gt;
-
-&lt;p&gt;A client that worked in a domain that contractors were not familiar in–contractual bonding–shared the business flow.
-* People: ~10 client + contractors ~2h
-* Pro: the two domaine experts shared information and folks with partial knowledge &lt;/p&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
-
-&lt;p&gt;I see event storm as a tool to design for emergence.&lt;/p&gt;
-
-&lt;p&gt;Its final result is a snapshot in time and context. It’s a snapshot of the current understanding of the system or subsystem we’re looking at.&lt;/p&gt;
-
-&lt;p&gt;I did take photos of the outcome to document the process but I kept reminding everyone present we shouldn’t consider the outcome as a golden document.&lt;/p&gt;
-
-&lt;p&gt;We should be able to recreate it. Probably not alone.&lt;/p&gt;
-
-&lt;p&gt;In my experience it’s been a useful tool to allow groups to gain a shared understanding on a system and align on what to takle first.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/event-storming-one-year-later/</link>
-        <guid isPermaLink="true">http://teotti.com/event-storming-one-year-later/</guid>
-        
-        <category>process</category>
-        
-        <category>emergence</category>
         
         
       </item>

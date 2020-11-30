@@ -1,16 +1,16 @@
 ---
-title: Agile Retrospectives a Star Wars Story
+title: Star Wars Agile Retrospectives a Principle 12 Story
 layout: post
 comments: true
-image: /assets/article_images/cynefin-helps-agile-retrospectives/hero.jpg
-og_description: 
+image: /assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/hero.jpg
+og_description: Can a metaphor help your Agile Retrospective? Here's my take with Star Wars. Do we want this Agile Retrospective outcome to destroy a tie-fighter or defeat the empire?
 tags:
   - process
   - facilitation
   - retrospectives
 ---
 
-Many folks love themed retrospectives a popular one I often see is around Star Wars. Here's my take at it and at the end of the article I explain my beef with the #funretrospectives approach.
+Many folks love themed retrospectives a popular one I often see is around Star Wars. Here's my take at it.
 
 It might be good to check with your group before using a franchise might not relate to them.
 
@@ -20,17 +20,21 @@ To simplify this article I'll describe the container for this Retrospective:
 - two weeks iteration
 - a Retrospective focused on "what can we make to make our work even more effective"
 
-Here's my take:
+I'll provide links to a Miro and Google Slides template to help you run this a Star Wars flavored Agile Retrospective.
+
+Spoiler alert: there are some minor spoilers.
 
 ## Starting the engines
+
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step1.jpg" />
 
 You could have Kerth's Prime directive printed in a Star Wars scrolling text to set the mood. There is a deep purpose behind the Prime directive, you can read my toughts in two extensive articles on [Challenging the directive](http://teotti.com/challenge-agile-retrospectives-prime-directive/) and [Dissecting the directive](http://teotti.com/analyze-kerth-prime-directive/).
 
 I would then continue setting the stage, to allow the group to connect with each other and with the last iteration.
 
-I am using a variation of ESVP, using at the bottom of the spectrum Finn a good folk forced in to storm trooper forced in to that, but with potential for redemption aka re-engagement. The reason is to ensure we don't create a us vs them that is predominant in the franchise.
+I am using a variation of ESVP. I put at the bottom of the spectrum Finn a good folk forced in to being a Storm Trooper, it's but with potential for redemption aka re-engagement. The reason is to ensure we don't create a us vs them that is predominant in the franchise.
 
-**Which identify rapresents how you feel about this retrospective?**
+**Which identity represents how you feel about this retrospective?**
 
 - Storm Trooper: I don't wanna be here but this is what I've always done.
 - Mandalorian: Not sure why we're here. This is an ok break in-between bounty hunting contracts.
@@ -38,6 +42,8 @@ I am using a variation of ESVP, using at the bottom of the spectrum Finn a good 
 - Jedi: I want to leave no stone unturned and bring more light to the next iteration.
 
 If you have a bunch of Storm Troopers and Mandalorians... you might want to switch your focus on that.
+
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step1.1.jpg" />
 
 **Pick a space ship that indicates how the last iteration was for you**:
 
@@ -49,6 +55,8 @@ I am using a variation of the "pick a form of transportation that represents the
 - DeathStar
 
 You can explore the differences, why people picked their choice, or simply acknowledge them.
+
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step1.2.jpg" />
 
 ## Looking at what happened
 
@@ -66,6 +74,8 @@ Here's the prompts:
 - Where was the force bringing the best out of us? Why?
 - Where was the dark side bringing the worst out of us? Why?
 
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step2.jpg" />
+
 Here I like to give a few minutes to let the group asking questions about the meaning of some cards. We do not jump to solutioning yet.
 
 Those prompts are phrased to explore what we saw rather then where we want to go. That's coming up next.
@@ -75,6 +85,8 @@ Those prompts are phrased to explore what we saw rather then where we want to go
 Let's move those cards and create a map, do we see any patterns? Do they have names?
 
 Out of this you should have clusters of themes and patterns and some stand alone cards.
+
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step2.1.jpg" />
 
 ## What can we do about it?
 
@@ -90,6 +102,8 @@ Here we're hinting at the group if we want to focus on simple, complicated or co
 
 If the group replies: "we defeat the Empire by destroying all Tie fighters" you might need to to explore linearity and complexity with them. Short answer is, even if you destroy tie-fighters they'll build more. To free the galaxy, at some point we will need to shift the Empire power.
 
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step3.jpg" />
+
 Out of this you should have ideas on what to do for your patterns and stand alone cards.
 
 ## Use the FORCE in your next action item!
@@ -103,6 +117,8 @@ This is the time to make those ideas actionable. I came up with a FORCE acronym:
 - Energy: how much energy do we have for this first step?
 
 Use the acronym to get an idea of what action is the one to carry over. Perhaps use a poll to decide which one.
+
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step4.jpg" />
 
 Once one or two actions are defined you can start closing your Retrospective.
 
@@ -118,13 +134,26 @@ Variation of Esther's Plus Delta Return On Time Invested:
 
 One idea that would have made you vote one point higher, and one thing you liked about today Retro.
 
-And boom, you have an Agile Retrospective.
+<img src="{{ site.url }}/assets/article_images{{ page.url }}step5.jpg" />
+
+And boom, there goes the Death Start and you have an Agile Retrospective and freedom in the Galaxy. For this iteration.
 
 ## Conclusions
 
-Introducing a franchise to your Agile Retrospective can switch things up. What have you read from this post that made you shake your head in disagreement? What made you nod in approval? What challenges would you face with this Star Wars themes Agile Retrospective?
+Introducing a metaphor to your Agile Retrospective can switch things up but you must have a purpose.
 
+Most Fun retrospective sounds are just another variation to the put data in n-columns + action items. A style that fosters linear thinking and jumping from Gather data to Decide what to do skipping focus on a critical step: Generate insights. 
+
+In this post I hope I outlined the difference between the two approaches: exercising divergent thinking on a prioritized topic or theme before deciding what to do.
+
+Linear thinking is now always bad. It's great to tackle simple or complicated problems. When applied to complex or wicked problems it can (and does) backfire.
+
+What have you read from this post that made you shake your head in disagreement? What made you nod in approval? What challenges would you face with this Star Wars themes Agile Retrospective?
+
+
+## Links
+* [Google Slides template](https://docs.google.com/presentation/d/1X9U0Ik4Q0dR8PMchGKV4jFPaV6tcOkQ_gSUcv5C3IP0/edit?usp=sharing) you have to clone it to your own drive
+* [Miro](https://miro.com/app/board/o9J_kx2R6sk=/) Let me know if you'd like to use it.
 
 ps
-
 All product names, character names, illustrations, logos, and brands are property of their respective owners.

@@ -10,6 +10,12 @@ If I feel inspired--or I am asked to--I give public talks to meetups or conferen
 
 Here's a few recording.
 
+## Facilitating Online Agile Retrospectives
+
+Are you seeing new challenges emerging from facilitating online Agile Retrospectives? How do you reflect and adapt to those new challenges?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g451s9w3AlM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## How do you measure retrospectives success?
 
 Retros (Retrospectives) should be a core practice for any team - but do you have a way to measure how successful they are?
@@ -28,6 +34,6 @@ This presentation will be about the challenges of building large Ruby web applic
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b1glMxMPscA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-## Feature Flagging with Ruby on Rails Engines
+## NYC.rb 2014: Feature Flagging with Ruby on Rails Engines
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rMOn2H7h3oY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

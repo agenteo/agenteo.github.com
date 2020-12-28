@@ -5,7 +5,7 @@ comments: true
 tags:
   - work
   - ruby
-  - SEO
+  - seo
 redirect_from:
   - /2014/12/09/ruby-on-rails-filter-pages-using-seach-engine-psycotic-urls/
   - /2014/12/09/ruby-on-rails-filter-pages-using-seach-engine-psycotic-urls.html/

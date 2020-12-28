@@ -20,7 +20,7 @@ To simplify this article I'll describe the container for this Retrospective:
 - two weeks iteration
 - a Retrospective focused on "what can we make to make our work even more effective"
 
-I'll provide links to a Miro and Google Slides template to help you run this a Star Wars flavored Agile Retrospective.
+I'll provide links to Mural, Miro and Google Slides template to help you run this a Star Wars flavored Agile Retrospective.
 
 Spoiler alert: there are some minor spoilers.
 
@@ -152,8 +152,15 @@ What have you read from this post that made you shake your head in disagreement?
 
 
 ## Links
+
+Here's a Mural template for you:
+
+<a href="https://app.mural.co/template/a7827f2d-4584-4afe-9001-55e83efc13dd/8b74b81c-adde-4dc1-be91-cdfe31f5560b"><img src="{{ site.url }}/assets/article_images{{ page.url }}mural-template.png" /></a>
+
+Not a Mural fan?
+
 * [Google Slides template](https://docs.google.com/presentation/d/1X9U0Ik4Q0dR8PMchGKV4jFPaV6tcOkQ_gSUcv5C3IP0/edit?usp=sharing) you have to clone it to your own drive
-* [Miro](https://miro.com/app/board/o9J_kx2R6sk=/) Let me know if you'd like to use it.
+* [Miro](https://miro.com/app/board/o9J_kx2R6sk=/) Let me know if you'd like to use it. They make it extra lengthy to provide templates publish to their Miroverse... :(
 
 ps
 All product names, character names, illustrations, logos, and brands are property of their respective owners.

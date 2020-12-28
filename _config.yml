@@ -15,7 +15,7 @@ source: source
 destination: public
 
 # Site settings
-title: "Enrico Teotti - agile coach, (visual) facilitator with a background in software development and product management since 2001 in Europe, Australia and the US."
+title: "Read my blog | Enrico Teotti"
 welcome_message: "Hello, I am Enrico Teotti"
 description: > # this means to ignore newlines until "email:"
   agile coach, (visual) facilitator with a background in software development and product management since 2001 in Europe, Australia and the US.

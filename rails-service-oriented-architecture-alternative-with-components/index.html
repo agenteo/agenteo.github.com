@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="When a Ruby on Rails application grows over the years it either rots in to a big ball of mud or it gets dissected in to services–the first is universally rec..." />
-  <meta property="og:url" content="http://teotti.com/rails-service-oriented-architecture-alternative-with-components/" />
+  <meta property="og:url" content="http://localhost:4000/rails-service-oriented-architecture-alternative-with-components/" />
   <meta property="og:site_name" content="Read my blog | Enrico Teotti" />
   <meta property="og:title" content="Rails service oriented architecture alternative with components" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://teotti.com" />
+  <meta property="og:image" content="http://localhost:4000" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Rails service oriented architecture alternative with components">
   <meta name="twitter:description" content="When a Ruby on Rails application grows over the years it either rots in to a big ball of mud or it gets dissected in to services–the first is universally rec...">
-  <meta name="twitter:image" content="http://teotti.com">
-  <meta name="twitter:url" content="http://teotti.com/rails-service-oriented-architecture-alternative-with-components/">
+  <meta name="twitter:image" content="http://localhost:4000">
+  <meta name="twitter:url" content="http://localhost:4000/rails-service-oriented-architecture-alternative-with-components/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://teotti.com/rails-service-oriented-architecture-alternative-with-components/">
+  <link rel="canonical" href="http://localhost:4000/rails-service-oriented-architecture-alternative-with-components/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -109,7 +109,7 @@
 
 <p>The application is split in 5 projects: <strong>publisher</strong>, <strong>persister</strong>, <strong>API</strong>, <strong>UI</strong>, <strong>SharedModels</strong>.</p>
 
-<p><img src="http://teotti.com/assets/article_images/rails-service-oriented-architecture-alternative-with-components/service-oriented-architecture.png" alt="the workflow" /></p>
+<p><img src="http://localhost:4000/assets/article_images/rails-service-oriented-architecture-alternative-with-components/service-oriented-architecture.png" alt="the workflow" /></p>
 
 <p><strong>SharedModels</strong> is a library published on a private gem server and a dependency of the <strong>persister</strong> and <strong>API</strong> projects to access the database.</p>
 
@@ -141,7 +141,7 @@
 
 <p>The <strong>UI project</strong> is now a <strong>public_ui</strong> component that access the database directly depending on the <strong>domain_logic</strong> component avoiding unnecessary HTTP calls to the <strong>API</strong>.</p>
 
-<p><img src="http://teotti.com/assets/article_images/rails-service-oriented-architecture-alternative-with-components/component-based-architecture.png" alt="#cbra" /></p>
+<p><img src="http://localhost:4000/assets/article_images/rails-service-oriented-architecture-alternative-with-components/component-based-architecture.png" alt="#cbra" /></p>
 
 <p>Here’s how the local components directory would look:</p>
 

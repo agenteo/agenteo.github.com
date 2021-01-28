@@ -4,11 +4,54 @@
     <title>Read my blog | Enrico Teotti</title>
     <description>agile coach, (visual) facilitator with a background in software development and product management since 2001 in Europe, Australia and the US.
 </description>
-    <link>http://teotti.com/</link>
-    <atom:link href="http://teotti.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 20 Jan 2021 08:39:56 +0000</pubDate>
-    <lastBuildDate>Wed, 20 Jan 2021 08:39:56 +0000</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 28 Jan 2021 07:44:27 +0000</pubDate>
+    <lastBuildDate>Thu, 28 Jan 2021 07:44:27 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Is it virtual or online facilitation?</title>
+        <description>&lt;p&gt;When I hear folks call online event &lt;strong&gt;virtual&lt;/strong&gt; I cringe because to me “virtual” carries a negative connotation that it’s not gonna be as good as in face to face.&lt;/p&gt;
+
+&lt;p&gt;At first it might seem like a petty topic but virtual in english has a clear definition:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;almost a particular thing or quality&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So it’s not just a subconscious feeling that the “virtual facilitation” (or event) is meant to be almost like its face to face counterpart but not quite the same quality.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Online&lt;/strong&gt; facilitation and event organization is a different sport then face to face. They share some basic roles, rules and goals but &lt;strong&gt;online&lt;/strong&gt; introduces new opportunities and challenges. &lt;strong&gt;It’s not intrinsically less quality than face to face&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;People tend to use virtual and online interchangeably but they carry very different meaning. I like to see the opportunities that online events offer.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The facilitation we provide is not virtual it is real&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;The people we meet and connect with are real not virtual.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Once we’ll be hooked up in to virtual reality suites we can revisit this distinction.&lt;/p&gt;
+
+&lt;p&gt;For now let’s call it online facilitation.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/is-it-online-or-virtual-facilitation/</link>
+        <guid isPermaLink="true">http://localhost:4000/is-it-online-or-virtual-facilitation/</guid>
+        
+        <category>online</category>
+        
+        <category>facilitation</category>
+        
+        
+      </item>
     
       <item>
         <title>Key questions to ask in a Sprint Retrospective</title>
@@ -50,7 +93,7 @@
   &lt;li&gt;What do we make of those shifts?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/reflection.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/reflection.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;prioritize&quot;&gt;Prioritize&lt;/h3&gt;
 
@@ -60,7 +103,7 @@
   &lt;li&gt;Which one is most important and we have most energy to investigate?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/prioritize.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/prioritize.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;divergent-thinking&quot;&gt;Divergent thinking&lt;/h3&gt;
 
@@ -70,7 +113,7 @@
   &lt;li&gt;Where do we want to go with X? &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/divergent.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/divergent.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;convergence&quot;&gt;Convergence&lt;/h3&gt;
 
@@ -85,7 +128,7 @@
 
 &lt;p&gt;Sometime the action can be to fix the problem. Often the problem can only be influenced and the action should be treated as an experiment. If you want to dig deeper on that you can read my &lt;a href=&quot;https://teotti.com/cynefin-helps-agile-retrospectives/&quot;&gt;Cynefin helps Retrospective&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/convergence.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/key-questions-to-ask-in-a-sprint-retrospective/convergence.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
 
@@ -102,8 +145,8 @@
 &lt;p&gt;What have you read from this post that made you shake your head in disagreement? What made you nod in approval? What challenges would you face with this list of key questions to ask in a Sprint Retrospective?&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/key-questions-to-ask-in-a-sprint-retrospective/</link>
-        <guid isPermaLink="true">http://teotti.com/key-questions-to-ask-in-a-sprint-retrospective/</guid>
+        <link>http://localhost:4000/key-questions-to-ask-in-a-sprint-retrospective/</link>
+        <guid isPermaLink="true">http://localhost:4000/key-questions-to-ask-in-a-sprint-retrospective/</guid>
         
         <category>process</category>
         
@@ -134,7 +177,7 @@
 
 &lt;h2 id=&quot;starting-the-engines&quot;&gt;Starting the engines&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You could have Kerth’s Prime directive printed in a Star Wars scrolling text to set the mood. There is a deep purpose behind the Prime directive, you can read my toughts in two extensive articles on &lt;a href=&quot;http://teotti.com/challenge-agile-retrospectives-prime-directive/&quot;&gt;Challenging the directive&lt;/a&gt; and &lt;a href=&quot;http://teotti.com/analyze-kerth-prime-directive/&quot;&gt;Dissecting the directive&lt;/a&gt;.&lt;/p&gt;
 
@@ -153,7 +196,7 @@
 
 &lt;p&gt;If you have a bunch of Storm Troopers and Mandalorians… you might want to switch your focus on that.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.1.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Pick a space ship that indicates how the last iteration was for you&lt;/strong&gt;:&lt;/p&gt;
 
@@ -168,7 +211,7 @@
 
 &lt;p&gt;You can explore the differences, why people picked their choice, or simply acknowledge them.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step1.2.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;looking-at-what-happened&quot;&gt;Looking at what happened&lt;/h2&gt;
 
@@ -192,7 +235,7 @@
   &lt;li&gt;Where was the dark side bringing the worst out of us? Why?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Here I like to give a few minutes to let the group asking questions about the meaning of some cards. We do not jump to solutioning yet.&lt;/p&gt;
 
@@ -204,7 +247,7 @@
 
 &lt;p&gt;Out of this you should have clusters of themes and patterns and some stand alone cards.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step2.1.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;what-can-we-do-about-it&quot;&gt;What can we do about it?&lt;/h2&gt;
 
@@ -224,7 +267,7 @@
 
 &lt;p&gt;If the group replies: “we defeat the Empire by destroying all Tie fighters” you might need to to explore linearity and complexity with them. Short answer is, even if you destroy tie-fighters they’ll build more. To free the galaxy, at some point we will need to shift the Empire power.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step3.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step3.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Out of this you should have ideas on what to do for your patterns and stand alone cards.&lt;/p&gt;
 
@@ -242,7 +285,7 @@
 
 &lt;p&gt;Use the acronym to get an idea of what action is the one to carry over. Perhaps use a poll to decide which one.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step4.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step4.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Once one or two actions are defined you can start closing your Retrospective.&lt;/p&gt;
 
@@ -260,7 +303,7 @@
 
 &lt;p&gt;One idea that would have made you vote one point higher, and one thing you liked about today Retro.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step5.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/step5.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And boom, there goes the Death Start and you have an Agile Retrospective and freedom in the Galaxy. For this iteration.&lt;/p&gt;
 
@@ -280,7 +323,7 @@
 
 &lt;p&gt;Here’s a Mural template for you:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://app.mural.co/template/a7827f2d-4584-4afe-9001-55e83efc13dd/8b74b81c-adde-4dc1-be91-cdfe31f5560b&quot;&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/mural-template.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://app.mural.co/template/a7827f2d-4584-4afe-9001-55e83efc13dd/8b74b81c-adde-4dc1-be91-cdfe31f5560b&quot;&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/star-wars-agile-retrospectives-a-principle-12-story/mural-template.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Not a Mural fan?&lt;/p&gt;
 
@@ -293,8 +336,8 @@
 All product names, character names, illustrations, logos, and brands are property of their respective owners.&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/star-wars-agile-retrospectives-a-principle-12-story/</link>
-        <guid isPermaLink="true">http://teotti.com/star-wars-agile-retrospectives-a-principle-12-story/</guid>
+        <link>http://localhost:4000/star-wars-agile-retrospectives-a-principle-12-story/</link>
+        <guid isPermaLink="true">http://localhost:4000/star-wars-agile-retrospectives-a-principle-12-story/</guid>
         
         <category>process</category>
         
@@ -315,19 +358,19 @@ All product names, character names, illustrations, logos, and brands are propert
 
 &lt;p&gt;You gather data about your last iteration–or retrospective theme–then you might move in to generating insights to have the group do some sense-making to create action items to make their work more effective.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-1.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;There is usually a question to the group: “Do you see any patterns in the data?”.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-2.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Well, that’s assuming the facilitator doesn’t facipulate and create clusters and make decisions for the group. Don’t do that!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I usually see a prioritization, brief discussions about the clusters or cards leading to “is there something we can do about this?” if no let’s move on, if yes jump to define action items for the item.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-4.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/retro-step-4.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;popular-agile-retrospective-approach-works-for-clear-or-complicated-issues&quot;&gt;Popular Agile Retrospective approach works for clear or complicated issues&lt;/h3&gt;
 
@@ -335,15 +378,15 @@ All product names, character names, illustrations, logos, and brands are propert
 
 &lt;p&gt;Cynefin defines those as ordered domains. In &lt;strong&gt;clear&lt;/strong&gt; you can create an action item a best practice a process that will work everytime and fix the issue. Here you sense, categorize, respond.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-clear.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-clear.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Cynefin calls &lt;strong&gt;complicated&lt;/strong&gt; where the link between cause and effect is a chain. There are stable patterns that an expert or study can analyze. Here you sense, analyze, respond.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complicated.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complicated.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Who decides which domain you’re in?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; width=&quot;200&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/facipulation.gif&quot; width=&quot;200&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Spoiler alert it should not be the scrum master and it should not be the teach lead. It should be a group sense-making that leads to finding the right granularity and consensus on what we’re dealing with. Later I introduce a couple of ways your group can practically determine if topics are clear, complicated or complex.&lt;/p&gt;
 
@@ -390,23 +433,23 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;The first important step in our Agile Retrospectives is for the group–and the wider organization–to appreciate that &lt;strong&gt;the issues we face are not all the same and we can’t tackle them all with best practices or experts fixing the root cause&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-domains.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-domains.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;in-complex-domains&quot;&gt;In complex domains&lt;/h3&gt;
 
 &lt;p&gt;Because of the high number of agents and relationships you can’t use analytic techniques or categorization. Here we can only perceive (not predict) emergent patterns.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-2.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If we try to predict them with retrospective coherence and prepare a procedure to “fix it” as soon as the emergent pattern shows up in a differnt way the procedure will be useless or harmful!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-1.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It’s important for the group to zoom in and zoom out, help the group find an adequate granularity and determine if what we’re tackling in our Agile Retrospectives is a clear or complicated (something that can be tackled with linear thinking) or instead a complex or chaotic issue that needs a different approach.&lt;/p&gt;
 
 &lt;p&gt;In Complexity Cynefin talks about probe, sense, respond. The probing part is looking for patterns in your gathered data, the sense is a reflection to make sense of them.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-3.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-complex-3.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The result of the sense making is a response, an experiment with an hypothesis (classic retros call it action item). We define signs of success and failure so we can radiate the experiment or dampen it.&lt;/p&gt;
 
@@ -416,7 +459,7 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;There is no time to probe and you can only intervene decisively to reduce the turbulence. You will then sense the system’s reacted perhaps shifting the system or subsystem to another domain.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-chaos.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-chaos.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;now-what-should-i-do-in-my-agile-retrospective&quot;&gt;Now what should I do in my Agile Retrospective?&lt;/h2&gt;
 
@@ -426,7 +469,7 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;Have you tried a contextualized Cynefin framework? Use prompts to build a framework from the data or use activities like 4 points to do that.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-4-points.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-4-points.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As an alternative to Cynefin you can approach the sense making in generate insights with Stacey Matrix which has horizontal axis for Close and Far from certainty and a vertical axis for Close and Far from agreement.&lt;/p&gt;
 
@@ -436,7 +479,7 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;What I find powerful is the dialogue and sense making that follows. Individuals might have different opinions of where things live, inviting to duplicate clusters and topics that are seen as simple, complicated and complex by different people creates valuable differences that when highlighted can help the whole group figure out what kinda of issue they’re dealing with.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-shared-language.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/cynefin-helps-agile-retrospectives/cynefin-shared-language.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;That’s the real sense making. That’s where a retrospective gets past the low hanging fruit and in to deeper issues&lt;/strong&gt;.&lt;/p&gt;
 
@@ -463,8 +506,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/cynefin-helps-agile-retrospectives/</link>
-        <guid isPermaLink="true">http://teotti.com/cynefin-helps-agile-retrospectives/</guid>
+        <link>http://localhost:4000/cynefin-helps-agile-retrospectives/</link>
+        <guid isPermaLink="true">http://localhost:4000/cynefin-helps-agile-retrospectives/</guid>
         
         <category>process</category>
         
@@ -524,8 +567,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;Here are some graphics I created to explain the process in a micro talk I gave:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/aa-3.jpg&quot; /&gt;
-&lt;img src=&quot;http://teotti.com/assets/article_images/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/aa-4.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/aa-3.jpg&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/article_images/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/aa-4.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;my-wicked-issue&quot;&gt;My wicked issue&lt;/h2&gt;
 
@@ -599,8 +642,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/</link>
-        <guid isPermaLink="true">http://teotti.com/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/</guid>
+        <link>http://localhost:4000/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/</link>
+        <guid isPermaLink="true">http://localhost:4000/questions-to-ponder-when-agile-retrospectives-are-missing-reflection/</guid>
         
         <category>process</category>
         
@@ -673,8 +716,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;p&gt;I hope you’ve found something useful, where are you know in your asking questions online journey? Where would you like to be? How are you gonna get there? Let me know in the comments or on twitter!&lt;/p&gt;
 </description>
         <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/how-i-ask-for-questions-while-facilitating-online/</link>
-        <guid isPermaLink="true">http://teotti.com/how-i-ask-for-questions-while-facilitating-online/</guid>
+        <link>http://localhost:4000/how-i-ask-for-questions-while-facilitating-online/</link>
+        <guid isPermaLink="true">http://localhost:4000/how-i-ask-for-questions-while-facilitating-online/</guid>
         
         <category>process</category>
         
@@ -727,8 +770,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;p&gt;I hope this list helps someone out there :) What’s stopping you from starting visualizing? What resources have you used to start your journey? Leave comments or hit me up on &lt;a href=&quot;https://twitter.com/agenteo&quot;&gt;twitter&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/from-software-engineer-to-visualizer/</link>
-        <guid isPermaLink="true">http://teotti.com/from-software-engineer-to-visualizer/</guid>
+        <link>http://localhost:4000/from-software-engineer-to-visualizer/</link>
+        <guid isPermaLink="true">http://localhost:4000/from-software-engineer-to-visualizer/</guid>
         
         <category>process</category>
         
@@ -764,8 +807,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;p&gt;You might be able to achieve the same reduction with a single window and hide all gallery speakers but I did not test it. Does this trick works on Windows? Let me know!&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</link>
-        <guid isPermaLink="true">http://teotti.com/reduce-your-network-utilization-on-zoom-calls/</guid>
+        <link>http://localhost:4000/reduce-your-network-utilization-on-zoom-calls/</link>
+        <guid isPermaLink="true">http://localhost:4000/reduce-your-network-utilization-on-zoom-calls/</guid>
         
         <category>process</category>
         
@@ -800,7 +843,7 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 
 &lt;p&gt;Works in a physical open space. We all know how to go from point A to point B. But what about online? Does all my audience know where to click how to navigate to other rooms?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images//the-law-of-two-feet-in-open-space-online//5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/article_images//the-law-of-two-feet-in-open-space-online//5x2.jpg&quot; alt=&quot;I am so stuck&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;do-you-know-how-to-get-to-another-session&quot;&gt;Do you know how to get to another session?&lt;/h2&gt;
 
@@ -871,8 +914,8 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;p&gt;I don’t think there is a one size fits all solution, but I think we need to do better and prepare for our audience. What are you doing to make it better for your participants?&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/the-law-of-two-feet-in-open-space-online/</link>
-        <guid isPermaLink="true">http://teotti.com/the-law-of-two-feet-in-open-space-online/</guid>
+        <link>http://localhost:4000/the-law-of-two-feet-in-open-space-online/</link>
+        <guid isPermaLink="true">http://localhost:4000/the-law-of-two-feet-in-open-space-online/</guid>
         
         <category>process</category>
         
@@ -924,92 +967,10 @@ Design Unbound – Designing for emergence in a white water world&lt;/p&gt;
 &lt;p&gt;I hope this helps some folks out there. I think offloading the internet of local communications makes sense. I can see SIP as a way to connect to your elderly neighbour that might not have a recent phone Let me know how your experiment goes!&lt;/p&gt;
 </description>
         <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/video-call-from-your-LAN-during-covid19/</link>
-        <guid isPermaLink="true">http://teotti.com/video-call-from-your-LAN-during-covid19/</guid>
+        <link>http://localhost:4000/video-call-from-your-LAN-during-covid19/</link>
+        <guid isPermaLink="true">http://localhost:4000/video-call-from-your-LAN-during-covid19/</guid>
         
         <category>process</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>What happens before an agile retrospective</title>
-        <description>&lt;p&gt;In this post I share what happens before I facilitate an agile retrospective.&lt;/p&gt;
-
-&lt;p&gt;Most team I joined approach retrospectives as something that has to be done once a week in 1 hour and you don’t need any preparation.&lt;/p&gt;
-
-&lt;p&gt;In my experience that’s when retrospectives yield more basic results and in the worst cases become counterproductive.&lt;/p&gt;
-
-&lt;p&gt;Before a retrospective–any meeting in my opinion–you must prepare.&lt;/p&gt;
-
-&lt;p&gt;Granted you can’t come up with a plan that’s perfect. You work in a complex adaptive system so be ready for the unexpected. But you can take care of some due diligence and I’ll explain my approach in this post.&lt;/p&gt;
-
-&lt;p&gt;The first question is what’s your role? Are you an external facilitator? A team member? A lead developer, product manager scrum master? If you feel like you’re overstepping your role by following this advice maybe treat it like an experiment. See how it goes. For the longest time I was a developer when I designed and facilitated my team retrospectives.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;We’re all biased but if you’re a scrum master or a team member probably even more. Be aware of that and maybe ask for a co-facilitator or co-designer external to the team.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;is-there-a-retrospective-purpose&quot;&gt;Is there a retrospective purpose?&lt;/h2&gt;
-
-&lt;p&gt;With teams of 6/10 I like to run short 1:1s or watercooler convos about what’s on the team member’s minds. If I see a pattern I propose that as the retrospective theme before the retrospective. Always check with the group before making that call final and designing the structure.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;Tip I learned the hard way: When you focus your retrospective on a theme you must have a way for the little low hanging fruit to be tackled. I like to do that in short 10/15m daily retrospectives. Those are action item focused. The themed retrospective is focused on reflection.&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The theme might be coming from the person “leading” the team, or if you’re an external facilitator from the stakeholder that brought you in. If you have time try to check in with the team anyways.&lt;/p&gt;
-
-&lt;p&gt;That theme should hint at the purpose. &lt;strong&gt;You can do this investigation inside a retrospective that has purpose of “improving what we did this iteration” but you’d spend time doing that sifting instead of reflecting.&lt;/strong&gt; It’s very contextual sometime you might want the group to do that but in my experience I prefer to prepare a theme before. And if the group has a topic or a theme emerging different than what was planned I go with it. It’s their meeting. If the majority of the room expresses desire to explore other direction. This is where you–the facilitator–need to get out of the group’s way. &lt;strong&gt;If you’re a product manager, scrum master, tech lead that’s gonna be very hard to let go of your bias and your agenda&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Next is the retrospective design.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-retrospective-design&quot;&gt;The retrospective design&lt;/h3&gt;
-
-&lt;p&gt;This is so that you don’t pick a random format on retromat print it and walk in the retrospective.&lt;/p&gt;
-
-&lt;p&gt;Here’s a few questions that I like to ask once the theme is defined:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Who’s gonna be there?&lt;/li&gt;
-  &lt;li&gt;Why are we taking their time?&lt;/li&gt;
-  &lt;li&gt;What do we want to get out of this?&lt;/li&gt;
-  &lt;li&gt;How are we getting there?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The last question is where I design the retrospective with activities that fit the group and the context. &lt;strong&gt;This is the plan and no plan survives contact with the enemy. So don’t be married to it.&lt;/strong&gt; That’s where the complexity of this facilitation job is. And why I love it.&lt;/p&gt;
-
-&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
-
-&lt;p&gt;Void of context they might not give a lot of insights but these are examples of retrospectives design I helped other folks with. Those sessions would take anything from 15 minutes to 30/40 minutes. Groups size were between 6 to 20.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-0.jpg&quot; alt=&quot;This helped a new facilitator gently shift away from pure mad/sad/glad whack-a-mole retro&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-3.jpg&quot; alt=&quot;This retrospective design was focused on a specific incident. I asked a bit of the history and then I designed the retro with the person calling the meeting.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.jpg&quot; alt=&quot;This retrospective design was focused on manager / reports dynamics.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.1.jpg&quot; alt=&quot;Digging out some of the topics.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.10.jpg&quot; alt=&quot;This section was focused on way to visualize their current experiements data.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-2.20.jpg&quot; alt=&quot;We came up with using colors and post it-s divided in pies to quickly eyeball data.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://teotti.com/assets/article_images/what-happens-before-an-agile-retrospective/design-1.jpg&quot; alt=&quot;This is from a leadership offsite that I didn&#39;t facilitate. This person asked to bounce off ideas and I believe we came up with a better structure. A reminder to ask for help when you&#39;re designing your sessions!&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Have I sparked some intrest in dedicating some time finding a theme and designing your next retrospective? Are you already doing it? How much time do you dedicate to it? Who helps you? Leave a comment or a tweet.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
-        <link>http://teotti.com/what-happens-before-an-agile-retrospective/</link>
-        <guid isPermaLink="true">http://teotti.com/what-happens-before-an-agile-retrospective/</guid>
-        
-        <category>retrospectives</category>
-        
-        <category>process</category>
-        
-        <category>agile</category>
         
         
       </item>

@@ -16,7 +16,7 @@ destination: public
 
 # Site settings
 title: "Read my blog | Enrico Teotti"
-welcome_message: "Enrico Teotti's blog"
+welcome_message: "Hello, I am Enrico Teotti"
 description: > # this means to ignore newlines until "email:"
   agile coach, (visual) facilitator with a background in software development and product management since 2001 in Europe, Australia and the US.
 og_description: "Visit my blog to find out more about me and my work"

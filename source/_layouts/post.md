@@ -74,8 +74,7 @@
           {% endif %}
           <h3>More reads about {% for tag in page.tags %} <a href="/topics/{{tag}}">{{tag}}</a>, {% endfor %} <a href="/topics">other topics</a></h3>
       </div>
-
-        {% include posts/comments.html %}
+        {% include posts/comments.html %}        
       </article>
     </main>
     <div class="bottom-closer">
@@ -85,6 +84,7 @@
       <div class="inner">
         <h1 class="blog-title">{{ site.author }}</h1>
         <h2 class="blog-description">{{ site.description }}</h2>
+        <a href="https://enricoteotti.com" class="btn">Work with me</a>
         <a href="/" class="btn">Back to Overview</a>
       </div>
     </div>

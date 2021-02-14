@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="In this short article I describe how to use Sphinx and Thinking Sphinx (v3) in a Ruby on Rails application to index the same ActiveRecord model with separate..." />
-  <meta property="og:url" content="http://localhost:4000/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/" />
+  <meta property="og:url" content="http://teotti.com/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/" />
   <meta property="og:site_name" content="Read my blog | Enrico Teotti" />
   <meta property="og:title" content="Thinking Sphinx search one model with two indices with static attributes" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/hero.jpg" />
+  <meta property="og:image" content="http://teotti.com/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/hero.jpg" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Thinking Sphinx search one model with two indices with static attributes">
   <meta name="twitter:description" content="In this short article I describe how to use Sphinx and Thinking Sphinx (v3) in a Ruby on Rails application to index the same ActiveRecord model with separate...">
-  <meta name="twitter:image" content="http://localhost:4000/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/hero.jpg">
-  <meta name="twitter:url" content="http://localhost:4000/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/">
+  <meta name="twitter:image" content="http://teotti.com/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/hero.jpg">
+  <meta name="twitter:url" content="http://teotti.com/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://localhost:4000/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/">
+  <link rel="canonical" href="http://teotti.com/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -104,7 +104,7 @@
 
 <p><strong>I will use a simplified example adapted from a real life application.</strong> A company has a web portal where users can view product representatives details. The company has a mangement console where admins can update the product representatives information. Both need to search the representatives data stored in a relational database table–and loaded in a Contact ActiveRecord object–but with different criterias.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/diagram.jpg" alt="" /></p>
+<p><img src="http://teotti.com/assets/article_images/thinking-sphinx-search-one-model-with-two-indices-with-static-attributes/diagram.jpg" alt="" /></p>
 
 <p>To make this example manageable I am defining only one criteria different between admin and user search: <strong>A user can’t see a contact that isn’t active but an admin can</strong>. You already know real life applications aren’t that simple–in real life there are likely a multitude of criterias different between admin and user search and this solution works there.</p>
 

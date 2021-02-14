@@ -18,11 +18,11 @@
 
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="In this article I describe the steps I use to regain control of big ball of mud Ruby on Rails applications. The objective is defining the application operati..." />
-  <meta property="og:url" content="http://localhost:4000/reengineer-legacy-rails-applications/" />
+  <meta property="og:url" content="http://teotti.com/reengineer-legacy-rails-applications/" />
   <meta property="og:site_name" content="Read my blog | Enrico Teotti" />
   <meta property="og:title" content="Reengineer legacy Rails applications" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000" />
+  <meta property="og:image" content="http://teotti.com" />
   <meta property="og:image:type" content="" />
   <meta property="og:image:width" content="" />
   <meta property="og:image:height" content="" />
@@ -31,14 +31,14 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Reengineer legacy Rails applications">
   <meta name="twitter:description" content="In this article I describe the steps I use to regain control of big ball of mud Ruby on Rails applications. The objective is defining the application operati...">
-  <meta name="twitter:image" content="http://localhost:4000">
-  <meta name="twitter:url" content="http://localhost:4000/reengineer-legacy-rails-applications/">
+  <meta name="twitter:image" content="http://teotti.com">
+  <meta name="twitter:url" content="http://teotti.com/reengineer-legacy-rails-applications/">
   <meta name="twitter:creator" content="@tirfpodcast">
   <meta name="twitter:site" content="@tirfpodcast">
 
   <script data-cfasync="false" type="text/javascript" src="//filamentapp.s3.amazonaws.com/d44553ac52ef97f2dbdb691fbfa3383d.js" async="async"></script>
 
-  <link rel="canonical" href="http://localhost:4000/reengineer-legacy-rails-applications/">
+  <link rel="canonical" href="http://teotti.com/reengineer-legacy-rails-applications/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -67,7 +67,7 @@
 
     <!-- header start -->
 
-<a href="http://localhost:4000" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
+<a href="http://teotti.com" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/ita_aus_flag.jpg)"></span></a>
 
 <!-- header end -->
 
@@ -109,11 +109,11 @@
 
 <p>This article doesn’t document the challenges of reengineering application context built with a heavily customized Rails plugins foundation. The Rails plugins functionality usually pollute the global namespace and foster the creation or expansion of god objects forcing the components to depend on the main application functionality and reducing the effectiveness of a dependency structure.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/big-ball-of-mud.png" alt="This is what your application looks like today to a new developer." /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/big-ball-of-mud.png" alt="This is what your application looks like today to a new developer." /></p>
 
 <p><strong>If you follow this article</strong> you will re-engineer your application to have a directory structure stating its operational contexts and defining a dependency structure allowing developers to add functionality to a dedicated section of the code confident it’ll only affect that <strong>component</strong>. Local Ruby Gems and Rails engines are the technical tool to create those components.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Final result to the eye of a new or seasoned developer." /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Final result to the eye of a new or seasoned developer." /></p>
 
 <p>Eventually the Rails application will have no functionality and just load the Engine high level entry points.</p>
 
@@ -159,7 +159,7 @@
   </blockquote>
 </blockquote>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/simplified-example.png" alt="Our simplified example" /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/simplified-example.png" alt="Our simplified example" /></p>
 
 <h2 id="identify-and-set-application-boundaries">Identify and set application boundaries</h2>
 
@@ -240,7 +240,7 @@
 
 <p>At this stage your new components <code>payment_api</code> and <code>booking_api</code> implements the entry points of the payment and booking context. Some entrypoint–the trip API in our example–remain in the main application which is fine. The objective is to restructure in small steps focusing on what the product owner wants delivered and it’s ok to leave some never changing code in the main application.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/first-components.png" alt="First components (Rails engines in this case) taking some routing and controller logic away from the main application" /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/first-components.png" alt="First components (Rails engines in this case) taking some routing and controller logic away from the main application" /></p>
 
 <h3 id="move-related-classes-in-the-components">Move related classes in the components</h3>
 
@@ -248,7 +248,7 @@
 
 <p>If you encounter classes used in more then one context timebox a refactoring and fallback to duplicate the code. <strong>Using duplication everywhere is not sustainable</strong>–if that’s what’s happening increase the refactoring time or involve the whole team on a retrospective on why refactoring never yield results. Make sure this task has the most experienced developer anchoring the task and pairing to share the work done with the rest of the team.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/components-encapsulating-all-logic.png" alt="Components encapsulating all logic" /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/components-encapsulating-all-logic.png" alt="Components encapsulating all logic" /></p>
 
 <p>Sometime a Rails engine component is sufficient to encapsulate all the logic of one context but more often I’ve seen part of its behaviour split in a separate Ruby Gem component. In this example the payment might need a fair amount of logic to recalculate the booking quote and that section of the payment could be moved to a separate component Gem <code>quote_recalculator</code> only used by the <code>payment_api</code> Engine component.</p>
 
@@ -266,15 +266,15 @@
 
 <p>Once the code is in a recognizable state keeping it that way will require diligence.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Ideal final dependency structure." /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/final-result.png" alt="Ideal final dependency structure." /></p>
 
 <p>When the main Rails application loads all the Engine and Gem components Ruby will not enforce their dependency structure.</p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/in-memory-representation.png" alt="Actual in memory representation" /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/in-memory-representation.png" alt="Actual in memory representation" /></p>
 
 <p>In a Rails application a component can access any component breaking encapsulation. <strong>This is not a Rails problem but a limitation–or design choice–of Ruby that you should be very aware of.</strong></p>
 
-<p><img src="http://localhost:4000/assets/article_images/reengineer-legacy-rails-applications/what-could-go-wrong.png" alt="Only automated tests can prevent this" /></p>
+<p><img src="http://teotti.com/assets/article_images/reengineer-legacy-rails-applications/what-could-go-wrong.png" alt="Only automated tests can prevent this" /></p>
 
 <p><strong>Automated tests exercising the components in isolation is the only warning for a broken dependency structure</strong>.</p>
 
